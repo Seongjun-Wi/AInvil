@@ -1,0 +1,73 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor and IDE local state
+.vscode/
+.idea/
+*.user
+*.userprefs
+*.suo
+*.tmp
+*.temp
+*.swp
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs and diagnostic dumps
+*.log
+*.stackdump
+*.dmp
+*.pid
+
+# Node.js dependencies and package-manager caches
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+.pnpm-store/
+
+# Unity generated project folders
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+MemoryCaptures/
+Recordings/
+
+# Unity generated solution/project files
+*.csproj
+*.sln
+*.suo
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Unity build outputs and player binaries
+*.apk
+*.aab
+*.unitypackage
+*.app
+*.exe
+*.dll
+
+# AInvil generated playable builds
+plugins/ainvil/reports/builds/
+
+# Local repair/install leftovers
+.claude-plugin/
+marketplace.json.disabled-*
