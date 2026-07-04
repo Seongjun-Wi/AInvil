@@ -1,0 +1,244 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportVersion": "0.1.0",
+  "reportId": "WFR-GRAPH-AInvil-Productization-2026-07-03",
+  "generatedAt": "2026-07-03T19:07:17.881Z",
+  "sourceFiles": [
+    {
+      "kind": "Production State Graph",
+      "path": "state/production_state_graph.json",
+      "used": true
+    },
+    {
+      "kind": "Production Intelligence Report",
+      "path": "reports/production_intelligence_report.json",
+      "used": true
+    },
+    {
+      "kind": "Review Record",
+      "path": "reviews/e2e_validation_review.json",
+      "used": true
+    },
+    {
+      "kind": "Review Record",
+      "path": "reviews/production_core_readiness_review.json",
+      "used": true
+    },
+    {
+      "kind": "Benchmark Case",
+      "path": "benchmarks/datasets/design_review_poor_gdd.json",
+      "used": true
+    },
+    {
+      "kind": "Benchmark Case",
+      "path": "benchmarks/datasets/director_feature_creep.json",
+      "used": true
+    },
+    {
+      "kind": "Benchmark Case",
+      "path": "benchmarks/datasets/gdd_completion_incomplete.json",
+      "used": true
+    },
+    {
+      "kind": "Benchmark Case",
+      "path": "benchmarks/datasets/technical_translation_average_gdd.json",
+      "used": true
+    },
+    {
+      "kind": "Benchmark Case",
+      "path": "benchmarks/datasets/validation_missing_evidence.json",
+      "used": true
+    },
+    {
+      "kind": "Benchmark Report",
+      "path": "benchmarks/reports/latest-benchmark-report.json",
+      "used": true
+    },
+    {
+      "kind": "KPI Dashboard",
+      "path": "reports/kpi_dashboard.json",
+      "used": true
+    }
+  ],
+  "currentState": {
+    "projectId": "PROJECT-AInvil-Productization",
+    "projectName": "AInvil Productization",
+    "graphId": "GRAPH-AInvil-Productization",
+    "currentVision": {
+      "nodeId": "VISION-AInvil-Productization",
+      "title": "AInvil reliable game production workflow",
+      "status": "Confirmed",
+      "owner": "Director Layer"
+    },
+    "currentMilestone": {
+      "nodeId": "MILESTONE-E2E-Recovery",
+      "title": "Productization cleanup and E2E validation recovery",
+      "status": "In Progress",
+      "owner": "Orchestrator"
+    },
+    "activeFeature": {
+      "nodeId": "FEAT-E2E-HappyPath-001",
+      "title": "Minimum AInvil E2E happy path",
+      "status": "In Progress",
+      "owner": "Orchestrator"
+    },
+    "currentNextRecommendedAction": {
+      "title": "Restore Unity Bridge connectivity and rerun productization checks.",
+      "reason": "The minimum E2E happy path cannot reach compile or Play Mode validation while Unity Bridge is unreachable.",
+      "owner": "Unity Agent",
+      "status": "Planned",
+      "referencesNodeIds": [
+        "TASK-E2E-004"
+      ],
+      "requiredValidationLevel": "Compile Verified"
+    }
+  },
+  "workflowBlockers": [
+    {
+      "kind": "BlockedGraphNode",
+      "id": "TASK-E2E-004",
+      "summary": "Restore live Unity Bridge connectivity",
+      "evidenceNodeIds": [
+        "TASK-E2E-004"
+      ]
+    },
+    {
+      "kind": "BlockedGraphNode",
+      "id": "AC-E2E-002",
+      "summary": "Unity live checks reach compile and Play Mode evidence",
+      "evidenceNodeIds": [
+        "AC-E2E-002"
+      ]
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-E2E-001: no Unity target maps to this task",
+      "summary": "TASK-E2E-001: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-E2E-002: no Unity target maps to this task",
+      "summary": "TASK-E2E-002: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-E2E-003: no Unity target maps to this task",
+      "summary": "TASK-E2E-003: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "AC-E2E-002: no validation evidence validates this acceptance criterion",
+      "summary": "AC-E2E-002: no validation evidence validates this acceptance criterion",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingValidationEvidence",
+      "id": "AC-E2E-002",
+      "summary": "AC-E2E-002 has no ValidationEvidence edge.",
+      "evidenceNodeIds": [
+        "AC-E2E-002"
+      ]
+    },
+    {
+      "kind": "ValidationLevelGap",
+      "id": "AC-E2E-002",
+      "summary": "AC-E2E-002 is below the required validation confidence.",
+      "evidenceNodeIds": [
+        "AC-E2E-002"
+      ]
+    }
+  ],
+  "reviewStatus": {
+    "reviewCount": 2,
+    "reviewCountByType": {
+      "Validation Review": 1,
+      "Production Review": 1
+    },
+    "pendingReviewIds": [],
+    "approvedReviewIds": [],
+    "changesRequestedReviewIds": [
+      "REVIEW-E2E-Validation-001",
+      "REVIEW-ProductionCore-Readiness-001"
+    ],
+    "majorRisks": [
+      {
+        "reviewId": "REVIEW-E2E-Validation-001",
+        "severity": "High",
+        "summary": "Validation gap may cause AInvil productization to appear more complete than it is."
+      },
+      {
+        "reviewId": "REVIEW-ProductionCore-Readiness-001",
+        "severity": "High",
+        "summary": "Production Core could be overstated without a passed operational live Unity scenario."
+      }
+    ],
+    "missingRequiredReviews": []
+  },
+  "validationStatus": {
+    "validationCoverage": {
+      "Not Checked": 1,
+      "Document Review": 0,
+      "Static Analysis": 2,
+      "Unity Inspection": 0,
+      "Compile Verified": 0,
+      "Play Mode Verified": 0,
+      "Runtime Tested": 0,
+      "User Confirmed": 0
+    },
+    "featuresWithoutEvidence": [],
+    "acceptanceCriteriaWithoutEvidence": [
+      {
+        "nodeId": "AC-E2E-002",
+        "reason": "AC-E2E-002 has no ValidationEvidence edge."
+      }
+    ],
+    "validationLevelGaps": [
+      {
+        "nodeId": "AC-E2E-002",
+        "currentLevel": "Not Checked",
+        "requiredLevel": "Compile Verified",
+        "reason": "AC-E2E-002 is below the required validation confidence."
+      }
+    ]
+  },
+  "benchmarkKpiStatus": {
+    "benchmarkCaseCount": 5,
+    "benchmarkCaseCountByCategory": {
+      "Design Review": 1,
+      "Director Quality": 1,
+      "GDD Completion": 1,
+      "Technical Translation": 1,
+      "Validation": 1
+    },
+    "missingBenchmarkExpectedOutputs": [],
+    "latestBenchmarkReportAvailable": true,
+    "latestBenchmarkReportPath": "benchmarks/reports/latest-benchmark-report.json",
+    "kpiCategories": [
+      "3.1 Design KPIs",
+      "3.2 Production KPIs",
+      "3.3 Intelligence KPIs",
+      "3.4 User Experience KPIs",
+      "3.5 Product KPIs"
+    ],
+    "kpiDashboardAvailable": true,
+    "kpiDashboardPath": "reports/kpi_dashboard.json",
+    "missingKpiEvidence": []
+  },
+  "nextAction": {
+    "actionId": "WFA-Validate-Gap",
+    "title": "Resolve the highest validation gap.",
+    "reason": "AC-E2E-002 is below the required validation confidence.",
+    "suggestedOwner": "Input Agent",
+    "priority": "High",
+    "referencesNodeIds": [
+      "AC-E2E-002"
+    ],
+    "referencesReviewIds": [],
+    "referencesBenchmarkIds": [],
+    "referencesKpiItems": [],
+    "evidenceStatus": "Evidence exists for the referenced graph node, but required validation evidence or confidence is missing."
+  }
+}

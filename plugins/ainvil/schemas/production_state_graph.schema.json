@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/production_state_graph.schema.json",
+  "title": "AInvil ProductionStateGraph",
+  "type": "object",
+  "required": ["schemaVersion", "graphId", "projectId", "version", "updatedAt", "nodes", "edges"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "graphId": { "type": "string", "minLength": 1 },
+    "projectId": { "type": "string", "minLength": 1 },
+    "projectName": { "type": "string" },
+    "version": { "type": "string", "minLength": 1 },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "currentVisionNodeId": { "type": "string" },
+    "currentMilestoneNodeId": { "type": "string" },
+    "activeFeatureNodeId": { "type": "string" },
+    "healthSummary": { "$ref": "#/$defs/healthSummary" },
+    "nextRecommendedAction": { "$ref": "#/$defs/nextAction" },
+    "nodes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/node" }
+    },
+    "edges": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/edge" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "nodeType": {
+      "enum": [
+        "Vision",
+        "Milestone",
+        "DesignDecision",
+        "Requirement",
+        "Feature",
+        "FeatureSpec",
+        "TechnicalSystem",
+        "ImplementationTask",
+        "UnityTarget",
+        "InputSpec",
+        "AcceptanceCriterion",
+        "ValidationEvidence",
+        "Risk",
+        "OpenQuestion",
+        "ProjectHealth",
+        "NextAction"
+      ]
+    },
+    "edgeType": {
+      "enum": [
+        "derives_from",
+        "confirms",
+        "supersedes",
+        "depends_on",
+        "implements",
+        "maps_to",
+        "validates",
+        "blocked_by",
+        "affects",
+        "owned_by",
+        "next_step_for"
+      ]
+    },
+    "status": {
+      "enum": [
+        "Proposed",
+        "Confirmed",
+        "Planned",
+        "In Progress",
+        "Implemented",
+        "Validated",
+        "Blocked",
+        "Deferred",
+        "Cut",
+        "Superseded",
+        "Needs design confirmation",
+        "Needs technical confirmation",
+        "Needs Requirement Definition",
+        "Needs Acceptance Criteria",
+        "Needs validation",
+        "Stale",
+        "Conflict"
+      ]
+    },
+    "validationLevel": {
+      "enum": [
+        "Not Checked",
+        "Document Review",
+        "Static Analysis",
+        "Unity Inspection",
+        "Compile Verified",
+        "Play Mode Verified",
+        "Runtime Tested",
+        "User Confirmed"
+      ]
+    },
+    "owner": {
+      "enum": ["Director Layer", "Orchestrator", "GDD Agent", "Unity Agent", "Input Agent", "User"]
+    },
+    "node": {
+      "type": "object",
+      "required": ["id", "type", "title", "status", "owner"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "type": { "$ref": "#/$defs/nodeType" },
+        "title": { "type": "string", "minLength": 1 },
+        "summary": { "type": "string" },
+        "status": { "$ref": "#/$defs/status" },
+        "owner": { "$ref": "#/$defs/owner" },
+        "version": { "type": "string" },
+        "refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["kind", "path"],
+            "properties": {
+              "kind": { "type": "string" },
+              "path": { "type": "string" },
+              "section": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "validationLevel": { "$ref": "#/$defs/validationLevel" },
+        "evidence": { "$ref": "#/$defs/validationEvidence" },
+        "health": { "$ref": "#/$defs/healthSummary" },
+        "nextAction": { "$ref": "#/$defs/nextAction" },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "edge": {
+      "type": "object",
+      "required": ["id", "type", "from", "to"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "type": { "$ref": "#/$defs/edgeType" },
+        "from": { "type": "string", "minLength": 1 },
+        "to": { "type": "string", "minLength": 1 },
+        "status": { "$ref": "#/$defs/status" },
+        "summary": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "validationEvidence": {
+      "type": "object",
+      "properties": {
+        "evidenceId": { "type": "string" },
+        "validationLevel": { "$ref": "#/$defs/validationLevel" },
+        "status": { "enum": ["Pass", "Fail", "Blocked", "Not tested"] },
+        "source": { "type": "string" },
+        "tool": { "type": "string" },
+        "summary": { "type": "string" },
+        "timestamp": { "type": ["string", "null"], "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+    "healthSummary": {
+      "type": "object",
+      "properties": {
+        "designHealth": { "enum": ["Green", "Yellow", "Red", "Unknown"] },
+        "implementationHealth": { "enum": ["Green", "Yellow", "Red", "Unknown"] },
+        "documentationHealth": { "enum": ["Green", "Yellow", "Red", "Unknown"] },
+        "validationCoverage": { "enum": ["Green", "Yellow", "Red", "Unknown"] },
+        "technicalDebt": { "enum": ["Green", "Yellow", "Red", "Unknown"] },
+        "productionRisk": { "enum": ["Green", "Yellow", "Red", "Unknown"] },
+        "summary": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "nextAction": {
+      "type": "object",
+      "required": ["actionId", "title", "owner", "status"],
+      "properties": {
+        "actionId": { "type": "string" },
+        "title": { "type": "string" },
+        "owner": { "$ref": "#/$defs/owner" },
+        "status": { "$ref": "#/$defs/status" },
+        "reason": { "type": "string" },
+        "referencesNodeId": { "type": "string" },
+        "requiredValidationLevel": { "$ref": "#/$defs/validationLevel" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

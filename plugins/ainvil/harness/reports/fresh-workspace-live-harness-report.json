@@ -1,0 +1,638 @@
+{
+  "schemaVersion": "1.0.0",
+  "runner": "AInvil Live Harness",
+  "mode": "probe",
+  "unityUrl": "http://127.0.0.1:17777/rpc",
+  "healthUrl": "http://127.0.0.1:17777/health",
+  "startedAt": "2026-07-04T13:36:18.176Z",
+  "finishedAt": "2026-07-04T13:36:19.351Z",
+  "summary": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "blocked": 0,
+    "warning": 0
+  },
+  "scenarios": [
+    {
+      "id": "ainvil_bridge_smoke_operational",
+      "title": "AInvil Unity Bridge operational smoke validation",
+      "classification": "Operational",
+      "category": null,
+      "validationType": null,
+      "userGoal": "Verify that AInvil can reach Unity Bridge, inspect editor status, check compile status, read console errors, inspect hierarchy, and export validation evidence without modifying the Unity project.",
+      "milestone": "Operational Unity Bridge smoke proof",
+      "interactive": false,
+      "requirementIds": [
+        "REQ-E2E-003"
+      ],
+      "acceptanceIds": [
+        "AC-E2E-002"
+      ],
+      "status": "Passed",
+      "checks": [
+        {
+          "id": "bridge.health",
+          "type": "Static",
+          "target": "http://127.0.0.1:17777/health",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "Unity Bridge health endpoint is reachable.",
+          "data": {
+            "ok": true,
+            "bridgeRunning": true,
+            "bridgeStatus": "running",
+            "capabilityVersion": "0.6.0-validation-probes",
+            "unityVersion": "6000.5.0f1",
+            "isPlaying": false,
+            "isPlayingOrWillChangePlaymode": false,
+            "playModeTransitionCount": 3
+          }
+        },
+        {
+          "id": "bridge.unity_get_status",
+          "type": "Static",
+          "target": "unity_get_status",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_get_status succeeded.",
+          "data": {
+            "ok": true,
+            "bridgeRunning": true,
+            "bridgeStatus": "running",
+            "capabilityVersion": "0.6.0-validation-probes",
+            "unityVersion": "6000.5.0f1",
+            "projectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets",
+            "isPlaying": false,
+            "isPaused": false,
+            "isPlayingOrWillChangePlaymode": false,
+            "isCompiling": false,
+            "isUpdating": false,
+            "playModeTransitionCount": 3,
+            "inputTestBridgeAvailable": false,
+            "activeScene": {
+              "name": "DRC_FirstRecoveryJob",
+              "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity",
+              "isDirty": false,
+              "isLoaded": true,
+              "rootCount": 1
+            },
+            "selection": {
+              "activeObject": null,
+              "objects": []
+            }
+          }
+        },
+        {
+          "id": "bridge.unity_compile_status",
+          "type": "Compile",
+          "target": "unity_compile_status",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_compile_status succeeded.",
+          "data": {
+            "isCompiling": false,
+            "isUpdating": false,
+            "errorCount": 0,
+            "recentErrors": []
+          }
+        },
+        {
+          "id": "bridge.unity_get_console_logs",
+          "type": "Console",
+          "target": "unity_get_console_logs",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_get_console_logs succeeded.",
+          "data": {
+            "logs": []
+          }
+        },
+        {
+          "id": "bridge.unity_get_hierarchy",
+          "type": "Scene",
+          "target": "unity_get_hierarchy",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_get_hierarchy succeeded.",
+          "data": {
+            "scene": "DRC_FirstRecoveryJob",
+            "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity",
+            "roots": [
+              {
+                "name": "AInvilDungeonRecoveryFirstPlayable",
+                "path": "/AInvilDungeonRecoveryFirstPlayable",
+                "activeSelf": true,
+                "activeInHierarchy": true,
+                "instanceId": -6760,
+                "children": [
+                  {
+                    "name": "Environment",
+                    "path": "/AInvilDungeonRecoveryFirstPlayable/Environment",
+                    "activeSelf": true,
+                    "activeInHierarchy": true,
+                    "instanceId": -6764,
+                    "children": [
+                      {
+                        "name": "Floor",
+                        "path": "/AInvilDungeonRecoveryFirstPlayable/Environment/Floor",
+                        "activeSelf": true,
+                        "activeInHierarchy": true,
+                        "instanceId": -6772,
+                        "children": [],
+                        "components": [
+                          "UnityEngine.Transform",
+                          "UnityEngine.MeshFilter",
+                          "UnityEngine.BoxCollider",
+                          "UnityEngine.MeshRenderer"
+                        ]
+                      },
+                      {
+                        "name": "NorthWall",
+                        "path": "/AInvilDungeonRecoveryFirstPlayable/Environment/NorthWall",
+                        "activeSelf": true,
+                        "activeInHierarchy": true,
+                        "instanceId": -6782,
+                        "children": [],
+                        "components": [
+                          "UnityEngine.Transform",
+                          "UnityEngine.MeshFilter",
+                          "UnityEngine.BoxCollider",
+                          "UnityEngine.MeshRenderer"
+                        ]
+                      },
+                      {
+                        "name": "SouthWall",
+                        "path": "/AInvilDungeonRecoveryFirstPlayable/Environment/SouthWall",
+                        "activeSelf": true,
+                        "activeInHierarchy": true,
+                        "instanceId": -6792,
+                        "children": [],
+                        "components": [
+                          "UnityEngine.Transform",
+                          "UnityEngine.MeshFilter",
+                          "UnityEngine.BoxCollider",
+                          "UnityEngine.MeshRenderer"
+                        ]
+                      },
+                      {
+                        "name": "EastWall",
+                        "path": "/AInvilDungeonRecoveryFirstPlayable/Environment/EastWall",
+                        "activeSelf": true,
+                        "activeInHierarchy": true,
+                        "instanceId": -6802,
+                        "children": [],
+                        "components": [
+                          "UnityEngine.Transform",
+                          "UnityEngine.MeshFilter",
+                          "UnityEngine.BoxCollider",
+                          "UnityEngine.MeshRenderer"
+                        ]
+                      },
+                      {
+                        "name": "WestWall",
+                        "path": "/AInvilDungeonRecoveryFirstPlayable/Environment/WestWall",
+                        "activeSelf": true,
+                        "activeInHierarchy": true,
+                        "instanceId": -6812,
+                        "children": [],
+                        "components": [
+                          "UnityEngine.Transform",
+                          "UnityEngine.MeshFilter",
+                          "UnityEngine.BoxCollider",
+                          "UnityEngine.MeshRenderer"
+                        ]
+                      }
+                    ],
+                    "components": [
+                      "UnityEngine.Transform"
+                    ]
+                  },
+                  {
+                    "name": "RecoveryTargets",
+                    "path": "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets",
+                    "activeSelf": true,
+                    "activeInHierarchy": true,
+                    "instanceId": -6768,
+                    "children": [
+                      {
+                        "name": "Rubble",
+                        "path": "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/Rubble",
+                        "activeSelf": true,
+                        "activeInHierarchy": true,
+                        "instanceId": -6836,
+                        "children": [],
+                        "components": [
+                          "UnityEngine.Transform",
+                          "UnityEngine.MeshFilter",
+                          "UnityEngine.CapsuleCollider",
+                          "UnityEngine.MeshRenderer",
+                          "AInvil.DungeonRecoveryFirstPlayable.AInvilRecoveryTarget"
+                        ]
+                      },
+                      {
+                        "name": "CorruptionNode",
+                        "path": "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/CorruptionNode",
+                        "activeSelf": true,
+                        "activeInHierarchy": true,
+                        "instanceId": -6848,
+                        "children": [],
+                        "components": [
+                          "UnityEngine.Transform",
+                          "UnityEngine.MeshFilter",
+                          "UnityEngine.CapsuleCollider",
+                          "UnityEngine.MeshRenderer",
+                          "AInvil.DungeonRecoveryFirstPlayable.AInvilRecoveryTarget"
+                        ]
+                      },
+                      {
+                        "name": "BrokenRelic",
+                        "path": "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/BrokenRelic",
+                        "activeSelf": true,
+                        "activeInHierarchy": true,
+                        "instanceId": -6860,
+                        "children": [],
+                        "components": [
+                          "UnityEngine.Transform",
+                          "UnityEngine.MeshFilter",
+                          "UnityEngine.CapsuleCollider",
+                          "UnityEngine.MeshRenderer",
+                          "AInvil.DungeonRecoveryFirstPlayable.AInvilRecoveryTarget"
+                        ]
+                      }
+                    ],
+                    "components": [
+                      "UnityEngine.Transform"
+                    ]
+                  },
+                  {
+                    "name": "Player",
+                    "path": "/AInvilDungeonRecoveryFirstPlayable/Player",
+                    "activeSelf": true,
+                    "activeInHierarchy": true,
+                    "instanceId": -6822,
+                    "children": [],
+                    "components": [
+                      "UnityEngine.Transform",
+                      "UnityEngine.MeshFilter",
+                      "UnityEngine.CapsuleCollider",
+                      "UnityEngine.MeshRenderer",
+                      "UnityEngine.CharacterController",
+                      "AInvil.DungeonRecoveryFirstPlayable.AInvilRecoveryPlayerController"
+                    ]
+                  },
+                  {
+                    "name": "HUD",
+                    "path": "/AInvilDungeonRecoveryFirstPlayable/HUD",
+                    "activeSelf": true,
+                    "activeInHierarchy": true,
+                    "instanceId": -6872,
+                    "children": [
+                      {
+                        "name": "ProgressText",
+                        "path": "/AInvilDungeonRecoveryFirstPlayable/HUD/ProgressText",
+                        "activeSelf": true,
+                        "activeInHierarchy": true,
+                        "instanceId": -6884,
+                        "children": [],
+                        "components": [
+                          "UnityEngine.RectTransform",
+                          "UnityEngine.CanvasRenderer",
+                          "UnityEngine.UI.Text"
+                        ]
+                      }
+                    ],
+                    "components": [
+                      "UnityEngine.RectTransform",
+                      "UnityEngine.Canvas",
+                      "UnityEngine.UI.CanvasScaler",
+                      "UnityEngine.UI.GraphicRaycaster",
+                      "AInvil.DungeonRecoveryFirstPlayable.AInvilRecoveryUiView"
+                    ]
+                  },
+                  {
+                    "name": "GameController",
+                    "path": "/AInvilDungeonRecoveryFirstPlayable/GameController",
+                    "activeSelf": true,
+                    "activeInHierarchy": true,
+                    "instanceId": -6896,
+                    "children": [],
+                    "components": [
+                      "UnityEngine.Transform",
+                      "AInvil.DungeonRecoveryFirstPlayable.AInvilDungeonRecoveryGameController"
+                    ]
+                  },
+                  {
+                    "name": "Main Camera",
+                    "path": "/AInvilDungeonRecoveryFirstPlayable/Main Camera",
+                    "activeSelf": true,
+                    "activeInHierarchy": true,
+                    "instanceId": -6902,
+                    "children": [],
+                    "components": [
+                      "UnityEngine.Transform",
+                      "UnityEngine.Camera"
+                    ]
+                  },
+                  {
+                    "name": "Directional Light",
+                    "path": "/AInvilDungeonRecoveryFirstPlayable/Directional Light",
+                    "activeSelf": true,
+                    "activeInHierarchy": true,
+                    "instanceId": -6908,
+                    "children": [],
+                    "components": [
+                      "UnityEngine.Transform",
+                      "UnityEngine.Light",
+                      "UnityEngine.Rendering.Universal.UniversalAdditionalLightData"
+                    ]
+                  }
+                ],
+                "components": [
+                  "UnityEngine.Transform"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "bridge.unity_probe_validation_observation",
+          "type": "Static",
+          "target": "unity_probe_validation_observation",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_probe_validation_observation succeeded.",
+          "data": {
+            "ok": true,
+            "name": "activeSceneLoaded",
+            "type": "activeScene",
+            "value": true,
+            "probe": "SceneProbe",
+            "sourceRpc": "unity_get_status",
+            "isPlaying": false
+          }
+        },
+        {
+          "id": "artifact.validation_evidence_evid_ainvil_bridge_smoke_operational_latest_json.planned",
+          "type": "Static",
+          "target": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json",
+          "status": "Passed",
+          "failureClass": "Unknown",
+          "message": "Artifact is planned by the scenario and does not require live existence."
+        },
+        {
+          "id": "validation.val_ainvil_bridge_smoke_001",
+          "type": "ValidationDesign",
+          "target": "VAL-AINVIL-BRIDGE-SMOKE-001",
+          "status": "Passed",
+          "failureClass": "Unknown",
+          "message": "Validation Design VAL-AINVIL-BRIDGE-SMOKE-001 passed with 2 evaluated assertion(s).",
+          "childChecks": [
+            {
+              "id": "validation.action.wait",
+              "type": "Static",
+              "target": "1ms",
+              "status": "Passed",
+              "ok": true,
+              "failureClass": "Unknown",
+              "message": "Wait action completed."
+            },
+            {
+              "id": "validation.assert.val_ainvil_bridge_smoke_001.assert_active_scene_loaded",
+              "type": "ValidationAssertion",
+              "target": "activeSceneLoaded",
+              "status": "Passed",
+              "failureClass": "Unknown",
+              "message": "ASSERT-ACTIVE-SCENE-LOADED passed."
+            },
+            {
+              "id": "validation.assert.val_ainvil_bridge_smoke_001.assert_no_editor_errors",
+              "type": "ValidationAssertion",
+              "target": "editorLogErrors",
+              "status": "Passed",
+              "failureClass": "Unknown",
+              "message": "ASSERT-NO-EDITOR-ERRORS passed."
+            }
+          ],
+          "validationResult": {
+            "validationId": "VAL-AINVIL-BRIDGE-SMOKE-001",
+            "requirementId": "REQ-E2E-003",
+            "acceptanceIds": [
+              "AC-E2E-002"
+            ],
+            "scenario": "ainvil_bridge_smoke_operational",
+            "result": "Passed",
+            "beforeObservations": [
+              {
+                "name": "activeSceneLoaded",
+                "type": "activeScene",
+                "phase": "before",
+                "target": "isLoaded",
+                "value": true,
+                "probe": "SceneProbe",
+                "sourceRpc": null,
+                "status": "Passed",
+                "message": ""
+              },
+              {
+                "name": "activeSceneName",
+                "type": "activeScene",
+                "phase": "before",
+                "target": "name",
+                "value": "DRC_FirstRecoveryJob",
+                "probe": "SceneProbe",
+                "sourceRpc": null,
+                "status": "Passed",
+                "message": ""
+              },
+              {
+                "name": "editorLogErrors",
+                "type": "editorLogErrors",
+                "phase": "before",
+                "target": null,
+                "value": 0,
+                "probe": "LogProbe",
+                "sourceRpc": "unity_get_console_logs",
+                "status": "Passed",
+                "message": ""
+              }
+            ],
+            "afterObservations": [
+              {
+                "name": "activeSceneLoaded",
+                "type": "activeScene",
+                "phase": "after",
+                "target": "isLoaded",
+                "value": true,
+                "probe": "SceneProbe",
+                "sourceRpc": null,
+                "status": "Passed",
+                "message": ""
+              },
+              {
+                "name": "activeSceneName",
+                "type": "activeScene",
+                "phase": "after",
+                "target": "name",
+                "value": "DRC_FirstRecoveryJob",
+                "probe": "SceneProbe",
+                "sourceRpc": null,
+                "status": "Passed",
+                "message": ""
+              },
+              {
+                "name": "editorLogErrors",
+                "type": "editorLogErrors",
+                "phase": "after",
+                "target": null,
+                "value": 0,
+                "probe": "LogProbe",
+                "sourceRpc": "unity_get_console_logs",
+                "status": "Passed",
+                "message": ""
+              }
+            ],
+            "assertions": [
+              {
+                "id": "ASSERT-ACTIVE-SCENE-LOADED",
+                "observation": "activeSceneLoaded",
+                "operator": "equals",
+                "expected": true,
+                "actual": true,
+                "result": "Passed",
+                "message": "ASSERT-ACTIVE-SCENE-LOADED passed."
+              },
+              {
+                "id": "ASSERT-NO-EDITOR-ERRORS",
+                "observation": "editorLogErrors",
+                "operator": "equals",
+                "expected": 0,
+                "actual": 0,
+                "result": "Passed",
+                "message": "ASSERT-NO-EDITOR-ERRORS passed."
+              }
+            ],
+            "sourceValidationDesign": "validation/design/ainvil_bridge_smoke_operational.validation-design.json",
+            "timestamp": "2026-07-04T13:36:19.351Z"
+          }
+        }
+      ],
+      "validationResults": [
+        {
+          "validationId": "VAL-AINVIL-BRIDGE-SMOKE-001",
+          "requirementId": "REQ-E2E-003",
+          "acceptanceIds": [
+            "AC-E2E-002"
+          ],
+          "scenario": "ainvil_bridge_smoke_operational",
+          "result": "Passed",
+          "beforeObservations": [
+            {
+              "name": "activeSceneLoaded",
+              "type": "activeScene",
+              "phase": "before",
+              "target": "isLoaded",
+              "value": true,
+              "probe": "SceneProbe",
+              "sourceRpc": null,
+              "status": "Passed",
+              "message": ""
+            },
+            {
+              "name": "activeSceneName",
+              "type": "activeScene",
+              "phase": "before",
+              "target": "name",
+              "value": "DRC_FirstRecoveryJob",
+              "probe": "SceneProbe",
+              "sourceRpc": null,
+              "status": "Passed",
+              "message": ""
+            },
+            {
+              "name": "editorLogErrors",
+              "type": "editorLogErrors",
+              "phase": "before",
+              "target": null,
+              "value": 0,
+              "probe": "LogProbe",
+              "sourceRpc": "unity_get_console_logs",
+              "status": "Passed",
+              "message": ""
+            }
+          ],
+          "afterObservations": [
+            {
+              "name": "activeSceneLoaded",
+              "type": "activeScene",
+              "phase": "after",
+              "target": "isLoaded",
+              "value": true,
+              "probe": "SceneProbe",
+              "sourceRpc": null,
+              "status": "Passed",
+              "message": ""
+            },
+            {
+              "name": "activeSceneName",
+              "type": "activeScene",
+              "phase": "after",
+              "target": "name",
+              "value": "DRC_FirstRecoveryJob",
+              "probe": "SceneProbe",
+              "sourceRpc": null,
+              "status": "Passed",
+              "message": ""
+            },
+            {
+              "name": "editorLogErrors",
+              "type": "editorLogErrors",
+              "phase": "after",
+              "target": null,
+              "value": 0,
+              "probe": "LogProbe",
+              "sourceRpc": "unity_get_console_logs",
+              "status": "Passed",
+              "message": ""
+            }
+          ],
+          "assertions": [
+            {
+              "id": "ASSERT-ACTIVE-SCENE-LOADED",
+              "observation": "activeSceneLoaded",
+              "operator": "equals",
+              "expected": true,
+              "actual": true,
+              "result": "Passed",
+              "message": "ASSERT-ACTIVE-SCENE-LOADED passed."
+            },
+            {
+              "id": "ASSERT-NO-EDITOR-ERRORS",
+              "observation": "editorLogErrors",
+              "operator": "equals",
+              "expected": 0,
+              "actual": 0,
+              "result": "Passed",
+              "message": "ASSERT-NO-EDITOR-ERRORS passed."
+            }
+          ],
+          "sourceValidationDesign": "validation/design/ainvil_bridge_smoke_operational.validation-design.json",
+          "timestamp": "2026-07-04T13:36:19.351Z"
+        }
+      ],
+      "productMvpEvidence": null,
+      "unityTargets": [
+        "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+      ],
+      "nextActions": [
+        "Record the live harness result in the playtest report and continue the next milestone."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "benchmarkId": "BENCH-TechTranslation-AverageGDD-001",
+  "category": "Technical Translation",
+  "title": "Average GDD requiring implementable technical design",
+  "version": "0.1.0",
+  "inputs": {
+    "summary": "A top-down survival game GDD defines movement, enemies, pickups, and score, but lacks system boundaries, data model, Unity scene mapping, and acceptance criteria.",
+    "documents": [
+      {
+        "kind": "GDD excerpt",
+        "content": "Player moves with WASD, avoids enemies, collects batteries, and survives for three minutes. Batteries increase score and enemies end the run on contact."
+      }
+    ]
+  },
+  "expectedObservations": [
+    "Systems should be split into player movement, enemy contact, pickup scoring, timer, run state, and HUD.",
+    "Data model should distinguish authored tuning from runtime state.",
+    "Unity scene/prefab/component mapping is needed.",
+    "Acceptance criteria should cover movement, pickup scoring, enemy failure, and timer win."
+  ],
+  "expectedRecommendations": [
+    "Create Technical Design with component contracts.",
+    "Define first playable scene structure.",
+    "Create BDD acceptance criteria.",
+    "Identify validation levels required."
+  ],
+  "scoringCriteria": [
+    "Reduces ambiguity.",
+    "Preserves simple survival design.",
+    "Creates implementable Unity mapping.",
+    "Defines validation plan."
+  ],
+  "failureModes": [
+    "Produces broad documentation without component or data boundaries.",
+    "Adds unsupported survival systems such as crafting or base building.",
+    "Omits acceptance criteria.",
+    "Fails to map requirements to Unity scenes, prefabs, scripts, or data."
+  ]
+}

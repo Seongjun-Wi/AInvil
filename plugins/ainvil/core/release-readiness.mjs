@@ -1,0 +1,117 @@
+import { mkdir, writeFile } from "node:fs/promises";
+import path from "node:path";
+import { loadJsonArtifact } from "./loaders.mjs";
+import { relativeAInvilPath, resolveAInvilPath } from "./ainvil-paths.mjs";
+
+const DEFAULT_OUTPUT = "reports/release_readiness_report.json";
+
+export async function createReleaseReadinessReport(options = {}) {
+  const doctor = await loadJsonArtifact("reports/onboarding_doctor_report.json");
+  const dashboard = await loadJsonArtifact("reports/project_dashboard.json");
+  const gate = await loadJsonArtifact("reviews/production_core_readiness_review.json");
+  const productization = await loadJsonArtifact("reports/productization_status_report.json");
+  const operationalEvidencePath = "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json";
+  const evidence = await loadJsonArtifact(operationalEvidencePath);
+  const doctorChecks = new Map((doctor.data?.checks || []).map((check) => [check.id, check]));
+  const productizationBlockers = productization.data?.releaseBlockers || [];
+  const graphOperational = productization.exists && productization.data.graphClassification === "Operational";
+  const latestOperationalEvidence = evidence.exists ? {
+    classification: evidence.data?.classification,
+    status: evidence.data?.status
+  } : null;
+  const operationalEvidencePassed = productization.exists
+    && latestOperationalEvidence?.classification === "Operational"
+    && latestOperationalEvidence?.status === "Passed";
+  const hasExampleGraphContamination = productization.exists && (
+    (productization.data.exampleContamination || []).some((item) => item.kind === "ExampleGraph" && item.status === "Blocked")
+    || productizationBlockers.some((item) => ["BLOCKER-GRAPH-001", "BLOCKER-CONTAMINATION-001"].includes(item.id))
+  );
+  const productMvp = productization.data?.productMvpWorkflow || null;
+
+  const gates = [
+    gateResult("GATE-ENV-001", "Onboarding environment", doctor.exists && ["Ready For Next Gate", "Needs Attention"].includes(doctor.data.releaseReadiness), doctor.exists ? doctor.data.releaseReadiness : "Missing doctor report", "Run `ainvil doctor` and resolve failed or blocked checks."),
+    gateResult("GATE-DOC-001", "Korean product/technical documents", doctor.exists && hasPassedCheck(doctor.data, "ainvil.docs.ko"), "Korean docs index check", "Keep docs/ko/README.md and linked Korean planning documents available."),
+    gateResult("GATE-SOT-001", "Operational source of truth", graphOperational, productization.exists ? `Graph classification: ${productization.data.graphClassification}` : "Missing productization status report", "Run `ainvil productization` and initialize a non-example production graph if needed."),
+    gateResult("GATE-UNITY-BRIDGE-001", "Unity Bridge health", doctor.exists && hasPassedCheck(doctor.data, "unity.bridge.health"), doctorChecks.get("unity.bridge.health")?.message || "Unity Bridge health not checked", "Open Unity, import the canonical bridge package, start Tools > Codex Unity Bridge > Start Server, then rerun doctor."),
+    gateResult("GATE-UNITY-COMPILE-001", "Unity compile check", doctor.exists && hasPassedCheck(doctor.data, "unity.compile"), doctorChecks.get("unity.compile")?.message || "Compile not checked", "Restore Unity Bridge connectivity and resolve compile errors before claiming Compile Verified."),
+    gateResult("GATE-VALIDATION-001", "Operational Play Mode validation", operationalEvidencePassed, evidence.exists ? `${evidence.data.status} (${evidence.data.validationLevel})` : "Missing operational validation evidence", "Create a project-specific scenario and run live harness apply until non-sample Passed evidence exists."),
+    gateResult("GATE-TRACE-001", "Resume dashboard", dashboard.exists && Boolean(dashboard.data.nextRecommendedAction), dashboard.exists ? dashboard.data.nextRecommendedAction?.title || "Dashboard exists" : "Missing dashboard", "Generate project dashboard and confirm next recommended action."),
+    gateResult("GATE-REVIEW-001", "Production Core review", gate.exists && gate.data.decision === "Approved", gate.exists ? gate.data.decision : "Missing readiness review", "Resolve changes requested in the Production Core readiness review."),
+    gateResult("GATE-CONTAMINATION-001", "Example fixture contamination", productization.exists && !hasExampleGraphContamination, productization.exists ? `${hasExampleGraphContamination ? 1 : 0} operational graph contamination blocker(s)` : "Missing productization status report", "Keep example fixtures under examples/ and use operational graph/scenario/evidence for release gates.")
+  ];
+
+  const blockers = gates.filter((gate) => gate.status === "Blocked");
+  const warnings = gates.filter((gate) => gate.status === "Warning");
+  const decision = blockers.length > 0 ? "Not Release Ready" : warnings.length > 0 ? "Release Candidate With Warnings" : "Release Ready";
+
+  const report = {
+    schemaVersion: "1.0.0",
+    reportId: `REL-${new Date().toISOString().replace(/[:.]/g, "-")}`,
+    generatedAt: new Date().toISOString(),
+    product: "AInvil",
+    decision,
+    confidence: blockers.length > 0 ? "High" : "Medium",
+    releaseLevel: {
+      coreReleaseReady: decision === "Release Ready",
+      coreRcReproducibilityVerified: productization.data?.releaseLevel?.coreRcReproducibilityVerified === true,
+      canonicalUnityBridgePackageVerified: productization.data?.releaseLevel?.canonicalUnityBridgePackageVerified === true,
+      productMvpWorkflow: productMvp?.status || "Unknown",
+      humanPlayabilityReview: productMvp?.humanPlayabilityReview?.status || "Unknown",
+      buildVerification: productMvp?.buildVerification?.status || "Unknown",
+      productMvpReadyCandidate: productMvp?.readyCandidate === true,
+      publicReleaseReady: false,
+      publicReleaseNote: "Public Release Ready is not claimed by the core release gate or Product MVP smoke evidence."
+    },
+    productMvpWorkflow: productMvp,
+    gates,
+    blockers,
+    blockerDetails: [
+      ...blockers.map((gate) => ({
+        blockerId: gate.gateId,
+        category: gate.title,
+        evidence: gate.evidence,
+        nextAction: gate.nextAction
+      })),
+      ...productizationBlockers.map((item) => ({
+        blockerId: item.id,
+        category: item.title,
+        evidence: item.evidence,
+        nextAction: item.nextAction
+      }))
+    ],
+    warnings,
+    evidenceRefs: [
+      doctor.exists ? relativeAInvilPath(doctor.path) : null,
+      dashboard.exists ? relativeAInvilPath(dashboard.path) : null,
+      gate.exists ? relativeAInvilPath(gate.path) : null,
+      evidence.exists ? relativeAInvilPath(evidence.path) : null
+    ].filter(Boolean),
+    nextActions: blockers.map((gate) => ({
+      gateId: gate.gateId,
+      summary: gate.nextAction
+    }))
+  };
+
+  if (options.write !== false) {
+    const outputPath = resolveAInvilPath(options.outputPath || DEFAULT_OUTPUT);
+    await mkdir(path.dirname(outputPath), { recursive: true });
+    await writeFile(outputPath, `${JSON.stringify(report, null, 2)}\n`, "utf8");
+    return { path: outputPath, data: report };
+  }
+
+  return { path: null, data: report };
+}
+
+function gateResult(gateId, title, passed, evidence, nextAction) {
+  return {
+    gateId,
+    title,
+    status: passed ? "Passed" : "Blocked",
+    evidence,
+    nextAction: passed ? null : nextAction
+  };
+}
+
+function hasPassedCheck(report, checkId) {
+  return Array.isArray(report?.checks) && report.checks.some((check) => check.id === checkId && check.status === "Passed");
+}

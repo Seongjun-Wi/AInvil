@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/workflow_execution_record.schema.json",
+  "title": "AInvil WorkflowExecutionRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "executionVersion",
+    "executionId",
+    "transitionId",
+    "transitionType",
+    "approvalClass",
+    "startedAt",
+    "status",
+    "inputs",
+    "outputs",
+    "evidenceRefs",
+    "errors"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "executionVersion": { "type": "string" },
+    "executionId": { "type": "string", "minLength": 1 },
+    "transitionId": { "type": "string", "minLength": 1 },
+    "transitionType": { "type": "string", "minLength": 1 },
+    "approvalClass": {
+      "enum": ["AutoEligible", "UserApprovalRequired", "ReviewRequired", "EvidenceRequired", "Blocked", "Forbidden"]
+    },
+    "startedAt": { "type": "string" },
+    "finishedAt": { "type": ["string", "null"] },
+    "status": { "enum": ["Planned", "Running", "Succeeded", "Failed", "Blocked", "DryRun"] },
+    "inputs": { "type": "object", "additionalProperties": true },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "createdFiles": { "type": "array", "items": { "type": "string" } },
+        "updatedFiles": { "type": "array", "items": { "type": "string" } },
+        "graphPatchPlan": { "type": ["string", "null"] },
+        "summary": { "type": "string" }
+      }
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "id"],
+        "properties": {
+          "kind": { "type": "string" },
+          "id": { "type": "string" },
+          "path": { "type": "string" }
+        }
+      }
+    },
+    "errors": { "type": "array", "items": { "type": "string" } },
+    "blockedReason": { "type": ["string", "null"] },
+    "nextAction": {
+      "type": ["object", "null"],
+      "additionalProperties": true
+    }
+  }
+}

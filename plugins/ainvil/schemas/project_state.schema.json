@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/project_state.schema.json",
+  "title": "AInvil ProjectState",
+  "type": "object",
+  "required": ["schemaVersion", "projectId", "name", "paths", "currentMilestone", "unityBridge"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "projectId": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "goal": { "type": "string" },
+    "productionVision": { "type": "string" },
+    "directorVisionSummary": { "type": "string" },
+    "directorLastReview": { "type": "string" },
+    "directorOpenConcerns": { "type": "array", "items": { "type": "string" } },
+    "nextDirectorReviewTrigger": { "type": "string" },
+    "latestConfirmedUserIntent": { "type": "string" },
+    "currentMilestone": { "type": "string" },
+    "currentSprint": { "type": "string" },
+    "currentTask": { "type": "string" },
+    "currentFeature": { "type": "string" },
+    "currentActiveFeature": { "type": "string" },
+    "outstandingConfirmations": { "type": "array", "items": { "type": "string" } },
+    "openDesignQuestions": { "type": "array", "items": { "type": "string" } },
+    "openTechnicalDecisions": { "type": "array", "items": { "type": "string" } },
+    "outstandingImplementationTasks": { "type": "array", "items": { "type": "string" } },
+    "implementedFeatures": { "type": "array", "items": { "type": "string" } },
+    "validatedFeatures": { "type": "array", "items": { "type": "string" } },
+    "blockedTasks": { "type": "array", "items": { "type": "string" } },
+    "recentlyCompletedTasks": { "type": "array", "items": { "type": "string" } },
+    "nextRecommendedTask": { "type": "string" },
+    "nextRecommendedAction": { "type": "string" },
+    "paths": {
+      "type": "object",
+      "required": ["workspaceRoot"],
+      "properties": {
+        "workspaceRoot": { "type": "string" },
+        "unityProject": { "type": "string" },
+        "productionStateGraph": { "type": "string" },
+        "gdd": { "type": "string" },
+        "technicalDesign": { "type": "string" },
+        "projectStructure": { "type": "string" },
+        "inputSpec": { "type": "string" },
+        "projectDashboard": { "type": "string" },
+        "traceabilityMatrix": { "type": "string" },
+        "designReview": { "type": "string" },
+        "gddCompletenessReport": { "type": "string" },
+        "directorReview": { "type": "string" },
+        "milestoneReview": { "type": "string" },
+        "projectHealthReport": { "type": "string" },
+        "designPatternLibrary": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "unityBridge": { "$ref": "./unity_bridge_status.schema.json" },
+    "lastValidation": {
+      "type": "object",
+      "properties": {
+        "status": { "enum": ["Pass", "Fail", "Blocked", "Not tested"] },
+        "validationLevel": {
+          "enum": [
+            "Not Checked",
+            "Document Review",
+            "Static Analysis",
+            "Unity Inspection",
+            "Compile Verified",
+            "Play Mode Verified",
+            "Runtime Tested",
+            "User Confirmed"
+          ]
+        },
+        "validatedAt": { "type": ["string", "null"], "format": "date-time" },
+        "summary": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "question", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "question": { "type": "string" },
+          "impact": { "type": "string" },
+          "owner": { "type": "string" },
+          "status": { "enum": ["Open", "Answered", "Deferred"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

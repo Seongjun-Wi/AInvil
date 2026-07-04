@@ -1,0 +1,150 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "PI-GRAPH-AInvil-Productization-2026-07-03",
+  "graphId": "GRAPH-AInvil-Productization",
+  "graphVersion": "0.2.0",
+  "generatedAt": "2026-07-03T19:07:17.182Z",
+  "currentMilestoneNodeId": "MILESTONE-E2E-Recovery",
+  "activeFeatureNodeId": "FEAT-E2E-HappyPath-001",
+  "overallSummary": "3 production risk(s) detected; 1 coverage finding(s) detected.",
+  "health": [
+    {
+      "category": "Vision Health",
+      "status": "Green",
+      "reason": "Vision node exists in the graph.",
+      "evidenceNodeIds": [
+        "VISION-AInvil-Productization"
+      ]
+    },
+    {
+      "category": "Design Health",
+      "status": "Green",
+      "reason": "Requirements exist; missing design links are reported separately.",
+      "evidenceNodeIds": [
+        "REQ-E2E-001",
+        "REQ-E2E-002",
+        "REQ-E2E-003"
+      ]
+    },
+    {
+      "category": "Technical Health",
+      "status": "Red",
+      "reason": "Implementation task health is based on blockers and requirement-task coverage.",
+      "evidenceNodeIds": [
+        "TASK-E2E-001",
+        "TASK-E2E-002",
+        "TASK-E2E-003",
+        "TASK-E2E-004",
+        "AC-E2E-002"
+      ]
+    },
+    {
+      "category": "Documentation Health",
+      "status": "Green",
+      "reason": "FeatureSpec nodes exist; missing document links are reported separately.",
+      "evidenceNodeIds": [
+        "FS-E2E-HappyPath"
+      ]
+    },
+    {
+      "category": "Validation Health",
+      "status": "Red",
+      "reason": "Validation health is based on evidence nodes and validation levels.",
+      "evidenceNodeIds": [
+        "EVID-E2E-Static-Report"
+      ]
+    },
+    {
+      "category": "Production Health",
+      "status": "Red",
+      "reason": "Production risks were detected by Phase 1 rules.",
+      "evidenceNodeIds": [
+        "TASK-E2E-004",
+        "AC-E2E-002",
+        "MILESTONE-E2E-Recovery"
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "findingId": "COVERAGE-AcceptanceWithoutEvidence-AC-E2E-002",
+      "kind": "AcceptanceWithoutEvidence",
+      "status": "Missing",
+      "nodeIds": [
+        "AC-E2E-002"
+      ],
+      "summary": "AC-E2E-002 has no validation evidence."
+    }
+  ],
+  "risks": [
+    {
+      "riskId": "RISK-Blocked-TASK-E2E-004",
+      "severity": "High",
+      "reason": "TASK-E2E-004 is blocked.",
+      "impact": "Blocked production work can stop milestone progress.",
+      "suggestedMitigation": "Resolve the blocker or reroute dependent work.",
+      "evidenceNodeIds": [
+        "TASK-E2E-004"
+      ]
+    },
+    {
+      "riskId": "RISK-Blocked-AC-E2E-002",
+      "severity": "High",
+      "reason": "AC-E2E-002 is blocked.",
+      "impact": "Blocked production work can stop milestone progress.",
+      "suggestedMitigation": "Resolve the blocker or reroute dependent work.",
+      "evidenceNodeIds": [
+        "AC-E2E-002"
+      ]
+    },
+    {
+      "riskId": "RISK-ValidationCoverage",
+      "severity": "High",
+      "reason": "One or more tasks or acceptance criteria have no validation evidence.",
+      "impact": "AInvil cannot safely claim implemented features are playable or correct.",
+      "suggestedMitigation": "Route validation gaps to Input Agent or Unity Agent depending on required validation level.",
+      "evidenceNodeIds": [
+        "AC-E2E-002"
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "recommendationId": "REC-AcceptanceWithoutEvidence",
+      "title": "Validate the acceptance criterion.",
+      "reason": "AC-E2E-002 has no validation evidence.",
+      "referencesNodeIds": [
+        "AC-E2E-002"
+      ],
+      "suggestedOwner": "Input Agent",
+      "priority": "High",
+      "requiredValidationLevel": "Document Review"
+    },
+    {
+      "recommendationId": "REC-RISK-Blocked-TASK-E2E-004",
+      "title": "Address the highest production risk.",
+      "reason": "TASK-E2E-004 is blocked.",
+      "referencesNodeIds": [
+        "TASK-E2E-004"
+      ],
+      "suggestedOwner": "Orchestrator",
+      "priority": "High",
+      "requiredValidationLevel": "Document Review"
+    }
+  ],
+  "openDesignQuestions": [],
+  "openTechnicalDecisions": [],
+  "blockedTasks": [
+    "TASK-E2E-004"
+  ],
+  "validationCoverage": {
+    "Not Checked": 1,
+    "Document Review": 0,
+    "Static Analysis": 2,
+    "Unity Inspection": 0,
+    "Compile Verified": 0,
+    "Play Mode Verified": 0,
+    "Runtime Tested": 0,
+    "User Confirmed": 0
+  }
+}

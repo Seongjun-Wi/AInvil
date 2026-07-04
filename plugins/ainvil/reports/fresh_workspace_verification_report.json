@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "FRESH-2026-07-04T13-36-19-373Z",
+  "generatedAt": "2026-07-04T13:36:19.373Z",
+  "workspaceClassification": "FreshWorkspace",
+  "requestedUnityProjectPath": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany",
+  "bridgeUnityProjectPath": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany",
+  "scenarioId": "ainvil_bridge_smoke_operational",
+  "status": "Passed",
+  "result": "Passed",
+  "failureReason": null,
+  "nextAction": "Fresh workspace Core RC reproducibility is verified for the selected Unity project.",
+  "staleEvidenceReused": false,
+  "evidencePath": "validation/evidence/EVID-ainvil-bridge-smoke-operational-fresh-workspace-latest.json",
+  "liveHarnessReportPath": "harness/reports/fresh-workspace-live-harness-report.json",
+  "doctorCommandExecuted": true,
+  "packageInstallCheck": {
+    "id": "fresh.workspace.package_install",
+    "type": "PackageInstall",
+    "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Packages\\manifest.json",
+    "status": "Passed",
+    "dependency": "file:E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/unity-package/Packages/com.codex.unity-bridge",
+    "packageDependencyPath": "file:E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/unity-package/Packages/com.codex.unity-bridge",
+    "packageDependencyClassification": "Canonical",
+    "canonicalPackageVerified": true,
+    "canonicalPath": "E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/unity-package/Packages/com.codex.unity-bridge",
+    "message": "Unity Bridge package dependency points to the canonical package.",
+    "nextAction": null
+  },
+  "packageDependencyPath": "file:E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/unity-package/Packages/com.codex.unity-bridge",
+  "packageDependencyClassification": "Canonical",
+  "canonicalPackageVerified": true,
+  "checks": [
+    {
+      "id": "fresh.workspace.bridge_health",
+      "type": "BridgeHealth",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Passed",
+      "message": "Unity Bridge health endpoint is reachable.",
+      "data": {
+        "ok": true,
+        "bridgeRunning": true,
+        "bridgeStatus": "running",
+        "capabilityVersion": "0.6.0-validation-probes",
+        "unityVersion": "6000.5.0f1",
+        "isPlaying": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "playModeTransitionCount": 3
+      }
+    },
+    {
+      "id": "fresh.workspace.unity_status",
+      "type": "UnityStatus",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "message": "Unity status is readable.",
+      "data": {
+        "ok": true,
+        "bridgeRunning": true,
+        "bridgeStatus": "running",
+        "capabilityVersion": "0.6.0-validation-probes",
+        "unityVersion": "6000.5.0f1",
+        "projectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "isCompiling": false,
+        "isUpdating": false,
+        "playModeTransitionCount": 3,
+        "inputTestBridgeAvailable": false,
+        "activeScene": {
+          "name": "DRC_FirstRecoveryJob",
+          "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity",
+          "isDirty": false,
+          "isLoaded": true,
+          "rootCount": 1
+        },
+        "selection": {
+          "activeObject": null,
+          "objects": []
+        }
+      }
+    },
+    {
+      "id": "fresh.workspace.project_match",
+      "type": "Precondition",
+      "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany",
+      "status": "Passed",
+      "message": "Unity Bridge target matches requested fresh workspace: E:\\wiseongjun\\Unity\\DungeonRecoveryCompany",
+      "nextAction": null
+    },
+    {
+      "id": "fresh.workspace.package_install",
+      "type": "PackageInstall",
+      "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Packages\\manifest.json",
+      "status": "Passed",
+      "dependency": "file:E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/unity-package/Packages/com.codex.unity-bridge",
+      "packageDependencyPath": "file:E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/unity-package/Packages/com.codex.unity-bridge",
+      "packageDependencyClassification": "Canonical",
+      "canonicalPackageVerified": true,
+      "canonicalPath": "E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/unity-package/Packages/com.codex.unity-bridge",
+      "message": "Unity Bridge package dependency points to the canonical package.",
+      "nextAction": null
+    },
+    {
+      "id": "fresh.workspace.doctor",
+      "type": "Doctor",
+      "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany",
+      "status": "Passed",
+      "message": "ototype.md\nOK Production State Graph\n  Production state graph validation passed: state\\production_state_graph.json (32 nodes, 33 edges).\nOK Production Intelligence Report\n  Production intelligence report validation passed: reports\\production_intelligence_report.json.\nOK Review Records\n  Review record validation passed (2 file(s)).\nOK Benchmark Datasets\n  Benchmark dataset validation passed (5 file(s)).\nOK Onboarding Doctor\n  Onboarding doctor validation passed: reports/onboarding_doctor_report.json.\nSKIP Full plugin validation: read-only CLI does not run validators that may regenerate reports."
+    },
+    {
+      "id": "fresh.workspace.live_harness",
+      "type": "LiveHarness",
+      "target": "ainvil_bridge_smoke_operational",
+      "status": "Passed",
+      "message": "AInvil live harness (probe)\nUnity: http://127.0.0.1:17777/rpc\nScenarios: 1, passed: 1, warning: 0, failed: 0, blocked: 0\nReport: harness/reports/fresh-workspace-live-harness-report.json\n- Passed: ainvil_bridge_smoke_operational - AInvil Unity Bridge operational smoke validation\n  next: Record the live harness result in the playtest report and continue the next milestone."
+    }
+  ],
+  "evidenceSummary": {
+    "scenarioId": "ainvil_bridge_smoke_operational",
+    "classification": "Operational",
+    "workspaceClassification": "FreshWorkspace",
+    "status": "Passed",
+    "validationLevel": "Compile Verified",
+    "bridgeHealth": "Passed",
+    "compileStatus": "Passed",
+    "consoleErrorCount": 0,
+    "hierarchyStatus": "Passed",
+    "probeStatus": "Passed"
+  },
+  "knownLimitations": [
+    "This fresh verification uses the user-designated DungeonRecoveryCompany Unity Bridge target and does not modify game scenes, prefabs, or scripts.",
+    "The smoke scenario is Compile Verified and read-only; it is not a full Product MVP gameplay workflow validation."
+  ]
+}

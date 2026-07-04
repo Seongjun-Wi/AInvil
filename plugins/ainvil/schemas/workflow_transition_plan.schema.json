@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/workflow_transition_plan.schema.json",
+  "title": "AInvil WorkflowTransitionPlan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "planVersion",
+    "planId",
+    "generatedAt",
+    "sourceReportId",
+    "sourceFiles",
+    "transitionCandidates",
+    "safestNextTransition",
+    "executionPolicy"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "planVersion": { "type": "string" },
+    "planId": { "type": "string" },
+    "generatedAt": { "type": "string" },
+    "sourceReportId": { "type": "string" },
+    "sourceFiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "path", "used"],
+        "properties": {
+          "kind": { "type": "string" },
+          "path": { "type": "string" },
+          "used": { "type": "boolean" }
+        }
+      }
+    },
+    "transitionCandidates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/transitionCandidate" }
+    },
+    "safestNextTransition": {
+      "oneOf": [
+        { "$ref": "#/$defs/transitionCandidate" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["transitionId", "transitionType", "reason", "evidenceRefs", "confidence"],
+          "properties": {
+            "transitionId": { "type": "string" },
+            "transitionType": { "const": "NoSafeTransition" },
+            "reason": { "type": "string" },
+            "evidenceRefs": { "type": "array", "items": { "$ref": "#/$defs/evidenceRef" } },
+            "confidence": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "executionPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "executionAllowed", "notes"],
+      "properties": {
+        "mode": { "const": "ReadOnlyPlanning" },
+        "executionAllowed": { "const": false },
+        "notes": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "transitionCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "transitionId",
+        "transitionType",
+        "sourceState",
+        "targetState",
+        "targetArtifactId",
+        "targetArtifactType",
+        "status",
+        "priority",
+        "reason",
+        "prerequisites",
+        "missingPrerequisites",
+        "evidenceRefs",
+        "recommendedBy",
+        "confidence",
+        "safetyNotes"
+      ],
+      "properties": {
+        "transitionId": { "type": "string" },
+        "transitionType": {
+          "enum": [
+            "ResolveValidationGap",
+            "RequestReview",
+            "AddressBlockedNode",
+            "ResolveOpenQuestion",
+            "ImproveTraceability",
+            "RunBenchmark",
+            "UpdateKpiDashboard"
+          ]
+        },
+        "sourceState": { "type": "string" },
+        "targetState": { "type": "string" },
+        "targetArtifactId": { "type": "string" },
+        "targetArtifactType": { "type": "string" },
+        "status": { "enum": ["Available", "Blocked", "Not Applicable", "Needs Review"] },
+        "priority": { "enum": ["P0", "P1", "P2", "Future"] },
+        "reason": { "type": "string" },
+        "prerequisites": { "type": "array", "items": { "type": "string" } },
+        "missingPrerequisites": { "type": "array", "items": { "type": "string" } },
+        "evidenceRefs": { "type": "array", "items": { "$ref": "#/$defs/evidenceRef" } },
+        "recommendedBy": { "type": "string" },
+        "confidence": { "enum": ["High", "Medium", "Low", "Unknown"] },
+        "safetyNotes": { "type": "string" }
+      }
+    },
+    "evidenceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "id"],
+      "properties": {
+        "kind": { "enum": ["GraphNode", "ReviewRecord", "BenchmarkCase", "KpiItem", "WorkflowReport"] },
+        "id": { "type": "string" }
+      }
+    }
+  }
+}

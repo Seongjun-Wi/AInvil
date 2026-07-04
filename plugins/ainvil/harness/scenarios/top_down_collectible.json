@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "scenario.top_down_collectible",
+  "title": "Top-down collectible prototype",
+  "classification": "Example",
+  "operationalUse": "Sample fixture only. Do not use this scenario as operational release evidence for a real project.",
+  "userGoal": "Create a top-down prototype where the player moves with WASD, collects coins, and the score increases.",
+  "milestone": "Playable movement and collectible loop",
+  "interactive": true,
+  "requirementIds": [
+    "REQ-CoreLoop-001"
+  ],
+  "acceptanceIds": [
+    "AC-CoreLoop-001"
+  ],
+  "validationDesignPath": "validation/design/top_down_collectible.validation-design.json",
+  "riskLevel": "Low",
+  "expectedDocuments": [
+    {
+      "type": "GDD",
+      "requirementRef": "gdd.core_loop.collect_coin",
+      "expected": "The core loop describes moving, collecting a coin, increasing score, and continuing play."
+    },
+    {
+      "type": "Technical Design",
+      "requirementRef": "td.systems.collectible_loop",
+      "expected": "The technical design defines PlayerController, Collectible, ScoreManager, HUD, and validation targets."
+    },
+    {
+      "type": "TaskGraph",
+      "requirementRef": "task.playable_collectible_loop",
+      "expected": "Tasks cover scene setup, player control, collectible setup, score UI, and Play Mode validation."
+    },
+    {
+      "type": "Input Spec",
+      "requirementRef": "input.move.wasd",
+      "expected": "WASD movement is mapped to expected player translation in Play Mode."
+    },
+    {
+      "type": "Playtest Report",
+      "requirementRef": "playtest.collect_coin",
+      "expected": "The report records movement, coin pickup, score increase, console status, and failure classification."
+    }
+  ],
+  "expectedUnityCapabilities": [
+    "Project inspection",
+    "Document traceability",
+    "Milestone planning",
+    "Asset-first construction",
+    "Scene construction",
+    "Component and script implementation",
+    "UI implementation",
+    "Input implementation",
+    "Physics and interaction",
+    "Camera and presentation",
+    "Document synchronization"
+  ],
+  "expectedUnityArtifacts": [
+    {
+      "kind": "Scene",
+      "path": "Assets/Scenes/TopDownCollectible.unity",
+      "requirementRef": "td.scene.top_down_collectible",
+      "status": "Implemented"
+    },
+    {
+      "kind": "GameObject",
+      "path": "/Player",
+      "requirementRef": "td.object.player",
+      "status": "Prototype default"
+    },
+    {
+      "kind": "Component",
+      "path": "/Player/PlayerController",
+      "requirementRef": "td.component.player_controller",
+      "status": "Implemented"
+    },
+    {
+      "kind": "GameObject",
+      "path": "/Collectibles/Coin_001",
+      "requirementRef": "td.object.collectible_coin",
+      "status": "Prototype default"
+    },
+    {
+      "kind": "UI",
+      "path": "/UI/HUD/ScoreText",
+      "requirementRef": "td.ui.score_hud",
+      "status": "Implemented"
+    }
+  ],
+  "validationChecks": [
+    {
+      "id": "check.compile",
+      "type": "Compile",
+      "target": "Unity project",
+      "expected": "Compilation succeeds without errors.",
+      "failureClass": "CompileError"
+    },
+    {
+      "id": "check.scene",
+      "type": "Scene",
+      "target": "Assets/Scenes/TopDownCollectible.unity",
+      "expected": "Player, camera, collectible, score manager, HUD, and debug bridge exist.",
+      "failureClass": "UnityArtifactMissing"
+    },
+    {
+      "id": "check.input",
+      "type": "Input",
+      "target": "input.move.wasd",
+      "expected": "WASD moves the player in Play Mode.",
+      "failureClass": "InputNotReceived"
+    },
+    {
+      "id": "check.playmode.collect",
+      "type": "PlayMode",
+      "target": "Collectible loop",
+      "expected": "Player reaches a coin, coin is consumed, and score increases.",
+      "failureClass": "GameLogicFailed"
+    },
+    {
+      "id": "check.sync",
+      "type": "DocumentSync",
+      "target": "Project structure and playtest report",
+      "expected": "Implemented objects and validation results are recorded.",
+      "failureClass": "ValidationNotRun"
+    }
+  ],
+  "passCriteria": [
+    "The prototype can be played with WASD.",
+    "The collectible loop changes score in Play Mode.",
+    "Unity artifacts trace back to the GDD and technical design.",
+    "Validation results are recorded in the playtest report."
+  ]
+}

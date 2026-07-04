@@ -1,0 +1,428 @@
+{
+  "schemaVersion": "1.0.0",
+  "evidenceId": "EVID-ainvil_bridge_smoke_operational-2026-07-04T13-10-04-255Z",
+  "source": "LiveHarness",
+  "scenarioId": "ainvil_bridge_smoke_operational",
+  "classification": "Operational",
+  "validationLevel": "Compile Verified",
+  "status": "Passed",
+  "result": "Passed",
+  "validationIds": [
+    "VAL-AINVIL-BRIDGE-SMOKE-001"
+  ],
+  "validationId": "VAL-AINVIL-BRIDGE-SMOKE-001",
+  "failureClass": "None",
+  "acceptanceIds": [
+    "AC-E2E-002"
+  ],
+  "requirementIds": [
+    "REQ-E2E-003"
+  ],
+  "unityTargets": [
+    "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+  ],
+  "checks": [
+    {
+      "checkId": "bridge.health",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "bridge.unity_get_status",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_status succeeded."
+    },
+    {
+      "checkId": "bridge.unity_compile_status",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_compile_status succeeded."
+    },
+    {
+      "checkId": "bridge.unity_get_console_logs",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_console_logs succeeded."
+    },
+    {
+      "checkId": "bridge.unity_get_hierarchy",
+      "type": "Scene",
+      "target": "unity_get_hierarchy",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_hierarchy succeeded."
+    },
+    {
+      "checkId": "bridge.unity_probe_validation_observation",
+      "type": "Static",
+      "target": "unity_probe_validation_observation",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_probe_validation_observation succeeded."
+    },
+    {
+      "checkId": "artifact.validation_evidence_evid_ainvil_bridge_smoke_operational_latest_json.planned",
+      "type": "Static",
+      "target": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Artifact is planned by the scenario and does not require live existence."
+    },
+    {
+      "checkId": "validation.val_ainvil_bridge_smoke_001",
+      "type": "ValidationDesign",
+      "target": "VAL-AINVIL-BRIDGE-SMOKE-001",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Validation Design VAL-AINVIL-BRIDGE-SMOKE-001 passed with 2 evaluated assertion(s)."
+    },
+    {
+      "checkId": "validation.action.wait",
+      "type": "Static",
+      "target": "1ms",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Wait action completed."
+    },
+    {
+      "checkId": "validation.assert.val_ainvil_bridge_smoke_001.assert_active_scene_loaded",
+      "type": "ValidationAssertion",
+      "target": "activeSceneLoaded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "ASSERT-ACTIVE-SCENE-LOADED passed."
+    },
+    {
+      "checkId": "validation.assert.val_ainvil_bridge_smoke_001.assert_no_editor_errors",
+      "type": "ValidationAssertion",
+      "target": "editorLogErrors",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "ASSERT-NO-EDITOR-ERRORS passed."
+    }
+  ],
+  "checkedSteps": [
+    {
+      "checkId": "bridge.health",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "bridge.unity_get_status",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_status succeeded."
+    },
+    {
+      "checkId": "bridge.unity_compile_status",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_compile_status succeeded."
+    },
+    {
+      "checkId": "bridge.unity_get_console_logs",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_console_logs succeeded."
+    },
+    {
+      "checkId": "bridge.unity_get_hierarchy",
+      "type": "Scene",
+      "target": "unity_get_hierarchy",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_hierarchy succeeded."
+    },
+    {
+      "checkId": "bridge.unity_probe_validation_observation",
+      "type": "Static",
+      "target": "unity_probe_validation_observation",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_probe_validation_observation succeeded."
+    },
+    {
+      "checkId": "artifact.validation_evidence_evid_ainvil_bridge_smoke_operational_latest_json.planned",
+      "type": "Static",
+      "target": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Artifact is planned by the scenario and does not require live existence."
+    },
+    {
+      "checkId": "validation.val_ainvil_bridge_smoke_001",
+      "type": "ValidationDesign",
+      "target": "VAL-AINVIL-BRIDGE-SMOKE-001",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Validation Design VAL-AINVIL-BRIDGE-SMOKE-001 passed with 2 evaluated assertion(s)."
+    },
+    {
+      "checkId": "validation.action.wait",
+      "type": "Static",
+      "target": "1ms",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Wait action completed."
+    },
+    {
+      "checkId": "validation.assert.val_ainvil_bridge_smoke_001.assert_active_scene_loaded",
+      "type": "ValidationAssertion",
+      "target": "activeSceneLoaded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "ASSERT-ACTIVE-SCENE-LOADED passed."
+    },
+    {
+      "checkId": "validation.assert.val_ainvil_bridge_smoke_001.assert_no_editor_errors",
+      "type": "ValidationAssertion",
+      "target": "editorLogErrors",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "ASSERT-NO-EDITOR-ERRORS passed."
+    }
+  ],
+  "bridgeHealthResult": {
+    "checkId": "bridge.health",
+    "status": "Passed",
+    "failureClass": "Unknown",
+    "message": "Unity Bridge health endpoint is reachable."
+  },
+  "compileStatusResult": {
+    "checkId": "bridge.unity_compile_status",
+    "status": "Passed",
+    "failureClass": "Unknown",
+    "message": "unity_compile_status succeeded."
+  },
+  "consoleErrorSummary": {
+    "status": "Passed",
+    "errorCount": 0,
+    "message": "unity_get_console_logs succeeded."
+  },
+  "failureReason": null,
+  "blocker": null,
+  "bridgeDiagnostics": [],
+  "validationResults": [
+    {
+      "validationId": "VAL-AINVIL-BRIDGE-SMOKE-001",
+      "requirementId": "REQ-E2E-003",
+      "acceptanceIds": [
+        "AC-E2E-002"
+      ],
+      "scenario": "ainvil_bridge_smoke_operational",
+      "result": "Passed",
+      "beforeObservations": [
+        {
+          "name": "activeSceneLoaded",
+          "type": "activeScene",
+          "phase": "before",
+          "target": "isLoaded",
+          "value": true,
+          "probe": "SceneProbe",
+          "sourceRpc": null,
+          "status": "Passed",
+          "message": ""
+        },
+        {
+          "name": "activeSceneName",
+          "type": "activeScene",
+          "phase": "before",
+          "target": "name",
+          "value": "SampleScene",
+          "probe": "SceneProbe",
+          "sourceRpc": null,
+          "status": "Passed",
+          "message": ""
+        },
+        {
+          "name": "editorLogErrors",
+          "type": "editorLogErrors",
+          "phase": "before",
+          "target": null,
+          "value": 0,
+          "probe": "LogProbe",
+          "sourceRpc": "unity_get_console_logs",
+          "status": "Passed",
+          "message": ""
+        }
+      ],
+      "afterObservations": [
+        {
+          "name": "activeSceneLoaded",
+          "type": "activeScene",
+          "phase": "after",
+          "target": "isLoaded",
+          "value": true,
+          "probe": "SceneProbe",
+          "sourceRpc": null,
+          "status": "Passed",
+          "message": ""
+        },
+        {
+          "name": "activeSceneName",
+          "type": "activeScene",
+          "phase": "after",
+          "target": "name",
+          "value": "SampleScene",
+          "probe": "SceneProbe",
+          "sourceRpc": null,
+          "status": "Passed",
+          "message": ""
+        },
+        {
+          "name": "editorLogErrors",
+          "type": "editorLogErrors",
+          "phase": "after",
+          "target": null,
+          "value": 0,
+          "probe": "LogProbe",
+          "sourceRpc": "unity_get_console_logs",
+          "status": "Passed",
+          "message": ""
+        }
+      ],
+      "assertions": [
+        {
+          "id": "ASSERT-ACTIVE-SCENE-LOADED",
+          "observation": "activeSceneLoaded",
+          "operator": "equals",
+          "expected": true,
+          "actual": true,
+          "result": "Passed",
+          "message": "ASSERT-ACTIVE-SCENE-LOADED passed."
+        },
+        {
+          "id": "ASSERT-NO-EDITOR-ERRORS",
+          "observation": "editorLogErrors",
+          "operator": "equals",
+          "expected": 0,
+          "actual": 0,
+          "result": "Passed",
+          "message": "ASSERT-NO-EDITOR-ERRORS passed."
+        }
+      ],
+      "sourceValidationDesign": "validation/design/ainvil_bridge_smoke_operational.validation-design.json",
+      "timestamp": "2026-07-04T13:10:05.358Z"
+    }
+  ],
+  "observations": {
+    "before": [
+      {
+        "name": "activeSceneLoaded",
+        "type": "activeScene",
+        "phase": "before",
+        "target": "isLoaded",
+        "value": true,
+        "probe": "SceneProbe",
+        "sourceRpc": null,
+        "status": "Passed",
+        "message": ""
+      },
+      {
+        "name": "activeSceneName",
+        "type": "activeScene",
+        "phase": "before",
+        "target": "name",
+        "value": "SampleScene",
+        "probe": "SceneProbe",
+        "sourceRpc": null,
+        "status": "Passed",
+        "message": ""
+      },
+      {
+        "name": "editorLogErrors",
+        "type": "editorLogErrors",
+        "phase": "before",
+        "target": null,
+        "value": 0,
+        "probe": "LogProbe",
+        "sourceRpc": "unity_get_console_logs",
+        "status": "Passed",
+        "message": ""
+      }
+    ],
+    "after": [
+      {
+        "name": "activeSceneLoaded",
+        "type": "activeScene",
+        "phase": "after",
+        "target": "isLoaded",
+        "value": true,
+        "probe": "SceneProbe",
+        "sourceRpc": null,
+        "status": "Passed",
+        "message": ""
+      },
+      {
+        "name": "activeSceneName",
+        "type": "activeScene",
+        "phase": "after",
+        "target": "name",
+        "value": "SampleScene",
+        "probe": "SceneProbe",
+        "sourceRpc": null,
+        "status": "Passed",
+        "message": ""
+      },
+      {
+        "name": "editorLogErrors",
+        "type": "editorLogErrors",
+        "phase": "after",
+        "target": null,
+        "value": 0,
+        "probe": "LogProbe",
+        "sourceRpc": "unity_get_console_logs",
+        "status": "Passed",
+        "message": ""
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "ASSERT-ACTIVE-SCENE-LOADED",
+      "observation": "activeSceneLoaded",
+      "operator": "equals",
+      "expected": true,
+      "actual": true,
+      "result": "Passed",
+      "message": "ASSERT-ACTIVE-SCENE-LOADED passed."
+    },
+    {
+      "id": "ASSERT-NO-EDITOR-ERRORS",
+      "observation": "editorLogErrors",
+      "operator": "equals",
+      "expected": 0,
+      "actual": 0,
+      "result": "Passed",
+      "message": "ASSERT-NO-EDITOR-ERRORS passed."
+    }
+  ],
+  "sourceValidationDesign": "validation/design/ainvil_bridge_smoke_operational.validation-design.json",
+  "startedAt": "2026-07-04T13:10:04.255Z",
+  "finishedAt": "2026-07-04T13:10:05.359Z",
+  "completedAt": "2026-07-04T13:10:05.359Z",
+  "timestamp": "2026-07-04T13:10:05.359Z",
+  "remainingGaps": [],
+  "nextActions": [
+    "Record the live harness result in the playtest report and continue the next milestone."
+  ]
+}

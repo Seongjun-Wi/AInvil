@@ -1,0 +1,260 @@
+{
+  "schemaVersion": "1.0.0",
+  "planVersion": "0.1.0",
+  "planId": "WTP-GRAPH-AInvil-Productization-2026-07-03",
+  "generatedAt": "2026-07-03T19:07:18.146Z",
+  "sourceReportId": "WFR-GRAPH-AInvil-Productization-2026-07-03",
+  "sourceFiles": [
+    {
+      "kind": "Workflow Runtime Report",
+      "path": "reports/workflow_runtime_report.json",
+      "used": true
+    }
+  ],
+  "transitionCandidates": [
+    {
+      "transitionId": "TRANS-AddressBlockedNode-1",
+      "transitionType": "AddressBlockedNode",
+      "sourceState": "Blocked",
+      "targetState": "Unblocked",
+      "targetArtifactId": "TASK-E2E-004",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P0",
+      "reason": "Restore live Unity Bridge connectivity",
+      "prerequisites": [
+        "Blocked graph node exists."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "TASK-E2E-004"
+        }
+      ],
+      "recommendedBy": "Workflow Transition Planner",
+      "confidence": "High",
+      "safetyNotes": "Plan only. A user or future runtime must decide how to resolve the blocker."
+    },
+    {
+      "transitionId": "TRANS-AddressBlockedNode-2",
+      "transitionType": "AddressBlockedNode",
+      "sourceState": "Blocked",
+      "targetState": "Unblocked",
+      "targetArtifactId": "AC-E2E-002",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P0",
+      "reason": "Unity live checks reach compile and Play Mode evidence",
+      "prerequisites": [
+        "Blocked graph node exists."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-E2E-002"
+        }
+      ],
+      "recommendedBy": "Workflow Transition Planner",
+      "confidence": "High",
+      "safetyNotes": "Plan only. A user or future runtime must decide how to resolve the blocker."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-1",
+      "transitionType": "ResolveValidationGap",
+      "sourceState": "Not Checked",
+      "targetState": "Compile Verified",
+      "targetArtifactId": "AC-E2E-002",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P0",
+      "reason": "AC-E2E-002 is below the required validation confidence.",
+      "prerequisites": [
+        "Referenced graph node exists.",
+        "Required validation level is known."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-E2E-002"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "High",
+      "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-1",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-E2E-001: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-E2E-001: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-2",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-E2E-002: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-E2E-002: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-3",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-E2E-003: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-E2E-003: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-4",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "AC-E2E-002: no validation evidence validates this acceptance criterion",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "AC-E2E-002: no validation evidence validates this acceptance criterion",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-RunBenchmark-NotApplicable",
+      "transitionType": "RunBenchmark",
+      "sourceState": "Benchmark Report Available",
+      "targetState": "No Transition Needed",
+      "targetArtifactId": "benchmarks/reports/latest-benchmark-report.json",
+      "targetArtifactType": "BenchmarkReport",
+      "status": "Not Applicable",
+      "priority": "Future",
+      "reason": "A benchmark report is already available.",
+      "prerequisites": [
+        "Benchmark report exists."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Transition Planner",
+      "confidence": "Medium",
+      "safetyNotes": "No benchmark transition is recommended."
+    },
+    {
+      "transitionId": "TRANS-RunBenchmark-Refresh",
+      "transitionType": "RunBenchmark",
+      "sourceState": "Benchmark Report Available",
+      "targetState": "Benchmark Report Refreshed",
+      "targetArtifactId": "benchmarks/reports/latest-benchmark-report.json",
+      "targetArtifactType": "BenchmarkReport",
+      "status": "Available",
+      "priority": "Future",
+      "reason": "A benchmark report exists; refreshing it is safe and records execution evidence.",
+      "prerequisites": [
+        "Benchmark report exists.",
+        "Benchmark datasets exist."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Transition Planner",
+      "confidence": "Medium",
+      "safetyNotes": "This low-risk transition regenerates benchmark report artifacts and does not mutate design state."
+    },
+    {
+      "transitionId": "TRANS-UpdateKpiDashboard-NotApplicable",
+      "transitionType": "UpdateKpiDashboard",
+      "sourceState": "KPI Dashboard Available",
+      "targetState": "No Transition Needed",
+      "targetArtifactId": "reports/kpi_dashboard.json",
+      "targetArtifactType": "KpiDashboard",
+      "status": "Not Applicable",
+      "priority": "Future",
+      "reason": "A KPI dashboard is already available.",
+      "prerequisites": [
+        "KPI dashboard exists."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Transition Planner",
+      "confidence": "Medium",
+      "safetyNotes": "No KPI dashboard transition is recommended."
+    }
+  ],
+  "safestNextTransition": {
+    "transitionId": "TRANS-AddressBlockedNode-1",
+    "transitionType": "AddressBlockedNode",
+    "sourceState": "Blocked",
+    "targetState": "Unblocked",
+    "targetArtifactId": "TASK-E2E-004",
+    "targetArtifactType": "GraphNode",
+    "status": "Available",
+    "priority": "P0",
+    "reason": "Restore live Unity Bridge connectivity",
+    "prerequisites": [
+      "Blocked graph node exists."
+    ],
+    "missingPrerequisites": [],
+    "evidenceRefs": [
+      {
+        "kind": "GraphNode",
+        "id": "TASK-E2E-004"
+      }
+    ],
+    "recommendedBy": "Workflow Transition Planner",
+    "confidence": "High",
+    "safetyNotes": "Plan only. A user or future runtime must decide how to resolve the blocker."
+  },
+  "executionPolicy": {
+    "mode": "ReadOnlyPlanning",
+    "executionAllowed": false,
+    "notes": "This plan recommends transition candidates only. It does not execute transitions or mutate project state."
+  }
+}

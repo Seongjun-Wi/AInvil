@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "1.0.0",
+  "evaluationId": "PCORE-EVAL-2026-07-04T14-50-38-635Z",
+  "generatedAt": "2026-07-04T14:50:38.635Z",
+  "reviewedGateId": "GATE-REVIEW-001",
+  "reviewId": "REVIEW-ProductionCore-Readiness-001",
+  "reviewPath": "reviews/production_core_readiness_review.json",
+  "previousStatus": "Changes Requested",
+  "newStatus": "Approved",
+  "criteria": [
+    {
+      "id": "PCORE-APPROVAL-GRAPH",
+      "title": "Operational graph classification",
+      "status": "Passed",
+      "evidence": "Graph classification: Operational",
+      "successSummary": "Production graph is classified as Operational.",
+      "failureSummary": "Production graph is not confirmed Operational.",
+      "nextAction": null,
+      "connectedArtifacts": [
+        "reports/productization_status_report.json",
+        "state/production_state_graph.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-CONTAMINATION",
+      "title": "No blocked ExampleGraph contamination",
+      "status": "Passed",
+      "evidence": "0 blocked ExampleGraph contamination finding(s)",
+      "successSummary": "No blocked ExampleGraph contamination remains in operational release gates.",
+      "failureSummary": "Operational graph is still contaminated by example graph data.",
+      "nextAction": null,
+      "connectedArtifacts": [
+        "reports/productization_status_report.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-BRIDGE",
+      "title": "Unity Bridge health Passed",
+      "status": "Passed",
+      "evidence": "Passed / Passed",
+      "successSummary": "Unity Bridge health is passed in doctor and operational evidence.",
+      "failureSummary": "Unity Bridge health is not passed in both doctor and operational evidence.",
+      "nextAction": null,
+      "connectedArtifacts": [
+        "reports/onboarding_doctor_report.json",
+        "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-COMPILE",
+      "title": "Unity compile check Passed",
+      "status": "Passed",
+      "evidence": "Passed / Passed",
+      "successSummary": "Unity compile status is passed in doctor and operational evidence.",
+      "failureSummary": "Unity compile status is not passed in both doctor and operational evidence.",
+      "nextAction": null,
+      "connectedArtifacts": [
+        "reports/onboarding_doctor_report.json",
+        "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-CONSOLE",
+      "title": "Console error count 0",
+      "status": "Passed",
+      "evidence": "Console errors: 0",
+      "successSummary": "Operational evidence reports zero Unity console errors.",
+      "failureSummary": "Operational evidence does not prove console error count is zero.",
+      "nextAction": null,
+      "connectedArtifacts": [
+        "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-EVIDENCE",
+      "title": "Non-sample Operational Passed evidence exists",
+      "status": "Passed",
+      "evidence": "ainvil_bridge_smoke_operational / Operational / Passed",
+      "successSummary": "Latest smoke evidence is non-sample Operational Passed evidence.",
+      "failureSummary": "No non-sample Operational Passed evidence is available.",
+      "nextAction": null,
+      "connectedArtifacts": [
+        "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-HARNESS",
+      "title": "Live harness latest report has Operational Passed scenario",
+      "status": "Passed",
+      "evidence": "summary passed=1, failed=0, blocked=0",
+      "successSummary": "Latest live harness report has a Passed Operational scenario; fixed smoke evidence remains available for the core gate.",
+      "failureSummary": "Latest live harness report does not show any Operational scenario as Passed.",
+      "nextAction": null,
+      "connectedArtifacts": [
+        "harness/reports/latest-live-harness-report.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-PRODUCTIZATION",
+      "title": "No productization core blockers",
+      "status": "Passed",
+      "evidence": "0 non-review productization blocker(s)",
+      "successSummary": "Productization has no remaining core blocker outside the review gate itself.",
+      "failureSummary": "Productization still reports core blockers other than the review gate.",
+      "nextAction": null,
+      "connectedArtifacts": [
+        "reports/productization_status_report.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-RELEASE",
+      "title": "No non-review release blockers",
+      "status": "Passed",
+      "evidence": "0 non-review release blocker(s)",
+      "successSummary": "Release readiness has no blocker outside the Production Core review gate.",
+      "failureSummary": "Release readiness still has non-review blockers.",
+      "nextAction": null,
+      "connectedArtifacts": [
+        "reports/release_readiness_report.json"
+      ]
+    }
+  ],
+  "resolvedChanges": [
+    {
+      "id": "PCORE-APPROVAL-GRAPH",
+      "summary": "Production graph is classified as Operational.",
+      "connectedArtifacts": [
+        "reports/productization_status_report.json",
+        "state/production_state_graph.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-CONTAMINATION",
+      "summary": "No blocked ExampleGraph contamination remains in operational release gates.",
+      "connectedArtifacts": [
+        "reports/productization_status_report.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-BRIDGE",
+      "summary": "Unity Bridge health is passed in doctor and operational evidence.",
+      "connectedArtifacts": [
+        "reports/onboarding_doctor_report.json",
+        "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-COMPILE",
+      "summary": "Unity compile status is passed in doctor and operational evidence.",
+      "connectedArtifacts": [
+        "reports/onboarding_doctor_report.json",
+        "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-CONSOLE",
+      "summary": "Operational evidence reports zero Unity console errors.",
+      "connectedArtifacts": [
+        "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-EVIDENCE",
+      "summary": "Latest smoke evidence is non-sample Operational Passed evidence.",
+      "connectedArtifacts": [
+        "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-HARNESS",
+      "summary": "Latest live harness report has a Passed Operational scenario; fixed smoke evidence remains available for the core gate.",
+      "connectedArtifacts": [
+        "harness/reports/latest-live-harness-report.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-PRODUCTIZATION",
+      "summary": "Productization has no remaining core blocker outside the review gate itself.",
+      "connectedArtifacts": [
+        "reports/productization_status_report.json"
+      ]
+    },
+    {
+      "id": "PCORE-APPROVAL-RELEASE",
+      "summary": "Release readiness has no blocker outside the Production Core review gate.",
+      "connectedArtifacts": [
+        "reports/release_readiness_report.json"
+      ]
+    }
+  ],
+  "remainingChanges": [],
+  "evidenceUsed": [
+    {
+      "kind": "Review Record",
+      "summary": "Production Core readiness review record.",
+      "path": "reviews/production_core_readiness_review.json"
+    },
+    {
+      "kind": "Productization Report",
+      "summary": "Productization status and operational validation summary.",
+      "path": "reports/productization_status_report.json"
+    },
+    {
+      "kind": "Release Readiness Report",
+      "summary": "Release gate state before Production Core review reevaluation.",
+      "path": "reports/release_readiness_report.json"
+    },
+    {
+      "kind": "Onboarding Doctor Report",
+      "summary": "Unity Bridge health and compile health checks.",
+      "path": "reports/onboarding_doctor_report.json"
+    },
+    {
+      "kind": "Live Harness Report",
+      "summary": "Latest operational live harness execution.",
+      "path": "harness/reports/latest-live-harness-report.json"
+    },
+    {
+      "kind": "Validation Evidence",
+      "summary": "Latest non-sample operational smoke evidence.",
+      "path": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+    }
+  ],
+  "releaseBlockersBefore": [
+    {
+      "gateId": "GATE-REVIEW-001",
+      "title": "Production Core review",
+      "status": "Blocked",
+      "evidence": "Changes Requested",
+      "nextAction": "Resolve changes requested in the Production Core readiness review."
+    }
+  ],
+  "releaseBlockersAfter": [],
+  "nextAction": "Regenerate release readiness and productization reports so the approved Production Core review is reflected in release gates."
+}

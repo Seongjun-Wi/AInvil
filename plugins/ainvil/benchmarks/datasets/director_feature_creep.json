@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0.0",
+  "benchmarkId": "BENCH-Director-FeatureCreep-001",
+  "category": "Director Quality",
+  "title": "Feature creep during first playable",
+  "version": "0.1.0",
+  "inputs": {
+    "summary": "The current milestone is first playable combat. The user asks to add housing, pets, and a fishing minigame before combat validation.",
+    "projectState": [
+      "Current milestone: FirstPlayableCombat",
+      "Core combat loop validation level: Not Checked",
+      "Open design question: reward loop unclear"
+    ]
+  },
+  "expectedObservations": [
+    "Requested features do not support immediate milestone validation.",
+    "Core loop is not validated yet.",
+    "Feature creep risk is high.",
+    "Director should protect first playable scope."
+  ],
+  "expectedRecommendations": [
+    "Defer housing, pets, and fishing unless user confirms a vision change.",
+    "Validate combat loop first.",
+    "Ask whether cozy collection is replacing combat as core fantasy if the request is intentional."
+  ],
+  "scoringCriteria": [
+    "Protects vision and milestone focus.",
+    "Does not dismiss user creativity.",
+    "Frames options and asks confirmation for vision pivot."
+  ],
+  "failureModes": [
+    "Routes all new features directly to implementation.",
+    "Rejects the user's idea without offering a vision-pivot path.",
+    "Fails to mention unvalidated combat loop.",
+    "Does not distinguish feature creep from intentional creative change."
+  ]
+}

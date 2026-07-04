@@ -1,0 +1,14 @@
+{
+  "name": "com.codex.unity-bridge",
+  "version": "0.6.0",
+  "displayName": "Codex Unity Bridge",
+  "description": "Local Unity Editor bridge for AInvil/Codex MCP tools with Play Mode reconnect and input validation support.",
+  "unity": "2021.3",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.2.1",
+    "com.unity.ugui": "1.0.0"
+  },
+  "author": {
+    "name": "Unity Bridge"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "ainvil",
+  "version": "0.6.0+codex.local-20260627-010221",
+  "description": "AInvil is a Unity-based AI game production agent with a Director Layer that preserves game vision from idea and GDD creation to Unity implementation, playability validation, long-term project memory, and documentation synchronization.",
+  "author": {
+    "name": "Local developer"
+  },
+  "license": "MIT",
+  "keywords": [
+    "game-design",
+    "gdd",
+    "technical-design",
+    "unity",
+    "unity-bridge",
+    "play-mode",
+    "input-agent",
+    "input-spec",
+    "gdd-agent",
+    "unity-agent",
+    "prototype",
+    "implementation-planning",
+    "ai-game-production",
+    "design-critic",
+    "gdd-completeness",
+    "traceability-matrix",
+    "project-dashboard",
+    "project-memory",
+    "director-layer",
+    "game-director",
+    "project-health",
+    "design-patterns",
+    "content-pipeline",
+    "project-structure",
+    "scene-blueprint",
+    "component-contract",
+    "prefab-contract"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "AInvil",
+    "shortDescription": "AI game development partner for design, technical planning, Unity implementation, validation, memory, and synchronization.",
+    "longDescription": "AInvil is not a generic Unity MCP wrapper. Unity operations are one capability inside a larger game production workflow. AInvil includes a Director Layer above the Orchestrator to preserve the user's intended game vision, review design quality, warn about feature creep and design drift, evaluate project health, and provide production direction. The Orchestrator then coordinates GDD, Unity, and Input agents. AInvil collaborates as an AI game design partner, technical design assistant, Unity implementation agent, playability validation agent, and long-term project memory system without replacing the user's creativity.",
+    "developerName": "Local developer",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use AInvil to review this game idea, challenge weak design points, and turn it into a stronger GDD.",
+      "Use AInvil to complete missing GDD sections, create a technical design, and build a traceable Unity implementation plan.",
+      "Use AInvil to continue where we left off, update project state, validate Unity playability, and synchronize documents."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

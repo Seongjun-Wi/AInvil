@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/production_intelligence_report.schema.json",
+  "title": "AInvil ProductionIntelligenceReport",
+  "type": "object",
+  "required": ["schemaVersion", "reportId", "graphId", "generatedAt", "health", "coverage", "risks", "recommendations"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "reportId": { "type": "string" },
+    "graphId": { "type": "string" },
+    "graphVersion": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "currentMilestoneNodeId": { "type": "string" },
+    "activeFeatureNodeId": { "type": "string" },
+    "overallSummary": { "type": "string" },
+    "health": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/healthIndicator" }
+    },
+    "coverage": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/coverageFinding" }
+    },
+    "risks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/riskFinding" }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/recommendation" }
+    },
+    "openDesignQuestions": { "type": "array", "items": { "type": "string" } },
+    "openTechnicalDecisions": { "type": "array", "items": { "type": "string" } },
+    "blockedTasks": { "type": "array", "items": { "type": "string" } },
+    "validationCoverage": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "healthStatus": { "enum": ["Green", "Yellow", "Red", "Unknown"] },
+    "validationLevel": {
+      "enum": [
+        "Not Checked",
+        "Document Review",
+        "Static Analysis",
+        "Unity Inspection",
+        "Compile Verified",
+        "Play Mode Verified",
+        "Runtime Tested",
+        "User Confirmed"
+      ]
+    },
+    "healthIndicator": {
+      "type": "object",
+      "required": ["category", "status", "reason", "evidenceNodeIds"],
+      "properties": {
+        "category": {
+          "enum": [
+            "Vision Health",
+            "Design Health",
+            "Technical Health",
+            "Documentation Health",
+            "Validation Health",
+            "Production Health"
+          ]
+        },
+        "status": { "$ref": "#/$defs/healthStatus" },
+        "reason": { "type": "string" },
+        "evidenceNodeIds": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "coverageFinding": {
+      "type": "object",
+      "required": ["findingId", "kind", "status", "nodeIds", "summary"],
+      "properties": {
+        "findingId": { "type": "string" },
+        "kind": {
+          "enum": [
+            "RequirementWithoutFeatureSpec",
+            "RequirementWithoutTask",
+            "FeatureWithoutUnityTarget",
+            "TaskWithoutValidation",
+            "AcceptanceWithoutEvidence",
+            "UnityTargetWithoutRequirement"
+          ]
+        },
+        "status": { "enum": ["Covered", "Missing", "Partial", "Unknown"] },
+        "nodeIds": { "type": "array", "items": { "type": "string" } },
+        "summary": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "riskFinding": {
+      "type": "object",
+      "required": ["riskId", "severity", "reason", "impact", "suggestedMitigation", "evidenceNodeIds"],
+      "properties": {
+        "riskId": { "type": "string" },
+        "severity": { "enum": ["Low", "Medium", "High", "Critical", "Unknown"] },
+        "reason": { "type": "string" },
+        "impact": { "type": "string" },
+        "suggestedMitigation": { "type": "string" },
+        "evidenceNodeIds": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "recommendation": {
+      "type": "object",
+      "required": ["recommendationId", "title", "reason", "referencesNodeIds", "suggestedOwner", "priority"],
+      "properties": {
+        "recommendationId": { "type": "string" },
+        "title": { "type": "string" },
+        "reason": { "type": "string" },
+        "referencesNodeIds": { "type": "array", "items": { "type": "string" } },
+        "suggestedOwner": { "enum": ["Director Layer", "Orchestrator", "GDD Agent", "Unity Agent", "Input Agent", "User"] },
+        "priority": { "enum": ["Low", "Medium", "High", "Critical"] },
+        "requiredValidationLevel": { "$ref": "#/$defs/validationLevel" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

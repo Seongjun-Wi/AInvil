@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0.0",
+  "executionVersion": "0.1.0",
+  "executionId": "WER-2026-07-02T05-21-37-915Z-TRANS-ResolveValidationGap-1",
+  "transitionId": "TRANS-ResolveValidationGap-1",
+  "transitionType": "ResolveValidationGap",
+  "approvalClass": "EvidenceRequired",
+  "startedAt": "2026-07-02T05:21:37.894Z",
+  "finishedAt": "2026-07-02T05:21:37.915Z",
+  "status": "Blocked",
+  "inputs": {
+    "mode": "apply",
+    "allowMutations": true,
+    "sourceReportId": "WFR-GRAPH-AInvil-Example-2026-07-02",
+    "sourcePlanId": "WTP-GRAPH-AInvil-Example-2026-07-02",
+    "sourceApprovalId": "WTA-WTP-GRAPH-AInvil-Example-2026-07-02-2026-07-02",
+    "transitionId": "TRANS-ResolveValidationGap-1",
+    "targetArtifactId": "AC-CoreLoop-001"
+  },
+  "outputs": {
+    "createdFiles": [],
+    "updatedFiles": [],
+    "graphPatchPlan": null,
+    "summary": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+  },
+  "evidenceRefs": [
+    {
+      "kind": "GraphNode",
+      "id": "AC-CoreLoop-001"
+    }
+  ],
+  "errors": [
+    "Validation evidence has not been produced by this planner."
+  ],
+  "blockedReason": "Validation confidence cannot be promoted without evidence.",
+  "nextAction": {
+    "actionId": "WFA-Validate-Gap",
+    "title": "Resolve the highest validation gap.",
+    "reason": "AC-CoreLoop-001 is below the required validation confidence.",
+    "suggestedOwner": "Input Agent",
+    "priority": "High",
+    "referencesNodeIds": [
+      "AC-CoreLoop-001"
+    ],
+    "referencesReviewIds": [],
+    "referencesBenchmarkIds": [],
+    "referencesKpiItems": [],
+    "evidenceStatus": "Evidence exists for the referenced graph node, but required validation evidence or confidence is missing."
+  }
+}

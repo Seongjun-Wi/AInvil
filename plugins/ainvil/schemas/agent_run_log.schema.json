@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/agent_run_log.schema.json",
+  "title": "AInvil AgentRunLog",
+  "type": "object",
+  "required": ["schemaVersion", "runId", "agent", "startedAt", "status"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "runId": { "type": "string" },
+    "agent": { "enum": ["AInvil", "GDD Agent", "Unity Agent", "Input Agent"] },
+    "taskId": { "type": "string" },
+    "startedAt": { "type": "string", "format": "date-time" },
+    "endedAt": { "type": ["string", "null"], "format": "date-time" },
+    "status": { "enum": ["Running", "Complete", "Blocked", "Failed"] },
+    "request": { "type": "string" },
+    "toolsUsed": { "type": "array", "items": { "type": "string" } },
+    "filesChanged": { "type": "array", "items": { "type": "string" } },
+    "validationLevel": {
+      "enum": [
+        "Not Checked",
+        "Document Review",
+        "Static Analysis",
+        "Unity Inspection",
+        "Compile Verified",
+        "Play Mode Verified",
+        "Runtime Tested",
+        "User Confirmed"
+      ]
+    },
+    "validationSummary": { "type": "string" },
+    "nextActions": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "1.0.0",
+  "reviewId": "REVIEW-ProductionCore-Readiness-001",
+  "artifactId": "AInvil-Production-Core",
+  "artifactNodeId": "MILESTONE-E2E-Recovery",
+  "reviewType": "Production Review",
+  "reviewerRole": "Orchestrator",
+  "date": "2026-07-04",
+  "lifecycleState": "Approved",
+  "findings": [
+    "Production Core live Unity proof is now available through the operational smoke scenario.",
+    "Unity Bridge health, compile status, console check, hierarchy inspection, validation probe, and non-sample Operational Passed evidence are connected to productization and release readiness.",
+    "No core blocker remains outside the Production Core review gate itself."
+  ],
+  "strengths": [
+    "Operational graph, live harness, doctor checks, release readiness, dashboard, and validation evidence now agree on the Unity Bridge smoke path.",
+    "Example scenarios and sample evidence remain classified separately and do not satisfy release gates."
+  ],
+  "weaknesses": [],
+  "risks": [],
+  "recommendations": [],
+  "decision": "Approved",
+  "confidence": "High",
+  "evidence": [
+    {
+      "kind": "Review Record",
+      "summary": "Production Core readiness review record.",
+      "path": "reviews/production_core_readiness_review.json"
+    },
+    {
+      "kind": "Productization Report",
+      "summary": "Productization status and operational validation summary.",
+      "path": "reports/productization_status_report.json"
+    },
+    {
+      "kind": "Release Readiness Report",
+      "summary": "Release gate state before Production Core review reevaluation.",
+      "path": "reports/release_readiness_report.json"
+    },
+    {
+      "kind": "Onboarding Doctor Report",
+      "summary": "Unity Bridge health and compile health checks.",
+      "path": "reports/onboarding_doctor_report.json"
+    },
+    {
+      "kind": "Live Harness Report",
+      "summary": "Latest operational live harness execution.",
+      "path": "harness/reports/latest-live-harness-report.json"
+    },
+    {
+      "kind": "Validation Evidence",
+      "summary": "Latest non-sample operational smoke evidence.",
+      "path": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+    }
+  ]
+}

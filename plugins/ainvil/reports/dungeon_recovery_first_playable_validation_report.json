@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "DRC-MVP-VALIDATION-2026-07-04T13-35-42-831Z",
+  "generatedAt": "2026-07-04T13:35:42.832Z",
+  "product": "DungeonRecoveryCompany",
+  "scenarioId": "dungeon_recovery_first_playable_e2e",
+  "classification": "Operational",
+  "category": "ProductMvp",
+  "result": "Passed",
+  "validationLevel": "Play Mode Verified",
+  "unityProjectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets",
+  "generatedRoot": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable",
+  "evidencePath": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json",
+  "dryRunReport": "reports/dungeon_recovery_first_playable_dry_run.json",
+  "checks": {
+    "bridgeHealth": "Passed",
+    "compile": "Passed",
+    "consoleErrorCount": 0,
+    "playModeEntered": "Passed",
+    "playModeExited": "Passed"
+  },
+  "gameplayResult": {
+    "totalRecoveryTargetCount": 3,
+    "initialRecoveredCount": 0,
+    "afterFirstRecoveryCount": 1,
+    "afterThirdRecoveryCount": 3,
+    "isJobComplete": true,
+    "progressText": "Recovered: 3 / 3\nJob Complete"
+  },
+  "rollback": {
+    "generatedFolder": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets/AInvilGenerated/DungeonRecoveryFirstPlayable",
+    "action": "Delete the generated folder and its .meta files, then let Unity reimport. Existing game assets outside Assets/AInvilGenerated are not part of this change."
+  },
+  "limitations": [
+    "Deterministic validation hooks were used for the recovery sequence.",
+    "Manual feel, UX, balance, build, persistence, accessibility, and public installation validation remain separate gates.",
+    "Public Release Ready is not claimed."
+  ]
+}

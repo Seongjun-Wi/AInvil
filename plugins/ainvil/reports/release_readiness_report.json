@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "REL-2026-07-04T14-50-39-101Z",
+  "generatedAt": "2026-07-04T14:50:39.103Z",
+  "product": "AInvil",
+  "decision": "Release Ready",
+  "confidence": "Medium",
+  "releaseLevel": {
+    "coreReleaseReady": true,
+    "coreRcReproducibilityVerified": true,
+    "canonicalUnityBridgePackageVerified": true,
+    "productMvpWorkflow": "Passed",
+    "humanPlayabilityReview": "Needs Improvement",
+    "buildVerification": "Passed",
+    "productMvpReadyCandidate": true,
+    "publicReleaseReady": false,
+    "publicReleaseNote": "Public Release Ready is not claimed by the core release gate or Product MVP smoke evidence."
+  },
+  "productMvpWorkflow": {
+    "scenarioExists": true,
+    "scenarioId": "dungeon_recovery_first_playable_e2e",
+    "category": "ProductMvp",
+    "validationType": "UnityFeatureE2E",
+    "status": "Passed",
+    "humanPlayabilityReview": {
+      "status": "Needs Improvement",
+      "reportPath": "reports/dungeon_recovery_first_playable_playability_review.json",
+      "remainingIssues": [
+        "Retest required after camera, material, player marker, target marker, and objective banner fixes.",
+        "The current experience still relies on prototype UI/text and does not yet provide a full game-like tutorial flow.",
+        "E-key recovery feedback is still minimal and should eventually receive animation/audio/VFX beyond this generated primitive slice.",
+        "User requested broader design improvement; this pass only applies minimal generated-folder UX fixes."
+      ]
+    },
+    "buildVerification": {
+      "status": "Passed",
+      "outputPath": "E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable.exe",
+      "reportPath": "reports/dungeon_recovery_first_playable_build_verification.json",
+      "failureReason": null
+    },
+    "readyCandidate": true,
+    "latestEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T14-47-56-627Z",
+      "status": "Passed",
+      "validationLevel": "Play Mode Verified",
+      "totalRecoveryTargetCount": 3,
+      "afterThirdRecoveryCount": 3,
+      "isJobComplete": true,
+      "progressText": "Recovered: 3 / 3\nJob Complete",
+      "path": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json"
+    },
+    "latestHarness": {
+      "status": "Passed",
+      "reportPath": "harness/reports/latest-live-harness-report.json"
+    },
+    "nextAction": "Treat as Product MVP Ready Candidate evidence; continue manual playability and public install gates separately."
+  },
+  "gates": [
+    {
+      "gateId": "GATE-ENV-001",
+      "title": "Onboarding environment",
+      "status": "Passed",
+      "evidence": "Ready For Next Gate",
+      "nextAction": null
+    },
+    {
+      "gateId": "GATE-DOC-001",
+      "title": "Korean product/technical documents",
+      "status": "Passed",
+      "evidence": "Korean docs index check",
+      "nextAction": null
+    },
+    {
+      "gateId": "GATE-SOT-001",
+      "title": "Operational source of truth",
+      "status": "Passed",
+      "evidence": "Graph classification: Operational",
+      "nextAction": null
+    },
+    {
+      "gateId": "GATE-UNITY-BRIDGE-001",
+      "title": "Unity Bridge health",
+      "status": "Passed",
+      "evidence": "Unity Bridge health endpoint is reachable.",
+      "nextAction": null
+    },
+    {
+      "gateId": "GATE-UNITY-COMPILE-001",
+      "title": "Unity compile check",
+      "status": "Passed",
+      "evidence": "unity_compile_status succeeded.",
+      "nextAction": null
+    },
+    {
+      "gateId": "GATE-VALIDATION-001",
+      "title": "Operational Play Mode validation",
+      "status": "Passed",
+      "evidence": "Passed (Compile Verified)",
+      "nextAction": null
+    },
+    {
+      "gateId": "GATE-TRACE-001",
+      "title": "Resume dashboard",
+      "status": "Passed",
+      "evidence": "Run manual playability review for the Dungeon Recovery first playable.",
+      "nextAction": null
+    },
+    {
+      "gateId": "GATE-REVIEW-001",
+      "title": "Production Core review",
+      "status": "Passed",
+      "evidence": "Approved",
+      "nextAction": null
+    },
+    {
+      "gateId": "GATE-CONTAMINATION-001",
+      "title": "Example fixture contamination",
+      "status": "Passed",
+      "evidence": "0 operational graph contamination blocker(s)",
+      "nextAction": null
+    }
+  ],
+  "blockers": [],
+  "blockerDetails": [
+    {
+      "blockerId": "BLOCKER-RELEASE-GATE-REVIEW-001",
+      "category": "Production Core review",
+      "evidence": "Changes Requested",
+      "nextAction": "Resolve changes requested in the Production Core readiness review."
+    }
+  ],
+  "warnings": [],
+  "evidenceRefs": [
+    "reports/onboarding_doctor_report.json",
+    "reports/project_dashboard.json",
+    "reviews/production_core_readiness_review.json",
+    "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+  ],
+  "nextActions": []
+}

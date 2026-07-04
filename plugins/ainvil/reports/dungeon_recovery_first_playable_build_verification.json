@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "DRC-BUILD-2026-07-04T14-49-58-464Z",
+  "startedAt": "2026-07-04T14:48:10.904Z",
+  "finishedAt": "2026-07-04T14:49:58.464Z",
+  "product": "DungeonRecoveryCompany",
+  "scenarioId": "dungeon_recovery_first_playable_e2e",
+  "buildVerificationStatus": "Passed",
+  "unityUrl": "http://127.0.0.1:17777/rpc",
+  "healthUrl": "http://127.0.0.1:17777/health",
+  "scenePath": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity",
+  "buildTarget": "StandaloneWindows64",
+  "buildOptions": [
+    "Development"
+  ],
+  "buildOutputPath": "E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable.exe",
+  "failureReason": null,
+  "buildResult": {
+    "result": "Succeeded",
+    "outputPath": "E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable.exe",
+    "totalErrors": 0,
+    "totalWarnings": 0,
+    "totalSize": 174242811
+  },
+  "steps": [
+    {
+      "id": "build.bridge_health",
+      "status": "Passed",
+      "ok": true,
+      "message": "Unity Bridge health endpoint is reachable.",
+      "data": {
+        "ok": true,
+        "bridgeRunning": true,
+        "bridgeStatus": "running",
+        "capabilityVersion": "0.6.0-validation-probes",
+        "unityVersion": "6000.5.0f1",
+        "isPlaying": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "playModeTransitionCount": 3
+      }
+    },
+    {
+      "id": "build.unity_clear_console",
+      "status": "Passed",
+      "ok": true,
+      "message": "unity_clear_console succeeded.",
+      "data": {
+        "ok": true
+      }
+    },
+    {
+      "id": "build.unity_compile_status",
+      "status": "Passed",
+      "ok": true,
+      "message": "unity_compile_status succeeded.",
+      "data": {
+        "isCompiling": false,
+        "isUpdating": false,
+        "errorCount": 0,
+        "recentErrors": []
+      }
+    },
+    {
+      "id": "build.unity_add_component",
+      "status": "Passed",
+      "ok": true,
+      "message": "unity_add_component succeeded.",
+      "data": {
+        "path": "/AInvilFirstPlayableBuildVerifier",
+        "componentType": "AInvil.DungeonRecoveryFirstPlayable.AInvilDungeonRecoveryFirstPlayableBuilder",
+        "alreadyExisted": false
+      }
+    },
+    {
+      "id": "build.unity_invoke_component_method",
+      "status": "Passed",
+      "ok": true,
+      "message": "unity_invoke_component_method succeeded.",
+      "data": {
+        "ok": true,
+        "targetPath": "/AInvilFirstPlayableBuildVerifier",
+        "componentType": "AInvil.DungeonRecoveryFirstPlayable.AInvilDungeonRecoveryFirstPlayableBuilder",
+        "methodName": "BuildFirstPlayableScene",
+        "isPlaying": false,
+        "returnType": "System.String",
+        "result": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity"
+      }
+    },
+    {
+      "id": "build.compile_status",
+      "status": "Passed",
+      "ok": true,
+      "message": "Unity compile status is stable before build.",
+      "data": {
+        "isCompiling": false,
+        "isUpdating": false,
+        "errorCount": 0,
+        "recentErrors": []
+      }
+    },
+    {
+      "id": "build.unity_invoke_component_method",
+      "status": "Passed",
+      "ok": true,
+      "message": "unity_invoke_component_method succeeded.",
+      "data": {
+        "ok": true,
+        "targetPath": "/AInvilDungeonRecoveryFirstPlayable/BuildVerifier",
+        "componentType": "AInvil.DungeonRecoveryFirstPlayable.AInvilDungeonRecoveryFirstPlayableBuilder",
+        "methodName": "BuildWindowsDevelopmentPlayer",
+        "isPlaying": false,
+        "returnType": "System.String",
+        "result": "{\"result\":\"Succeeded\",\"outputPath\":\"E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable.exe\",\"totalErrors\":0,\"totalWarnings\":0,\"totalSize\":174242811}"
+      }
+    }
+  ],
+  "nextAction": "Run the generated executable manually and record human playability feedback."
+}

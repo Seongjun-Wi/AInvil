@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "scenario.inventory_grid_ui",
+  "title": "Inventory grid UI prototype",
+  "classification": "Example",
+  "operationalUse": "Sample fixture only. Do not use this scenario as operational release evidence for a real project.",
+  "userGoal": "Create an inventory that appears as item slots, not as a plain text list.",
+  "milestone": "Inspectable inventory UI with clickable item slots",
+  "interactive": true,
+  "riskLevel": "Low",
+  "expectedDocuments": [
+    {
+      "type": "GDD",
+      "requirementRef": "gdd.ui.inventory",
+      "expected": "The inventory is described as a grid of item slots with item feedback."
+    },
+    {
+      "type": "Technical Design",
+      "requirementRef": "td.ui.inventory_grid",
+      "expected": "The technical design defines Canvas, inventory panel, grid layout, item cells, and click handling."
+    },
+    {
+      "type": "Scene Blueprint",
+      "requirementRef": "scene.ui.inventory",
+      "expected": "The scene blueprint includes /UI/InventoryPanel and slot children."
+    },
+    {
+      "type": "Input Spec",
+      "requirementRef": "input.inventory.toggle",
+      "expected": "The input spec defines how inventory opens and how item slots are clicked."
+    },
+    {
+      "type": "UnityChangeSet",
+      "requirementRef": "change.inventory_grid",
+      "expected": "The change set records generated or prefab-backed UI cells instead of a text list."
+    }
+  ],
+  "expectedUnityCapabilities": [
+    "Project inspection",
+    "Document traceability",
+    "Milestone planning",
+    "Asset-first construction",
+    "Scene construction",
+    "UI implementation",
+    "Input implementation",
+    "Document synchronization"
+  ],
+  "expectedUnityArtifacts": [
+    {
+      "kind": "UI",
+      "path": "/UI/InventoryPanel",
+      "requirementRef": "td.ui.inventory_panel",
+      "status": "Implemented"
+    },
+    {
+      "kind": "UI",
+      "path": "/UI/InventoryPanel/Grid",
+      "requirementRef": "td.ui.inventory_grid",
+      "status": "Implemented"
+    },
+    {
+      "kind": "Prefab",
+      "path": "Assets/Prefabs/UI/InventorySlot.prefab",
+      "requirementRef": "td.prefab.inventory_slot",
+      "status": "Planned"
+    },
+    {
+      "kind": "Component",
+      "path": "/UI/InventoryPanel/Grid/InventorySlot_001/Button",
+      "requirementRef": "td.component.inventory_slot_button",
+      "status": "Implemented"
+    }
+  ],
+  "validationChecks": [
+    {
+      "id": "check.no_text_list",
+      "type": "UI",
+      "target": "/UI/InventoryPanel",
+      "expected": "Inventory content is represented as grid cells, not a single plain Text list.",
+      "failureClass": "AssetFallbackIncorrect"
+    },
+    {
+      "id": "check.button",
+      "type": "Input",
+      "target": "/UI/InventoryPanel/Grid/InventorySlot_001",
+      "expected": "Clicking an item slot triggers the documented selection behavior.",
+      "failureClass": "InputNotReceived"
+    },
+    {
+      "id": "check.playmode",
+      "type": "PlayMode",
+      "target": "Inventory UI interaction",
+      "expected": "The inventory can open and an item slot can be selected in Play Mode.",
+      "failureClass": "GameLogicFailed"
+    },
+    {
+      "id": "check.sync",
+      "type": "DocumentSync",
+      "target": "Scene blueprint and UI contract",
+      "expected": "The UI hierarchy and validation status are documented.",
+      "failureClass": "ValidationNotRun"
+    }
+  ],
+  "passCriteria": [
+    "Inventory uses slots or prefab-backed cells.",
+    "The UI is clickable in Play Mode.",
+    "The scene blueprint and technical design describe the inventory hierarchy.",
+    "The implementation does not replace game-facing inventory with a plain text list."
+  ]
+}

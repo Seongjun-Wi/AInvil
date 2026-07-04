@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/workflow_runtime_report.schema.json",
+  "title": "AInvil WorkflowRuntimeReport",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "reportVersion",
+    "reportId",
+    "generatedAt",
+    "sourceFiles",
+    "currentState",
+    "workflowBlockers",
+    "reviewStatus",
+    "validationStatus",
+    "benchmarkKpiStatus",
+    "nextAction"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "reportVersion": { "type": "string" },
+    "reportId": { "type": "string" },
+    "generatedAt": { "type": "string" },
+    "sourceFiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "path", "used"],
+        "properties": {
+          "kind": { "type": "string" },
+          "path": { "type": "string" },
+          "used": { "type": "boolean" }
+        }
+      }
+    },
+    "currentState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["projectId", "projectName", "graphId", "currentVision", "currentMilestone", "activeFeature", "currentNextRecommendedAction"],
+      "properties": {
+        "projectId": { "type": ["string", "null"] },
+        "projectName": { "type": ["string", "null"] },
+        "graphId": { "type": ["string", "null"] },
+        "currentVision": { "$ref": "#/$defs/nodeRefOrNull" },
+        "currentMilestone": { "$ref": "#/$defs/nodeRefOrNull" },
+        "activeFeature": { "$ref": "#/$defs/nodeRefOrNull" },
+        "currentNextRecommendedAction": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["title", "reason", "owner", "status", "referencesNodeIds", "requiredValidationLevel"],
+          "properties": {
+            "title": { "type": "string" },
+            "reason": { "type": "string" },
+            "owner": { "type": "string" },
+            "status": { "type": "string" },
+            "referencesNodeIds": { "type": "array", "items": { "type": "string" } },
+            "requiredValidationLevel": { "type": ["string", "null"] }
+          }
+        }
+      }
+    },
+    "workflowBlockers": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/blocker" }
+    },
+    "reviewStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reviewCount", "reviewCountByType", "pendingReviewIds", "approvedReviewIds", "changesRequestedReviewIds", "majorRisks", "missingRequiredReviews"],
+      "properties": {
+        "reviewCount": { "type": "integer", "minimum": 0 },
+        "reviewCountByType": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "pendingReviewIds": { "type": "array", "items": { "type": "string" } },
+        "approvedReviewIds": { "type": "array", "items": { "type": "string" } },
+        "changesRequestedReviewIds": { "type": "array", "items": { "type": "string" } },
+        "majorRisks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["reviewId", "severity", "summary"],
+            "properties": {
+              "reviewId": { "type": "string" },
+              "severity": { "type": "string" },
+              "summary": { "type": "string" }
+            }
+          }
+        },
+        "missingRequiredReviews": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["reviewType", "reason", "referencesNodeIds"],
+            "properties": {
+              "reviewType": { "type": "string" },
+              "reason": { "type": "string" },
+              "referencesNodeIds": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "validationStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["validationCoverage", "featuresWithoutEvidence", "acceptanceCriteriaWithoutEvidence", "validationLevelGaps"],
+      "properties": {
+        "validationCoverage": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "featuresWithoutEvidence": { "type": "array", "items": { "type": "string" } },
+        "acceptanceCriteriaWithoutEvidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nodeId", "reason"],
+            "properties": {
+              "nodeId": { "type": "string" },
+              "reason": { "type": "string" }
+            }
+          }
+        },
+        "validationLevelGaps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nodeId", "currentLevel", "requiredLevel", "reason"],
+            "properties": {
+              "nodeId": { "type": "string" },
+              "currentLevel": { "type": "string" },
+              "requiredLevel": { "type": "string" },
+              "reason": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "benchmarkKpiStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["benchmarkCaseCount", "benchmarkCaseCountByCategory", "missingBenchmarkExpectedOutputs", "latestBenchmarkReportAvailable", "latestBenchmarkReportPath", "kpiCategories", "kpiDashboardAvailable", "kpiDashboardPath", "missingKpiEvidence"],
+      "properties": {
+        "benchmarkCaseCount": { "type": "integer", "minimum": 0 },
+        "benchmarkCaseCountByCategory": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "missingBenchmarkExpectedOutputs": { "type": "array", "items": { "type": "string" } },
+        "latestBenchmarkReportAvailable": { "type": "boolean" },
+        "latestBenchmarkReportPath": { "type": ["string", "null"] },
+        "kpiCategories": { "type": "array", "items": { "type": "string" } },
+        "kpiDashboardAvailable": { "type": "boolean" },
+        "kpiDashboardPath": { "type": ["string", "null"] },
+        "missingKpiEvidence": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "nextAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actionId", "title", "reason", "suggestedOwner", "priority", "referencesNodeIds", "referencesReviewIds", "referencesBenchmarkIds", "referencesKpiItems", "evidenceStatus"],
+      "properties": {
+        "actionId": { "type": "string" },
+        "title": { "type": "string" },
+        "reason": { "type": "string" },
+        "suggestedOwner": { "type": "string" },
+        "priority": { "type": "string" },
+        "referencesNodeIds": { "type": "array", "items": { "type": "string" } },
+        "referencesReviewIds": { "type": "array", "items": { "type": "string" } },
+        "referencesBenchmarkIds": { "type": "array", "items": { "type": "string" } },
+        "referencesKpiItems": { "type": "array", "items": { "type": "string" } },
+        "evidenceStatus": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "nodeRefOrNull": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["nodeId", "title", "status", "owner"],
+      "properties": {
+        "nodeId": { "type": "string" },
+        "title": { "type": "string" },
+        "status": { "type": "string" },
+        "owner": { "type": "string" }
+      }
+    },
+    "blocker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "id", "summary", "evidenceNodeIds"],
+      "properties": {
+        "kind": { "type": "string" },
+        "id": { "type": "string" },
+        "summary": { "type": "string" },
+        "evidenceNodeIds": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

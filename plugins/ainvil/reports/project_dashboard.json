@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "1.0.0",
+  "dashboardId": "DASH-GRAPH-AInvil-Productization-2026-07-04",
+  "generatedAt": "2026-07-04T14:50:46.835Z",
+  "projectName": "AInvil Productization",
+  "currentVision": {
+    "nodeId": "VISION-AInvil-Productization",
+    "title": "AInvil reliable game production workflow",
+    "status": "Confirmed",
+    "owner": "Director Layer"
+  },
+  "currentMilestone": {
+    "nodeId": "MILESTONE-DRC-MVP-FirstPlayable",
+    "title": "Dungeon Recovery Company first playable vertical slice",
+    "status": "In Progress",
+    "owner": "Orchestrator"
+  },
+  "activeFeature": {
+    "nodeId": "FEAT-DRC-MVP-FirstRecoveryJob",
+    "title": "First Recovery Job",
+    "status": "Implemented",
+    "owner": "GDD Agent"
+  },
+  "healthSummary": {
+    "designHealth": "Yellow",
+    "implementationHealth": "Yellow",
+    "documentationHealth": "Yellow",
+    "validationCoverage": "Red",
+    "technicalDebt": "Yellow",
+    "productionRisk": "Yellow",
+    "summary": "Operational source-of-truth has been reset from the example graph. Unity Bridge and Play Mode evidence remain blocked until live Unity connectivity is restored."
+  },
+  "validationCoverage": {
+    "Not Checked": 1,
+    "Document Review": 0,
+    "Static Analysis": 2,
+    "Unity Inspection": 0,
+    "Compile Verified": 0,
+    "Play Mode Verified": 0,
+    "Runtime Tested": 0,
+    "User Confirmed": 0
+  },
+  "implementedFeatures": [],
+  "validatedFeatures": [
+    "FEAT-E2E-HappyPath-001",
+    "FEAT-DRC-MVP-FirstRecoveryJob"
+  ],
+  "blockedTasks": [
+    "TASK-E2E-004",
+    "AC-E2E-002"
+  ],
+  "openQuestions": [],
+  "latestBenchmarkReport": "benchmarks/reports/latest-benchmark-report.json",
+  "latestLiveHarnessReport": "harness/reports/latest-live-harness-report.json",
+  "latestExecutionRecord": "workflow/runs/latest.json",
+  "productizationStatus": {
+    "reportId": "PRODSTAT-2026-07-04T14-50-38-837Z",
+    "decision": "Not Release Ready",
+    "graphClassification": "Operational",
+    "releaseBlockerCount": 1,
+    "featureCounts": {
+      "Verified": 1,
+      "Spec-only": 2,
+      "Partial": 14,
+      "Deprecated/Sample": 2
+    },
+    "e2eCounts": {
+      "Spec-only": 1,
+      "Partial": 5,
+      "Verified": 4
+    },
+    "operationalValidation": {
+      "scenarioCount": 2,
+      "scenarios": [
+        {
+          "id": "ainvil_bridge_smoke_operational",
+          "title": "AInvil Unity Bridge operational smoke validation",
+          "evidenceOutputPath": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+        },
+        {
+          "id": "dungeon_recovery_first_playable_e2e",
+          "title": "Dungeon Recovery Company first playable recovery job E2E",
+          "evidenceOutputPath": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json"
+        }
+      ],
+      "latestEvidence": {
+        "evidenceId": "EVID-dungeon-recovery-first-playable-build-latest",
+        "scenarioId": "dungeon_recovery_first_playable_e2e",
+        "classification": "Operational",
+        "status": "Passed",
+        "validationLevel": "Compile Verified",
+        "failureClass": "None",
+        "path": "validation/evidence/EVID-dungeon-recovery-first-playable-build-latest.json"
+      }
+    },
+    "productMvpWorkflow": {
+      "scenarioExists": true,
+      "scenarioId": "dungeon_recovery_first_playable_e2e",
+      "category": "ProductMvp",
+      "validationType": "UnityFeatureE2E",
+      "status": "Passed",
+      "humanPlayabilityReview": {
+        "status": "Needs Improvement",
+        "reportPath": "reports/dungeon_recovery_first_playable_playability_review.json",
+        "remainingIssues": [
+          "Retest required after camera, material, player marker, target marker, and objective banner fixes.",
+          "The current experience still relies on prototype UI/text and does not yet provide a full game-like tutorial flow.",
+          "E-key recovery feedback is still minimal and should eventually receive animation/audio/VFX beyond this generated primitive slice.",
+          "User requested broader design improvement; this pass only applies minimal generated-folder UX fixes."
+        ]
+      },
+      "buildVerification": {
+        "status": "Passed",
+        "outputPath": "E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable.exe",
+        "reportPath": "reports/dungeon_recovery_first_playable_build_verification.json",
+        "failureReason": null
+      },
+      "readyCandidate": true,
+      "latestEvidence": {
+        "evidenceId": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T14-47-56-627Z",
+        "status": "Passed",
+        "validationLevel": "Play Mode Verified",
+        "totalRecoveryTargetCount": 3,
+        "afterThirdRecoveryCount": 3,
+        "isJobComplete": true,
+        "progressText": "Recovered: 3 / 3\nJob Complete",
+        "path": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json"
+      },
+      "latestHarness": {
+        "status": "Passed",
+        "reportPath": "harness/reports/latest-live-harness-report.json"
+      },
+      "nextAction": "Treat as Product MVP Ready Candidate evidence; continue manual playability and public install gates separately."
+    },
+    "releaseLevel": {
+      "coreReleaseReady": false,
+      "coreRcReproducibilityVerified": true,
+      "canonicalUnityBridgePackageVerified": true,
+      "productMvpWorkflow": "Passed",
+      "humanPlayabilityReview": "Needs Improvement",
+      "buildVerification": "Passed",
+      "productMvpReadyCandidate": true,
+      "publicReleaseReady": false
+    }
+  },
+  "productionCoreReview": {
+    "evaluationId": "PCORE-EVAL-2026-07-04T14-50-38-635Z",
+    "reviewedGateId": "GATE-REVIEW-001",
+    "previousStatus": "Changes Requested",
+    "newStatus": "Approved",
+    "resolvedChangeCount": 9,
+    "remainingChangeCount": 0,
+    "remainingChanges": [],
+    "evidenceUsed": [
+      {
+        "kind": "Review Record",
+        "summary": "Production Core readiness review record.",
+        "path": "reviews/production_core_readiness_review.json"
+      },
+      {
+        "kind": "Productization Report",
+        "summary": "Productization status and operational validation summary.",
+        "path": "reports/productization_status_report.json"
+      },
+      {
+        "kind": "Release Readiness Report",
+        "summary": "Release gate state before Production Core review reevaluation.",
+        "path": "reports/release_readiness_report.json"
+      },
+      {
+        "kind": "Onboarding Doctor Report",
+        "summary": "Unity Bridge health and compile health checks.",
+        "path": "reports/onboarding_doctor_report.json"
+      },
+      {
+        "kind": "Live Harness Report",
+        "summary": "Latest operational live harness execution.",
+        "path": "harness/reports/latest-live-harness-report.json"
+      },
+      {
+        "kind": "Validation Evidence",
+        "summary": "Latest non-sample operational smoke evidence.",
+        "path": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+      }
+    ]
+  },
+  "nextRecommendedAction": {
+    "actionId": "NEXT-DRC-MVP-Manual-Playtest",
+    "title": "Run manual playability review for the Dungeon Recovery first playable.",
+    "owner": "Input Agent",
+    "status": "Planned",
+    "reason": "Automated Product MVP E2E passed through deterministic hooks; manual player-input feel and UX review are still separate from Public Release readiness.",
+    "referencesNodeId": "FEAT-DRC-MVP-FirstRecoveryJob",
+    "requiredValidationLevel": "User Confirmed"
+  }
+}

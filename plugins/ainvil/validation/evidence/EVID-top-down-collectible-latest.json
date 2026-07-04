@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "evidenceId": "EVID-scenario_top_down_collectible-2026-07-03T19-07-18-963Z",
+  "source": "LiveHarness",
+  "scenarioId": "scenario.top_down_collectible",
+  "validationLevel": "Not Checked",
+  "status": "Blocked",
+  "validationIds": [],
+  "validationId": null,
+  "failureClass": "BridgeDisconnected",
+  "acceptanceIds": [
+    "AC-CoreLoop-001"
+  ],
+  "requirementIds": [
+    "REQ-CoreLoop-001"
+  ],
+  "unityTargets": [],
+  "checks": [
+    {
+      "checkId": "bridge.health",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Blocked",
+      "failureClass": "BridgeDisconnected",
+      "message": "fetch failed"
+    }
+  ],
+  "validationResults": [],
+  "observations": null,
+  "assertions": [],
+  "sourceValidationDesign": null,
+  "startedAt": "2026-07-03T19:07:18.963Z",
+  "finishedAt": "2026-07-03T19:07:19.024Z",
+  "timestamp": "2026-07-03T19:07:19.024Z",
+  "remainingGaps": [
+    "Scenario did not pass live validation."
+  ],
+  "nextActions": [
+    "Unity Bridge is not reachable. Open Unity, install the bridge package, and start Tools > Codex Unity Bridge > Start Server."
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0.0",
+  "designSetId": "VDSET-ainvil-bridge-smoke-operational-001",
+  "source": "harness/scenarios/ainvil_bridge_smoke_operational.json",
+  "validations": [
+    {
+      "validationId": "VAL-AINVIL-BRIDGE-SMOKE-001",
+      "requirementId": "REQ-E2E-003",
+      "acceptanceId": "AC-E2E-002",
+      "scenarioId": "ainvil_bridge_smoke_operational",
+      "feature": "AInvil Unity Bridge operational smoke validation",
+      "testType": "unity-inspection",
+      "scene": "Active Unity scene",
+      "preconditions": [
+        "Unity Editor is open",
+        "Canonical Unity Bridge package is installed",
+        "Tools > Codex Unity Bridge > Start Server has been run"
+      ],
+      "setup": [
+        "Do not create, edit, or save Unity scene objects for this smoke test"
+      ],
+      "actions": [
+        {
+          "type": "wait",
+          "ms": 1
+        }
+      ],
+      "observations": [
+        {
+          "name": "activeSceneLoaded",
+          "type": "activeScene",
+          "field": "isLoaded"
+        },
+        {
+          "name": "activeSceneName",
+          "type": "activeScene",
+          "field": "name"
+        },
+        {
+          "name": "editorLogErrors",
+          "type": "editorLogErrors",
+          "limit": 50
+        }
+      ],
+      "passCriteria": [
+        {
+          "id": "ASSERT-ACTIVE-SCENE-LOADED",
+          "observation": "activeSceneLoaded",
+          "operator": "equals",
+          "expected": true
+        },
+        {
+          "id": "ASSERT-NO-EDITOR-ERRORS",
+          "observation": "editorLogErrors",
+          "operator": "equals",
+          "expected": 0
+        }
+      ],
+      "evidenceToRecord": [
+        "beforeObservations",
+        "afterObservations",
+        "assertions",
+        "editorLog"
+      ],
+      "requiredProbes": [
+        "SceneProbe",
+        "LogProbe"
+      ]
+    }
+  ]
+}

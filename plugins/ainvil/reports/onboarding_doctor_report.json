@@ -1,0 +1,197 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "ODR-2026-07-04T14-50-18-094Z",
+  "generatedAt": "2026-07-04T14:50:18.094Z",
+  "product": "AInvil",
+  "workspaceManifest": "state/workspace_manifest.json",
+  "unityRpcUrl": "http://127.0.0.1:17777/rpc",
+  "healthUrl": "http://127.0.0.1:17777/health",
+  "releaseReadiness": "Ready For Next Gate",
+  "summary": {
+    "total": 14,
+    "passed": 14,
+    "warning": 0,
+    "failed": 0,
+    "blocked": 0
+  },
+  "checks": [
+    {
+      "id": "workspace.manifest",
+      "category": "Workspace",
+      "importance": "Required",
+      "status": "Passed",
+      "message": "Workspace manifest is available.",
+      "target": "E:\\wiseongjun\\ProgrammingNAssignment\\GameDesigner\\plugins\\ainvil\\state\\workspace_manifest.json",
+      "detail": "File",
+      "nextAction": null
+    },
+    {
+      "id": "ainvil.docs.ko",
+      "category": "Workspace",
+      "importance": "Recommended",
+      "status": "Passed",
+      "message": "Korean documentation index is available.",
+      "target": "E:\\wiseongjun\\ProgrammingNAssignment\\GameDesigner\\plugins\\ainvil\\docs\\ko\\README.md",
+      "detail": "File",
+      "nextAction": null
+    },
+    {
+      "id": "ainvil.graph",
+      "category": "Workspace",
+      "importance": "Required",
+      "status": "Passed",
+      "message": "Production State Graph is available.",
+      "target": "E:\\wiseongjun\\ProgrammingNAssignment\\GameDesigner\\plugins\\ainvil\\state\\production_state_graph.json",
+      "detail": "File",
+      "nextAction": null
+    },
+    {
+      "id": "ainvil.evidence.dir",
+      "category": "Workspace",
+      "importance": "Recommended",
+      "status": "Passed",
+      "message": "Validation evidence directory is available.",
+      "target": "E:\\wiseongjun\\ProgrammingNAssignment\\GameDesigner\\plugins\\ainvil\\validation\\evidence",
+      "detail": "Directory",
+      "nextAction": null
+    },
+    {
+      "id": "unity.bridge.package.canonical",
+      "category": "Workspace",
+      "importance": "Required",
+      "status": "Passed",
+      "message": "Canonical Unity Bridge package is available.",
+      "target": "E:\\wiseongjun\\ProgrammingNAssignment\\GameDesigner\\plugins\\ainvil\\unity-package\\Packages\\com.codex.unity-bridge",
+      "detail": "Directory",
+      "nextAction": null
+    },
+    {
+      "id": "unity.bridge.package.rootMirror",
+      "category": "Workspace",
+      "importance": "Recommended",
+      "status": "Passed",
+      "message": "Root UnityPackage mirror exists and is treated as deprecated/install artifact.",
+      "target": "E:\\wiseongjun\\ProgrammingNAssignment\\GameDesigner\\UnityPackage\\Packages\\com.codex.unity-bridge",
+      "detail": "Directory",
+      "nextAction": null,
+      "role": "Deprecated mirror/install artifact"
+    },
+    {
+      "id": "unity.bridge.health",
+      "category": "Unity",
+      "importance": "Required",
+      "status": "Passed",
+      "message": "Unity Bridge health endpoint is reachable.",
+      "nextAction": null,
+      "data": {
+        "ok": true,
+        "bridgeRunning": true,
+        "bridgeStatus": "running",
+        "capabilityVersion": "0.6.0-validation-probes",
+        "unityVersion": "6000.5.0f1",
+        "isPlaying": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "playModeTransitionCount": 3
+      }
+    },
+    {
+      "id": "unity.status",
+      "category": "Unity",
+      "importance": "Required",
+      "status": "Passed",
+      "message": "unity_get_status succeeded.",
+      "nextAction": null,
+      "data": {
+        "ok": true,
+        "bridgeRunning": true,
+        "bridgeStatus": "running",
+        "capabilityVersion": "0.6.0-validation-probes",
+        "unityVersion": "6000.5.0f1",
+        "projectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets",
+        "isPlaying": false,
+        "isPaused": false,
+        "isPlayingOrWillChangePlaymode": false,
+        "isCompiling": false,
+        "isUpdating": false,
+        "playModeTransitionCount": 3,
+        "inputTestBridgeAvailable": false,
+        "activeScene": {
+          "name": "DRC_FirstRecoveryJob",
+          "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity",
+          "isDirty": false,
+          "isLoaded": true,
+          "rootCount": 1
+        },
+        "selection": {
+          "activeObject": null,
+          "objects": []
+        }
+      }
+    },
+    {
+      "id": "unity.compile",
+      "category": "Unity",
+      "importance": "Required",
+      "status": "Passed",
+      "message": "unity_compile_status succeeded.",
+      "nextAction": null,
+      "data": {
+        "isCompiling": false,
+        "isUpdating": false,
+        "errorCount": 0,
+        "recentErrors": []
+      }
+    },
+    {
+      "id": "unity.project.path",
+      "category": "Unity",
+      "importance": "Required",
+      "status": "Passed",
+      "message": "Unity project path is configured: E:\\wiseongjun\\Unity\\DungeonRecoveryCompany",
+      "nextAction": null
+    },
+    {
+      "id": "unity.assets",
+      "category": "Workspace",
+      "importance": "Required",
+      "status": "Passed",
+      "message": "Unity Assets folder exists.",
+      "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assets",
+      "detail": "Directory",
+      "nextAction": null
+    },
+    {
+      "id": "unity.projectSettings",
+      "category": "Workspace",
+      "importance": "Required",
+      "status": "Passed",
+      "message": "Unity ProjectSettings folder exists.",
+      "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\ProjectSettings",
+      "detail": "Directory",
+      "nextAction": null
+    },
+    {
+      "id": "unity.packages",
+      "category": "Workspace",
+      "importance": "Recommended",
+      "status": "Passed",
+      "message": "Unity Packages folder exists.",
+      "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Packages",
+      "detail": "Directory",
+      "nextAction": null
+    },
+    {
+      "id": "unity.bridge.package.dependency",
+      "category": "Unity",
+      "importance": "Required",
+      "status": "Passed",
+      "message": "Unity Bridge dependency points to the canonical package.",
+      "nextAction": null,
+      "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Packages\\manifest.json",
+      "dependency": "file:E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/unity-package/Packages/com.codex.unity-bridge",
+      "packageDependencyClassification": "Canonical",
+      "canonicalPackageVerified": true
+    }
+  ],
+  "nextActions": []
+}

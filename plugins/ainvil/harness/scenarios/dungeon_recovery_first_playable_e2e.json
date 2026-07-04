@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "dungeon_recovery_first_playable_e2e",
+  "title": "Dungeon Recovery Company first playable recovery job E2E",
+  "classification": "Operational",
+  "category": "ProductMvp",
+  "validationType": "UnityFeatureE2E",
+  "operationalUse": "Product MVP vertical-slice validation for a generated first playable scene in DungeonRecoveryCompany.",
+  "userGoal": "Validate that a player can complete the first recovery job by recovering three dungeon targets and reaching Job Complete in Play Mode.",
+  "milestone": "Product MVP first playable validation",
+  "interactive": false,
+  "requirementIds": [
+    "REQ-DRC-MVP-001"
+  ],
+  "acceptanceIds": [
+    "AC-DRC-MVP-001",
+    "AC-DRC-MVP-002",
+    "AC-DRC-MVP-003"
+  ],
+  "evidenceOutputPath": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json",
+  "riskLevel": "Medium",
+  "expectedDocuments": [
+    {
+      "type": "GDD",
+      "requirementRef": "REQ-DRC-MVP-001",
+      "expected": "Dungeon Recovery Company first playable asks the player to clear a small dungeon room by recovering Rubble, CorruptionNode, and BrokenRelic."
+    },
+    {
+      "type": "Technical Design",
+      "requirementRef": "REQ-DRC-MVP-001",
+      "expected": "Generated Unity assets are isolated under Assets/AInvilGenerated/DungeonRecoveryFirstPlayable and expose deterministic validation hooks."
+    },
+    {
+      "type": "TaskGraph",
+      "requirementRef": "TASK-DRC-MVP-001",
+      "expected": "Feature, requirement, task, acceptance criteria, generated Unity artifacts, and validation evidence are linked in the production graph."
+    },
+    {
+      "type": "Scene Blueprint",
+      "requirementRef": "SCENE-DRC-FIRST-RECOVERY-JOB",
+      "expected": "Scene contains Player, GameController, HUD, and three RecoveryTargets in a bounded dungeon room."
+    },
+    {
+      "type": "Input Spec",
+      "requirementRef": "INPUT-DRC-RECOVER",
+      "expected": "Player movement supports WASD/arrows and recovery supports E when near a target; deterministic hooks can verify the same acceptance path."
+    },
+    {
+      "type": "Playtest Report",
+      "requirementRef": "EVID-DRC-MVP-001",
+      "expected": "Play Mode evidence records initial, first recovery, third recovery, progress text, job completion, compile status, and console errors."
+    }
+  ],
+  "expectedUnityCapabilities": [
+    "Project inspection",
+    "Document traceability",
+    "Milestone planning",
+    "Scene construction",
+    "Component and script implementation",
+    "UI implementation",
+    "Input implementation",
+    "Physics and interaction",
+    "Build and release validation",
+    "Document synchronization"
+  ],
+  "expectedUnityArtifacts": [
+    {
+      "kind": "Scene",
+      "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity",
+      "requirementRef": "SCENE-DRC-FIRST-RECOVERY-JOB",
+      "status": "Implemented"
+    },
+    {
+      "kind": "GameObject",
+      "path": "/AInvilDungeonRecoveryFirstPlayable/Player",
+      "requirementRef": "REQ-DRC-MVP-001",
+      "status": "Implemented"
+    },
+    {
+      "kind": "GameObject",
+      "path": "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/Rubble",
+      "requirementRef": "AC-DRC-MVP-001",
+      "status": "Implemented"
+    },
+    {
+      "kind": "GameObject",
+      "path": "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/CorruptionNode",
+      "requirementRef": "AC-DRC-MVP-001",
+      "status": "Implemented"
+    },
+    {
+      "kind": "GameObject",
+      "path": "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/BrokenRelic",
+      "requirementRef": "AC-DRC-MVP-001",
+      "status": "Implemented"
+    },
+    {
+      "kind": "UI",
+      "path": "/AInvilDungeonRecoveryFirstPlayable/HUD/ProgressText",
+      "requirementRef": "AC-DRC-MVP-002",
+      "status": "Implemented"
+    },
+    {
+      "kind": "Component",
+      "path": "/AInvilDungeonRecoveryFirstPlayable/GameController/AInvilDungeonRecoveryGameController",
+      "requirementRef": "AC-DRC-MVP-003",
+      "status": "Implemented"
+    },
+    {
+      "kind": "ValidationReport",
+      "path": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json",
+      "requirementRef": "EVID-DRC-MVP-001",
+      "status": "Planned"
+    }
+  ],
+  "validationChecks": [
+    {
+      "id": "check.bridge.health",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "expected": "Unity Bridge health endpoint responds.",
+      "failureClass": "BridgeDisconnected"
+    },
+    {
+      "id": "check.compile",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "expected": "Generated scripts compile with zero compile errors.",
+      "failureClass": "CompileError"
+    },
+    {
+      "id": "check.console.errors",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "expected": "Console error count is zero for the validation run.",
+      "failureClass": "ConsoleError"
+    },
+    {
+      "id": "check.playmode.recovery",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.ValidationRecoverNextTarget",
+      "expected": "Three deterministic recovery calls complete the job and update progress text.",
+      "failureClass": "GameLogicFailed"
+    },
+    {
+      "id": "check.evidence.sync",
+      "type": "DocumentSync",
+      "target": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json",
+      "expected": "Product MVP evidence is exported and linked to REQ-DRC-MVP-001 and AC-DRC-MVP-*.",
+      "failureClass": "ValidationNotRun"
+    }
+  ],
+  "passCriteria": [
+    "Unity Bridge health endpoint is reachable.",
+    "The generated first playable scene exists and can be opened.",
+    "Compile status passes after generated scripts are imported.",
+    "Console error count is zero.",
+    "Initial recovered count is 0 of 3.",
+    "After the first recovery, recovered count is 1 of 3.",
+    "After the third recovery, recovered count is 3 of 3.",
+    "Progress text contains Job Complete after all recoveries.",
+    "Product MVP evidence is written under validation/evidence."
+  ]
+}

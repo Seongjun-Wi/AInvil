@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/traceability_matrix.schema.json",
+  "title": "AInvil TraceabilityMatrix",
+  "type": "object",
+  "required": ["schemaVersion", "projectId", "rows"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "projectId": { "type": "string", "minLength": 1 },
+    "graphSource": { "type": "string" },
+    "graphVersion": { "type": "string" },
+    "currentMilestone": { "type": "string" },
+    "currentActiveFeature": { "type": "string" },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["traceId", "requirementId", "status"],
+        "properties": {
+          "traceId": { "type": "string" },
+          "graphPath": { "type": "array", "items": { "type": "string" } },
+          "gddSection": { "type": "string" },
+          "requirementId": { "type": "string" },
+          "featureSpec": { "type": "string" },
+          "taskId": { "type": "string" },
+          "unityScene": { "type": "string" },
+          "prefab": { "type": "string" },
+          "scriptOrComponent": { "type": "string" },
+          "dataAsset": { "type": "string" },
+          "inputId": { "type": "string" },
+          "acceptanceId": { "type": "string" },
+          "validationEvidence": { "type": "string" },
+          "validationLevel": {
+            "enum": [
+              "Not Checked",
+              "Document Review",
+              "Static Analysis",
+              "Unity Inspection",
+              "Compile Verified",
+              "Play Mode Verified",
+              "Runtime Tested",
+              "User Confirmed"
+            ]
+          },
+          "status": {
+            "enum": [
+              "In sync",
+              "Missing link",
+              "Needs Requirement Definition",
+              "Needs technical confirmation",
+              "Needs validation",
+              "Blocked",
+              "Validated"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,308 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "BR-AInvil-Baseline-2026-07-03",
+  "generatedAt": "2026-07-03T19:07:17.646Z",
+  "runMode": "DatasetBaseline",
+  "evaluator": "AInvil static benchmark generator",
+  "summary": "5 benchmark case(s) loaded; 3 expected categories are missing.",
+  "dataset": {
+    "caseCount": 5,
+    "categoriesPresent": [
+      "Design Review",
+      "Director Quality",
+      "GDD Completion",
+      "Technical Translation",
+      "Validation"
+    ],
+    "missingCategories": [
+      "Production Planning",
+      "Unity Production",
+      "Project Management"
+    ],
+    "versions": [
+      "0.1.0"
+    ]
+  },
+  "scores": [
+    {
+      "dimension": "Design Quality",
+      "score": "NotRun",
+      "evidence": "No live agent output evaluated in DatasetBaseline mode.",
+      "notes": "Attach live benchmark evaluation before using this as a capability score."
+    },
+    {
+      "dimension": "Technical Accuracy",
+      "score": "NotRun",
+      "evidence": "No live agent output evaluated in DatasetBaseline mode.",
+      "notes": "Attach live benchmark evaluation before using this as a capability score."
+    },
+    {
+      "dimension": "Production Quality",
+      "score": "NotRun",
+      "evidence": "No live agent output evaluated in DatasetBaseline mode.",
+      "notes": "Attach live benchmark evaluation before using this as a capability score."
+    },
+    {
+      "dimension": "Consistency",
+      "score": "NotRun",
+      "evidence": "No live agent output evaluated in DatasetBaseline mode.",
+      "notes": "Attach live benchmark evaluation before using this as a capability score."
+    },
+    {
+      "dimension": "Traceability",
+      "score": "NotRun",
+      "evidence": "No live agent output evaluated in DatasetBaseline mode.",
+      "notes": "Attach live benchmark evaluation before using this as a capability score."
+    },
+    {
+      "dimension": "Validation",
+      "score": "NotRun",
+      "evidence": "No live agent output evaluated in DatasetBaseline mode.",
+      "notes": "Attach live benchmark evaluation before using this as a capability score."
+    },
+    {
+      "dimension": "Risk Detection",
+      "score": "NotRun",
+      "evidence": "No live agent output evaluated in DatasetBaseline mode.",
+      "notes": "Attach live benchmark evaluation before using this as a capability score."
+    },
+    {
+      "dimension": "Creativity Preservation",
+      "score": "NotRun",
+      "evidence": "No live agent output evaluated in DatasetBaseline mode.",
+      "notes": "Attach live benchmark evaluation before using this as a capability score."
+    },
+    {
+      "dimension": "Hallucination Resistance",
+      "score": "NotRun",
+      "evidence": "No live agent output evaluated in DatasetBaseline mode.",
+      "notes": "Attach live benchmark evaluation before using this as a capability score."
+    },
+    {
+      "dimension": "Evidence Usage",
+      "score": "NotRun",
+      "evidence": "No live agent output evaluated in DatasetBaseline mode.",
+      "notes": "Attach live benchmark evaluation before using this as a capability score."
+    },
+    {
+      "dimension": "Unknown Handling",
+      "score": "NotRun",
+      "evidence": "No live agent output evaluated in DatasetBaseline mode.",
+      "notes": "Attach live benchmark evaluation before using this as a capability score."
+    }
+  ],
+  "categoryResults": [
+    {
+      "category": "Design Review",
+      "status": "DatasetReady",
+      "caseCount": 1,
+      "notes": "Dataset exists; runtime agent output evaluation is still required."
+    },
+    {
+      "category": "GDD Completion",
+      "status": "DatasetReady",
+      "caseCount": 1,
+      "notes": "Dataset exists; runtime agent output evaluation is still required."
+    },
+    {
+      "category": "Technical Translation",
+      "status": "DatasetReady",
+      "caseCount": 1,
+      "notes": "Dataset exists; runtime agent output evaluation is still required."
+    },
+    {
+      "category": "Production Planning",
+      "status": "MissingDataset",
+      "caseCount": 0,
+      "notes": "No seed dataset exists for this category yet."
+    },
+    {
+      "category": "Unity Production",
+      "status": "MissingDataset",
+      "caseCount": 0,
+      "notes": "No seed dataset exists for this category yet."
+    },
+    {
+      "category": "Validation",
+      "status": "DatasetReady",
+      "caseCount": 1,
+      "notes": "Dataset exists; runtime agent output evaluation is still required."
+    },
+    {
+      "category": "Project Management",
+      "status": "MissingDataset",
+      "caseCount": 0,
+      "notes": "No seed dataset exists for this category yet."
+    },
+    {
+      "category": "Director Quality",
+      "status": "DatasetReady",
+      "caseCount": 1,
+      "notes": "Dataset exists; runtime agent output evaluation is still required."
+    }
+  ],
+  "cases": [
+    {
+      "benchmarkId": "BENCH-DesignReview-PoorGDD-001",
+      "category": "Design Review",
+      "title": "Poor GDD with weak core loop and scope creep",
+      "version": "0.1.0",
+      "status": "DatasetReady",
+      "expectedObservationCount": 5,
+      "expectedRecommendationCount": 4,
+      "scoringCriterionCount": 4,
+      "failureModeCount": 4,
+      "structuralFailures": [],
+      "expectedSamples": [
+        {
+          "expected": "Core loop is unclear.",
+          "notes": "BENCH-DesignReview-PoorGDD-001: expected observation"
+        },
+        {
+          "expected": "Scope is too large for first playable.",
+          "notes": "BENCH-DesignReview-PoorGDD-001: expected observation"
+        },
+        {
+          "expected": "Define the core run loop before adding meta systems.",
+          "notes": "BENCH-DesignReview-PoorGDD-001: expected recommendation"
+        },
+        {
+          "expected": "Choose one primary fantasy and defer unrelated systems.",
+          "notes": "BENCH-DesignReview-PoorGDD-001: expected recommendation"
+        }
+      ]
+    },
+    {
+      "benchmarkId": "BENCH-Director-FeatureCreep-001",
+      "category": "Director Quality",
+      "title": "Feature creep during first playable",
+      "version": "0.1.0",
+      "status": "DatasetReady",
+      "expectedObservationCount": 4,
+      "expectedRecommendationCount": 3,
+      "scoringCriterionCount": 3,
+      "failureModeCount": 4,
+      "structuralFailures": [],
+      "expectedSamples": [
+        {
+          "expected": "Requested features do not support immediate milestone validation.",
+          "notes": "BENCH-Director-FeatureCreep-001: expected observation"
+        },
+        {
+          "expected": "Core loop is not validated yet.",
+          "notes": "BENCH-Director-FeatureCreep-001: expected observation"
+        },
+        {
+          "expected": "Defer housing, pets, and fishing unless user confirms a vision change.",
+          "notes": "BENCH-Director-FeatureCreep-001: expected recommendation"
+        },
+        {
+          "expected": "Validate combat loop first.",
+          "notes": "BENCH-Director-FeatureCreep-001: expected recommendation"
+        }
+      ]
+    },
+    {
+      "benchmarkId": "BENCH-GDDCompletion-Incomplete-001",
+      "category": "GDD Completion",
+      "title": "Incomplete action puzzle GDD",
+      "version": "0.1.0",
+      "status": "DatasetReady",
+      "expectedObservationCount": 5,
+      "expectedRecommendationCount": 4,
+      "scoringCriterionCount": 3,
+      "failureModeCount": 4,
+      "structuralFailures": [],
+      "expectedSamples": [
+        {
+          "expected": "Failure states are missing.",
+          "notes": "BENCH-GDDCompletion-Incomplete-001: expected observation"
+        },
+        {
+          "expected": "Progression structure is missing.",
+          "notes": "BENCH-GDDCompletion-Incomplete-001: expected observation"
+        },
+        {
+          "expected": "Ask or propose how levels unlock.",
+          "notes": "BENCH-GDDCompletion-Incomplete-001: expected recommendation"
+        },
+        {
+          "expected": "Define puzzle completion and reset behavior.",
+          "notes": "BENCH-GDDCompletion-Incomplete-001: expected recommendation"
+        }
+      ]
+    },
+    {
+      "benchmarkId": "BENCH-TechTranslation-AverageGDD-001",
+      "category": "Technical Translation",
+      "title": "Average GDD requiring implementable technical design",
+      "version": "0.1.0",
+      "status": "DatasetReady",
+      "expectedObservationCount": 4,
+      "expectedRecommendationCount": 4,
+      "scoringCriterionCount": 4,
+      "failureModeCount": 4,
+      "structuralFailures": [],
+      "expectedSamples": [
+        {
+          "expected": "Systems should be split into player movement, enemy contact, pickup scoring, timer, run state, and HUD.",
+          "notes": "BENCH-TechTranslation-AverageGDD-001: expected observation"
+        },
+        {
+          "expected": "Data model should distinguish authored tuning from runtime state.",
+          "notes": "BENCH-TechTranslation-AverageGDD-001: expected observation"
+        },
+        {
+          "expected": "Create Technical Design with component contracts.",
+          "notes": "BENCH-TechTranslation-AverageGDD-001: expected recommendation"
+        },
+        {
+          "expected": "Define first playable scene structure.",
+          "notes": "BENCH-TechTranslation-AverageGDD-001: expected recommendation"
+        }
+      ]
+    },
+    {
+      "benchmarkId": "BENCH-Validation-MissingEvidence-001",
+      "category": "Validation",
+      "title": "Implemented feature with missing validation evidence",
+      "version": "0.1.0",
+      "status": "DatasetReady",
+      "expectedObservationCount": 4,
+      "expectedRecommendationCount": 3,
+      "scoringCriterionCount": 3,
+      "failureModeCount": 4,
+      "structuralFailures": [],
+      "expectedSamples": [
+        {
+          "expected": "Feature should not be marked Validated.",
+          "notes": "BENCH-Validation-MissingEvidence-001: expected observation"
+        },
+        {
+          "expected": "Validation evidence is missing.",
+          "notes": "BENCH-Validation-MissingEvidence-001: expected observation"
+        },
+        {
+          "expected": "Route Play Mode validation to Input Agent.",
+          "notes": "BENCH-Validation-MissingEvidence-001: expected recommendation"
+        },
+        {
+          "expected": "Create ValidationEvidence linked to AC-Dash-001.",
+          "notes": "BENCH-Validation-MissingEvidence-001: expected recommendation"
+        }
+      ]
+    }
+  ],
+  "criticalFailures": [],
+  "versionComparison": {
+    "comparedVersion": null,
+    "status": "NoPreviousReport",
+    "notes": "Generate and retain future benchmark reports to enable regression comparison."
+  },
+  "recommendations": [
+    "Add seed datasets for missing categories: Production Planning, Unity Production, Project Management.",
+    "Run live agent outputs against each benchmark case and replace NotRun scores with evidence-backed scores.",
+    "Compare this report against the previous release before claiming capability improvement.",
+    "Feed benchmark regressions into the Production State Graph as risks or next actions."
+  ]
+}

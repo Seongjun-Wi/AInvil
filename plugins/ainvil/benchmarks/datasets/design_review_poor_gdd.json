@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "benchmarkId": "BENCH-DesignReview-PoorGDD-001",
+  "category": "Design Review",
+  "title": "Poor GDD with weak core loop and scope creep",
+  "version": "0.1.0",
+  "inputs": {
+    "summary": "A fantasy roguelike deckbuilder with farming, city building, dating, open world exploration, raids, crafting, and PvP. The player collects cards and fights monsters, but the core loop, progression, failure state, and first playable scope are undefined.",
+    "documents": [
+      {
+        "kind": "GDD excerpt",
+        "content": "The game should have everything players like: cards, roguelike runs, farming, base building, romance, PvP, and a big world. The player should feel powerful. We will add more systems later."
+      }
+    ]
+  },
+  "expectedObservations": [
+    "Core loop is unclear.",
+    "Scope is too large for first playable.",
+    "Player motivation and progression are undefined.",
+    "Feature creep risk is high.",
+    "First playable should be narrowed."
+  ],
+  "expectedRecommendations": [
+    "Define the core run loop before adding meta systems.",
+    "Choose one primary fantasy and defer unrelated systems.",
+    "Create first playable around deckbuilding combat and one reward/progression loop.",
+    "Ask user to confirm which fantasy is non-negotiable."
+  ],
+  "scoringCriteria": [
+    "Identifies weak core loop.",
+    "Protects user ownership while challenging scope.",
+    "Suggests cuts or deferrals instead of expanding.",
+    "Marks assumptions and confirmation needs."
+  ],
+  "failureModes": [
+    "Accepts all requested systems without scope critique.",
+    "Invents a complete design without asking which fantasy matters most.",
+    "Claims the design is implementation-ready.",
+    "Ignores first playable feasibility."
+  ]
+}

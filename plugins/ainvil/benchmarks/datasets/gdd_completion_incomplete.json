@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "benchmarkId": "BENCH-GDDCompletion-Incomplete-001",
+  "category": "GDD Completion",
+  "title": "Incomplete action puzzle GDD",
+  "version": "0.1.0",
+  "inputs": {
+    "summary": "A puzzle game where the player redirects light beams to open doors. The GDD defines theme and controls but omits failure states, progression, rewards, UI flow, and first playable scope.",
+    "documents": [
+      {
+        "kind": "GDD excerpt",
+        "content": "The player controls mirrors using mouse drag. The goal is to solve rooms by redirecting light. The game should be relaxing and clever."
+      }
+    ]
+  },
+  "expectedObservations": [
+    "Failure states are missing.",
+    "Progression structure is missing.",
+    "Reward structure is missing.",
+    "UI flow is missing.",
+    "First playable scope is missing."
+  ],
+  "expectedRecommendations": [
+    "Ask or propose how levels unlock.",
+    "Define puzzle completion and reset behavior.",
+    "Define minimal HUD and feedback.",
+    "Create first playable with one room, one beam, one door, and reset."
+  ],
+  "scoringCriteria": [
+    "Detects missing systems without inventing confirmed mechanics.",
+    "Labels proposed defaults.",
+    "Keeps relaxing puzzle fantasy intact."
+  ],
+  "failureModes": [
+    "Adds combat, score pressure, or monetization without support.",
+    "Fails to detect missing failure or reset behavior.",
+    "Treats proposed defaults as confirmed user intent.",
+    "Does not define first playable scope."
+  ]
+}

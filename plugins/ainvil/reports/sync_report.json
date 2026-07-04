@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "1.0.0",
+  "syncReportId": "SYNC-GRAPH-AInvil-Productization-2026-07-03",
+  "generatedAt": "2026-07-03T19:07:19.667Z",
+  "sourceFiles": [
+    {
+      "kind": "Production State Graph",
+      "path": "state/production_state_graph.json",
+      "used": true
+    },
+    {
+      "kind": "Traceability View",
+      "path": "reports/traceability_view.json",
+      "used": true
+    },
+    {
+      "kind": "Project Dashboard",
+      "path": "reports/project_dashboard.json",
+      "used": true
+    },
+    {
+      "kind": "Validation Evidence",
+      "path": "validation/evidence/EVID-top-down-collectible-latest.json",
+      "used": true
+    }
+  ],
+  "graphSummary": {
+    "graphId": "GRAPH-AInvil-Productization",
+    "nodeCount": 18,
+    "edgeCount": 17,
+    "activeFeatureNodeId": "FEAT-E2E-HappyPath-001",
+    "currentMilestoneNodeId": "MILESTONE-E2E-Recovery"
+  },
+  "traceabilitySummary": {
+    "rowCount": 4,
+    "countsByStatus": {
+      "Needs Technical Mapping": 3,
+      "Needs Validation": 1
+    },
+    "missingLinkCount": 4,
+    "proposedLinkCount": 1
+  },
+  "dashboardSummary": {
+    "projectName": "AInvil Productization",
+    "currentMilestone": {
+      "nodeId": "MILESTONE-E2E-Recovery",
+      "title": "Productization cleanup and E2E validation recovery",
+      "status": "In Progress",
+      "owner": "Orchestrator"
+    },
+    "activeFeature": {
+      "nodeId": "FEAT-E2E-HappyPath-001",
+      "title": "Minimum AInvil E2E happy path",
+      "status": "In Progress",
+      "owner": "Orchestrator"
+    },
+    "nextRecommendedAction": {
+      "actionId": "NEXT-Restore-Unity-Bridge",
+      "title": "Restore Unity Bridge connectivity and rerun productization checks.",
+      "owner": "Unity Agent",
+      "status": "Planned",
+      "reason": "The minimum E2E happy path cannot reach compile or Play Mode validation while Unity Bridge is unreachable.",
+      "referencesNodeId": "TASK-E2E-004",
+      "requiredValidationLevel": "Compile Verified"
+    }
+  },
+  "driftFindings": [
+    {
+      "driftType": "TaskWithoutUnityTarget",
+      "rowId": "TRACE-FEAT-E2E-HappyPath-001-REQ-E2E-001-TASK-E2E-001",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "driftType": "TaskWithoutUnityTarget",
+      "rowId": "TRACE-FEAT-E2E-HappyPath-001-REQ-E2E-002-TASK-E2E-002-AC-E2E-001",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "driftType": "TaskWithoutUnityTarget",
+      "rowId": "TRACE-FEAT-E2E-HappyPath-001-REQ-E2E-002-TASK-E2E-003-AC-E2E-001",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "driftType": "AcceptanceWithoutEvidence",
+      "rowId": "TRACE-FEAT-E2E-HappyPath-001-REQ-E2E-003-TASK-E2E-004-UNITY-Bridge-Package-AC-E2E-002",
+      "status": "Needs Validation",
+      "missingLinks": [
+        "ValidationEvidence"
+      ],
+      "nextAction": "Resolve missing ValidationEvidence."
+    }
+  ],
+  "blockedSyncItems": [
+    {
+      "driftType": "AcceptanceWithoutEvidence",
+      "rowId": "TRACE-FEAT-E2E-HappyPath-001-REQ-E2E-003-TASK-E2E-004-UNITY-Bridge-Package-AC-E2E-002",
+      "status": "Needs Validation",
+      "missingLinks": [
+        "ValidationEvidence"
+      ],
+      "nextAction": "Resolve missing ValidationEvidence."
+    }
+  ],
+  "recommendedNextActions": [
+    {
+      "actionId": "SYNC-ACTION-TRACE-FEAT-E2E-HappyPath-001-REQ-E2E-001-TASK-E2E-001",
+      "summary": "Resolve missing UnityTarget.",
+      "evidence": "TRACE-FEAT-E2E-HappyPath-001-REQ-E2E-001-TASK-E2E-001"
+    },
+    {
+      "actionId": "SYNC-ACTION-TRACE-FEAT-E2E-HappyPath-001-REQ-E2E-002-TASK-E2E-002-AC-E2E-001",
+      "summary": "Resolve missing UnityTarget.",
+      "evidence": "TRACE-FEAT-E2E-HappyPath-001-REQ-E2E-002-TASK-E2E-002-AC-E2E-001"
+    },
+    {
+      "actionId": "SYNC-ACTION-TRACE-FEAT-E2E-HappyPath-001-REQ-E2E-002-TASK-E2E-003-AC-E2E-001",
+      "summary": "Resolve missing UnityTarget.",
+      "evidence": "TRACE-FEAT-E2E-HappyPath-001-REQ-E2E-002-TASK-E2E-003-AC-E2E-001"
+    },
+    {
+      "actionId": "SYNC-ACTION-TRACE-FEAT-E2E-HappyPath-001-REQ-E2E-003-TASK-E2E-004-UNITY-Bridge-Package-AC-E2E-002",
+      "summary": "Resolve missing ValidationEvidence.",
+      "evidence": "TRACE-FEAT-E2E-HappyPath-001-REQ-E2E-003-TASK-E2E-004-UNITY-Bridge-Package-AC-E2E-002"
+    }
+  ]
+}

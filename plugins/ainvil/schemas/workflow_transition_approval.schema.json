@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/workflow_transition_approval.schema.json",
+  "title": "AInvil WorkflowTransitionApproval",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "approvalVersion",
+    "approvalId",
+    "generatedAt",
+    "sourcePlanId",
+    "sourceFiles",
+    "approvalRecords",
+    "summary",
+    "safestNextApprovedAction",
+    "executionPolicy"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "approvalVersion": { "type": "string" },
+    "approvalId": { "type": "string" },
+    "generatedAt": { "type": "string" },
+    "sourcePlanId": { "type": "string" },
+    "sourceFiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "path", "used"],
+        "properties": {
+          "kind": { "type": "string" },
+          "path": { "type": "string" },
+          "used": { "type": "boolean" }
+        }
+      }
+    },
+    "approvalRecords": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/approvalRecord" }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "byApprovalClass", "byReadiness", "bySafetyLevel", "autoEligibleCount", "blockedCount", "forbiddenCount"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "byApprovalClass": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "byReadiness": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "bySafetyLevel": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "autoEligibleCount": { "type": "integer", "minimum": 0 },
+        "blockedCount": { "type": "integer", "minimum": 0 },
+        "forbiddenCount": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "safestNextApprovedAction": {
+      "oneOf": [
+        { "$ref": "#/$defs/approvalRecord" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["transitionId", "approvalClass", "reason", "canBeAutomatedLater", "userFacingMessage"],
+          "properties": {
+            "transitionId": { "type": "string" },
+            "approvalClass": { "type": "string" },
+            "reason": { "type": "string" },
+            "canBeAutomatedLater": { "type": "boolean" },
+            "userFacingMessage": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "executionPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "executionAllowed", "notes"],
+      "properties": {
+        "mode": { "const": "ReadOnlyApprovalClassification" },
+        "executionAllowed": { "const": false },
+        "notes": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "approvalRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "transitionId",
+        "transitionType",
+        "targetArtifactId",
+        "approvalClass",
+        "executionReadiness",
+        "requiredApprovals",
+        "requiredEvidence",
+        "missingEvidence",
+        "requiredReviews",
+        "missingReviews",
+        "safetyLevel",
+        "reason",
+        "evidenceRefs",
+        "canBeAutomatedLater",
+        "userFacingMessage"
+      ],
+      "properties": {
+        "transitionId": { "type": "string" },
+        "transitionType": { "type": "string" },
+        "targetArtifactId": { "type": "string" },
+        "approvalClass": {
+          "enum": ["AutoEligible", "UserApprovalRequired", "ReviewRequired", "EvidenceRequired", "Blocked", "Forbidden"]
+        },
+        "executionReadiness": {
+          "enum": ["Ready", "NotReady", "NotApplicable"]
+        },
+        "requiredApprovals": { "type": "array", "items": { "type": "string" } },
+        "requiredEvidence": { "type": "array", "items": { "type": "string" } },
+        "missingEvidence": { "type": "array", "items": { "type": "string" } },
+        "requiredReviews": { "type": "array", "items": { "type": "string" } },
+        "missingReviews": { "type": "array", "items": { "type": "string" } },
+        "safetyLevel": {
+          "enum": ["LowRisk", "MediumRisk", "HighRisk", "Destructive", "Unknown"]
+        },
+        "reason": { "type": "string" },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "id"],
+            "properties": {
+              "kind": { "enum": ["GraphNode", "ReviewRecord", "BenchmarkCase", "KpiItem", "WorkflowReport"] },
+              "id": { "type": "string" }
+            }
+          }
+        },
+        "canBeAutomatedLater": { "type": "boolean" },
+        "userFacingMessage": { "type": "string" }
+      }
+    }
+  }
+}

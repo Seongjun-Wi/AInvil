@@ -1,0 +1,278 @@
+{
+  "schemaVersion": "1.0.0",
+  "graphId": "GRAPH-AInvil-Example",
+  "projectId": "PROJECT-Example",
+  "projectName": "Example AInvil Project",
+  "version": "0.1.0",
+  "createdAt": "2026-06-26T00:00:00.000Z",
+  "updatedAt": "2026-07-02T04:43:30.677Z",
+  "currentVisionNodeId": "VISION-Core",
+  "currentMilestoneNodeId": "MILESTONE-FirstPlayable",
+  "activeFeatureNodeId": "FEAT-CoreLoop-001",
+  "healthSummary": {
+    "designHealth": "Yellow",
+    "implementationHealth": "Yellow",
+    "documentationHealth": "Yellow",
+    "validationCoverage": "Red",
+    "technicalDebt": "Unknown",
+    "productionRisk": "Yellow",
+    "summary": "Initial graph template. Runtime validation evidence is still missing."
+  },
+  "nextRecommendedAction": {
+    "actionId": "WFA-Validate-Gap",
+    "title": "Resolve the highest validation gap.",
+    "owner": "Input Agent",
+    "status": "Planned",
+    "reason": "AC-CoreLoop-001 is below the required validation confidence.",
+    "referencesNodeId": "AC-CoreLoop-001",
+    "requiredValidationLevel": "Play Mode Verified"
+  },
+  "nodes": [
+    {
+      "id": "VISION-Core",
+      "type": "Vision",
+      "title": "First playable player fantasy",
+      "summary": "The player should understand the core fantasy and complete one readable gameplay loop.",
+      "status": "Confirmed",
+      "owner": "Director Layer",
+      "refs": [
+        {
+          "kind": "GDD",
+          "path": "Docs/01_GDD.md",
+          "section": "Design Intent"
+        }
+      ]
+    },
+    {
+      "id": "MILESTONE-FirstPlayable",
+      "type": "Milestone",
+      "title": "First playable",
+      "summary": "A small playable slice that proves the core loop.",
+      "status": "Planned",
+      "owner": "Orchestrator"
+    },
+    {
+      "id": "FEAT-CoreLoop-001",
+      "type": "Feature",
+      "title": "Core loop prototype",
+      "summary": "Player can perform the main action, receive feedback, and reach a simple success/failure state.",
+      "status": "Planned",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "REQ-CoreLoop-001",
+      "type": "Requirement",
+      "title": "Playable loop requirement",
+      "summary": "The first playable must include one complete player action and resolution loop.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "FS-CoreLoop",
+      "type": "FeatureSpec",
+      "title": "Core loop feature spec",
+      "summary": "Feature spec describing first playable core loop behavior.",
+      "status": "Planned",
+      "owner": "GDD Agent",
+      "refs": [
+        {
+          "kind": "Feature Spec",
+          "path": "Docs/Features/FS_Core_Loop.md"
+        }
+      ]
+    },
+    {
+      "id": "TASK-CoreLoop-001",
+      "type": "ImplementationTask",
+      "title": "Implement first playable core loop",
+      "summary": "Create or update Unity objects and scripts needed for the first playable loop.",
+      "status": "Planned",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "UNITY-GameplayScene",
+      "type": "UnityTarget",
+      "title": "Gameplay scene",
+      "summary": "Primary scene for the first playable milestone.",
+      "status": "Planned",
+      "owner": "Unity Agent",
+      "metadata": {
+        "unityKind": "Scene",
+        "path": "Assets/Scenes/Gameplay.unity"
+      }
+    },
+    {
+      "id": "INPUT-CoreAction",
+      "type": "InputSpec",
+      "title": "Core action input",
+      "summary": "Input that triggers the core gameplay action.",
+      "status": "Planned",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "AC-CoreLoop-001",
+      "type": "AcceptanceCriterion",
+      "title": "Core loop resolves",
+      "summary": "Given the player is in the gameplay scene, when the core action is performed, then the game resolves feedback and updates state.",
+      "status": "Needs validation",
+      "owner": "GDD Agent",
+      "validationLevel": "Not Checked"
+    },
+    {
+      "id": "EVID-CoreLoop-001",
+      "type": "ValidationEvidence",
+      "title": "Core loop validation evidence",
+      "summary": "Runtime validation has not been performed yet.",
+      "status": "Needs validation",
+      "owner": "Input Agent",
+      "validationLevel": "Not Checked",
+      "evidence": {
+        "evidenceId": "EVID-CoreLoop-001",
+        "validationLevel": "Not Checked",
+        "status": "Not tested",
+        "source": "state/production_state_graph.json",
+        "summary": "Placeholder evidence node until Play Mode validation runs.",
+        "timestamp": null
+      }
+    },
+    {
+      "id": "HEALTH-Current",
+      "type": "ProjectHealth",
+      "title": "Current project health",
+      "summary": "Initial health snapshot for the example graph.",
+      "status": "Planned",
+      "owner": "Director Layer",
+      "health": {
+        "designHealth": "Yellow",
+        "implementationHealth": "Yellow",
+        "documentationHealth": "Yellow",
+        "validationCoverage": "Red",
+        "technicalDebt": "Unknown",
+        "productionRisk": "Yellow",
+        "summary": "Validation coverage is the main known gap."
+      }
+    },
+    {
+      "id": "NEXT-Validate-CoreLoop",
+      "type": "NextAction",
+      "title": "Validate the core loop",
+      "summary": "Prepare acceptance criteria and run Play Mode validation when implementation is ready.",
+      "status": "Planned",
+      "owner": "Orchestrator",
+      "nextAction": {
+        "actionId": "NEXT-Validate-CoreLoop",
+        "title": "Validate the core loop",
+        "owner": "Orchestrator",
+        "status": "Planned",
+        "reason": "The core loop cannot be claimed playable until validation evidence exists.",
+        "referencesNodeId": "TASK-CoreLoop-001",
+        "requiredValidationLevel": "Play Mode Verified"
+      }
+    },
+    {
+      "id": "NA-WorkflowRuntime-NextAction",
+      "type": "NextAction",
+      "title": "Resolve the highest validation gap.",
+      "summary": "AC-CoreLoop-001 is below the required validation confidence.",
+      "status": "Planned",
+      "owner": "Orchestrator",
+      "refs": [
+        {
+          "kind": "Workflow Runtime Report",
+          "path": "reports/workflow_runtime_report.json"
+        }
+      ],
+      "nextAction": {
+        "actionId": "WFA-Validate-Gap",
+        "title": "Resolve the highest validation gap.",
+        "owner": "Input Agent",
+        "status": "Planned",
+        "reason": "AC-CoreLoop-001 is below the required validation confidence.",
+        "referencesNodeId": "AC-CoreLoop-001",
+        "requiredValidationLevel": "Play Mode Verified"
+      },
+      "metadata": {
+        "sourceReportId": "WFR-GRAPH-AInvil-Example-2026-07-02",
+        "priority": "High",
+        "evidenceStatus": "Evidence exists for the referenced graph node, but required validation evidence or confidence is missing.",
+        "updatedBy": "GuardedWorkflowRuntime"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-MILESTONE-DERIVES-VISION",
+      "type": "derives_from",
+      "from": "MILESTONE-FirstPlayable",
+      "to": "VISION-Core"
+    },
+    {
+      "id": "EDGE-FEAT-DERIVES-VISION",
+      "type": "derives_from",
+      "from": "FEAT-CoreLoop-001",
+      "to": "VISION-Core"
+    },
+    {
+      "id": "EDGE-REQ-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-CoreLoop-001",
+      "to": "FEAT-CoreLoop-001"
+    },
+    {
+      "id": "EDGE-FS-MAPS-FEAT",
+      "type": "maps_to",
+      "from": "FS-CoreLoop",
+      "to": "FEAT-CoreLoop-001"
+    },
+    {
+      "id": "EDGE-TASK-IMPLEMENTS-REQ",
+      "type": "implements",
+      "from": "TASK-CoreLoop-001",
+      "to": "REQ-CoreLoop-001"
+    },
+    {
+      "id": "EDGE-UNITY-MAPS-TASK",
+      "type": "maps_to",
+      "from": "UNITY-GameplayScene",
+      "to": "TASK-CoreLoop-001"
+    },
+    {
+      "id": "EDGE-INPUT-MAPS-AC",
+      "type": "maps_to",
+      "from": "INPUT-CoreAction",
+      "to": "AC-CoreLoop-001"
+    },
+    {
+      "id": "EDGE-AC-DERIVES-REQ",
+      "type": "derives_from",
+      "from": "AC-CoreLoop-001",
+      "to": "REQ-CoreLoop-001"
+    },
+    {
+      "id": "EDGE-EVID-VALIDATES-AC",
+      "type": "validates",
+      "from": "EVID-CoreLoop-001",
+      "to": "AC-CoreLoop-001"
+    },
+    {
+      "id": "EDGE-NEXT-FOR-TASK",
+      "type": "next_step_for",
+      "from": "NEXT-Validate-CoreLoop",
+      "to": "TASK-CoreLoop-001"
+    },
+    {
+      "id": "EDGE-HEALTH-AFFECTS-MILESTONE",
+      "type": "affects",
+      "from": "HEALTH-Current",
+      "to": "MILESTONE-FirstPlayable"
+    },
+    {
+      "id": "EDGE-WorkflowRuntime-NextAction",
+      "type": "next_step_for",
+      "from": "NA-WorkflowRuntime-NextAction",
+      "to": "AC-CoreLoop-001",
+      "status": "Planned",
+      "summary": "Workflow runtime selected this as the graph-backed next action."
+    }
+  ]
+}

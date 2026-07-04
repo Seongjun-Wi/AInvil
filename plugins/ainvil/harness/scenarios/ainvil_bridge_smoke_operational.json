@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "ainvil_bridge_smoke_operational",
+  "title": "AInvil Unity Bridge operational smoke validation",
+  "classification": "Operational",
+  "operationalUse": "Read-only operational smoke scenario for proving AInvil can connect to a real Unity Editor through Unity Bridge and export non-sample validation evidence.",
+  "userGoal": "Verify that AInvil can reach Unity Bridge, inspect editor status, check compile status, read console errors, inspect hierarchy, and export validation evidence without modifying the Unity project.",
+  "milestone": "Operational Unity Bridge smoke proof",
+  "interactive": false,
+  "requirementIds": [
+    "REQ-E2E-003"
+  ],
+  "acceptanceIds": [
+    "AC-E2E-002"
+  ],
+  "validationDesignPath": "validation/design/ainvil_bridge_smoke_operational.validation-design.json",
+  "evidenceOutputPath": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json",
+  "riskLevel": "Low",
+  "expectedDocuments": [
+    {
+      "type": "GDD",
+      "requirementRef": "ainvil.productization.e2e_smoke",
+      "expected": "The productization intent identifies Unity Bridge smoke validation as the minimum proof that AInvil can reach a real Unity project."
+    },
+    {
+      "type": "Technical Design",
+      "requirementRef": "ainvil.bridge.operational_smoke",
+      "expected": "The scenario verifies Unity Bridge connectivity without depending on a project-specific game scene."
+    },
+    {
+      "type": "TaskGraph",
+      "requirementRef": "ainvil.task.bridge_smoke_validation",
+      "expected": "The task graph connects REQ-E2E-003, AC-E2E-002, Unity Bridge package setup, live harness execution, and evidence export."
+    },
+    {
+      "type": "Input Spec",
+      "requirementRef": "ainvil.bridge.input_runtime_probe",
+      "expected": "Preferred runtime input bridge remains Codex.UnityBridge.AInvilRuntimeInputTestBridge, but this smoke test does not create scene objects."
+    },
+    {
+      "type": "Playtest Report",
+      "requirementRef": "ainvil.bridge.evidence_export",
+      "expected": "The live harness exports operational evidence with bridge health, compile status, console summary, checked steps, failure reason, and next action."
+    }
+  ],
+  "expectedUnityCapabilities": [
+    "Project inspection",
+    "Document traceability",
+    "Milestone planning",
+    "Package enablement",
+    "Build and release validation",
+    "Document synchronization"
+  ],
+  "expectedUnityArtifacts": [
+    {
+      "kind": "ValidationReport",
+      "path": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json",
+      "requirementRef": "ainvil.bridge.evidence_export",
+      "status": "Planned"
+    }
+  ],
+  "validationChecks": [
+    {
+      "id": "check.bridge.health",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "expected": "Unity Bridge health endpoint responds with JSON.",
+      "failureClass": "BridgeDisconnected"
+    },
+    {
+      "id": "check.bridge.status",
+      "type": "Static",
+      "target": "unity_get_status",
+      "expected": "Unity editor status is readable.",
+      "failureClass": "BridgeDisconnected"
+    },
+    {
+      "id": "check.compile",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "expected": "Compilation status can be read and reports no compile errors.",
+      "failureClass": "CompileError"
+    },
+    {
+      "id": "check.console.errors",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "expected": "Console error logs can be read and summarized.",
+      "failureClass": "ConsoleError"
+    },
+    {
+      "id": "check.hierarchy",
+      "type": "Scene",
+      "target": "unity_get_hierarchy",
+      "expected": "Active scene hierarchy can be inspected.",
+      "failureClass": "UnityArtifactMissing"
+    },
+    {
+      "id": "check.validation_probe",
+      "type": "Scene",
+      "target": "unity_probe_validation_observation",
+      "expected": "Active scene validation observation probe can be invoked.",
+      "failureClass": "PreconditionFailed"
+    },
+    {
+      "id": "check.evidence.sync",
+      "type": "DocumentSync",
+      "target": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json",
+      "expected": "Operational evidence is exported and linked to REQ-E2E-003 and AC-E2E-002.",
+      "failureClass": "ValidationNotRun"
+    }
+  ],
+  "passCriteria": [
+    "Unity Bridge health endpoint is reachable.",
+    "unity_get_status succeeds.",
+    "unity_compile_status succeeds.",
+    "unity_get_console_logs succeeds.",
+    "unity_get_hierarchy succeeds.",
+    "At least one validation observation probe succeeds.",
+    "Operational evidence is written under validation/evidence."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "BR-AInvil-LiveScored-2026-07-03",
+  "generatedAt": "2026-07-03T19:07:19.997Z",
+  "runMode": "LiveScoredPartial",
+  "evaluator": "AInvil Production Core gate generator",
+  "scores": [
+    {
+      "dimension": "Evidence Usage",
+      "score": 3,
+      "evidence": "PC1-PC4 artifacts are generated and validator-backed.",
+      "notes": "Live Unity passed evidence remains missing."
+    },
+    {
+      "dimension": "Validation",
+      "score": "NotRun",
+      "evidence": "Unity Bridge live passed output has not been captured.",
+      "notes": "Run PC3 with reachable Unity Bridge."
+    }
+  ],
+  "remainingUnevaluatedCategories": [
+    "Unity Production",
+    "Validation"
+  ],
+  "criticalFailures": [
+    {
+      "failure": "Live Unity proof missing or blocked.",
+      "severity": "High",
+      "evidence": "validation/evidence/EVID-top-down-collectible-latest.json"
+    }
+  ]
+}

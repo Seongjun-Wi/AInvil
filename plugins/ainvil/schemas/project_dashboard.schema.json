@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/project_dashboard.schema.json",
+  "title": "AInvil ProjectDashboard",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "dashboardId", "generatedAt", "projectName", "currentVision", "currentMilestone", "activeFeature", "healthSummary", "validationCoverage", "implementedFeatures", "validatedFeatures", "blockedTasks", "openQuestions", "latestBenchmarkReport", "latestLiveHarnessReport", "latestExecutionRecord", "nextRecommendedAction"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "dashboardId": { "type": "string" },
+    "generatedAt": { "type": "string" },
+    "projectName": { "type": "string" },
+    "currentVision": { "type": ["object", "null"], "additionalProperties": true },
+    "currentMilestone": { "type": ["object", "null"], "additionalProperties": true },
+    "activeFeature": { "type": ["object", "null"], "additionalProperties": true },
+    "healthSummary": { "type": ["object", "null"], "additionalProperties": true },
+    "validationCoverage": { "type": "object", "additionalProperties": { "type": "integer" } },
+    "implementedFeatures": { "type": "array", "items": { "type": "string" } },
+    "validatedFeatures": { "type": "array", "items": { "type": "string" } },
+    "blockedTasks": { "type": "array", "items": { "type": "string" } },
+    "openQuestions": { "type": "array", "items": { "type": "string" } },
+    "latestBenchmarkReport": { "type": ["string", "null"] },
+    "latestLiveHarnessReport": { "type": ["string", "null"] },
+    "latestExecutionRecord": { "type": ["string", "null"] },
+    "productizationStatus": { "type": ["object", "null"], "additionalProperties": true },
+    "productionCoreReview": { "type": ["object", "null"], "additionalProperties": true },
+    "nextRecommendedAction": { "type": ["object", "null"], "additionalProperties": true }
+  }
+}

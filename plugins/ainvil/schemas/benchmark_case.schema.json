@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/benchmark_case.schema.json",
+  "title": "AInvil Benchmark Case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "benchmarkId",
+    "category",
+    "title",
+    "version",
+    "inputs",
+    "expectedObservations",
+    "expectedRecommendations",
+    "scoringCriteria",
+    "failureModes"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "benchmarkId": {
+      "type": "string",
+      "pattern": "^BENCH-[A-Za-z0-9]+-[A-Za-z0-9]+-[0-9]{3}$"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Design Review",
+        "GDD Completion",
+        "Technical Translation",
+        "Production Planning",
+        "Unity Production",
+        "Validation",
+        "Project Management",
+        "Director Quality"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "inputs": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": true
+    },
+    "expectedObservations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "expectedRecommendations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "scoringCriteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "failureModes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

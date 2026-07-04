@@ -1,0 +1,508 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "ENV-AUDIT-2026-07-04T14-50-51-891Z",
+  "generatedAt": "2026-07-04T14:50:51.891Z",
+  "product": "AInvil",
+  "summary": {
+    "BridgePort": 33,
+    "SourceHardcoding": 3,
+    "GeneratedLocalState": 25
+  },
+  "configurationSurface": {
+    "unityBridgeUrl": "UNITY_BRIDGE_URL, default http://127.0.0.1:17777/rpc",
+    "unityHealthUrl": "UNITY_HEALTH_URL or derived from UNITY_BRIDGE_URL",
+    "unityProjectPath": "ainvil doctor --unity-project <path>, AINVIL_UNITY_PROJECT, UNITY_PROJECT_PATH, or Bridge status detection",
+    "workspaceManifest": "plugins/ainvil/state/workspace_manifest.json is generated per workspace",
+    "canonicalPackage": "plugins/ainvil/unity-package/Packages/com.codex.unity-bridge"
+  },
+  "findings": [
+    {
+      "id": "ENV-BRIDGE-1",
+      "category": "BridgePort",
+      "severity": "KnownLimitation",
+      "path": ".mcp.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
+    },
+    {
+      "id": "ENV-BRIDGE-2",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "core/rc-baseline.mjs",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-BRIDGE-3",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "core/workspace-manager.mjs",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-LOCAL-4",
+      "category": "SourceHardcoding",
+      "severity": "Needs Review",
+      "path": "docs/AInvil_Core_RC_Quickstart.md",
+      "summary": "1 local path marker(s) detected.",
+      "nextAction": "Replace hardcoded local path with a manifest/env/config value."
+    },
+    {
+      "id": "ENV-BRIDGE-5",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "docs/AInvil_Core_RC_Quickstart.md",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-LOCAL-6",
+      "category": "SourceHardcoding",
+      "severity": "Needs Review",
+      "path": "docs/AInvil_Fresh_Workspace_Verification.md",
+      "summary": "3 local path marker(s) detected.",
+      "nextAction": "Replace hardcoded local path with a manifest/env/config value."
+    },
+    {
+      "id": "ENV-BRIDGE-7",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "docs/AInvil_Production_Core_Technical_Spec.md",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-BRIDGE-8",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "docs/AInvil_Technical_Design.md",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-BRIDGE-9",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "docs/Plugin_Integration_Guide.md",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-BRIDGE-10",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "docs/production-core/PC3_Live_Unity_Proof_Technical_Spec.md",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-LOCAL-11",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "harness/reports/fresh-workspace-live-harness-report.json",
+      "summary": "2 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-BRIDGE-12",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "harness/reports/fresh-workspace-live-harness-report.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-LOCAL-13",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "harness/reports/latest-live-harness-report.json",
+      "summary": "8 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-BRIDGE-14",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "harness/reports/latest-live-harness-report.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-BRIDGE-15",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "harness/scenarios/ainvil_bridge_smoke_operational.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-BRIDGE-16",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "harness/scenarios/dungeon_recovery_first_playable_e2e.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-BRIDGE-17",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "mcp-server/server.mjs",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-LOCAL-18",
+      "category": "SourceHardcoding",
+      "severity": "Needs Review",
+      "path": "README.md",
+      "summary": "1 local path marker(s) detected.",
+      "nextAction": "Replace hardcoded local path with a manifest/env/config value."
+    },
+    {
+      "id": "ENV-BRIDGE-19",
+      "category": "BridgePort",
+      "severity": "KnownLimitation",
+      "path": "README.md",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
+    },
+    {
+      "id": "ENV-LOCAL-20",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/builds/dungeon_recovery_first_playable/DungeonRecoveryCompany_BurstDebugInformation_DoNotShip/Data/Plugins/x86_64/lib_burst_generated.txt",
+      "summary": "20 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-LOCAL-21",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable_Data/Managed/Assembly-CSharp.pdb",
+      "summary": "1 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-LOCAL-22",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable_Data/Managed/Newtonsoft.Json.pdb",
+      "summary": "1 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-LOCAL-23",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable_Data/Plugins/x86_64/lib_burst_generated.pdb",
+      "summary": "601 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-LOCAL-24",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/dungeon_recovery_first_playable_build_verification.json",
+      "summary": "6 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-BRIDGE-25",
+      "category": "BridgePort",
+      "severity": "KnownLimitation",
+      "path": "reports/dungeon_recovery_first_playable_build_verification.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
+    },
+    {
+      "id": "ENV-LOCAL-26",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/dungeon_recovery_first_playable_build_verification.md",
+      "summary": "2 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-LOCAL-27",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/dungeon_recovery_first_playable_dry_run.json",
+      "summary": "4 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-LOCAL-28",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/dungeon_recovery_first_playable_dry_run.md",
+      "summary": "4 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-LOCAL-29",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/dungeon_recovery_first_playable_validation_report.json",
+      "summary": "4 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-LOCAL-30",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/dungeon_recovery_first_playable_validation_report.md",
+      "summary": "4 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-BRIDGE-31",
+      "category": "BridgePort",
+      "severity": "KnownLimitation",
+      "path": "reports/environment_dependency_audit.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
+    },
+    {
+      "id": "ENV-BRIDGE-32",
+      "category": "BridgePort",
+      "severity": "KnownLimitation",
+      "path": "reports/environment_dependency_audit.md",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
+    },
+    {
+      "id": "ENV-LOCAL-33",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/fresh_workspace_verification_report.json",
+      "summary": "25 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-BRIDGE-34",
+      "category": "BridgePort",
+      "severity": "KnownLimitation",
+      "path": "reports/fresh_workspace_verification_report.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
+    },
+    {
+      "id": "ENV-LOCAL-35",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/fresh_workspace_verification_report.md",
+      "summary": "7 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-BRIDGE-36",
+      "category": "BridgePort",
+      "severity": "KnownLimitation",
+      "path": "reports/fresh_workspace_verification_report.md",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
+    },
+    {
+      "id": "ENV-LOCAL-37",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/onboarding_doctor_report.json",
+      "summary": "25 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-BRIDGE-38",
+      "category": "BridgePort",
+      "severity": "KnownLimitation",
+      "path": "reports/onboarding_doctor_report.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
+    },
+    {
+      "id": "ENV-LOCAL-39",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/productization_status_report.json",
+      "summary": "2 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-LOCAL-40",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/project_dashboard.json",
+      "summary": "2 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-LOCAL-41",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/rc_baseline_manifest.json",
+      "summary": "5 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-BRIDGE-42",
+      "category": "BridgePort",
+      "severity": "KnownLimitation",
+      "path": "reports/rc_baseline_manifest.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
+    },
+    {
+      "id": "ENV-BRIDGE-43",
+      "category": "BridgePort",
+      "severity": "KnownLimitation",
+      "path": "reports/rc_baseline_manifest.md",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
+    },
+    {
+      "id": "ENV-LOCAL-44",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/regression_suite_latest.json",
+      "summary": "6 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-BRIDGE-45",
+      "category": "BridgePort",
+      "severity": "KnownLimitation",
+      "path": "reports/regression_suite_latest.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
+    },
+    {
+      "id": "ENV-LOCAL-46",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/regression_suite_latest.md",
+      "summary": "2 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-LOCAL-47",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "reports/release_readiness_report.json",
+      "summary": "2 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-BRIDGE-48",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "scripts/run-ainvil-live-harness.mjs",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-BRIDGE-49",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "scripts/validate-mcp-server.mjs",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-BRIDGE-50",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "scripts/verify-dungeon-recovery-first-playable-build.mjs",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-BRIDGE-51",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "scripts/verify-fresh-workspace.mjs",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-LOCAL-52",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "state/workspace_manifest.json",
+      "summary": "16 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-BRIDGE-53",
+      "category": "BridgePort",
+      "severity": "KnownLimitation",
+      "path": "unity-package/Packages/com.codex.unity-bridge/Editor/CodexUnityBridgeServer.cs",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
+    },
+    {
+      "id": "ENV-BRIDGE-54",
+      "category": "BridgePort",
+      "severity": "KnownLimitation",
+      "path": "unity-package/Packages/com.codex.unity-bridge/README.md",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
+    },
+    {
+      "id": "ENV-LOCAL-55",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "validation/evidence/EVID-ainvil-bridge-smoke-operational-fresh-workspace-latest.json",
+      "summary": "13 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-BRIDGE-56",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "validation/evidence/EVID-ainvil-bridge-smoke-operational-fresh-workspace-latest.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-BRIDGE-57",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-LOCAL-58",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "validation/evidence/EVID-dungeon-recovery-first-playable-build-latest.json",
+      "summary": "4 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-LOCAL-59",
+      "category": "GeneratedLocalState",
+      "severity": "Info",
+      "path": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json",
+      "summary": "2 local path marker(s) detected.",
+      "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-BRIDGE-60",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-BRIDGE-61",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "validation/evidence/EVID-top-down-collectible-latest.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    }
+  ]
+}

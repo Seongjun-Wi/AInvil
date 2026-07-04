@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "1.0.0",
+  "designSetId": "VDSET-top-down-collectible-001",
+  "source": "harness/scenarios/top_down_collectible.json",
+  "validations": [
+    {
+      "validationId": "VAL-FP-PLAYER-COMPONENT-001",
+      "requirementId": "REQ-CoreLoop-001",
+      "acceptanceId": "AC-CoreLoop-001",
+      "scenarioId": "scenario.top_down_collectible",
+      "feature": "Top-down collectible prototype",
+      "testType": "unity-inspection",
+      "scene": "Assets/Scenes/TopDownCollectible.unity",
+      "preconditions": [
+        "Unity Bridge is reachable",
+        "TopDownCollectible scene exists"
+      ],
+      "setup": [
+        "Open TopDownCollectible scene"
+      ],
+      "actions": [
+        {
+          "type": "openScene",
+          "scene": "Assets/Scenes/TopDownCollectible.unity"
+        }
+      ],
+      "observations": [
+        {
+          "name": "activeScenePath",
+          "type": "activeScene",
+          "field": "path"
+        },
+        {
+          "name": "playerExists",
+          "type": "objectExists",
+          "target": "/Player"
+        },
+        {
+          "name": "playerControllerExists",
+          "type": "componentExists",
+          "target": "/Player",
+          "component": "PlayerController"
+        },
+        {
+          "name": "editorLogErrors",
+          "type": "editorLogErrors"
+        }
+      ],
+      "passCriteria": [
+        {
+          "id": "ASSERT-SCENE-OPEN",
+          "observation": "activeScenePath",
+          "operator": "equals",
+          "expected": "Assets/Scenes/TopDownCollectible.unity"
+        },
+        {
+          "id": "ASSERT-PLAYER-EXISTS",
+          "observation": "playerExists",
+          "operator": "equals",
+          "expected": true
+        },
+        {
+          "id": "ASSERT-PLAYER-CONTROLLER-EXISTS",
+          "observation": "playerControllerExists",
+          "operator": "equals",
+          "expected": true
+        },
+        {
+          "id": "ASSERT-NO-EDITOR-ERRORS",
+          "observation": "editorLogErrors",
+          "operator": "equals",
+          "expected": 0
+        }
+      ],
+      "evidenceToRecord": [
+        "beforeObservations",
+        "afterObservations",
+        "assertions",
+        "editorLog"
+      ],
+      "requiredProbes": [
+        "SceneProbe",
+        "ComponentProbe",
+        "LogProbe"
+      ]
+    }
+  ]
+}

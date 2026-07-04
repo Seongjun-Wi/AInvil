@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0.0",
+  "executionVersion": "0.1.0",
+  "executionId": "WER-2026-07-02T05-21-43-028Z-TRANS-RunBenchmark-Refresh",
+  "transitionId": "TRANS-RunBenchmark-Refresh",
+  "transitionType": "RunBenchmark",
+  "approvalClass": "AutoEligible",
+  "startedAt": "2026-07-02T05:21:42.999Z",
+  "finishedAt": "2026-07-02T05:21:43.028Z",
+  "status": "Succeeded",
+  "inputs": {
+    "mode": "apply",
+    "allowMutations": true,
+    "sourceReportId": "WFR-GRAPH-AInvil-Example-2026-07-02",
+    "sourcePlanId": "WTP-GRAPH-AInvil-Example-2026-07-02",
+    "sourceApprovalId": "WTA-WTP-GRAPH-AInvil-Example-2026-07-02-2026-07-02",
+    "transitionId": "TRANS-RunBenchmark-Refresh",
+    "targetArtifactId": "benchmarks/reports/latest-benchmark-report.json"
+  },
+  "outputs": {
+    "createdFiles": [
+      "benchmarks/reports/latest-benchmark-report.md",
+      "benchmarks/reports/latest-benchmark-report.json"
+    ],
+    "updatedFiles": [
+      "benchmarks/reports/latest-benchmark-report.md",
+      "benchmarks/reports/latest-benchmark-report.json"
+    ],
+    "graphPatchPlan": null,
+    "summary": "Benchmark report generated: BR-AInvil-Baseline-2026-07-02"
+  },
+  "evidenceRefs": [
+    {
+      "kind": "BenchmarkReport",
+      "id": "BR-AInvil-Baseline-2026-07-02",
+      "path": "benchmarks/reports/latest-benchmark-report.json"
+    }
+  ],
+  "errors": [],
+  "blockedReason": null,
+  "nextAction": {
+    "actionId": "WFA-Validate-Gap",
+    "title": "Resolve the highest validation gap.",
+    "reason": "AC-CoreLoop-001 is below the required validation confidence.",
+    "suggestedOwner": "Input Agent",
+    "priority": "High",
+    "referencesNodeIds": [
+      "AC-CoreLoop-001"
+    ],
+    "referencesReviewIds": [],
+    "referencesBenchmarkIds": [],
+    "referencesKpiItems": [],
+    "evidenceStatus": "Evidence exists for the referenced graph node, but required validation evidence or confidence is missing."
+  }
+}

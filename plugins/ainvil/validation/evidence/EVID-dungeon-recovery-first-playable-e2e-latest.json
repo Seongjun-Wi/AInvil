@@ -1,0 +1,845 @@
+{
+  "schemaVersion": "1.0.0",
+  "evidenceId": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T14-47-56-627Z",
+  "source": "LiveHarness",
+  "scenarioId": "dungeon_recovery_first_playable_e2e",
+  "classification": "Operational",
+  "category": "ProductMvp",
+  "validationType": "UnityFeatureE2E",
+  "validationLevel": "Play Mode Verified",
+  "status": "Passed",
+  "result": "Passed",
+  "validationIds": [
+    "VAL-DRC-MVP-FirstRecoveryJob-E2E"
+  ],
+  "validationId": "VAL-DRC-MVP-FirstRecoveryJob-E2E",
+  "failureClass": "None",
+  "acceptanceIds": [
+    "AC-DRC-MVP-001",
+    "AC-DRC-MVP-002",
+    "AC-DRC-MVP-003"
+  ],
+  "requirementIds": [
+    "REQ-DRC-MVP-001"
+  ],
+  "unityTargets": [
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity",
+    "/AInvilDungeonRecoveryFirstPlayable/Player",
+    "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/Rubble",
+    "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/CorruptionNode",
+    "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/BrokenRelic",
+    "/AInvilDungeonRecoveryFirstPlayable/HUD/ProgressText",
+    "/AInvilDungeonRecoveryFirstPlayable/GameController/AInvilDungeonRecoveryGameController",
+    "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json"
+  ],
+  "checks": [
+    {
+      "checkId": "bridge.health",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "bridge.unity_get_status",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_status succeeded."
+    },
+    {
+      "checkId": "bridge.unity_clear_console",
+      "type": "Console",
+      "target": "unity_clear_console",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_clear_console succeeded."
+    },
+    {
+      "checkId": "bridge.unity_compile_status.before_product_mvp_scene_build",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors."
+    },
+    {
+      "checkId": "product_mvp.builder.scene_verifier",
+      "type": "Scene",
+      "target": "unity_get_game_object",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Using generated scene BuildVerifier for Product MVP scene rebuild."
+    },
+    {
+      "checkId": "bridge.unity_invoke_component_method",
+      "type": "Static",
+      "target": "unity_invoke_component_method",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "bridge.unity_open_scene",
+      "type": "Static",
+      "target": "unity_open_scene",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_open_scene succeeded."
+    },
+    {
+      "checkId": "bridge.unity_compile_status.after_product_mvp_scene_build",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors."
+    },
+    {
+      "checkId": "bridge.unity_get_console_logs",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_console_logs succeeded."
+    },
+    {
+      "checkId": "bridge.unity_clear_console",
+      "type": "Console",
+      "target": "unity_clear_console",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_clear_console succeeded."
+    },
+    {
+      "checkId": "artifact.assets_ainvilgenerated_dungeonrecoveryfirstplayable_scenes_drc_firstrecoveryjob_",
+      "type": "Scene",
+      "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Found exact asset match for Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity."
+    },
+    {
+      "checkId": "artifact.ainvildungeonrecoveryfirstplayable_player",
+      "type": "GameObject",
+      "target": "/AInvilDungeonRecoveryFirstPlayable/Player",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Live object check succeeded for /AInvilDungeonRecoveryFirstPlayable/Player."
+    },
+    {
+      "checkId": "artifact.ainvildungeonrecoveryfirstplayable_recoverytargets_rubble",
+      "type": "GameObject",
+      "target": "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/Rubble",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Live object check succeeded for /AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/Rubble."
+    },
+    {
+      "checkId": "artifact.ainvildungeonrecoveryfirstplayable_recoverytargets_corruptionnode",
+      "type": "GameObject",
+      "target": "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/CorruptionNode",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Live object check succeeded for /AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/CorruptionNode."
+    },
+    {
+      "checkId": "artifact.ainvildungeonrecoveryfirstplayable_recoverytargets_brokenrelic",
+      "type": "GameObject",
+      "target": "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/BrokenRelic",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Live object check succeeded for /AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/BrokenRelic."
+    },
+    {
+      "checkId": "artifact.ainvildungeonrecoveryfirstplayable_hud_progresstext",
+      "type": "UI",
+      "target": "/AInvilDungeonRecoveryFirstPlayable/HUD/ProgressText",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Live object check succeeded for /AInvilDungeonRecoveryFirstPlayable/HUD/ProgressText."
+    },
+    {
+      "checkId": "artifact.ainvildungeonrecoveryfirstplayable_gamecontroller_ainvildungeonrecoverygamecontr",
+      "type": "Component",
+      "target": "/AInvilDungeonRecoveryFirstPlayable/GameController/AInvilDungeonRecoveryGameController",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Live component check succeeded for /AInvilDungeonRecoveryFirstPlayable/GameController: AInvilDungeonRecoveryGameController."
+    },
+    {
+      "checkId": "artifact.validation_evidence_evid_dungeon_recovery_first_playable_e2e_latest_json.planned",
+      "type": "Static",
+      "target": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Artifact is planned by the scenario and does not require live existence."
+    },
+    {
+      "checkId": "bridge.unity_enter_play_mode",
+      "type": "PlayMode",
+      "target": "unity_enter_play_mode",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_enter_play_mode succeeded."
+    },
+    {
+      "checkId": "bridge.wait.product_mvp_play_mode_enter",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge was reachable after 8068ms."
+    },
+    {
+      "checkId": "product_mvp.controller.resetvalidationstate",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.ResetValidationState",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "product_mvp.controller.getvalidationstatejson",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.GetValidationStateJson",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "product_mvp.controller.validationrecovernexttarget",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.ValidationRecoverNextTarget",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "product_mvp.controller.getvalidationstatejson",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.GetValidationStateJson",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "product_mvp.controller.validationrecovernexttarget",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.ValidationRecoverNextTarget",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "product_mvp.controller.validationrecovernexttarget",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.ValidationRecoverNextTarget",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "product_mvp.controller.getvalidationstatejson",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.GetValidationStateJson",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "product_mvp.assertions",
+      "type": "PlayMode",
+      "target": "DungeonRecoveryFirstPlayable",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "6 Product MVP assertion(s) passed."
+    },
+    {
+      "checkId": "product_mvp.assert.target_count",
+      "type": "ValidationAssertion",
+      "target": "target_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_count passed."
+    },
+    {
+      "checkId": "product_mvp.assert.initial_recovered",
+      "type": "ValidationAssertion",
+      "target": "initial_recovered",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "initial_recovered passed."
+    },
+    {
+      "checkId": "product_mvp.assert.after_first_recovery",
+      "type": "ValidationAssertion",
+      "target": "after_first_recovery",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "after_first_recovery passed."
+    },
+    {
+      "checkId": "product_mvp.assert.after_third_recovery",
+      "type": "ValidationAssertion",
+      "target": "after_third_recovery",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "after_third_recovery passed."
+    },
+    {
+      "checkId": "product_mvp.assert.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "product_mvp.assert.progress_text",
+      "type": "ValidationAssertion",
+      "target": "progress_text",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "progress_text passed."
+    },
+    {
+      "checkId": "bridge.unity_get_console_logs",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_console_logs succeeded."
+    },
+    {
+      "checkId": "bridge.unity_exit_play_mode",
+      "type": "PlayMode",
+      "target": "unity_exit_play_mode",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_exit_play_mode succeeded."
+    },
+    {
+      "checkId": "bridge.wait.product_mvp_play_mode_exit",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge was reachable after 1572ms."
+    }
+  ],
+  "checkedSteps": [
+    {
+      "checkId": "bridge.health",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "bridge.unity_get_status",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_status succeeded."
+    },
+    {
+      "checkId": "bridge.unity_clear_console",
+      "type": "Console",
+      "target": "unity_clear_console",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_clear_console succeeded."
+    },
+    {
+      "checkId": "bridge.unity_compile_status.before_product_mvp_scene_build",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors."
+    },
+    {
+      "checkId": "product_mvp.builder.scene_verifier",
+      "type": "Scene",
+      "target": "unity_get_game_object",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Using generated scene BuildVerifier for Product MVP scene rebuild."
+    },
+    {
+      "checkId": "bridge.unity_invoke_component_method",
+      "type": "Static",
+      "target": "unity_invoke_component_method",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "bridge.unity_open_scene",
+      "type": "Static",
+      "target": "unity_open_scene",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_open_scene succeeded."
+    },
+    {
+      "checkId": "bridge.unity_compile_status.after_product_mvp_scene_build",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors."
+    },
+    {
+      "checkId": "bridge.unity_get_console_logs",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_console_logs succeeded."
+    },
+    {
+      "checkId": "bridge.unity_clear_console",
+      "type": "Console",
+      "target": "unity_clear_console",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_clear_console succeeded."
+    },
+    {
+      "checkId": "artifact.assets_ainvilgenerated_dungeonrecoveryfirstplayable_scenes_drc_firstrecoveryjob_",
+      "type": "Scene",
+      "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Found exact asset match for Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity."
+    },
+    {
+      "checkId": "artifact.ainvildungeonrecoveryfirstplayable_player",
+      "type": "GameObject",
+      "target": "/AInvilDungeonRecoveryFirstPlayable/Player",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Live object check succeeded for /AInvilDungeonRecoveryFirstPlayable/Player."
+    },
+    {
+      "checkId": "artifact.ainvildungeonrecoveryfirstplayable_recoverytargets_rubble",
+      "type": "GameObject",
+      "target": "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/Rubble",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Live object check succeeded for /AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/Rubble."
+    },
+    {
+      "checkId": "artifact.ainvildungeonrecoveryfirstplayable_recoverytargets_corruptionnode",
+      "type": "GameObject",
+      "target": "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/CorruptionNode",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Live object check succeeded for /AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/CorruptionNode."
+    },
+    {
+      "checkId": "artifact.ainvildungeonrecoveryfirstplayable_recoverytargets_brokenrelic",
+      "type": "GameObject",
+      "target": "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/BrokenRelic",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Live object check succeeded for /AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/BrokenRelic."
+    },
+    {
+      "checkId": "artifact.ainvildungeonrecoveryfirstplayable_hud_progresstext",
+      "type": "UI",
+      "target": "/AInvilDungeonRecoveryFirstPlayable/HUD/ProgressText",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Live object check succeeded for /AInvilDungeonRecoveryFirstPlayable/HUD/ProgressText."
+    },
+    {
+      "checkId": "artifact.ainvildungeonrecoveryfirstplayable_gamecontroller_ainvildungeonrecoverygamecontr",
+      "type": "Component",
+      "target": "/AInvilDungeonRecoveryFirstPlayable/GameController/AInvilDungeonRecoveryGameController",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Live component check succeeded for /AInvilDungeonRecoveryFirstPlayable/GameController: AInvilDungeonRecoveryGameController."
+    },
+    {
+      "checkId": "artifact.validation_evidence_evid_dungeon_recovery_first_playable_e2e_latest_json.planned",
+      "type": "Static",
+      "target": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Artifact is planned by the scenario and does not require live existence."
+    },
+    {
+      "checkId": "bridge.unity_enter_play_mode",
+      "type": "PlayMode",
+      "target": "unity_enter_play_mode",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_enter_play_mode succeeded."
+    },
+    {
+      "checkId": "bridge.wait.product_mvp_play_mode_enter",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge was reachable after 8068ms."
+    },
+    {
+      "checkId": "product_mvp.controller.resetvalidationstate",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.ResetValidationState",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "product_mvp.controller.getvalidationstatejson",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.GetValidationStateJson",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "product_mvp.controller.validationrecovernexttarget",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.ValidationRecoverNextTarget",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "product_mvp.controller.getvalidationstatejson",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.GetValidationStateJson",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "product_mvp.controller.validationrecovernexttarget",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.ValidationRecoverNextTarget",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "product_mvp.controller.validationrecovernexttarget",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.ValidationRecoverNextTarget",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "product_mvp.controller.getvalidationstatejson",
+      "type": "PlayMode",
+      "target": "AInvilDungeonRecoveryGameController.GetValidationStateJson",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "product_mvp.assertions",
+      "type": "PlayMode",
+      "target": "DungeonRecoveryFirstPlayable",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "6 Product MVP assertion(s) passed."
+    },
+    {
+      "checkId": "product_mvp.assert.target_count",
+      "type": "ValidationAssertion",
+      "target": "target_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_count passed."
+    },
+    {
+      "checkId": "product_mvp.assert.initial_recovered",
+      "type": "ValidationAssertion",
+      "target": "initial_recovered",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "initial_recovered passed."
+    },
+    {
+      "checkId": "product_mvp.assert.after_first_recovery",
+      "type": "ValidationAssertion",
+      "target": "after_first_recovery",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "after_first_recovery passed."
+    },
+    {
+      "checkId": "product_mvp.assert.after_third_recovery",
+      "type": "ValidationAssertion",
+      "target": "after_third_recovery",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "after_third_recovery passed."
+    },
+    {
+      "checkId": "product_mvp.assert.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "product_mvp.assert.progress_text",
+      "type": "ValidationAssertion",
+      "target": "progress_text",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "progress_text passed."
+    },
+    {
+      "checkId": "bridge.unity_get_console_logs",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_console_logs succeeded."
+    },
+    {
+      "checkId": "bridge.unity_exit_play_mode",
+      "type": "PlayMode",
+      "target": "unity_exit_play_mode",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_exit_play_mode succeeded."
+    },
+    {
+      "checkId": "bridge.wait.product_mvp_play_mode_exit",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge was reachable after 1572ms."
+    }
+  ],
+  "bridgeHealthResult": {
+    "checkId": "bridge.health",
+    "status": "Passed",
+    "failureClass": "Unknown",
+    "message": "Unity Bridge health endpoint is reachable."
+  },
+  "compileStatusResult": {
+    "checkId": "bridge.unity_compile_status.before_product_mvp_scene_build",
+    "status": "Passed",
+    "failureClass": "Unknown",
+    "message": "Unity compile status is stable and has no compile errors."
+  },
+  "consoleErrorSummary": {
+    "status": "Passed",
+    "errorCount": 0,
+    "message": "unity_get_console_logs succeeded."
+  },
+  "failureReason": null,
+  "blocker": null,
+  "bridgeDiagnostics": [],
+  "validationResults": [
+    {
+      "validationId": "VAL-DRC-MVP-FirstRecoveryJob-E2E",
+      "requirementId": "REQ-DRC-MVP-001",
+      "acceptanceIds": [
+        "AC-DRC-MVP-001",
+        "AC-DRC-MVP-002",
+        "AC-DRC-MVP-003"
+      ],
+      "scenario": "dungeon_recovery_first_playable_e2e",
+      "result": "Passed",
+      "beforeObservations": [
+        {
+          "name": "initialRecoveredCount",
+          "type": "debugStateJson",
+          "phase": "before",
+          "value": 0,
+          "status": "Passed"
+        }
+      ],
+      "afterObservations": [
+        {
+          "name": "afterThirdRecoveryCount",
+          "type": "debugStateJson",
+          "phase": "after",
+          "value": 3,
+          "status": "Passed"
+        },
+        {
+          "name": "isJobComplete",
+          "type": "debugStateJson",
+          "phase": "after",
+          "value": true,
+          "status": "Passed"
+        },
+        {
+          "name": "progressText",
+          "type": "textValue",
+          "phase": "after",
+          "value": "Recovered: 3 / 3\nJob Complete",
+          "status": "Passed"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "target_count",
+          "result": "Passed",
+          "message": "target_count passed."
+        },
+        {
+          "id": "initial_recovered",
+          "result": "Passed",
+          "message": "initial_recovered passed."
+        },
+        {
+          "id": "after_first_recovery",
+          "result": "Passed",
+          "message": "after_first_recovery passed."
+        },
+        {
+          "id": "after_third_recovery",
+          "result": "Passed",
+          "message": "after_third_recovery passed."
+        },
+        {
+          "id": "job_complete",
+          "result": "Passed",
+          "message": "job_complete passed."
+        },
+        {
+          "id": "progress_text",
+          "result": "Passed",
+          "message": "progress_text passed."
+        }
+      ],
+      "sourceValidationDesign": null,
+      "timestamp": "2026-07-04T14:48:10.792Z"
+    }
+  ],
+  "observations": {
+    "before": [
+      {
+        "name": "initialRecoveredCount",
+        "type": "debugStateJson",
+        "phase": "before",
+        "value": 0,
+        "status": "Passed"
+      }
+    ],
+    "after": [
+      {
+        "name": "afterThirdRecoveryCount",
+        "type": "debugStateJson",
+        "phase": "after",
+        "value": 3,
+        "status": "Passed"
+      },
+      {
+        "name": "isJobComplete",
+        "type": "debugStateJson",
+        "phase": "after",
+        "value": true,
+        "status": "Passed"
+      },
+      {
+        "name": "progressText",
+        "type": "textValue",
+        "phase": "after",
+        "value": "Recovered: 3 / 3\nJob Complete",
+        "status": "Passed"
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "target_count",
+      "result": "Passed",
+      "message": "target_count passed."
+    },
+    {
+      "id": "initial_recovered",
+      "result": "Passed",
+      "message": "initial_recovered passed."
+    },
+    {
+      "id": "after_first_recovery",
+      "result": "Passed",
+      "message": "after_first_recovery passed."
+    },
+    {
+      "id": "after_third_recovery",
+      "result": "Passed",
+      "message": "after_third_recovery passed."
+    },
+    {
+      "id": "job_complete",
+      "result": "Passed",
+      "message": "job_complete passed."
+    },
+    {
+      "id": "progress_text",
+      "result": "Passed",
+      "message": "progress_text passed."
+    }
+  ],
+  "sourceValidationDesign": null,
+  "startedAt": "2026-07-04T14:47:56.627Z",
+  "finishedAt": "2026-07-04T14:48:10.793Z",
+  "completedAt": "2026-07-04T14:48:10.793Z",
+  "timestamp": "2026-07-04T14:48:10.793Z",
+  "remainingGaps": [],
+  "nextActions": [
+    "Product MVP first playable evidence is Passed. Keep this as Product MVP Ready Candidate proof, not Public Release proof."
+  ],
+  "unityProjectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets",
+  "generatedAssets": [
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilRecoveryTarget.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilRecoveryUiView.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilDungeonRecoveryGameController.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilRecoveryPlayerController.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilDungeonRecoveryFirstPlayableBuilder.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Materials/AInvilRecoveryPending.mat",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Materials/AInvilRecoveryRecovered.mat",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Materials/AInvilRecoveryPlayer.mat",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Materials/AInvilRecoveryFloor.mat",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Materials/AInvilRecoveryWall.mat"
+  ],
+  "dryRunReport": "reports/dungeon_recovery_first_playable_dry_run.json",
+  "compileStatus": {
+    "status": "Passed",
+    "message": "Unity compile status is stable and has no compile errors.",
+    "isCompiling": false,
+    "hasErrors": false,
+    "raw": {
+      "isCompiling": false,
+      "isUpdating": false,
+      "errorCount": 0,
+      "recentErrors": []
+    }
+  },
+  "consoleErrorCount": 0,
+  "playModeStatus": {
+    "entered": "Passed",
+    "exited": "Passed"
+  },
+  "totalRecoveryTargetCount": 3,
+  "initialRecoveredCount": 0,
+  "afterFirstRecoveryCount": 1,
+  "afterThirdRecoveryCount": 3,
+  "isJobComplete": true,
+  "progressText": "Recovered: 3 / 3\nJob Complete",
+  "validationHookUsed": "AInvilDungeonRecoveryGameController.ValidationRecoverNextTarget",
+  "staleEvidenceReused": false
+}

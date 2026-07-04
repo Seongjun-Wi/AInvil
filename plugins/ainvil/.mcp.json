@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "unity-bridge": {
+      "command": "node",
+      "args": [
+        "./mcp-server/server.mjs"
+      ],
+      "cwd": ".",
+      "startup_timeout_sec": 10,
+      "tool_timeout_sec": 60,
+      "default_tools_approval_mode": "prompt",
+      "env": {
+        "UNITY_BRIDGE_URL": "http://127.0.0.1:17777/rpc"
+      }
+    }
+  }
+}

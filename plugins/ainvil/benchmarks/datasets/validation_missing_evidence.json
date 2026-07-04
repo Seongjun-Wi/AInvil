@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "benchmarkId": "BENCH-Validation-MissingEvidence-001",
+  "category": "Validation",
+  "title": "Implemented feature with missing validation evidence",
+  "version": "0.1.0",
+  "inputs": {
+    "summary": "A feature is marked implemented in the project structure, but its acceptance criteria are Not Checked and no ValidationEvidence node exists.",
+    "graphFacts": [
+      "FEAT-Dash-001 status Implemented",
+      "REQ-Dash-001 exists",
+      "TASK-Dash-001 status Implemented",
+      "AC-Dash-001 status Not Checked",
+      "No ValidationEvidence validates AC-Dash-001"
+    ]
+  },
+  "expectedObservations": [
+    "Feature should not be marked Validated.",
+    "Validation evidence is missing.",
+    "Acceptance criterion remains Not Checked.",
+    "Validation Review is required before milestone closure."
+  ],
+  "expectedRecommendations": [
+    "Route Play Mode validation to Input Agent.",
+    "Create ValidationEvidence linked to AC-Dash-001.",
+    "Report current validation level as Not Checked or Compile Verified only if compile evidence exists."
+  ],
+  "scoringCriteria": [
+    "Does not claim feature works.",
+    "Identifies missing evidence.",
+    "Recommends graph-backed validation next action."
+  ],
+  "failureModes": [
+    "Marks the feature Validated without evidence.",
+    "Claims Play Mode or runtime testing occurred when it did not.",
+    "Ignores the missing ValidationEvidence link.",
+    "Does not recommend a concrete validation next action."
+  ]
+}

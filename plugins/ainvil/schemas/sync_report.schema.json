@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/sync_report.schema.json",
+  "title": "AInvil SyncReport",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "syncReportId", "generatedAt", "sourceFiles", "graphSummary", "traceabilitySummary", "dashboardSummary", "driftFindings", "blockedSyncItems", "recommendedNextActions"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "syncReportId": { "type": "string" },
+    "generatedAt": { "type": "string" },
+    "sourceFiles": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "graphSummary": { "type": "object", "additionalProperties": true },
+    "traceabilitySummary": { "type": "object", "additionalProperties": true },
+    "dashboardSummary": { "type": "object", "additionalProperties": true },
+    "driftFindings": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "blockedSyncItems": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "recommendedNextActions": { "type": "array", "items": { "type": "object", "additionalProperties": true } }
+  }
+}

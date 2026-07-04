@@ -1,0 +1,225 @@
+{
+  "schemaVersion": "1.0.0",
+  "evidenceId": "EVID-dungeon-recovery-first-playable-build-latest",
+  "source": "UnityBridge",
+  "scenarioId": "dungeon_recovery_first_playable_e2e",
+  "classification": "Operational",
+  "category": "ProductMvp",
+  "validationType": "BuildVerification",
+  "validationLevel": "Compile Verified",
+  "status": "Passed",
+  "result": "Passed",
+  "validationIds": [
+    "VAL-DRC-MVP-BUILD-001"
+  ],
+  "validationId": "VAL-DRC-MVP-BUILD-001",
+  "failureClass": "None",
+  "acceptanceIds": [
+    "AC-DRC-MVP-001",
+    "AC-DRC-MVP-002",
+    "AC-DRC-MVP-003"
+  ],
+  "requirementIds": [
+    "REQ-DRC-MVP-001"
+  ],
+  "unityTargets": [
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity",
+    "E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable.exe"
+  ],
+  "checks": [
+    {
+      "checkId": "build.bridge_health",
+      "type": "UnityBridge",
+      "target": "build.bridge_health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "build.unity_clear_console",
+      "type": "UnityBridge",
+      "target": "build.unity_clear_console",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_clear_console succeeded."
+    },
+    {
+      "checkId": "build.unity_compile_status",
+      "type": "Compile",
+      "target": "build.unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_compile_status succeeded."
+    },
+    {
+      "checkId": "build.unity_add_component",
+      "type": "UnityBridge",
+      "target": "build.unity_add_component",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_add_component succeeded."
+    },
+    {
+      "checkId": "build.unity_invoke_component_method",
+      "type": "Build",
+      "target": "build.unity_invoke_component_method",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "build.compile_status",
+      "type": "Compile",
+      "target": "build.compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable before build."
+    },
+    {
+      "checkId": "build.unity_invoke_component_method",
+      "type": "Build",
+      "target": "build.unity_invoke_component_method",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    }
+  ],
+  "checkedSteps": [
+    {
+      "checkId": "build.bridge_health",
+      "type": "UnityBridge",
+      "target": "build.bridge_health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "build.unity_clear_console",
+      "type": "UnityBridge",
+      "target": "build.unity_clear_console",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_clear_console succeeded."
+    },
+    {
+      "checkId": "build.unity_compile_status",
+      "type": "Compile",
+      "target": "build.unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_compile_status succeeded."
+    },
+    {
+      "checkId": "build.unity_add_component",
+      "type": "UnityBridge",
+      "target": "build.unity_add_component",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_add_component succeeded."
+    },
+    {
+      "checkId": "build.unity_invoke_component_method",
+      "type": "Build",
+      "target": "build.unity_invoke_component_method",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "build.compile_status",
+      "type": "Compile",
+      "target": "build.compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable before build."
+    },
+    {
+      "checkId": "build.unity_invoke_component_method",
+      "type": "Build",
+      "target": "build.unity_invoke_component_method",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    }
+  ],
+  "bridgeHealthResult": {
+    "id": "build.bridge_health",
+    "status": "Passed",
+    "ok": true,
+    "message": "Unity Bridge health endpoint is reachable.",
+    "data": {
+      "ok": true,
+      "bridgeRunning": true,
+      "bridgeStatus": "running",
+      "capabilityVersion": "0.6.0-validation-probes",
+      "unityVersion": "6000.5.0f1",
+      "isPlaying": false,
+      "isPlayingOrWillChangePlaymode": false,
+      "playModeTransitionCount": 3
+    }
+  },
+  "compileStatusResult": {
+    "id": "build.unity_compile_status",
+    "status": "Passed",
+    "ok": true,
+    "message": "unity_compile_status succeeded.",
+    "data": {
+      "isCompiling": false,
+      "isUpdating": false,
+      "errorCount": 0,
+      "recentErrors": []
+    }
+  },
+  "consoleErrorSummary": null,
+  "failureReason": null,
+  "blocker": null,
+  "bridgeDiagnostics": [],
+  "validationResults": [
+    {
+      "validationId": "VAL-DRC-MVP-BUILD-001",
+      "requirementId": "REQ-DRC-MVP-001",
+      "acceptanceIds": [
+        "AC-DRC-MVP-001",
+        "AC-DRC-MVP-002",
+        "AC-DRC-MVP-003"
+      ],
+      "scenario": "dungeon_recovery_first_playable_e2e",
+      "result": "Passed",
+      "assertions": [
+        {
+          "id": "ASSERT-BUILD-SUCCEEDED",
+          "result": "Passed",
+          "message": "Windows development build succeeded."
+        }
+      ],
+      "timestamp": "2026-07-04T14:49:58.464Z"
+    }
+  ],
+  "observations": null,
+  "assertions": [
+    {
+      "id": "ASSERT-BUILD-SUCCEEDED",
+      "result": "Passed",
+      "message": "Windows development build succeeded."
+    }
+  ],
+  "sourceValidationDesign": null,
+  "startedAt": "2026-07-04T14:48:10.904Z",
+  "finishedAt": "2026-07-04T14:49:58.464Z",
+  "completedAt": "2026-07-04T14:49:58.464Z",
+  "timestamp": "2026-07-04T14:49:58.464Z",
+  "remainingGaps": [
+    "Executable launch and human playability confirmation remain separate gates."
+  ],
+  "nextActions": [
+    "Run the generated executable manually and record human playability feedback."
+  ],
+  "playabilityReviewStatus": "Manual Review Required",
+  "buildVerificationStatus": "Passed",
+  "uxChangesApplied": [],
+  "manualAcceptanceCriteria": [],
+  "buildOutputPath": "E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable.exe",
+  "remainingPlayabilityIssues": [
+    "Manual executable launch/play confirmation remains required."
+  ]
+}

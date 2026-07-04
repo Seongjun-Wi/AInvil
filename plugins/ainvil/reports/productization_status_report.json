@@ -1,0 +1,398 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "PRODSTAT-2026-07-04T14-50-46-880Z",
+  "generatedAt": "2026-07-04T14:50:46.880Z",
+  "product": "AInvil",
+  "graphClassification": "Operational",
+  "summary": {
+    "featureCounts": {
+      "Verified": 1,
+      "Spec-only": 2,
+      "Partial": 14,
+      "Deprecated/Sample": 2
+    },
+    "e2eCounts": {
+      "Spec-only": 1,
+      "Partial": 5,
+      "Verified": 4
+    },
+    "blockerCount": 0,
+    "decision": "Release Candidate"
+  },
+  "canonicalUnityBridgePackage": {
+    "canonicalSource": "plugins/ainvil/unity-package/Packages/com.codex.unity-bridge",
+    "installPathForUsers": "plugins/ainvil/unity-package/Packages/com.codex.unity-bridge/package.json",
+    "rootMirror": "UnityPackage/Packages/com.codex.unity-bridge",
+    "canonicalExists": true,
+    "rootMirrorExists": true,
+    "rootMirrorRole": "Deprecated/Mirror install artifact; do not treat as source of truth.",
+    "summary": "Plugin-local unity-package is the canonical package source."
+  },
+  "inputBridge": {
+    "preferredComponentType": "Codex.UnityBridge.AInvilRuntimeInputTestBridge",
+    "compatibilityComponentType": "Codex.UnityBridge.AInvilInputTestBridge",
+    "preferredExists": true,
+    "files": [
+      {
+        "role": "Preferred runtime bridge",
+        "path": "unity-package/Packages/com.codex.unity-bridge/Runtime/AInvilRuntimeInputTestBridge.cs",
+        "componentType": "Codex.UnityBridge.AInvilRuntimeInputTestBridge",
+        "exists": true
+      },
+      {
+        "role": "Compatibility/sample bridge",
+        "path": "unity-package/Packages/com.codex.unity-bridge/Runtime/AInvilInputTestBridge.cs",
+        "componentType": "Codex.UnityBridge.AInvilInputTestBridge",
+        "exists": true
+      }
+    ],
+    "summary": "Use AInvilRuntimeInputTestBridge for production validation; keep AInvilInputTestBridge only for compatibility/sample scenes."
+  },
+  "operationalValidation": {
+    "scenarioCount": 2,
+    "scenarios": [
+      {
+        "id": "ainvil_bridge_smoke_operational",
+        "title": "AInvil Unity Bridge operational smoke validation",
+        "evidenceOutputPath": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+      },
+      {
+        "id": "dungeon_recovery_first_playable_e2e",
+        "title": "Dungeon Recovery Company first playable recovery job E2E",
+        "evidenceOutputPath": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json"
+      }
+    ],
+    "latestEvidence": {
+      "evidenceId": "EVID-dungeon-recovery-first-playable-build-latest",
+      "scenarioId": "dungeon_recovery_first_playable_e2e",
+      "classification": "Operational",
+      "status": "Passed",
+      "validationLevel": "Compile Verified",
+      "failureClass": "None",
+      "path": "validation/evidence/EVID-dungeon-recovery-first-playable-build-latest.json"
+    }
+  },
+  "productMvpWorkflow": {
+    "scenarioExists": true,
+    "scenarioId": "dungeon_recovery_first_playable_e2e",
+    "category": "ProductMvp",
+    "validationType": "UnityFeatureE2E",
+    "status": "Passed",
+    "humanPlayabilityReview": {
+      "status": "Needs Improvement",
+      "reportPath": "reports/dungeon_recovery_first_playable_playability_review.json",
+      "remainingIssues": [
+        "Retest required after camera, material, player marker, target marker, and objective banner fixes.",
+        "The current experience still relies on prototype UI/text and does not yet provide a full game-like tutorial flow.",
+        "E-key recovery feedback is still minimal and should eventually receive animation/audio/VFX beyond this generated primitive slice.",
+        "User requested broader design improvement; this pass only applies minimal generated-folder UX fixes."
+      ]
+    },
+    "buildVerification": {
+      "status": "Passed",
+      "outputPath": "E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable.exe",
+      "reportPath": "reports/dungeon_recovery_first_playable_build_verification.json",
+      "failureReason": null
+    },
+    "readyCandidate": true,
+    "latestEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T14-47-56-627Z",
+      "status": "Passed",
+      "validationLevel": "Play Mode Verified",
+      "totalRecoveryTargetCount": 3,
+      "afterThirdRecoveryCount": 3,
+      "isJobComplete": true,
+      "progressText": "Recovered: 3 / 3\nJob Complete",
+      "path": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json"
+    },
+    "latestHarness": {
+      "status": "Passed",
+      "reportPath": "harness/reports/latest-live-harness-report.json"
+    },
+    "nextAction": "Treat as Product MVP Ready Candidate evidence; continue manual playability and public install gates separately."
+  },
+  "releaseLevel": {
+    "coreReleaseReady": true,
+    "coreRcReproducibilityVerified": true,
+    "canonicalUnityBridgePackageVerified": true,
+    "productMvpWorkflow": "Passed",
+    "humanPlayabilityReview": "Needs Improvement",
+    "buildVerification": "Passed",
+    "productMvpReadyCandidate": true,
+    "publicReleaseReady": false
+  },
+  "exampleContamination": [
+    {
+      "kind": "ExampleScenario",
+      "status": "Deprecated/Sample",
+      "summary": "harness/scenarios/character_animation_binding.json is an example harness scenario."
+    },
+    {
+      "kind": "ExampleScenario",
+      "status": "Deprecated/Sample",
+      "summary": "harness/scenarios/inventory_grid_ui.json is an example harness scenario."
+    },
+    {
+      "kind": "ExampleScenario",
+      "status": "Deprecated/Sample",
+      "summary": "harness/scenarios/top_down_collectible.json is an example harness scenario."
+    },
+    {
+      "kind": "SampleEvidence",
+      "status": "Deprecated/Sample",
+      "summary": "validation/evidence/EVID-top-down-collectible-latest.json is sample evidence and must not satisfy operational release gates."
+    }
+  ],
+  "e2eHappyPath": [
+    {
+      "id": "E2E-001",
+      "name": "User request intake",
+      "owner": "Codex Plugin / Orchestrator",
+      "status": "Spec-only",
+      "evidence": "Defined by interactive agent instructions; not yet stored as a standalone runtime event.",
+      "nextAction": "Add request IDs to run logs when product telemetry is introduced."
+    },
+    {
+      "id": "E2E-002",
+      "name": "Feature/Requirement/Task/Acceptance registration",
+      "owner": "Production State Graph",
+      "status": "Partial",
+      "evidence": "Current graph classification: Operational",
+      "nextAction": "Continue adding real project requirements."
+    },
+    {
+      "id": "E2E-003",
+      "name": "Unity change dry-run",
+      "owner": "Workflow Transition / Executor",
+      "status": "Partial",
+      "evidence": "Guarded transition dry-run exists, but project-specific Unity change-set dry-run is not generalized yet.",
+      "nextAction": "Connect project-specific Unity change sets to transition candidates."
+    },
+    {
+      "id": "E2E-004",
+      "name": "Unity Bridge apply/read path",
+      "owner": "MCP Unity Server / Unity Editor Bridge",
+      "status": "Partial",
+      "evidence": "Unity Bridge health endpoint is reachable.",
+      "nextAction": "Open Unity, install the canonical package, and run Tools > Codex Unity Bridge > Start Server."
+    },
+    {
+      "id": "E2E-005",
+      "name": "Compile check",
+      "owner": "Onboarding Doctor / unity_compile_status",
+      "status": "Verified",
+      "evidence": "unity_compile_status succeeded.",
+      "nextAction": "Rerun doctor after Unity Bridge connectivity is restored."
+    },
+    {
+      "id": "E2E-006",
+      "name": "Operational validation scenario registration",
+      "owner": "Live Harness",
+      "status": "Verified",
+      "evidence": "2 operational scenario(s) detected.",
+      "nextAction": "Keep at least one classification=Operational scenario for release gates."
+    },
+    {
+      "id": "E2E-007",
+      "name": "Play Mode or Unity inspection validation",
+      "owner": "Live Harness / Input Agent",
+      "status": "Verified",
+      "evidence": "Latest operational evidence status: Passed",
+      "nextAction": "Run the operational bridge smoke scenario after Unity Bridge and compile checks pass."
+    },
+    {
+      "id": "E2E-008",
+      "name": "Evidence export",
+      "owner": "validation/evidence",
+      "status": "Verified",
+      "evidence": "6 evidence file(s) detected; non-sample Passed evidence=true.",
+      "nextAction": "Keep sample evidence separate and link operational evidence to acceptance IDs."
+    },
+    {
+      "id": "E2E-009",
+      "name": "Traceability refresh",
+      "owner": "Traceability View",
+      "status": "Partial",
+      "evidence": "Traceability view exists; operational evidence linkage still depends on a Passed run.",
+      "nextAction": "Regenerate traceability after operational evidence is captured."
+    },
+    {
+      "id": "E2E-010",
+      "name": "Dashboard refresh",
+      "owner": "Project Dashboard",
+      "status": "Partial",
+      "evidence": "Dashboard exists and can show productization status.",
+      "nextAction": "Run generate-project-dashboard after productization report updates."
+    }
+  ],
+  "featureStatuses": [
+    {
+      "name": "Codex Plugin",
+      "status": "Verified",
+      "evidence": "plugin.json과 MCP config가 존재합니다.",
+      "paths": [
+        ".codex-plugin/plugin.json",
+        ".mcp.json"
+      ]
+    },
+    {
+      "name": "Agent Skills",
+      "status": "Spec-only",
+      "evidence": "역할 지침은 구현되어 있으나 런타임 검증 기능 자체는 아닙니다.",
+      "paths": [
+        "skills/orchestrator",
+        "skills/gdd-agent",
+        "skills/unity-agent",
+        "skills/input-agent"
+      ]
+    },
+    {
+      "name": "Director Layer",
+      "status": "Spec-only",
+      "evidence": "제품 판단 규칙과 워크플로우 지침으로 존재합니다.",
+      "paths": [
+        "docs/AInvil_Director_Layer.md"
+      ]
+    },
+    {
+      "name": "Platform Core",
+      "status": "Partial",
+      "evidence": "그래프/리포트/워크플로우 코어는 실행 가능하나 E2E Unity 검증은 막혀 있습니다.",
+      "paths": [
+        "core/"
+      ]
+    },
+    {
+      "name": "Production State Graph",
+      "status": "Partial",
+      "evidence": "현재 그래프 분류: Operational",
+      "paths": [
+        "state/production_state_graph.json"
+      ]
+    },
+    {
+      "name": "Production Intelligence",
+      "status": "Partial",
+      "evidence": "보고서 생성기는 존재하지만 live validation gap이 남아 있습니다.",
+      "paths": [
+        "reports/production_intelligence_report.json"
+      ]
+    },
+    {
+      "name": "Workflow Runtime",
+      "status": "Partial",
+      "evidence": "guarded sync와 산출물 생성은 가능하지만 Unity mutation/validation promotion은 하지 않습니다.",
+      "paths": [
+        "core/workflow-runtime.mjs"
+      ]
+    },
+    {
+      "name": "Transition Planner / Approval / Executor",
+      "status": "Partial",
+      "evidence": "전환 후보와 dry-run 실행은 가능하지만 실제 Unity 변경 경로와는 분리되어 있습니다.",
+      "paths": [
+        "core/workflow-transitions.mjs",
+        "core/workflow-approvals.mjs",
+        "core/workflow-executor.mjs"
+      ]
+    },
+    {
+      "name": "Traceability View",
+      "status": "Partial",
+      "evidence": "보고서는 존재하나 evidence 연결은 미완입니다.",
+      "paths": [
+        "reports/traceability_view.json"
+      ]
+    },
+    {
+      "name": "Project Dashboard",
+      "status": "Partial",
+      "evidence": "대시보드는 존재합니다.",
+      "paths": [
+        "reports/project_dashboard.json"
+      ]
+    },
+    {
+      "name": "Onboarding Doctor",
+      "status": "Partial",
+      "evidence": "releaseReadiness=Ready For Next Gate",
+      "paths": [
+        "reports/onboarding_doctor_report.json"
+      ]
+    },
+    {
+      "name": "Release Readiness",
+      "status": "Partial",
+      "evidence": "decision=Release Ready",
+      "paths": [
+        "reports/release_readiness_report.json"
+      ]
+    },
+    {
+      "name": "CLI",
+      "status": "Partial",
+      "evidence": "상태 조회와 guarded sync 명령이 존재합니다. productization 리포트 명령으로 E2E 상태를 보강합니다.",
+      "paths": [
+        "cli/ainvil-cli.mjs"
+      ]
+    },
+    {
+      "name": "MCP Unity Server",
+      "status": "Partial",
+      "evidence": "Unity Bridge health endpoint is reachable.",
+      "paths": [
+        "mcp-server/server.mjs"
+      ]
+    },
+    {
+      "name": "Unity Editor Bridge",
+      "status": "Partial",
+      "evidence": "Unity Bridge health endpoint is reachable.",
+      "paths": [
+        "unity-package/Packages/com.codex.unity-bridge"
+      ]
+    },
+    {
+      "name": "Input Test Bridge",
+      "status": "Partial",
+      "evidence": "Use AInvilRuntimeInputTestBridge for production validation; keep AInvilInputTestBridge only for compatibility/sample scenes.",
+      "paths": [
+        "unity-package/Packages/com.codex.unity-bridge/Runtime/AInvilRuntimeInputTestBridge.cs",
+        "unity-package/Packages/com.codex.unity-bridge/Runtime/AInvilInputTestBridge.cs"
+      ]
+    },
+    {
+      "name": "Benchmark System",
+      "status": "Partial",
+      "evidence": "벤치마크 데이터와 리포트는 존재하지만 제품 E2E 검증과는 분리된 평가 체계입니다.",
+      "paths": [
+        "benchmarks/"
+      ]
+    },
+    {
+      "name": "Sample Harness Fixtures",
+      "status": "Deprecated/Sample",
+      "evidence": "top_down_collectible 등은 제품 운영 시나리오가 아니라 예제/fixture로 분류해야 합니다.",
+      "paths": [
+        "harness/scenarios/top_down_collectible.json",
+        "examples/harness/scenarios/top_down_collectible.example.json"
+      ]
+    },
+    {
+      "name": "Root UnityPackage Mirror",
+      "status": "Deprecated/Sample",
+      "evidence": "루트 UnityPackage는 설치 편의 mirror/deprecated artifact로만 취급합니다.",
+      "paths": [
+        "UnityPackage/"
+      ]
+    }
+  ],
+  "releaseBlockers": [],
+  "nextCommands": [
+    "node plugins/ainvil/cli/ainvil-cli.mjs productization",
+    "node plugins/ainvil/cli/ainvil-cli.mjs doctor",
+    "node plugins/ainvil/cli/ainvil-cli.mjs release",
+    "node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario <project-scenario-id>",
+    "node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_first_playable_e2e"
+  ]
+}

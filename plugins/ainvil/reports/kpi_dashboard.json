@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0.0",
+  "dashboardId": "KPI-AInvil-2026-07-03",
+  "generatedAt": "2026-07-03T19:07:19.891Z",
+  "values": {
+    "validationCoverage": {
+      "value": {
+        "Not Checked": 1,
+        "Document Review": 0,
+        "Static Analysis": 2,
+        "Unity Inspection": 0,
+        "Compile Verified": 0,
+        "Play Mode Verified": 0,
+        "Runtime Tested": 0,
+        "User Confirmed": 0
+      },
+      "evidencePath": "reports/project_dashboard.json"
+    },
+    "traceabilityCompleteness": {
+      "value": "0/4",
+      "evidencePath": "reports/traceability_view.json"
+    },
+    "liveHarnessPassCount": {
+      "value": {
+        "total": 1,
+        "passed": 0,
+        "failed": 0,
+        "blocked": 1,
+        "warning": 0
+      },
+      "evidencePath": "harness/reports/latest-live-harness-report.json"
+    },
+    "workflowExecutionSuccessCount": {
+      "value": 0,
+      "evidencePath": "workflow/runs/latest.json"
+    },
+    "resumeReadiness": {
+      "value": "ResumeReadyWithGaps",
+      "evidencePath": "reports/project_dashboard.json"
+    },
+    "documentationDriftCount": {
+      "value": 4,
+      "evidencePath": "reports/sync_report.json"
+    },
+    "benchmarkEvaluatedCategories": {
+      "value": 5,
+      "evidencePath": "benchmarks/reports/latest-benchmark-report.json"
+    }
+  }
+}

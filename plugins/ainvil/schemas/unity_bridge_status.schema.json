@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/unity_bridge_status.schema.json",
+  "title": "AInvil UnityBridgeStatus",
+  "type": "object",
+  "required": ["bridgeRunning", "bridgeStatus", "capabilityVersion", "isPlaying", "isPlayingOrWillChangePlaymode"],
+  "properties": {
+    "bridgeRunning": { "type": "boolean" },
+    "bridgeStatus": { "enum": ["running", "transitioning", "reconnecting", "busy", "stopped"] },
+    "capabilityVersion": { "type": "string" },
+    "unityVersion": { "type": "string" },
+    "projectPath": { "type": "string" },
+    "isPlaying": { "type": "boolean" },
+    "isPlayingOrWillChangePlaymode": { "type": "boolean" },
+    "playModeTransitionCount": { "type": "integer", "minimum": 0 },
+    "inputTestBridgeAvailable": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}

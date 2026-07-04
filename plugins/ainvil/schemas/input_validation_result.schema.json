@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/input_validation_result.schema.json",
+  "title": "AInvil InputValidationResult",
+  "type": "object",
+  "required": ["inputId", "context", "method", "precondition", "action", "expected", "actual", "status"],
+  "properties": {
+    "inputId": { "type": "string" },
+    "context": { "type": "string" },
+    "method": { "enum": ["unity_send_key_event", "unity_click_ui_button", "unity_input_test_bridge", "unity_invoke_component_method", "manual"] },
+    "precondition": { "type": "string" },
+    "action": { "type": "string" },
+    "expected": { "type": "string" },
+    "actual": { "type": "string" },
+    "status": { "enum": ["Pass", "Fail", "Blocked", "Not tested"] },
+    "failureType": {
+      "type": ["string", "null"],
+      "enum": ["InputNotReceived", "GameLogicFailed", "BridgeDisconnected", "PreconditionFailed", "ConsoleError", "Unknown", null]
+    },
+    "consoleErrors": { "type": "array", "items": { "type": "string" } },
+    "validatedAt": { "type": ["string", "null"], "format": "date-time" }
+  },
+  "additionalProperties": false
+}

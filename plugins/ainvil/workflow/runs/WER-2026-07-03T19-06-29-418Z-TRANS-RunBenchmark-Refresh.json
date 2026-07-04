@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "executionVersion": "0.1.0",
+  "executionId": "WER-2026-07-03T19-06-29-418Z-TRANS-RunBenchmark-Refresh",
+  "transitionId": "TRANS-RunBenchmark-Refresh",
+  "transitionType": "RunBenchmark",
+  "approvalClass": "AutoEligible",
+  "startedAt": "2026-07-03T19:06:29.396Z",
+  "finishedAt": "2026-07-03T19:06:29.418Z",
+  "status": "DryRun",
+  "inputs": {
+    "mode": "dryRun",
+    "allowMutations": false,
+    "sourceReportId": "WFR-GRAPH-AInvil-Productization-2026-07-03",
+    "sourcePlanId": "WTP-GRAPH-AInvil-Productization-2026-07-03",
+    "sourceApprovalId": "WTA-WTP-GRAPH-AInvil-Productization-2026-07-03-2026-07-03",
+    "transitionId": "TRANS-RunBenchmark-Refresh",
+    "targetArtifactId": "benchmarks/reports/latest-benchmark-report.json"
+  },
+  "outputs": {
+    "createdFiles": [],
+    "updatedFiles": [],
+    "graphPatchPlan": null,
+    "summary": "RunBenchmark would regenerate benchmark Markdown and JSON reports."
+  },
+  "evidenceRefs": [],
+  "errors": [],
+  "blockedReason": null,
+  "nextAction": {
+    "actionId": "WFA-Validate-Gap",
+    "title": "Resolve the highest validation gap.",
+    "reason": "AC-E2E-002 is below the required validation confidence.",
+    "suggestedOwner": "Input Agent",
+    "priority": "High",
+    "referencesNodeIds": [
+      "AC-E2E-002"
+    ],
+    "referencesReviewIds": [],
+    "referencesBenchmarkIds": [],
+    "referencesKpiItems": [],
+    "evidenceStatus": "Evidence exists for the referenced graph node, but required validation evidence or confidence is missing."
+  }
+}

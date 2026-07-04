@@ -1,0 +1,546 @@
+{
+  "schemaVersion": "1.0.0",
+  "graphId": "GRAPH-AInvil-Productization",
+  "projectId": "PROJECT-AInvil-Productization",
+  "projectName": "AInvil Productization",
+  "version": "0.2.0",
+  "createdAt": "2026-07-03T18:59:19.970Z",
+  "updatedAt": "2026-07-04T13:34:12.721Z",
+  "currentVisionNodeId": "VISION-AInvil-Productization",
+  "currentMilestoneNodeId": "MILESTONE-DRC-MVP-FirstPlayable",
+  "activeFeatureNodeId": "FEAT-DRC-MVP-FirstRecoveryJob",
+  "healthSummary": {
+    "designHealth": "Yellow",
+    "implementationHealth": "Yellow",
+    "documentationHealth": "Yellow",
+    "validationCoverage": "Red",
+    "technicalDebt": "Yellow",
+    "productionRisk": "Yellow",
+    "summary": "Operational source-of-truth has been reset from the example graph. Unity Bridge and Play Mode evidence remain blocked until live Unity connectivity is restored."
+  },
+  "nextRecommendedAction": {
+    "actionId": "NEXT-DRC-MVP-Manual-Playtest",
+    "title": "Run manual playability review for the Dungeon Recovery first playable.",
+    "owner": "Input Agent",
+    "status": "Planned",
+    "reason": "Automated Product MVP E2E passed through deterministic hooks; manual player-input feel and UX review are still separate from Public Release readiness.",
+    "referencesNodeId": "FEAT-DRC-MVP-FirstRecoveryJob",
+    "requiredValidationLevel": "User Confirmed"
+  },
+  "nodes": [
+    {
+      "id": "VISION-AInvil-Productization",
+      "type": "Vision",
+      "title": "AInvil reliable game production workflow",
+      "summary": "AInvil should present a trustworthy requirement-first workflow from user intent to Unity validation evidence without mixing example fixtures into operational state.",
+      "status": "Confirmed",
+      "owner": "Director Layer",
+      "refs": [
+        {
+          "kind": "Plugin README",
+          "path": "README.md"
+        }
+      ]
+    },
+    {
+      "id": "MILESTONE-E2E-Recovery",
+      "type": "Milestone",
+      "title": "Productization cleanup and E2E validation recovery",
+      "summary": "Separate examples from operational state, establish canonical Unity Bridge package paths, and expose an executable dry-run E2E status report.",
+      "status": "In Progress",
+      "owner": "Orchestrator"
+    },
+    {
+      "id": "FEAT-E2E-HappyPath-001",
+      "type": "Feature",
+      "title": "Minimum AInvil E2E happy path",
+      "summary": "Track the minimum production workflow: user request, requirement graph, dry-run Unity change, bridge apply, compile check, Play Mode validation, evidence, traceability, dashboard.",
+      "status": "In Progress",
+      "owner": "Orchestrator"
+    },
+    {
+      "id": "REQ-E2E-001",
+      "type": "Requirement",
+      "title": "Operational state must not depend on example fixtures",
+      "summary": "Runtime reports and release readiness must identify example graph, sample harness, and placeholder evidence as non-operational.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "REQ-E2E-002",
+      "type": "Requirement",
+      "title": "Minimum E2E status must be reportable without mutating Unity",
+      "summary": "A CLI-accessible report must classify each happy-path step as Verified, Partial, Blocked, Spec-only, or Deprecated/Sample.",
+      "status": "Confirmed",
+      "owner": "Orchestrator"
+    },
+    {
+      "id": "REQ-E2E-003",
+      "type": "Requirement",
+      "title": "Unity Bridge package and input bridge roles must be explicit",
+      "summary": "A canonical Unity Bridge package path and preferred runtime input bridge component must be documented and surfaced in productization reports.",
+      "status": "Confirmed",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "FS-E2E-HappyPath",
+      "type": "FeatureSpec",
+      "title": "AInvil E2E productization status feature spec",
+      "summary": "Operational feature spec represented by productization status reports and CLI commands.",
+      "status": "Implemented",
+      "owner": "Orchestrator",
+      "refs": [
+        {
+          "kind": "Report",
+          "path": "reports/productization_status_report.json"
+        }
+      ]
+    },
+    {
+      "id": "TASK-E2E-001",
+      "type": "ImplementationTask",
+      "title": "Separate example fixtures from operational source of truth",
+      "summary": "Copy example graph and sample scenario to examples and reset state/production_state_graph.json to AInvil productization state.",
+      "status": "Implemented",
+      "owner": "Orchestrator"
+    },
+    {
+      "id": "TASK-E2E-002",
+      "type": "ImplementationTask",
+      "title": "Generate productization status report",
+      "summary": "Create JSON and Markdown reports showing feature statuses, E2E step statuses, release blockers, package roles, and input bridge roles.",
+      "status": "Implemented",
+      "owner": "Orchestrator"
+    },
+    {
+      "id": "TASK-E2E-003",
+      "type": "ImplementationTask",
+      "title": "Expose productization report through CLI",
+      "summary": "Add a CLI command that writes and summarizes productization status.",
+      "status": "Implemented",
+      "owner": "Orchestrator"
+    },
+    {
+      "id": "TASK-E2E-004",
+      "type": "ImplementationTask",
+      "title": "Restore live Unity Bridge connectivity",
+      "summary": "Open Unity, import the canonical bridge package, start the bridge server, and rerun doctor/productization checks.",
+      "status": "Blocked",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "UNITY-Bridge-Package",
+      "type": "UnityTarget",
+      "title": "Canonical Unity Bridge package",
+      "summary": "Plugin-local package used as canonical install source.",
+      "status": "Implemented",
+      "owner": "Unity Agent",
+      "metadata": {
+        "unityKind": "Package",
+        "path": "plugins/ainvil/unity-package/Packages/com.codex.unity-bridge"
+      }
+    },
+    {
+      "id": "INPUT-Runtime-Test-Bridge",
+      "type": "InputSpec",
+      "title": "Runtime-safe input validation bridge",
+      "summary": "Codex.UnityBridge.AInvilRuntimeInputTestBridge is the preferred runtime validation component; AInvilInputTestBridge remains compatibility/sample surface.",
+      "status": "Implemented",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "AC-E2E-001",
+      "type": "AcceptanceCriterion",
+      "title": "Productization report classifies the E2E path",
+      "summary": "Given AInvil is run from the plugin workspace, when the productization report command runs, then each minimum E2E step has a concrete status and next action.",
+      "status": "Needs validation",
+      "owner": "Orchestrator",
+      "validationLevel": "Static Analysis"
+    },
+    {
+      "id": "AC-E2E-002",
+      "type": "AcceptanceCriterion",
+      "title": "Unity live checks reach compile and Play Mode evidence",
+      "summary": "Given Unity Bridge is reachable, when doctor and live harness run, then compile status and Play Mode validation evidence are recorded.",
+      "status": "Blocked",
+      "owner": "Input Agent",
+      "validationLevel": "Not Checked"
+    },
+    {
+      "id": "EVID-E2E-Static-Report",
+      "type": "ValidationEvidence",
+      "title": "Static productization status report",
+      "summary": "Static report generation can run without Unity and records live Unity blockers separately.",
+      "status": "Needs validation",
+      "owner": "Orchestrator",
+      "validationLevel": "Static Analysis",
+      "evidence": {
+        "evidenceId": "EVID-E2E-Static-Report",
+        "validationLevel": "Static Analysis",
+        "status": "Not tested",
+        "source": "reports/productization_status_report.json",
+        "summary": "Generated by productization report command; live Unity validation remains separate.",
+        "timestamp": null
+      }
+    },
+    {
+      "id": "RISK-Example-Contamination",
+      "type": "Risk",
+      "title": "Example fixtures contaminate operational state",
+      "summary": "Example graph and top_down_collectible scenario can make AInvil look more validated than it is for a real project.",
+      "status": "In Progress",
+      "owner": "Orchestrator"
+    },
+    {
+      "id": "NEXT-Restore-Unity-Bridge",
+      "type": "NextAction",
+      "title": "Restore Unity Bridge connectivity and rerun productization checks.",
+      "summary": "Unity Bridge health, compile check, and Play Mode evidence are currently blocked.",
+      "status": "Planned",
+      "owner": "Orchestrator",
+      "nextAction": {
+        "actionId": "NEXT-Restore-Unity-Bridge",
+        "title": "Restore Unity Bridge connectivity and rerun productization checks.",
+        "owner": "Unity Agent",
+        "status": "Planned",
+        "reason": "The minimum E2E happy path cannot complete until Unity Bridge is reachable.",
+        "referencesNodeId": "TASK-E2E-004",
+        "requiredValidationLevel": "Compile Verified"
+      }
+    },
+    {
+      "id": "MILESTONE-DRC-MVP-FirstPlayable",
+      "type": "Milestone",
+      "title": "Dungeon Recovery Company first playable vertical slice",
+      "summary": "Generate and validate the first recovery job in a real Unity project without modifying existing game assets.",
+      "status": "In Progress",
+      "owner": "Orchestrator"
+    },
+    {
+      "id": "FEAT-DRC-MVP-FirstRecoveryJob",
+      "type": "Feature",
+      "title": "First Recovery Job",
+      "summary": "A player moves through a small dungeon room, recovers Rubble, CorruptionNode, and BrokenRelic, and reaches Job Complete.",
+      "status": "Implemented",
+      "owner": "GDD Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "REQ-DRC-MVP-001",
+      "type": "Requirement",
+      "title": "Recover three dungeon targets to complete a job",
+      "summary": "The generated first playable scene must contain three recoverable targets, movement, recovery interaction, progress UI, and job completion state.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "TASK-DRC-MVP-001",
+      "type": "ImplementationTask",
+      "title": "Create isolated first playable Unity assets",
+      "summary": "Generate scripts, materials, and scene under Assets/AInvilGenerated/DungeonRecoveryFirstPlayable only.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "TASK-DRC-MVP-002",
+      "type": "ImplementationTask",
+      "title": "Register Product MVP live harness scenario",
+      "summary": "Create dungeon_recovery_first_playable_e2e as an Operational ProductMvp UnityFeatureE2E scenario.",
+      "status": "Implemented",
+      "owner": "Orchestrator"
+    },
+    {
+      "id": "TASK-DRC-MVP-003",
+      "type": "ImplementationTask",
+      "title": "Validate first recovery job in Play Mode",
+      "summary": "Run deterministic validation hooks in Play Mode and export Product MVP evidence.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "AC-DRC-MVP-001",
+      "type": "AcceptanceCriterion",
+      "title": "Three recovery targets exist",
+      "summary": "Given the first playable scene is open, when validation inspects the room, then Rubble, CorruptionNode, and BrokenRelic exist as recovery targets.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "AC-DRC-MVP-002",
+      "type": "AcceptanceCriterion",
+      "title": "Recovery progress UI updates",
+      "summary": "Given a target is recovered, when the recovery count changes, then HUD progress updates from Recovered: 0 / 3 through Recovered: 3 / 3.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "AC-DRC-MVP-003",
+      "type": "AcceptanceCriterion",
+      "title": "All recoveries complete the job",
+      "summary": "Given all three targets are recovered, when the third recovery is applied, then Job Complete is shown and completion state is true.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "INPUT-DRC-RECOVER",
+      "type": "InputSpec",
+      "title": "Recover target input",
+      "summary": "WASD/arrows move the player and E recovers the nearest target; deterministic hooks are allowed for E2E evidence.",
+      "status": "Implemented",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "UNITY-DRC-FirstRecoveryJob-Scene",
+      "type": "UnityTarget",
+      "title": "DRC_FirstRecoveryJob scene",
+      "summary": "Generated first playable scene at Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity.",
+      "status": "Implemented",
+      "owner": "Unity Agent",
+      "metadata": {
+        "unityKind": "Scene",
+        "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity"
+      }
+    },
+    {
+      "id": "UNITY-DRC-FirstPlayable-Scripts",
+      "type": "UnityTarget",
+      "title": "Dungeon recovery first playable scripts",
+      "summary": "Generated runtime scripts and scene builder for recovery target, player controller, UI view, and game controller.",
+      "status": "Implemented",
+      "owner": "Unity Agent",
+      "metadata": {
+        "unityKind": "ScriptFolder",
+        "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts"
+      }
+    },
+    {
+      "id": "EVID-DRC-MVP-001",
+      "type": "ValidationEvidence",
+      "title": "Dungeon Recovery first playable E2E evidence",
+      "summary": "Latest Product MVP live harness evidence for dungeon_recovery_first_playable_e2e.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified",
+      "evidence": {
+        "evidenceId": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T13-33-21-061Z",
+        "source": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json",
+        "status": "Pass",
+        "validationLevel": "Play Mode Verified",
+        "timestamp": "2026-07-04T13:33:48.668Z",
+        "summary": "Recovered 3/3; jobComplete=true; consoleErrors=0"
+      }
+    },
+    {
+      "id": "NEXT-DRC-MVP-Validate-FirstPlayable",
+      "type": "NextAction",
+      "title": "Run Dungeon Recovery Company Product MVP first playable E2E validation.",
+      "summary": "Run live harness for dungeon_recovery_first_playable_e2e and promote Product MVP Ready Candidate only if Passed evidence exists.",
+      "status": "Planned",
+      "owner": "Input Agent"
+    }
+  ],
+  "edges": [
+    {
+      "id": "EDGE-MILESTONE-DERIVES-VISION",
+      "type": "derives_from",
+      "from": "MILESTONE-E2E-Recovery",
+      "to": "VISION-AInvil-Productization"
+    },
+    {
+      "id": "EDGE-FEAT-DERIVES-MILESTONE",
+      "type": "derives_from",
+      "from": "FEAT-E2E-HappyPath-001",
+      "to": "MILESTONE-E2E-Recovery"
+    },
+    {
+      "id": "EDGE-REQ1-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-E2E-001",
+      "to": "FEAT-E2E-HappyPath-001"
+    },
+    {
+      "id": "EDGE-REQ2-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-E2E-002",
+      "to": "FEAT-E2E-HappyPath-001"
+    },
+    {
+      "id": "EDGE-REQ3-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-E2E-003",
+      "to": "FEAT-E2E-HappyPath-001"
+    },
+    {
+      "id": "EDGE-FS-MAPS-FEAT",
+      "type": "maps_to",
+      "from": "FS-E2E-HappyPath",
+      "to": "FEAT-E2E-HappyPath-001"
+    },
+    {
+      "id": "EDGE-TASK1-IMPLEMENTS-REQ1",
+      "type": "implements",
+      "from": "TASK-E2E-001",
+      "to": "REQ-E2E-001"
+    },
+    {
+      "id": "EDGE-TASK2-IMPLEMENTS-REQ2",
+      "type": "implements",
+      "from": "TASK-E2E-002",
+      "to": "REQ-E2E-002"
+    },
+    {
+      "id": "EDGE-TASK3-IMPLEMENTS-REQ2",
+      "type": "implements",
+      "from": "TASK-E2E-003",
+      "to": "REQ-E2E-002"
+    },
+    {
+      "id": "EDGE-TASK4-IMPLEMENTS-REQ3",
+      "type": "implements",
+      "from": "TASK-E2E-004",
+      "to": "REQ-E2E-003"
+    },
+    {
+      "id": "EDGE-UNITY-MAPS-TASK4",
+      "type": "maps_to",
+      "from": "UNITY-Bridge-Package",
+      "to": "TASK-E2E-004"
+    },
+    {
+      "id": "EDGE-INPUT-MAPS-AC2",
+      "type": "maps_to",
+      "from": "INPUT-Runtime-Test-Bridge",
+      "to": "AC-E2E-002"
+    },
+    {
+      "id": "EDGE-AC1-DERIVES-REQ2",
+      "type": "derives_from",
+      "from": "AC-E2E-001",
+      "to": "REQ-E2E-002"
+    },
+    {
+      "id": "EDGE-AC2-DERIVES-REQ3",
+      "type": "derives_from",
+      "from": "AC-E2E-002",
+      "to": "REQ-E2E-003"
+    },
+    {
+      "id": "EDGE-EVID-VALIDATES-AC1",
+      "type": "validates",
+      "from": "EVID-E2E-Static-Report",
+      "to": "AC-E2E-001"
+    },
+    {
+      "id": "EDGE-RISK-AFFECTS-FEAT",
+      "type": "affects",
+      "from": "RISK-Example-Contamination",
+      "to": "FEAT-E2E-HappyPath-001"
+    },
+    {
+      "id": "EDGE-NEXT-FOR-TASK4",
+      "type": "next_step_for",
+      "from": "NEXT-Restore-Unity-Bridge",
+      "to": "TASK-E2E-004"
+    },
+    {
+      "id": "EDGE-DRC-MILESTONE-DERIVES-VISION",
+      "type": "derives_from",
+      "from": "MILESTONE-DRC-MVP-FirstPlayable",
+      "to": "VISION-AInvil-Productization"
+    },
+    {
+      "id": "EDGE-DRC-FEAT-DERIVES-MILESTONE",
+      "type": "derives_from",
+      "from": "FEAT-DRC-MVP-FirstRecoveryJob",
+      "to": "MILESTONE-DRC-MVP-FirstPlayable"
+    },
+    {
+      "id": "EDGE-DRC-REQ-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-MVP-001",
+      "to": "FEAT-DRC-MVP-FirstRecoveryJob"
+    },
+    {
+      "id": "EDGE-DRC-TASK1-IMPLEMENTS-REQ",
+      "type": "implements",
+      "from": "TASK-DRC-MVP-001",
+      "to": "REQ-DRC-MVP-001"
+    },
+    {
+      "id": "EDGE-DRC-TASK2-IMPLEMENTS-REQ",
+      "type": "implements",
+      "from": "TASK-DRC-MVP-002",
+      "to": "REQ-DRC-MVP-001"
+    },
+    {
+      "id": "EDGE-DRC-TASK3-IMPLEMENTS-REQ",
+      "type": "implements",
+      "from": "TASK-DRC-MVP-003",
+      "to": "REQ-DRC-MVP-001"
+    },
+    {
+      "id": "EDGE-DRC-AC1-DERIVES-REQ",
+      "type": "derives_from",
+      "from": "AC-DRC-MVP-001",
+      "to": "REQ-DRC-MVP-001"
+    },
+    {
+      "id": "EDGE-DRC-AC2-DERIVES-REQ",
+      "type": "derives_from",
+      "from": "AC-DRC-MVP-002",
+      "to": "REQ-DRC-MVP-001"
+    },
+    {
+      "id": "EDGE-DRC-AC3-DERIVES-REQ",
+      "type": "derives_from",
+      "from": "AC-DRC-MVP-003",
+      "to": "REQ-DRC-MVP-001"
+    },
+    {
+      "id": "EDGE-DRC-INPUT-MAPS-AC2",
+      "type": "maps_to",
+      "from": "INPUT-DRC-RECOVER",
+      "to": "AC-DRC-MVP-002"
+    },
+    {
+      "id": "EDGE-DRC-SCENE-MAPS-TASK1",
+      "type": "maps_to",
+      "from": "UNITY-DRC-FirstRecoveryJob-Scene",
+      "to": "TASK-DRC-MVP-001"
+    },
+    {
+      "id": "EDGE-DRC-SCRIPTS-MAPS-TASK1",
+      "type": "maps_to",
+      "from": "UNITY-DRC-FirstPlayable-Scripts",
+      "to": "TASK-DRC-MVP-001"
+    },
+    {
+      "id": "EDGE-DRC-EVID-VALIDATES-AC1",
+      "type": "validates",
+      "from": "EVID-DRC-MVP-001",
+      "to": "AC-DRC-MVP-001"
+    },
+    {
+      "id": "EDGE-DRC-EVID-VALIDATES-AC2",
+      "type": "validates",
+      "from": "EVID-DRC-MVP-001",
+      "to": "AC-DRC-MVP-002"
+    },
+    {
+      "id": "EDGE-DRC-EVID-VALIDATES-AC3",
+      "type": "validates",
+      "from": "EVID-DRC-MVP-001",
+      "to": "AC-DRC-MVP-003"
+    },
+    {
+      "id": "EDGE-DRC-NEXT-FOR-TASK3",
+      "type": "next_step_for",
+      "from": "NEXT-DRC-MVP-Validate-FirstPlayable",
+      "to": "TASK-DRC-MVP-003"
+    }
+  ]
+}

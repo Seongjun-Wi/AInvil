@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "scenario.character_animation_binding",
+  "title": "Character animation binding prototype",
+  "classification": "Example",
+  "operationalUse": "Sample fixture only. Do not use this scenario as operational release evidence for a real project.",
+  "userGoal": "Connect character animations so the character can use idle and walk states.",
+  "milestone": "Character has an Animator with idle and walk animation states",
+  "interactive": false,
+  "riskLevel": "Low",
+  "expectedDocuments": [
+    {
+      "type": "GDD",
+      "requirementRef": "gdd.character.presentation",
+      "expected": "The character is expected to communicate idle and movement states visually."
+    },
+    {
+      "type": "Technical Design",
+      "requirementRef": "td.animation.character_controller",
+      "expected": "The technical design defines animation assets, AnimatorController, parameters, and validation."
+    },
+    {
+      "type": "Component Contract",
+      "requirementRef": "contract.character_animator",
+      "expected": "The Animator component and any driver script responsibilities are documented."
+    },
+    {
+      "type": "Prefab Contract",
+      "requirementRef": "prefab.player_character",
+      "expected": "The player prefab contract records Animator, controller, clips, and required references."
+    },
+    {
+      "type": "UnityChangeSet",
+      "requirementRef": "change.character_animation",
+      "expected": "The change set records animation discovery, controller creation or reuse, and assignment."
+    }
+  ],
+  "expectedUnityCapabilities": [
+    "Project inspection",
+    "Document traceability",
+    "Milestone planning",
+    "Asset-first construction",
+    "Component and script implementation",
+    "Prefab production",
+    "Animation and character behavior",
+    "Document synchronization"
+  ],
+  "expectedUnityArtifacts": [
+    {
+      "kind": "GameObject",
+      "path": "/Player",
+      "requirementRef": "td.object.player",
+      "status": "Implemented"
+    },
+    {
+      "kind": "Component",
+      "path": "/Player/Animator",
+      "requirementRef": "td.component.animator",
+      "status": "Implemented"
+    },
+    {
+      "kind": "Prefab",
+      "path": "Assets/Prefabs/Player.prefab",
+      "requirementRef": "prefab.player_character",
+      "status": "Planned"
+    },
+    {
+      "kind": "ValidationReport",
+      "path": "Docs/Validation/CharacterAnimation_Playtest.md",
+      "requirementRef": "playtest.animation.character",
+      "status": "Planned"
+    }
+  ],
+  "validationChecks": [
+    {
+      "id": "check.assets",
+      "type": "Asset",
+      "target": "AnimationClip and AnimatorController assets",
+      "expected": "Available clips and controllers are discovered before creating fallback controller assets.",
+      "failureClass": "AssetFallbackIncorrect"
+    },
+    {
+      "id": "check.animator",
+      "type": "Animation",
+      "target": "/Player/Animator",
+      "expected": "Animator has a controller with idle and walk states or documented fallback states.",
+      "failureClass": "UnityArtifactMissing"
+    },
+    {
+      "id": "check.console",
+      "type": "Console",
+      "target": "Unity console",
+      "expected": "No missing controller, missing clip, or Animator binding errors are reported.",
+      "failureClass": "ConsoleError"
+    },
+    {
+      "id": "check.sync",
+      "type": "DocumentSync",
+      "target": "Component and prefab contracts",
+      "expected": "Animation references and validation status are documented.",
+      "failureClass": "ValidationNotRun"
+    }
+  ],
+  "passCriteria": [
+    "Animation assets are inspected before creating fallback controller assets.",
+    "The target character has an Animator with idle and walk states.",
+    "The component and prefab contracts describe the animation setup.",
+    "Console validation is recorded."
+  ]
+}

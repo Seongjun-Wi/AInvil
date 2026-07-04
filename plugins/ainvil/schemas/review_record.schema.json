@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/review_record.schema.json",
+  "title": "AInvil ReviewRecord",
+  "type": "object",
+  "required": ["schemaVersion", "reviewId", "artifactId", "reviewType", "reviewerRole", "date", "lifecycleState", "decision", "confidence", "evidence"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "reviewId": { "type": "string", "minLength": 1 },
+    "artifactId": { "type": "string", "minLength": 1 },
+    "artifactNodeId": { "type": "string" },
+    "reviewType": {
+      "enum": ["Vision Review", "Design Review", "Technical Review", "Production Review", "Validation Review"]
+    },
+    "reviewerRole": {
+      "enum": ["Director Layer", "Orchestrator", "GDD Agent", "Unity Agent", "Input Agent", "User"]
+    },
+    "date": { "type": "string" },
+    "lifecycleState": {
+      "enum": [
+        "Draft",
+        "Review Requested",
+        "Review In Progress",
+        "Changes Requested",
+        "Approved",
+        "Implemented",
+        "Validated",
+        "Closed",
+        "Rejected",
+        "Deferred",
+        "Superseded"
+      ]
+    },
+    "findings": { "type": "array", "items": { "type": "string" } },
+    "strengths": { "type": "array", "items": { "type": "string" } },
+    "weaknesses": { "type": "array", "items": { "type": "string" } },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["riskId", "summary", "severity"],
+        "properties": {
+          "riskId": { "type": "string" },
+          "summary": { "type": "string" },
+          "severity": { "enum": ["Low", "Medium", "High", "Critical", "Unknown"] },
+          "evidenceNodeIds": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": false
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["recommendationId", "summary"],
+        "properties": {
+          "recommendationId": { "type": "string" },
+          "summary": { "type": "string" },
+          "owner": {
+            "enum": ["Director Layer", "Orchestrator", "GDD Agent", "Unity Agent", "Input Agent", "User"]
+          },
+          "referencesNodeIds": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": false
+      }
+    },
+    "decision": {
+      "enum": ["Approved", "Changes Requested", "Rejected", "Deferred", "Needs user decision", "Informational"]
+    },
+    "confidence": { "enum": ["High", "Medium", "Low"] },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "summary"],
+        "properties": {
+          "kind": { "type": "string" },
+          "summary": { "type": "string" },
+          "nodeId": { "type": "string" },
+          "path": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

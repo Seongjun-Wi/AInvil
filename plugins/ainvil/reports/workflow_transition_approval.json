@@ -1,0 +1,299 @@
+{
+  "schemaVersion": "1.0.0",
+  "approvalVersion": "0.1.0",
+  "approvalId": "WTA-WTP-GRAPH-AInvil-Productization-2026-07-03-2026-07-03",
+  "generatedAt": "2026-07-03T19:07:18.384Z",
+  "sourcePlanId": "WTP-GRAPH-AInvil-Productization-2026-07-03",
+  "sourceFiles": [
+    {
+      "kind": "Workflow Transition Plan",
+      "path": "reports/workflow_transition_plan.json",
+      "used": true
+    }
+  ],
+  "approvalRecords": [
+    {
+      "transitionId": "TRANS-AddressBlockedNode-1",
+      "transitionType": "AddressBlockedNode",
+      "targetArtifactId": "TASK-E2E-004",
+      "approvalClass": "UserApprovalRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [
+        "User confirmation of unblock strategy"
+      ],
+      "requiredEvidence": [
+        "GraphNode:TASK-E2E-004"
+      ],
+      "missingEvidence": [],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "MediumRisk",
+      "reason": "Resolving a blocker may change scope, priority, or implementation direction.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "TASK-E2E-004"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "User approval is required before resolving this blocker."
+    },
+    {
+      "transitionId": "TRANS-AddressBlockedNode-2",
+      "transitionType": "AddressBlockedNode",
+      "targetArtifactId": "AC-E2E-002",
+      "approvalClass": "UserApprovalRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [
+        "User confirmation of unblock strategy"
+      ],
+      "requiredEvidence": [
+        "GraphNode:AC-E2E-002"
+      ],
+      "missingEvidence": [],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "MediumRisk",
+      "reason": "Resolving a blocker may change scope, priority, or implementation direction.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-E2E-002"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "User approval is required before resolving this blocker."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-1",
+      "transitionType": "ResolveValidationGap",
+      "targetArtifactId": "AC-E2E-002",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Actual validation evidence for the target artifact.",
+        "Validation level proof matching the target state."
+      ],
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "HighRisk",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-E2E-002"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-1",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-E2E-001: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-E2E-001: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-2",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-E2E-002: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-E2E-002: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-3",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-E2E-003: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-E2E-003: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-4",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "AC-E2E-002: no validation evidence validates this acceptance criterion",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "AC-E2E-002: no validation evidence validates this acceptance criterion",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-RunBenchmark-NotApplicable",
+      "transitionType": "RunBenchmark",
+      "targetArtifactId": "benchmarks/reports/latest-benchmark-report.json",
+      "approvalClass": "AutoEligible",
+      "executionReadiness": "NotApplicable",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Benchmark datasets"
+      ],
+      "missingEvidence": [],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "LowRisk",
+      "reason": "A benchmark report is already available.",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Benchmark report already exists."
+    },
+    {
+      "transitionId": "TRANS-RunBenchmark-Refresh",
+      "transitionType": "RunBenchmark",
+      "targetArtifactId": "benchmarks/reports/latest-benchmark-report.json",
+      "approvalClass": "AutoEligible",
+      "executionReadiness": "Ready",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Benchmark datasets"
+      ],
+      "missingEvidence": [],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "LowRisk",
+      "reason": "A benchmark report exists; refreshing it is safe and records execution evidence.",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": true,
+      "userFacingMessage": "Benchmark validation/reporting is eligible for future automation."
+    },
+    {
+      "transitionId": "TRANS-UpdateKpiDashboard-NotApplicable",
+      "transitionType": "UpdateKpiDashboard",
+      "targetArtifactId": "reports/kpi_dashboard.json",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Current KPI values",
+        "KPI evidence sources"
+      ],
+      "missingEvidence": [],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "LowRisk",
+      "reason": "KPI values should not be invented.",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "KPI dashboard update requires real KPI evidence."
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "byApprovalClass": {
+      "UserApprovalRequired": 2,
+      "EvidenceRequired": 2,
+      "ReviewRequired": 4,
+      "AutoEligible": 2
+    },
+    "byReadiness": {
+      "NotReady": 8,
+      "NotApplicable": 1,
+      "Ready": 1
+    },
+    "bySafetyLevel": {
+      "MediumRisk": 2,
+      "HighRisk": 1,
+      "LowRisk": 7
+    },
+    "autoEligibleCount": 2,
+    "blockedCount": 0,
+    "forbiddenCount": 0
+  },
+  "safestNextApprovedAction": {
+    "transitionId": "TRANS-RunBenchmark-Refresh",
+    "transitionType": "RunBenchmark",
+    "targetArtifactId": "benchmarks/reports/latest-benchmark-report.json",
+    "approvalClass": "AutoEligible",
+    "executionReadiness": "Ready",
+    "requiredApprovals": [],
+    "requiredEvidence": [
+      "Benchmark datasets"
+    ],
+    "missingEvidence": [],
+    "requiredReviews": [],
+    "missingReviews": [],
+    "safetyLevel": "LowRisk",
+    "reason": "A benchmark report exists; refreshing it is safe and records execution evidence.",
+    "evidenceRefs": [],
+    "canBeAutomatedLater": true,
+    "userFacingMessage": "Benchmark validation/reporting is eligible for future automation."
+  },
+  "executionPolicy": {
+    "mode": "ReadOnlyApprovalClassification",
+    "executionAllowed": false,
+    "notes": "This approval model classifies transitions only. It does not approve, execute, or mutate workflow state."
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "DRC-FIRST-PLAYABLE-DRY-RUN-001",
+  "generatedAt": "2026-07-04T00:00:00.000Z",
+  "unityProjectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany",
+  "scope": "Create a first playable vertical slice under Assets/AInvilGenerated/DungeonRecoveryFirstPlayable only.",
+  "scenarioId": "dungeon_recovery_first_playable_e2e",
+  "plannedUnityFiles": [
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilDungeonRecoveryGameController.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilRecoveryTarget.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilRecoveryPlayerController.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilRecoveryUiView.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Materials/Floor.mat",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Materials/Wall.mat",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Materials/Player.mat",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Materials/TargetPending.mat",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Materials/TargetRecovered.mat"
+  ],
+  "plannedSceneStructure": [
+    "Floor",
+    "Boundary walls",
+    "Player capsule with movement and deterministic validation hooks",
+    "Three recovery targets: Rubble, CorruptionNode, BrokenRelic",
+    "Main camera",
+    "Directional light",
+    "Canvas with progress text",
+    "GameController with progress state"
+  ],
+  "plannedGameObjectHierarchy": [
+    "/AInvilDungeonRecoveryFirstPlayable",
+    "/AInvilDungeonRecoveryFirstPlayable/Floor",
+    "/AInvilDungeonRecoveryFirstPlayable/Walls",
+    "/AInvilDungeonRecoveryFirstPlayable/Player",
+    "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/Rubble",
+    "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/CorruptionNode",
+    "/AInvilDungeonRecoveryFirstPlayable/RecoveryTargets/BrokenRelic",
+    "/AInvilDungeonRecoveryFirstPlayable/UI/Canvas/ProgressText"
+  ],
+  "uiComposition": [
+    "Canvas in Screen Space Overlay",
+    "UnityEngine.UI.Text progress label",
+    "Initial text: Recovered: 0 / 3",
+    "Complete text includes Job Complete"
+  ],
+  "validationPlan": [
+    "Open generated scene.",
+    "Enter Play Mode.",
+    "Invoke controller.ResetValidationState().",
+    "Assert totalRecoveryTargetCount == 3.",
+    "Assert initial recoveredCount == 0.",
+    "Invoke controller.ValidationRecoverNextTarget() three times.",
+    "Assert counts 1 and 3 at the required checkpoints.",
+    "Assert isJobComplete == true.",
+    "Assert UI progress text contains complete state.",
+    "Assert console error count == 0."
+  ],
+  "rollback": {
+    "manualDeleteFolders": [
+      "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets/AInvilGenerated/DungeonRecoveryFirstPlayable"
+    ],
+    "notes": "No existing game scripts, prefabs, scenes, or build settings are intentionally modified."
+  },
+  "risks": [
+    "Unity may require script compilation before scene creation can attach generated components.",
+    "If the active scene has unsaved user changes, opening/saving generated scenes must avoid overwriting it.",
+    "This MVP validates one deterministic first playable slice, not a full product loop."
+  ],
+  "expectedOutcome": "Product MVP First Playable Candidate with PlayMode Verified evidence if compile and validation pass."
+}

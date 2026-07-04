@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/workspace_manifest.schema.json",
+  "title": "AInvil WorkspaceManifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "workspaceId", "product", "language", "pluginRoot", "docsPath", "graphPath", "evidencePath", "reportsPath", "createdAt", "lastOpenedAt"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "workspaceId": { "type": "string" },
+    "product": { "const": "AInvil" },
+    "language": { "type": "string" },
+    "pluginRoot": { "type": "string" },
+    "unityProjectPath": { "type": ["string", "null"] },
+    "docsPath": { "type": "string" },
+    "graphPath": { "type": "string" },
+    "evidencePath": { "type": "string" },
+    "reportsPath": { "type": "string" },
+    "unityBridgePackagePath": { "type": "string" },
+    "unityBridgePackageRole": { "type": "string" },
+    "rootUnityPackageMirrorPath": { "type": "string" },
+    "rootUnityPackageMirrorRole": { "type": "string" },
+    "createdAt": { "type": "string" },
+    "lastOpenedAt": { "type": "string" }
+  }
+}

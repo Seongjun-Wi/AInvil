@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/validation_design.schema.json",
+  "title": "AInvil ValidationDesign",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "designSetId", "validations"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "designSetId": { "type": "string", "minLength": 1 },
+    "source": { "type": "string" },
+    "validations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["validationId", "requirementId", "acceptanceId", "testType", "actions", "observations", "passCriteria", "evidenceToRecord", "requiredProbes"],
+        "properties": {
+          "validationId": { "type": "string", "minLength": 1 },
+          "requirementId": { "type": "string", "minLength": 1 },
+          "acceptanceId": { "type": "string", "minLength": 1 },
+          "acceptanceIds": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "scenarioId": { "type": "string" },
+          "feature": { "type": "string" },
+          "testType": { "type": "string", "minLength": 1 },
+          "scene": { "type": "string" },
+          "targetContext": { "type": "string" },
+          "preconditions": { "type": "array", "items": { "type": "string" } },
+          "setup": { "type": "array", "items": { "type": "string" } },
+          "actions": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "object", "additionalProperties": true, "required": ["type"] }
+          },
+          "observations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": ["name", "type"]
+            }
+          },
+          "passCriteria": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": ["id", "observation", "operator"]
+            }
+          },
+          "evidenceToRecord": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "requiredProbes": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  }
+}

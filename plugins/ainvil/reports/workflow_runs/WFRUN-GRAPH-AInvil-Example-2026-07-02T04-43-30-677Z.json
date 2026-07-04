@@ -1,0 +1,153 @@
+{
+  "schemaVersion": "1.0.0",
+  "runtimeVersion": "0.1.0",
+  "runId": "WFRUN-GRAPH-AInvil-Example-2026-07-02T04-43-30-677Z",
+  "generatedAt": "2026-07-02T04:43:30.677Z",
+  "mode": "GuardedExecution",
+  "sourceReportId": "WFR-GRAPH-AInvil-Example-2026-07-02",
+  "sourcePlanId": "WTP-GRAPH-AInvil-Example-2026-07-02",
+  "sourceApprovalId": "WTA-WTP-GRAPH-AInvil-Example-2026-07-02-2026-07-02",
+  "executionPolicy": {
+    "executionAllowed": true,
+    "guarded": true,
+    "notes": "This runtime only executes evidence-safe synchronization and artifact generation. It does not promote validation levels, approve user decisions, modify Unity, or replace source-of-truth design intent."
+  },
+  "appliedOperations": [
+    {
+      "kind": "WriteArtifact",
+      "target": "reports/workflow_runtime_report.json",
+      "status": "Written",
+      "summary": "Workflow Runtime Report persisted."
+    },
+    {
+      "kind": "WriteArtifact",
+      "target": "reports/workflow_transition_plan.json",
+      "status": "Written",
+      "summary": "Workflow Transition Plan persisted."
+    },
+    {
+      "kind": "WriteArtifact",
+      "target": "reports/workflow_transition_approval.json",
+      "status": "Written",
+      "summary": "Workflow Transition Approval persisted."
+    },
+    {
+      "kind": "UpdateGraph",
+      "target": "state/production_state_graph.json",
+      "status": "Applied",
+      "summary": "Updated graph nextRecommendedAction from Workflow Runtime Report."
+    },
+    {
+      "kind": "UpsertGraphNode",
+      "target": "NA-WorkflowRuntime-NextAction",
+      "status": "Applied",
+      "summary": "Upserted runtime NextAction node."
+    },
+    {
+      "kind": "UpsertGraphEdge",
+      "target": "EDGE-WorkflowRuntime-NextAction",
+      "status": "Applied",
+      "summary": "Linked runtime NextAction to AC-CoreLoop-001."
+    },
+    {
+      "kind": "WriteArtifact",
+      "target": "reports/traceability_matrix.generated.md",
+      "status": "Written",
+      "summary": "Graph-derived traceability matrix generated."
+    },
+    {
+      "kind": "WriteArtifact",
+      "target": "reports/project_dashboard.generated.md",
+      "status": "Written",
+      "summary": "Graph-derived project dashboard generated."
+    },
+    {
+      "kind": "WriteArtifact",
+      "target": "reports/workflow_run_latest.json",
+      "status": "Written",
+      "summary": "Latest workflow run record persisted."
+    },
+    {
+      "kind": "WriteArtifact",
+      "target": "reports/workflow_runs/WFRUN-GRAPH-AInvil-Example-2026-07-02T04-43-30-677Z.json",
+      "status": "Written",
+      "summary": "Workflow run history record persisted."
+    }
+  ],
+  "skippedTransitions": [
+    {
+      "transitionId": "TRANS-ResolveValidationGap-1",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "missingReviews": []
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-2",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "missingReviews": []
+    },
+    {
+      "transitionId": "TRANS-RunBenchmark-NotApplicable",
+      "approvalClass": "AutoEligible",
+      "executionReadiness": "NotApplicable",
+      "reason": "A benchmark report is already available.",
+      "missingEvidence": [],
+      "missingReviews": []
+    },
+    {
+      "transitionId": "TRANS-UpdateKpiDashboard-001",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "reason": "KPI values should not be invented.",
+      "missingEvidence": [
+        "Current KPI values",
+        "Historical trends",
+        "Regression warnings",
+        "Improvement opportunities"
+      ],
+      "missingReviews": []
+    }
+  ],
+  "safestNextApprovedAction": {
+    "transitionId": "APPROVAL-NoReadyAutoEligibleTransition",
+    "approvalClass": "Blocked",
+    "reason": "No auto-eligible transition is ready from current evidence.",
+    "canBeAutomatedLater": false,
+    "userFacingMessage": "No safe automated action is currently available."
+  },
+  "nextAction": {
+    "actionId": "WFA-Validate-Gap",
+    "title": "Resolve the highest validation gap.",
+    "reason": "AC-CoreLoop-001 is below the required validation confidence.",
+    "suggestedOwner": "Input Agent",
+    "priority": "High",
+    "referencesNodeIds": [
+      "AC-CoreLoop-001"
+    ],
+    "referencesReviewIds": [],
+    "referencesBenchmarkIds": [],
+    "referencesKpiItems": [],
+    "evidenceStatus": "Evidence exists for the referenced graph node, but required validation evidence or confidence is missing."
+  },
+  "remainingGaps": {
+    "workflowBlockers": 2,
+    "validationLevelGaps": 2,
+    "acceptanceCriteriaWithoutEvidence": 0,
+    "missingRequiredReviews": 0,
+    "missingKpiEvidence": [
+      "Current KPI values",
+      "Historical trends",
+      "Regression warnings",
+      "Improvement opportunities"
+    ]
+  }
+}

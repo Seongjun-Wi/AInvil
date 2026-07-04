@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ainvil.local/schemas/unity_change_set.schema.json",
+  "title": "AInvil UnityChangeSet",
+  "type": "object",
+  "required": ["changeSetId", "createdAt", "changes", "validation"],
+  "properties": {
+    "changeSetId": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "summary": { "type": "string" },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "path", "action"],
+        "properties": {
+          "kind": { "enum": ["Scene", "GameObject", "Component", "Prefab", "ScriptableObject", "Material", "Script", "Data"] },
+          "path": { "type": "string" },
+          "action": { "enum": ["Create", "Update", "Delete", "Move", "AssignReference"] },
+          "details": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "validationLevel": {
+          "enum": [
+            "Not Checked",
+            "Document Review",
+            "Static Analysis",
+            "Unity Inspection",
+            "Compile Verified",
+            "Play Mode Verified",
+            "Runtime Tested",
+            "User Confirmed"
+          ]
+        },
+        "compile": { "enum": ["Not tested", "Pass", "Fail", "Blocked"] },
+        "scene": { "enum": ["Not tested", "Pass", "Fail", "Blocked"] },
+        "playMode": { "enum": ["Not tested", "Pass", "Fail", "Blocked"] },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
