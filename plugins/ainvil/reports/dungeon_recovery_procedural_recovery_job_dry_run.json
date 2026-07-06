@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "DRC-PROCEDURAL-DRYRUN-001",
+  "generatedAt": "2026-07-05T00:00:00.000Z",
+  "product": "DungeonRecoveryCompany",
+  "scenarioId": "dungeon_recovery_procedural_recovery_job_e2e",
+  "classification": "Operational",
+  "scope": "Generated assets only under Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/",
+  "unityProjectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany",
+  "plannedScene": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+  "plannedUnityFiles": [
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryPlayerController.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobBuilder.cs"
+  ],
+  "plannedAInvilFiles": [
+    "plugins/ainvil/harness/scenarios/dungeon_recovery_procedural_recovery_job_e2e.json",
+    "plugins/ainvil/validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest.json",
+    "plugins/ainvil/reports/dungeon_recovery_procedural_recovery_job_dry_run.json",
+    "plugins/ainvil/reports/dungeon_recovery_procedural_recovery_job_dry_run.md",
+    "plugins/ainvil/reports/dungeon_recovery_procedural_recovery_job_build_verification.json",
+    "plugins/ainvil/reports/builds/dungeon_recovery_procedural_recovery_job/DungeonRecoveryProceduralRecoveryJob.exe"
+  ],
+  "algorithmSummary": {
+    "type": "seeded grid room-and-corridor generator",
+    "rooms": "Generate 4-6 rectangular rooms with deterministic System.Random(seed), then connect room centers with L-shaped corridors.",
+    "floorAndWalls": "Floor cells are rendered as cube tiles; wall cubes are created around floor cells where no neighbor floor exists.",
+    "playerStart": "Player starts at the center of the first generated room.",
+    "targets": "Three recovery targets are selected from reachable valid floor cells, away from player start, away from walls, and not too close to each other.",
+    "camera": "Playable runtime uses a first-person camera parented to the player, controlled by mouse look.",
+    "runtimeSeed": "Normal play assigns a random startup seed and displays it in the HUD. Fixed seeds are used only by validation hooks."
+  },
+  "seedValidation": {
+    "seeds": [1001, 2026, 7777],
+    "determinism": "GenerateWithSeed(seed) is called twice for determinism checks through layout signatures.",
+    "differentSeeds": "The three layout signatures must not all be identical.",
+    "randomStartup": "GenerateWithRandomSeed() is sampled twice during validation and must produce different seed values."
+  },
+  "reachabilityValidation": {
+    "method": "BFS over cardinal grid neighbors from playerStartCell.",
+    "passCondition": "reachableTargetCount == 3 for each tested seed."
+  },
+  "targetPlacementRules": [
+    "target count must be exactly 3",
+    "targets must be on valid floor cells",
+    "targets must not overlap walls",
+    "targets must not duplicate cells",
+    "targets must not overlap player start",
+    "targets must be reachable from player start",
+    "targets should keep at least Manhattan distance 4 from each other"
+  ],
+  "fallbackAndFailureHandling": [
+    "If random room placement cannot create at least four rooms, a deterministic fallback room layout is used.",
+    "If three valid reachable target cells cannot be selected, generation fails and evidence records Failed with failureReason.",
+    "If Unity Bridge or compile is unavailable, evidence records Blocked with nextAction."
+  ],
+  "rollbackCleanupScope": [
+    "Remove DRC_ProceduralRecoveryJob.unity",
+    "Remove AInvilProceduralRecoveryJobController.cs",
+    "Remove AInvilProceduralRecoveryPlayerController.cs",
+    "Remove AInvilProceduralRecoveryJobBuilder.cs",
+    "Remove procedural scenario/report/evidence/build artifacts"
+  ],
+  "expectedRisks": [
+    "Runtime-generated primitive count can grow if map size expands.",
+    "Current tutorial remains simple UI text.",
+    "Deterministic validation hook is not the same as human navigation path validation.",
+    "First-person mouse look now needs manual comfort review.",
+    "Public Release Ready is intentionally not claimed."
+  ],
+  "publicReleaseReady": false
+}

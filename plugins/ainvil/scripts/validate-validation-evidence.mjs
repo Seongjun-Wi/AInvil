@@ -4,7 +4,7 @@ import { resolveAInvilPath, relativeAInvilPath } from "../core/ainvil-paths.mjs"
 
 const evidenceDir = resolveAInvilPath("validation/evidence");
 const allowedStatuses = new Set(["Passed", "Failed", "Blocked", "Warning", "NotRun"]);
-const allowedLevels = new Set(["Not Checked", "Unity Inspection", "Compile Verified", "Play Mode Verified", "Runtime Tested"]);
+const allowedLevels = new Set(["Not Checked", "Environment Blocked", "Unity Inspection", "Compile Verified", "Compile Failed", "Play Mode Verified", "Visual Verified", "Runtime Tested"]);
 const errors = [];
 let files = [];
 try {

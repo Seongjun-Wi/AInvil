@@ -1,8 +1,8 @@
 # AInvil Core RC Baseline Manifest
 
 - RC: AInvil Core RC
-- Version: core-rc-2026-07-04
-- Generated at: 2026-07-04T14:50:51.891Z
+- Version: core-rc-2026-07-06
+- Generated at: 2026-07-06T06:17:16.741Z
 - Release level: Core Release Ready / Product MVP Ready Candidate
 - Production Core review: Approved
 - Release readiness: Release Ready
@@ -10,9 +10,16 @@
 - Fresh workspace verification: Core RC Reproducibility Verified
 - Canonical Unity Bridge package verified: Yes
 - Product MVP E2E: Passed
-- Human Playability Review: Needs Improvement
+- Human Playability Review: Passed
 - Build Verification: Passed
 - Product MVP Ready Candidate: Yes
+- Procedural Recovery Job: Passed
+- Procedural Generation Verified: Yes
+- Visual Validation: Passed
+- Procedural Space Quality: Passed
+- Screenshot Evidence Available: Yes
+- Camera Framing Check: Passed
+- Missing Shader Suspected: No
 - Public Release Ready: No
 
 ## Evidence
@@ -24,12 +31,16 @@
 - Onboarding doctor: reports/onboarding_doctor_report.json
 - Project dashboard: reports/project_dashboard.json
 - Live harness report: harness/reports/latest-live-harness-report.json
-- Operational validation evidence: validation/evidence/EVID-dungeon-recovery-first-playable-build-latest.json
+- Operational validation evidence: validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-passed.json
 
 ## Operational Scenarios
 
 - ainvil_bridge_smoke_operational: harness/scenarios/ainvil_bridge_smoke_operational.json
+- ainvil_compile_gate_blocks_playmode_on_compile_error: harness/scenarios/ainvil_compile_gate_blocks_playmode_on_compile_error.json
 - dungeon_recovery_first_playable_e2e: harness/scenarios/dungeon_recovery_first_playable_e2e.json
+- dungeon_recovery_procedural_recovery_job_e2e: harness/scenarios/dungeon_recovery_procedural_recovery_job_e2e.json
+- dungeon_recovery_procedural_space_quality_validation: harness/scenarios/dungeon_recovery_procedural_space_quality_validation.json
+- dungeon_recovery_procedural_visual_validation: harness/scenarios/dungeon_recovery_procedural_visual_validation.json
 
 ## Known Limitations
 

@@ -1,6 +1,6 @@
 # AInvil Productization Status
 
-- Generated at: 2026-07-04T14:50:46.880Z
+- Generated at: 2026-07-06T06:17:16.584Z
 - Decision: Release Candidate
 - Graph classification: Operational
 - Release blockers: 0
@@ -38,9 +38,9 @@
 | Unity change dry-run | Workflow Transition / Executor | Partial | Guarded transition dry-run exists, but project-specific Unity change-set dry-run is not generalized yet. | Connect project-specific Unity change sets to transition candidates. |
 | Unity Bridge apply/read path | MCP Unity Server / Unity Editor Bridge | Partial | Unity Bridge health endpoint is reachable. | Open Unity, install the canonical package, and run Tools > Codex Unity Bridge > Start Server. |
 | Compile check | Onboarding Doctor / unity_compile_status | Verified | unity_compile_status succeeded. | Rerun doctor after Unity Bridge connectivity is restored. |
-| Operational validation scenario registration | Live Harness | Verified | 2 operational scenario(s) detected. | Keep at least one classification=Operational scenario for release gates. |
+| Operational validation scenario registration | Live Harness | Verified | 6 operational scenario(s) detected. | Keep at least one classification=Operational scenario for release gates. |
 | Play Mode or Unity inspection validation | Live Harness / Input Agent | Verified | Latest operational evidence status: Passed | Run the operational bridge smoke scenario after Unity Bridge and compile checks pass. |
-| Evidence export | validation/evidence | Verified | 6 evidence file(s) detected; non-sample Passed evidence=true. | Keep sample evidence separate and link operational evidence to acceptance IDs. |
+| Evidence export | validation/evidence | Verified | 19 evidence file(s) detected; non-sample Passed evidence=true. | Keep sample evidence separate and link operational evidence to acceptance IDs. |
 | Traceability refresh | Traceability View | Partial | Traceability view exists; operational evidence linkage still depends on a Passed run. | Regenerate traceability after operational evidence is captured. |
 | Dashboard refresh | Project Dashboard | Partial | Dashboard exists and can show productization status. | Run generate-project-dashboard after productization report updates. |
 
@@ -64,8 +64,53 @@
 
 - Scenario: dungeon_recovery_first_playable_e2e
 - Status: Passed
-- Human Playability Review: Needs Improvement
+- Human Playability Review: Passed
 - Build Verification: Passed
 - Product MVP Ready Candidate: Yes
+- Human Playable First Build Candidate: Yes
+- Product MVP First Playable Verified: Yes
 - Latest evidence: validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json
 - Public Release Ready: No
+
+## Compile Gate
+
+- Status: Passed
+- Blocker Type: None
+- Can Enter Play Mode: Yes
+- Compile Error Count: 0
+- Report: reports/unity_compile_gate_report.json
+
+## Compile Gate Safety
+
+- Status: Passed
+- Play Mode Blocked On Compile Error: Yes
+- Compile Gate With Error: Failed
+- Compile Gate After Cleanup: Passed
+- Compile Errors Detected: 2
+- Evidence: validation/evidence/EVID-ainvil-compile-gate-blocks-playmode-latest.json
+- Public Release Ready: No
+
+## Procedural Recovery Job
+
+- Scenario: dungeon_recovery_procedural_recovery_job_e2e
+- Status: Passed
+- Procedural Generation Verified: Yes
+- Build Verification: Passed
+- Latest evidence: validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest-passed.json
+
+## Visual Validation
+
+- Scenario: dungeon_recovery_procedural_visual_validation
+- Status: Passed
+- Screenshot Evidence Available: Yes
+- Missing Shader Suspected: No
+- Camera Framing Check: Passed
+- Human Review Required: Yes
+- Latest evidence: validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest-passed.json
+
+## Procedural Space Quality
+
+- Scenario: dungeon_recovery_procedural_space_quality_validation
+- Status: Passed
+- Procedural Space Quality Verified: Yes
+- Latest evidence: validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-passed.json

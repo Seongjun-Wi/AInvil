@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0.0",
-  "reportId": "ODR-2026-07-04T14-50-18-094Z",
-  "generatedAt": "2026-07-04T14:50:18.094Z",
+  "reportId": "ODR-2026-07-06T06-13-14-603Z",
+  "generatedAt": "2026-07-06T06:13:14.603Z",
   "product": "AInvil",
   "workspaceManifest": "state/workspace_manifest.json",
   "unityRpcUrl": "http://127.0.0.1:17777/rpc",
   "healthUrl": "http://127.0.0.1:17777/health",
   "releaseReadiness": "Ready For Next Gate",
   "summary": {
-    "total": 14,
-    "passed": 14,
+    "total": 15,
+    "passed": 15,
     "warning": 0,
     "failed": 0,
     "blocked": 0
@@ -91,7 +91,7 @@
         "unityVersion": "6000.5.0f1",
         "isPlaying": false,
         "isPlayingOrWillChangePlaymode": false,
-        "playModeTransitionCount": 3
+        "playModeTransitionCount": 0
       }
     },
     {
@@ -113,11 +113,11 @@
         "isPlayingOrWillChangePlaymode": false,
         "isCompiling": false,
         "isUpdating": false,
-        "playModeTransitionCount": 3,
+        "playModeTransitionCount": 0,
         "inputTestBridgeAvailable": false,
         "activeScene": {
-          "name": "DRC_FirstRecoveryJob",
-          "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity",
+          "name": "DRC_ProceduralRecoveryJob",
+          "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
           "isDirty": false,
           "isLoaded": true,
           "rootCount": 1
@@ -138,8 +138,15 @@
       "data": {
         "isCompiling": false,
         "isUpdating": false,
+        "hasCompileErrors": false,
+        "compileErrorCount": 0,
         "errorCount": 0,
-        "recentErrors": []
+        "errors": [],
+        "recentErrors": [],
+        "lastCompileFinishedAt": null,
+        "editorCanEnterPlayMode": true,
+        "isPlaying": false,
+        "isPlayingOrWillChangePlaymode": false
       }
     },
     {
@@ -191,6 +198,15 @@
       "dependency": "file:E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/unity-package/Packages/com.codex.unity-bridge",
       "packageDependencyClassification": "Canonical",
       "canonicalPackageVerified": true
+    },
+    {
+      "id": "unity.compile.localCSharpBuild",
+      "category": "Unity",
+      "importance": "Required",
+      "status": "Passed",
+      "message": "Local C# compile check passed.",
+      "nextAction": null,
+      "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj"
     }
   ],
   "nextActions": []

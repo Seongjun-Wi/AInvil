@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.0.0",
-  "evaluationId": "PCORE-EVAL-2026-07-04T14-50-38-635Z",
-  "generatedAt": "2026-07-04T14:50:38.635Z",
+  "evaluationId": "PCORE-EVAL-2026-07-06T06-17-16-594Z",
+  "generatedAt": "2026-07-06T06:17:16.594Z",
   "reviewedGateId": "GATE-REVIEW-001",
   "reviewId": "REVIEW-ProductionCore-Readiness-001",
   "reviewPath": "reviews/production_core_readiness_review.json",
-  "previousStatus": "Changes Requested",
+  "previousStatus": "Approved",
   "newStatus": "Approved",
   "criteria": [
     {
@@ -221,15 +221,7 @@
       "path": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
     }
   ],
-  "releaseBlockersBefore": [
-    {
-      "gateId": "GATE-REVIEW-001",
-      "title": "Production Core review",
-      "status": "Blocked",
-      "evidence": "Changes Requested",
-      "nextAction": "Resolve changes requested in the Production Core readiness review."
-    }
-  ],
+  "releaseBlockersBefore": [],
   "releaseBlockersAfter": [],
   "nextAction": "Regenerate release readiness and productization reports so the approved Production Core review is reflected in release gates."
 }

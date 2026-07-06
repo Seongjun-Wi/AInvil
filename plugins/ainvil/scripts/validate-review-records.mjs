@@ -14,6 +14,7 @@ const lifecycleStates = new Set([
   "Review Requested",
   "Review In Progress",
   "Changes Requested",
+  "Revalidation Required",
   "Approved",
   "Implemented",
   "Validated",
@@ -22,7 +23,7 @@ const lifecycleStates = new Set([
   "Deferred",
   "Superseded"
 ]);
-const decisions = new Set(["Approved", "Changes Requested", "Rejected", "Deferred", "Needs user decision", "Informational"]);
+const decisions = new Set(["Approved", "Changes Requested", "Revalidation Required", "Rejected", "Deferred", "Needs user decision", "Informational"]);
 const confidenceValues = new Set(["High", "Medium", "Low"]);
 const severities = new Set(["Low", "Medium", "High", "Critical", "Unknown"]);
 

@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "1.0.0",
+  "evidenceId": "EVID-regression-compile-blocked-latest",
+  "source": "LiveHarness",
+  "scenarioId": "regression",
+  "classification": "Operational",
+  "category": "ProductMvp",
+  "validationType": "RegressionCompileGate",
+  "validationLevel": "Compile Failed",
+  "status": "Blocked",
+  "result": "Blocked",
+  "validationIds": [],
+  "validationId": null,
+  "failureClass": "CompileError",
+  "acceptanceIds": [],
+  "requirementIds": [],
+  "unityTargets": [],
+  "checks": [
+    {
+      "checkId": "compile_gate.bridge_health",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Blocked",
+      "failureClass": "BridgeDisconnected",
+      "message": "fetch failed"
+    }
+  ],
+  "checkedSteps": [
+    {
+      "checkId": "compile_gate.bridge_health",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Blocked",
+      "failureClass": "BridgeDisconnected",
+      "message": "fetch failed"
+    }
+  ],
+  "bridgeHealthResult": {
+    "checkId": "compile_gate.bridge_health",
+    "status": "Blocked",
+    "failureClass": "BridgeDisconnected",
+    "message": "fetch failed"
+  },
+  "compileStatusResult": null,
+  "compileStatus": null,
+  "compileErrorCount": 0,
+  "compileErrors": [],
+  "consoleErrorSummary": {
+    "status": "NotRun",
+    "errorCount": null,
+    "message": "Console logs were not checked."
+  },
+  "consoleErrorCount": null,
+  "blockerType": "BridgeDisconnected",
+  "playModeAttempted": false,
+  "runtimeAssemblyFreshness": null,
+  "staleEvidenceReused": false,
+  "failureReason": "Unity Bridge health check failed. Compile gate could not run.",
+  "blocker": "BridgeDisconnected",
+  "bridgeDiagnostics": [],
+  "validationResults": [],
+  "observations": null,
+  "assertions": [],
+  "sourceValidationDesign": null,
+  "startedAt": "2026-07-06T05:51:49.705Z",
+  "finishedAt": "2026-07-06T05:51:49.818Z",
+  "completedAt": "2026-07-06T05:51:49.818Z",
+  "timestamp": "2026-07-06T05:51:49.818Z",
+  "remainingGaps": [
+    "Play Mode validation was blocked by compile gate."
+  ],
+  "nextActions": [
+    "Open Unity, start Codex Unity Bridge, then rerun compile-check."
+  ],
+  "publicReleaseReady": false
+}

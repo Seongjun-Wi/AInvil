@@ -2,6 +2,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { runUnityValidationPreflight } from "../core/unity-compile-gate.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const pluginRoot = path.resolve(scriptDir, "..");
@@ -14,9 +15,23 @@ const steps = [];
 let status = "Blocked";
 let buildResult = null;
 let failureReason = null;
+let compileGate = null;
 
 try {
   steps.push(await healthCheck());
+  compileGate = await runUnityValidationPreflight({
+    scenarioId: "dungeon_recovery_first_playable_e2e",
+    category: "ProductMvp",
+    validationType: "BuildVerification",
+    unityUrl,
+    healthUrl
+  });
+  steps.push(compileGateStep(compileGate));
+  if (compileGate.status !== "Passed") {
+    status = "Blocked";
+    failureReason = compileGate.failureReason;
+    throw new CompileBlockedError(failureReason);
+  }
   steps.push(await callUnityCheck("unity_clear_console", {}));
   steps.push(await callUnityCheck("unity_compile_status", {}));
   steps.push(await ensureBuilderObject());
@@ -68,6 +83,8 @@ const report = {
   buildOutputPath: status === "Passed" ? outputPath : null,
   failureReason,
   buildResult,
+  compileGate,
+  blockerType: compileGate?.status !== "Passed" ? "CompileBlocked" : null,
   steps,
   nextAction: status === "Passed"
     ? "Run the generated executable manually and record human playability feedback."
@@ -196,12 +213,12 @@ async function writeBuildEvidence(report) {
     classification: "Operational",
     category: "ProductMvp",
     validationType: "BuildVerification",
-    validationLevel: report.buildVerificationStatus === "Passed" ? "Compile Verified" : "Not Checked",
+    validationLevel: report.blockerType === "CompileBlocked" ? "Compile Failed" : report.buildVerificationStatus === "Passed" ? "Compile Verified" : "Not Checked",
     status: report.buildVerificationStatus === "Passed" ? "Passed" : report.buildVerificationStatus,
     result: report.buildVerificationStatus === "Passed" ? "Passed" : report.buildVerificationStatus,
     validationIds: ["VAL-DRC-MVP-BUILD-001"],
     validationId: "VAL-DRC-MVP-BUILD-001",
-    failureClass: report.buildVerificationStatus === "Passed" ? "None" : "Unknown",
+    failureClass: report.blockerType === "CompileBlocked" ? "CompileError" : report.buildVerificationStatus === "Passed" ? "None" : "Unknown",
     acceptanceIds: ["AC-DRC-MVP-001", "AC-DRC-MVP-002", "AC-DRC-MVP-003"],
     requirementIds: ["REQ-DRC-MVP-001"],
     unityTargets: [report.scenePath, report.buildOutputPath].filter(Boolean),
@@ -223,7 +240,13 @@ async function writeBuildEvidence(report) {
     })),
     bridgeHealthResult: report.steps.find((step) => step.id === "build.bridge_health") || null,
     compileStatusResult: report.steps.find((step) => step.id === "build.compile_status" || step.id === "build.unity_compile_status") || null,
+    compileGate: report.compileGate,
+    compileErrorCount: report.compileGate?.compileErrorCount ?? null,
+    compileErrors: report.compileGate?.compileErrors || [],
     consoleErrorSummary: null,
+    blockerType: report.blockerType,
+    playModeAttempted: false,
+    runtimeAssemblyFreshness: report.compileGate?.runtimeAssemblyFreshness || null,
     failureReason: report.failureReason,
     blocker: report.buildVerificationStatus === "Passed" ? null : report.failureReason,
     bridgeDiagnostics: [],
@@ -259,6 +282,24 @@ async function writeBuildEvidence(report) {
     remainingPlayabilityIssues: ["Manual executable launch/play confirmation remains required."]
   };
   await writeFile(path.resolve(pluginRoot, "validation", "evidence", "EVID-dungeon-recovery-first-playable-build-latest.json"), `${JSON.stringify(evidence, null, 2)}\n`, "utf8");
+}
+
+function compileGateStep(gate) {
+  return {
+    id: "build.compile_gate",
+    status: gate.status === "Passed" ? "Passed" : "Blocked",
+    ok: gate.status === "Passed",
+    failureClass: gate.status === "Passed" ? "Unknown" : "CompileError",
+    message: gate.status === "Passed" ? "Compile gate passed before build verification." : `CompileBlocked: ${gate.failureReason}`,
+    data: gate
+  };
+}
+
+class CompileBlockedError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "CompileBlockedError";
+  }
 }
 
 function formatMarkdown(report) {

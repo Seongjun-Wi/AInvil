@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "evidenceId": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T14-47-56-627Z",
+  "evidenceId": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T19-50-44-904Z",
   "source": "LiveHarness",
   "scenarioId": "dungeon_recovery_first_playable_e2e",
   "classification": "Operational",
@@ -191,7 +191,7 @@
       "target": "unity_get_status",
       "status": "Passed",
       "failureClass": "Unknown",
-      "message": "Unity Bridge was reachable after 8068ms."
+      "message": "Unity Bridge was reachable after 3914ms."
     },
     {
       "checkId": "product_mvp.controller.resetvalidationstate",
@@ -327,7 +327,7 @@
       "target": "unity_get_status",
       "status": "Passed",
       "failureClass": "Unknown",
-      "message": "Unity Bridge was reachable after 1572ms."
+      "message": "Unity Bridge was reachable after 918ms."
     }
   ],
   "checkedSteps": [
@@ -489,7 +489,7 @@
       "target": "unity_get_status",
       "status": "Passed",
       "failureClass": "Unknown",
-      "message": "Unity Bridge was reachable after 8068ms."
+      "message": "Unity Bridge was reachable after 3914ms."
     },
     {
       "checkId": "product_mvp.controller.resetvalidationstate",
@@ -625,7 +625,7 @@
       "target": "unity_get_status",
       "status": "Passed",
       "failureClass": "Unknown",
-      "message": "Unity Bridge was reachable after 1572ms."
+      "message": "Unity Bridge was reachable after 918ms."
     }
   ],
   "bridgeHealthResult": {
@@ -724,7 +724,7 @@
         }
       ],
       "sourceValidationDesign": null,
-      "timestamp": "2026-07-04T14:48:10.792Z"
+      "timestamp": "2026-07-04T19:50:52.476Z"
     }
   ],
   "observations": {
@@ -794,10 +794,10 @@
     }
   ],
   "sourceValidationDesign": null,
-  "startedAt": "2026-07-04T14:47:56.627Z",
-  "finishedAt": "2026-07-04T14:48:10.793Z",
-  "completedAt": "2026-07-04T14:48:10.793Z",
-  "timestamp": "2026-07-04T14:48:10.793Z",
+  "startedAt": "2026-07-04T19:50:44.904Z",
+  "finishedAt": "2026-07-04T19:50:52.476Z",
+  "completedAt": "2026-07-04T19:50:52.476Z",
+  "timestamp": "2026-07-04T19:50:52.476Z",
   "remainingGaps": [],
   "nextActions": [
     "Product MVP first playable evidence is Passed. Keep this as Product MVP Ready Candidate proof, not Public Release proof."

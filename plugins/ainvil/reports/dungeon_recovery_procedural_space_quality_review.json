@@ -1,0 +1,1877 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "DRC-SPACE-2026-07-06T06-16-48-774Z",
+  "generatedAt": "2026-07-06T06:16:48.774Z",
+  "scenarioId": "dungeon_recovery_procedural_space_quality_validation",
+  "status": "Passed",
+  "validationLevel": "Play Mode Verified",
+  "spaceQuality": {
+    "category": "ProductMvp",
+    "validationType": "ProceduralSpaceQualityValidation",
+    "unityProjectPath": null,
+    "generatedAssets": [
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs",
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryPlayerController.cs",
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobBuilder.cs"
+    ],
+    "modifiedAssets": [
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs"
+    ],
+    "dryRunReport": "reports/dungeon_recovery_procedural_space_quality_dry_run.json",
+    "seedsTested": [
+      1001,
+      2026,
+      7777
+    ],
+    "perSeedResults": [
+      {
+        "seed": 1001,
+        "generationSucceeded": true,
+        "roomCount": 5,
+        "generatedRoomCount": 5,
+        "minRoomWidth": 8,
+        "maxRoomWidth": 9,
+        "minRoomDepth": 9,
+        "maxRoomDepth": 10,
+        "averageRoomArea": 77,
+        "corridorWidth": 3,
+        "narrowPassageCount": 0,
+        "minimumNavigableWidth": 2.5999999046325684,
+        "playerClearancePassed": true,
+        "wallHeight": 3.200000047683716,
+        "playerHeight": 1.7999999523162842,
+        "cameraHeight": 1.6200000047683716,
+        "wallHeightSufficient": true,
+        "propCount": 10,
+        "propTypes": [
+          "barrel",
+          "broken_pillar",
+          "crate",
+          "debris_pile",
+          "shelf",
+          "storage_rack"
+        ],
+        "propOverlapCount": 0,
+        "blockedDoorwayCount": 0,
+        "blockedTargetCount": 0,
+        "recoveryTargetCount": 3,
+        "reachableTargetCount": 3,
+        "navigabilityAfterPropsPassed": true,
+        "targetRoomDistribution": "room2:1,room4:1,room5:1",
+        "targetMinDistance": 10,
+        "targetInteractionClearancePassed": true,
+        "targetReachabilityPassed": true,
+        "jobComplete": true,
+        "publicReleaseReady": false,
+        "validationHookUsed": "AInvilProceduralRecoveryJobController.GenerateWithSeed/ValidationCompleteAllTargets/GetValidationStateJson",
+        "failureReason": null,
+        "assertions": [
+          {
+            "id": "generation_succeeded",
+            "result": "Passed",
+            "message": "generation_succeeded passed."
+          },
+          {
+            "id": "room_count",
+            "result": "Passed",
+            "message": "room_count passed."
+          },
+          {
+            "id": "min_room_width",
+            "result": "Passed",
+            "message": "min_room_width passed."
+          },
+          {
+            "id": "min_room_depth",
+            "result": "Passed",
+            "message": "min_room_depth passed."
+          },
+          {
+            "id": "average_room_area",
+            "result": "Passed",
+            "message": "average_room_area passed."
+          },
+          {
+            "id": "corridor_width",
+            "result": "Passed",
+            "message": "corridor_width passed."
+          },
+          {
+            "id": "narrow_passages",
+            "result": "Passed",
+            "message": "narrow_passages passed."
+          },
+          {
+            "id": "player_clearance",
+            "result": "Passed",
+            "message": "player_clearance passed."
+          },
+          {
+            "id": "wall_height",
+            "result": "Passed",
+            "message": "wall_height passed."
+          },
+          {
+            "id": "props_exist",
+            "result": "Passed",
+            "message": "props_exist passed."
+          },
+          {
+            "id": "prop_types",
+            "result": "Passed",
+            "message": "prop_types passed."
+          },
+          {
+            "id": "prop_overlap",
+            "result": "Passed",
+            "message": "prop_overlap passed."
+          },
+          {
+            "id": "doorways_unblocked",
+            "result": "Passed",
+            "message": "doorways_unblocked passed."
+          },
+          {
+            "id": "targets_unblocked",
+            "result": "Passed",
+            "message": "targets_unblocked passed."
+          },
+          {
+            "id": "reachable_targets",
+            "result": "Passed",
+            "message": "reachable_targets passed."
+          },
+          {
+            "id": "navigability_after_props",
+            "result": "Passed",
+            "message": "navigability_after_props passed."
+          },
+          {
+            "id": "target_distance",
+            "result": "Passed",
+            "message": "target_distance passed."
+          },
+          {
+            "id": "target_clearance",
+            "result": "Passed",
+            "message": "target_clearance passed."
+          },
+          {
+            "id": "target_reachability",
+            "result": "Passed",
+            "message": "target_reachability passed."
+          },
+          {
+            "id": "job_complete",
+            "result": "Passed",
+            "message": "job_complete passed."
+          },
+          {
+            "id": "public_release_not_claimed",
+            "result": "Passed",
+            "message": "public_release_not_claimed passed."
+          }
+        ]
+      },
+      {
+        "seed": 2026,
+        "generationSucceeded": true,
+        "roomCount": 4,
+        "generatedRoomCount": 4,
+        "minRoomWidth": 7,
+        "maxRoomWidth": 11,
+        "minRoomDepth": 7,
+        "maxRoomDepth": 11,
+        "averageRoomArea": 79,
+        "corridorWidth": 3,
+        "narrowPassageCount": 0,
+        "minimumNavigableWidth": 2.5999999046325684,
+        "playerClearancePassed": true,
+        "wallHeight": 3.200000047683716,
+        "playerHeight": 1.7999999523162842,
+        "cameraHeight": 1.6200000047683716,
+        "wallHeightSufficient": true,
+        "propCount": 10,
+        "propTypes": [
+          "broken_pillar",
+          "crate",
+          "debris_pile",
+          "shelf",
+          "storage_rack"
+        ],
+        "propOverlapCount": 0,
+        "blockedDoorwayCount": 0,
+        "blockedTargetCount": 0,
+        "recoveryTargetCount": 3,
+        "reachableTargetCount": 3,
+        "navigabilityAfterPropsPassed": true,
+        "targetRoomDistribution": "room1:1,room2:1,room4:1",
+        "targetMinDistance": 21,
+        "targetInteractionClearancePassed": true,
+        "targetReachabilityPassed": true,
+        "jobComplete": true,
+        "publicReleaseReady": false,
+        "validationHookUsed": "AInvilProceduralRecoveryJobController.GenerateWithSeed/ValidationCompleteAllTargets/GetValidationStateJson",
+        "failureReason": null,
+        "assertions": [
+          {
+            "id": "generation_succeeded",
+            "result": "Passed",
+            "message": "generation_succeeded passed."
+          },
+          {
+            "id": "room_count",
+            "result": "Passed",
+            "message": "room_count passed."
+          },
+          {
+            "id": "min_room_width",
+            "result": "Passed",
+            "message": "min_room_width passed."
+          },
+          {
+            "id": "min_room_depth",
+            "result": "Passed",
+            "message": "min_room_depth passed."
+          },
+          {
+            "id": "average_room_area",
+            "result": "Passed",
+            "message": "average_room_area passed."
+          },
+          {
+            "id": "corridor_width",
+            "result": "Passed",
+            "message": "corridor_width passed."
+          },
+          {
+            "id": "narrow_passages",
+            "result": "Passed",
+            "message": "narrow_passages passed."
+          },
+          {
+            "id": "player_clearance",
+            "result": "Passed",
+            "message": "player_clearance passed."
+          },
+          {
+            "id": "wall_height",
+            "result": "Passed",
+            "message": "wall_height passed."
+          },
+          {
+            "id": "props_exist",
+            "result": "Passed",
+            "message": "props_exist passed."
+          },
+          {
+            "id": "prop_types",
+            "result": "Passed",
+            "message": "prop_types passed."
+          },
+          {
+            "id": "prop_overlap",
+            "result": "Passed",
+            "message": "prop_overlap passed."
+          },
+          {
+            "id": "doorways_unblocked",
+            "result": "Passed",
+            "message": "doorways_unblocked passed."
+          },
+          {
+            "id": "targets_unblocked",
+            "result": "Passed",
+            "message": "targets_unblocked passed."
+          },
+          {
+            "id": "reachable_targets",
+            "result": "Passed",
+            "message": "reachable_targets passed."
+          },
+          {
+            "id": "navigability_after_props",
+            "result": "Passed",
+            "message": "navigability_after_props passed."
+          },
+          {
+            "id": "target_distance",
+            "result": "Passed",
+            "message": "target_distance passed."
+          },
+          {
+            "id": "target_clearance",
+            "result": "Passed",
+            "message": "target_clearance passed."
+          },
+          {
+            "id": "target_reachability",
+            "result": "Passed",
+            "message": "target_reachability passed."
+          },
+          {
+            "id": "job_complete",
+            "result": "Passed",
+            "message": "job_complete passed."
+          },
+          {
+            "id": "public_release_not_claimed",
+            "result": "Passed",
+            "message": "public_release_not_claimed passed."
+          }
+        ]
+      },
+      {
+        "seed": 7777,
+        "generationSucceeded": true,
+        "roomCount": 5,
+        "generatedRoomCount": 5,
+        "minRoomWidth": 7,
+        "maxRoomWidth": 11,
+        "minRoomDepth": 9,
+        "maxRoomDepth": 11,
+        "averageRoomArea": 93,
+        "corridorWidth": 3,
+        "narrowPassageCount": 0,
+        "minimumNavigableWidth": 2.5999999046325684,
+        "playerClearancePassed": true,
+        "wallHeight": 3.200000047683716,
+        "playerHeight": 1.7999999523162842,
+        "cameraHeight": 1.6200000047683716,
+        "wallHeightSufficient": true,
+        "propCount": 14,
+        "propTypes": [
+          "barrel",
+          "broken_pillar",
+          "crate",
+          "shelf",
+          "storage_rack"
+        ],
+        "propOverlapCount": 0,
+        "blockedDoorwayCount": 0,
+        "blockedTargetCount": 0,
+        "recoveryTargetCount": 3,
+        "reachableTargetCount": 3,
+        "navigabilityAfterPropsPassed": true,
+        "targetRoomDistribution": "room2:1,room3:1,room5:1",
+        "targetMinDistance": 19,
+        "targetInteractionClearancePassed": true,
+        "targetReachabilityPassed": true,
+        "jobComplete": true,
+        "publicReleaseReady": false,
+        "validationHookUsed": "AInvilProceduralRecoveryJobController.GenerateWithSeed/ValidationCompleteAllTargets/GetValidationStateJson",
+        "failureReason": null,
+        "assertions": [
+          {
+            "id": "generation_succeeded",
+            "result": "Passed",
+            "message": "generation_succeeded passed."
+          },
+          {
+            "id": "room_count",
+            "result": "Passed",
+            "message": "room_count passed."
+          },
+          {
+            "id": "min_room_width",
+            "result": "Passed",
+            "message": "min_room_width passed."
+          },
+          {
+            "id": "min_room_depth",
+            "result": "Passed",
+            "message": "min_room_depth passed."
+          },
+          {
+            "id": "average_room_area",
+            "result": "Passed",
+            "message": "average_room_area passed."
+          },
+          {
+            "id": "corridor_width",
+            "result": "Passed",
+            "message": "corridor_width passed."
+          },
+          {
+            "id": "narrow_passages",
+            "result": "Passed",
+            "message": "narrow_passages passed."
+          },
+          {
+            "id": "player_clearance",
+            "result": "Passed",
+            "message": "player_clearance passed."
+          },
+          {
+            "id": "wall_height",
+            "result": "Passed",
+            "message": "wall_height passed."
+          },
+          {
+            "id": "props_exist",
+            "result": "Passed",
+            "message": "props_exist passed."
+          },
+          {
+            "id": "prop_types",
+            "result": "Passed",
+            "message": "prop_types passed."
+          },
+          {
+            "id": "prop_overlap",
+            "result": "Passed",
+            "message": "prop_overlap passed."
+          },
+          {
+            "id": "doorways_unblocked",
+            "result": "Passed",
+            "message": "doorways_unblocked passed."
+          },
+          {
+            "id": "targets_unblocked",
+            "result": "Passed",
+            "message": "targets_unblocked passed."
+          },
+          {
+            "id": "reachable_targets",
+            "result": "Passed",
+            "message": "reachable_targets passed."
+          },
+          {
+            "id": "navigability_after_props",
+            "result": "Passed",
+            "message": "navigability_after_props passed."
+          },
+          {
+            "id": "target_distance",
+            "result": "Passed",
+            "message": "target_distance passed."
+          },
+          {
+            "id": "target_clearance",
+            "result": "Passed",
+            "message": "target_clearance passed."
+          },
+          {
+            "id": "target_reachability",
+            "result": "Passed",
+            "message": "target_reachability passed."
+          },
+          {
+            "id": "job_complete",
+            "result": "Passed",
+            "message": "job_complete passed."
+          },
+          {
+            "id": "public_release_not_claimed",
+            "result": "Passed",
+            "message": "public_release_not_claimed passed."
+          }
+        ]
+      }
+    ],
+    "consoleErrorCount": 0,
+    "visualValidationStatus": "Passed",
+    "buildVerificationStatus": "Passed",
+    "staleEvidenceReused": false,
+    "publicReleaseReady": false,
+    "failureReason": null,
+    "nextAction": "Procedural space quality validation passed. Public Release Ready remains No.",
+    "compileGate": {
+      "schemaVersion": "1.0.0",
+      "gateId": "UNITY-COMPILE-GATE",
+      "scenarioId": "dungeon_recovery_procedural_space_quality_validation",
+      "classification": "Operational",
+      "category": "ProductMvp",
+      "validationType": "ProceduralSpaceQualityValidation",
+      "startedAt": "2026-07-06T06:16:27.227Z",
+      "finishedAt": "2026-07-06T06:16:28.889Z",
+      "status": "Passed",
+      "canEnterPlayMode": true,
+      "compileStatus": "Passed",
+      "compileErrorCount": 0,
+      "compileErrors": [],
+      "consoleErrorSummary": {
+        "status": "Passed",
+        "errorCount": 0,
+        "message": "unity_get_console_logs succeeded."
+      },
+      "unityProjectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany",
+      "unityUrl": "http://127.0.0.1:17777/rpc",
+      "healthUrl": "http://127.0.0.1:17777/health",
+      "checks": [
+        {
+          "id": "compile_gate.bridge_health",
+          "type": "Static",
+          "target": "http://127.0.0.1:17777/health",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "Unity Bridge health endpoint is reachable.",
+          "data": {
+            "ok": true,
+            "bridgeRunning": true,
+            "bridgeStatus": "running",
+            "capabilityVersion": "0.6.0-validation-probes",
+            "unityVersion": "6000.5.0f1",
+            "isPlaying": false,
+            "isPlayingOrWillChangePlaymode": false,
+            "playModeTransitionCount": 3
+          }
+        },
+        {
+          "id": "compile_gate.unity_get_status",
+          "type": "Static",
+          "target": "unity_get_status",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_get_status succeeded.",
+          "data": {
+            "ok": true,
+            "bridgeRunning": true,
+            "bridgeStatus": "running",
+            "capabilityVersion": "0.6.0-validation-probes",
+            "unityVersion": "6000.5.0f1",
+            "projectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets",
+            "isPlaying": false,
+            "isPaused": false,
+            "isPlayingOrWillChangePlaymode": false,
+            "isCompiling": false,
+            "isUpdating": false,
+            "playModeTransitionCount": 3,
+            "inputTestBridgeAvailable": false,
+            "activeScene": {
+              "name": "DRC_ProceduralRecoveryJob",
+              "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+              "isDirty": false,
+              "isLoaded": true,
+              "rootCount": 1
+            },
+            "selection": {
+              "activeObject": null,
+              "objects": []
+            }
+          }
+        },
+        {
+          "id": "compile_gate.unity_refresh_assets",
+          "type": "Asset",
+          "target": "unity_refresh_assets",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_refresh_assets succeeded.",
+          "data": {
+            "ok": true,
+            "isCompiling": false,
+            "isUpdating": false
+          }
+        },
+        {
+          "id": "compile_gate.unity_compile_status",
+          "type": "Compile",
+          "target": "unity_compile_status",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "Unity compile status is stable and has no compile errors.",
+          "data": {
+            "isCompiling": false,
+            "isUpdating": false,
+            "hasCompileErrors": false,
+            "compileErrorCount": 0,
+            "errorCount": 0,
+            "errors": [],
+            "recentErrors": [],
+            "lastCompileFinishedAt": null,
+            "editorCanEnterPlayMode": true,
+            "isPlaying": false,
+            "isPlayingOrWillChangePlaymode": false
+          }
+        },
+        {
+          "id": "compile_gate.unity_get_console_logs",
+          "type": "Console",
+          "target": "unity_get_console_logs",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_get_console_logs succeeded.",
+          "data": {
+            "logs": []
+          }
+        },
+        {
+          "id": "compile_gate.local_csharp_build",
+          "type": "Compile",
+          "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "Local C# compile check passed.",
+          "data": {
+            "exitCode": 0,
+            "timedOut": false,
+            "errors": [],
+            "outputTail": "10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.ShaderGraph.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor.Shared\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\n  Assembly-CSharp -> E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Temp\\bin\\Debug\\Assembly-CSharp.dll\r\n\r\n빌드했습니다.\r\n\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3274: 기본 참조 \"nunit.framework\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성되었기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Universal.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.Rider.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.VisualStudio.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.ShaderGraph.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor.Shared\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\n    경고 7개\r\n    오류 0개\r\n\r\n경과 시간: 00:00:01.13\r\n"
+          }
+        }
+      ],
+      "compileStatusResult": {
+        "id": "compile_gate.unity_compile_status",
+        "type": "Compile",
+        "target": "unity_compile_status",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "Unity compile status is stable and has no compile errors.",
+        "data": {
+          "isCompiling": false,
+          "isUpdating": false,
+          "hasCompileErrors": false,
+          "compileErrorCount": 0,
+          "errorCount": 0,
+          "errors": [],
+          "recentErrors": [],
+          "lastCompileFinishedAt": null,
+          "editorCanEnterPlayMode": true,
+          "isPlaying": false,
+          "isPlayingOrWillChangePlaymode": false
+        }
+      },
+      "blockerType": null,
+      "playModeAttempted": false,
+      "runtimeAssemblyFreshness": {
+        "status": "Fresh",
+        "reason": "Compile gate passed immediately before Play Mode validation.",
+        "compileCheckedBeforePlayMode": true,
+        "lastCompileStatus": "Passed",
+        "recommendation": "Proceed to Play Mode validation."
+      },
+      "failureReason": null,
+      "nextAction": "Compile gate passed. Runtime validation may enter Play Mode."
+    },
+    "compileStatus": {
+      "id": "compile_gate.unity_compile_status",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "ok": true,
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors.",
+      "data": {
+        "isCompiling": false,
+        "isUpdating": false,
+        "hasCompileErrors": false,
+        "compileErrorCount": 0,
+        "errorCount": 0,
+        "errors": [],
+        "recentErrors": [],
+        "lastCompileFinishedAt": null,
+        "editorCanEnterPlayMode": true,
+        "isPlaying": false,
+        "isPlayingOrWillChangePlaymode": false
+      }
+    },
+    "compileErrorCount": 0,
+    "compileErrors": [],
+    "blockerType": null,
+    "runtimeAssemblyFreshness": {
+      "status": "Fresh",
+      "reason": "Compile gate passed immediately before Play Mode validation.",
+      "compileCheckedBeforePlayMode": true,
+      "lastCompileStatus": "Passed",
+      "recommendation": "Proceed to Play Mode validation."
+    }
+  },
+  "checks": [
+    {
+      "checkId": "bridge.unity_compile_status.before_space_quality_scene_build",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors."
+    },
+    {
+      "checkId": "bridge.unity_compile_status.after_space_quality_scene_build",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors."
+    },
+    {
+      "checkId": "artifact.validation_evidence_evid_dungeon_recovery_procedural_space_quality_latest_json.planned",
+      "type": "Static",
+      "target": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest.json",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Artifact is planned by the scenario and does not require live existence."
+    },
+    {
+      "checkId": "bridge.wait.procedural_space_quality_play_mode_enter",
+      "type": "PlayMode",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Play Mode reached isPlaying=true after 5927ms."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.1001",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.validationcompletealltargets",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.ValidationCompleteAllTargets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getvalidationstatejson",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetValidationStateJson",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.assertions",
+      "type": "PlayMode",
+      "target": "seed:1001",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "21 space quality assertion(s) passed for seed 1001."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.min_room_width",
+      "type": "ValidationAssertion",
+      "target": "min_room_width",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "min_room_width passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.min_room_depth",
+      "type": "ValidationAssertion",
+      "target": "min_room_depth",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "min_room_depth passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.average_room_area",
+      "type": "ValidationAssertion",
+      "target": "average_room_area",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "average_room_area passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.corridor_width",
+      "type": "ValidationAssertion",
+      "target": "corridor_width",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "corridor_width passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.narrow_passages",
+      "type": "ValidationAssertion",
+      "target": "narrow_passages",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "narrow_passages passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.player_clearance",
+      "type": "ValidationAssertion",
+      "target": "player_clearance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_clearance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.wall_height",
+      "type": "ValidationAssertion",
+      "target": "wall_height",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_height passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.props_exist",
+      "type": "ValidationAssertion",
+      "target": "props_exist",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "props_exist passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.prop_types",
+      "type": "ValidationAssertion",
+      "target": "prop_types",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "prop_types passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.prop_overlap",
+      "type": "ValidationAssertion",
+      "target": "prop_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "prop_overlap passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.doorways_unblocked",
+      "type": "ValidationAssertion",
+      "target": "doorways_unblocked",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "doorways_unblocked passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.targets_unblocked",
+      "type": "ValidationAssertion",
+      "target": "targets_unblocked",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "targets_unblocked passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.navigability_after_props",
+      "type": "ValidationAssertion",
+      "target": "navigability_after_props",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "navigability_after_props passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.target_distance",
+      "type": "ValidationAssertion",
+      "target": "target_distance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_distance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.target_clearance",
+      "type": "ValidationAssertion",
+      "target": "target_clearance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_clearance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.target_reachability",
+      "type": "ValidationAssertion",
+      "target": "target_reachability",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_reachability passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.space_quality.1001.public_release_not_claimed",
+      "type": "ValidationAssertion",
+      "target": "public_release_not_claimed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "public_release_not_claimed passed."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.2026",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.validationcompletealltargets",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.ValidationCompleteAllTargets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getvalidationstatejson",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetValidationStateJson",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.assertions",
+      "type": "PlayMode",
+      "target": "seed:2026",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "21 space quality assertion(s) passed for seed 2026."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.min_room_width",
+      "type": "ValidationAssertion",
+      "target": "min_room_width",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "min_room_width passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.min_room_depth",
+      "type": "ValidationAssertion",
+      "target": "min_room_depth",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "min_room_depth passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.average_room_area",
+      "type": "ValidationAssertion",
+      "target": "average_room_area",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "average_room_area passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.corridor_width",
+      "type": "ValidationAssertion",
+      "target": "corridor_width",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "corridor_width passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.narrow_passages",
+      "type": "ValidationAssertion",
+      "target": "narrow_passages",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "narrow_passages passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.player_clearance",
+      "type": "ValidationAssertion",
+      "target": "player_clearance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_clearance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.wall_height",
+      "type": "ValidationAssertion",
+      "target": "wall_height",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_height passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.props_exist",
+      "type": "ValidationAssertion",
+      "target": "props_exist",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "props_exist passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.prop_types",
+      "type": "ValidationAssertion",
+      "target": "prop_types",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "prop_types passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.prop_overlap",
+      "type": "ValidationAssertion",
+      "target": "prop_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "prop_overlap passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.doorways_unblocked",
+      "type": "ValidationAssertion",
+      "target": "doorways_unblocked",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "doorways_unblocked passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.targets_unblocked",
+      "type": "ValidationAssertion",
+      "target": "targets_unblocked",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "targets_unblocked passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.navigability_after_props",
+      "type": "ValidationAssertion",
+      "target": "navigability_after_props",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "navigability_after_props passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.target_distance",
+      "type": "ValidationAssertion",
+      "target": "target_distance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_distance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.target_clearance",
+      "type": "ValidationAssertion",
+      "target": "target_clearance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_clearance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.target_reachability",
+      "type": "ValidationAssertion",
+      "target": "target_reachability",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_reachability passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.space_quality.2026.public_release_not_claimed",
+      "type": "ValidationAssertion",
+      "target": "public_release_not_claimed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "public_release_not_claimed passed."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.7777",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.validationcompletealltargets",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.ValidationCompleteAllTargets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getvalidationstatejson",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetValidationStateJson",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.assertions",
+      "type": "PlayMode",
+      "target": "seed:7777",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "21 space quality assertion(s) passed for seed 7777."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.min_room_width",
+      "type": "ValidationAssertion",
+      "target": "min_room_width",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "min_room_width passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.min_room_depth",
+      "type": "ValidationAssertion",
+      "target": "min_room_depth",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "min_room_depth passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.average_room_area",
+      "type": "ValidationAssertion",
+      "target": "average_room_area",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "average_room_area passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.corridor_width",
+      "type": "ValidationAssertion",
+      "target": "corridor_width",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "corridor_width passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.narrow_passages",
+      "type": "ValidationAssertion",
+      "target": "narrow_passages",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "narrow_passages passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.player_clearance",
+      "type": "ValidationAssertion",
+      "target": "player_clearance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_clearance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.wall_height",
+      "type": "ValidationAssertion",
+      "target": "wall_height",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_height passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.props_exist",
+      "type": "ValidationAssertion",
+      "target": "props_exist",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "props_exist passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.prop_types",
+      "type": "ValidationAssertion",
+      "target": "prop_types",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "prop_types passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.prop_overlap",
+      "type": "ValidationAssertion",
+      "target": "prop_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "prop_overlap passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.doorways_unblocked",
+      "type": "ValidationAssertion",
+      "target": "doorways_unblocked",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "doorways_unblocked passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.targets_unblocked",
+      "type": "ValidationAssertion",
+      "target": "targets_unblocked",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "targets_unblocked passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.navigability_after_props",
+      "type": "ValidationAssertion",
+      "target": "navigability_after_props",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "navigability_after_props passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.target_distance",
+      "type": "ValidationAssertion",
+      "target": "target_distance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_distance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.target_clearance",
+      "type": "ValidationAssertion",
+      "target": "target_clearance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_clearance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.target_reachability",
+      "type": "ValidationAssertion",
+      "target": "target_reachability",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_reachability passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.space_quality.7777.public_release_not_claimed",
+      "type": "ValidationAssertion",
+      "target": "public_release_not_claimed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "public_release_not_claimed passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assertions",
+      "type": "PlayMode",
+      "target": "ProceduralSpaceQuality",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "67 space quality assertion(s) passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.min_room_width",
+      "type": "ValidationAssertion",
+      "target": "min_room_width",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "min_room_width passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.min_room_depth",
+      "type": "ValidationAssertion",
+      "target": "min_room_depth",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "min_room_depth passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.average_room_area",
+      "type": "ValidationAssertion",
+      "target": "average_room_area",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "average_room_area passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.corridor_width",
+      "type": "ValidationAssertion",
+      "target": "corridor_width",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "corridor_width passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.narrow_passages",
+      "type": "ValidationAssertion",
+      "target": "narrow_passages",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "narrow_passages passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.player_clearance",
+      "type": "ValidationAssertion",
+      "target": "player_clearance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_clearance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.wall_height",
+      "type": "ValidationAssertion",
+      "target": "wall_height",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_height passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.props_exist",
+      "type": "ValidationAssertion",
+      "target": "props_exist",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "props_exist passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.prop_types",
+      "type": "ValidationAssertion",
+      "target": "prop_types",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "prop_types passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.prop_overlap",
+      "type": "ValidationAssertion",
+      "target": "prop_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "prop_overlap passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.doorways_unblocked",
+      "type": "ValidationAssertion",
+      "target": "doorways_unblocked",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "doorways_unblocked passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.targets_unblocked",
+      "type": "ValidationAssertion",
+      "target": "targets_unblocked",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "targets_unblocked passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.navigability_after_props",
+      "type": "ValidationAssertion",
+      "target": "navigability_after_props",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "navigability_after_props passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.target_distance",
+      "type": "ValidationAssertion",
+      "target": "target_distance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_distance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.target_clearance",
+      "type": "ValidationAssertion",
+      "target": "target_clearance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_clearance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.target_reachability",
+      "type": "ValidationAssertion",
+      "target": "target_reachability",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_reachability passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.public_release_not_claimed",
+      "type": "ValidationAssertion",
+      "target": "public_release_not_claimed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "public_release_not_claimed passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.min_room_width",
+      "type": "ValidationAssertion",
+      "target": "min_room_width",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "min_room_width passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.min_room_depth",
+      "type": "ValidationAssertion",
+      "target": "min_room_depth",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "min_room_depth passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.average_room_area",
+      "type": "ValidationAssertion",
+      "target": "average_room_area",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "average_room_area passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.corridor_width",
+      "type": "ValidationAssertion",
+      "target": "corridor_width",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "corridor_width passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.narrow_passages",
+      "type": "ValidationAssertion",
+      "target": "narrow_passages",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "narrow_passages passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.player_clearance",
+      "type": "ValidationAssertion",
+      "target": "player_clearance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_clearance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.wall_height",
+      "type": "ValidationAssertion",
+      "target": "wall_height",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_height passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.props_exist",
+      "type": "ValidationAssertion",
+      "target": "props_exist",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "props_exist passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.prop_types",
+      "type": "ValidationAssertion",
+      "target": "prop_types",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "prop_types passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.prop_overlap",
+      "type": "ValidationAssertion",
+      "target": "prop_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "prop_overlap passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.doorways_unblocked",
+      "type": "ValidationAssertion",
+      "target": "doorways_unblocked",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "doorways_unblocked passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.targets_unblocked",
+      "type": "ValidationAssertion",
+      "target": "targets_unblocked",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "targets_unblocked passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.navigability_after_props",
+      "type": "ValidationAssertion",
+      "target": "navigability_after_props",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "navigability_after_props passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.target_distance",
+      "type": "ValidationAssertion",
+      "target": "target_distance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_distance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.target_clearance",
+      "type": "ValidationAssertion",
+      "target": "target_clearance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_clearance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.target_reachability",
+      "type": "ValidationAssertion",
+      "target": "target_reachability",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_reachability passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.public_release_not_claimed",
+      "type": "ValidationAssertion",
+      "target": "public_release_not_claimed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "public_release_not_claimed passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.min_room_width",
+      "type": "ValidationAssertion",
+      "target": "min_room_width",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "min_room_width passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.min_room_depth",
+      "type": "ValidationAssertion",
+      "target": "min_room_depth",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "min_room_depth passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.average_room_area",
+      "type": "ValidationAssertion",
+      "target": "average_room_area",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "average_room_area passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.corridor_width",
+      "type": "ValidationAssertion",
+      "target": "corridor_width",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "corridor_width passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.narrow_passages",
+      "type": "ValidationAssertion",
+      "target": "narrow_passages",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "narrow_passages passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.player_clearance",
+      "type": "ValidationAssertion",
+      "target": "player_clearance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_clearance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.wall_height",
+      "type": "ValidationAssertion",
+      "target": "wall_height",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_height passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.props_exist",
+      "type": "ValidationAssertion",
+      "target": "props_exist",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "props_exist passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.prop_types",
+      "type": "ValidationAssertion",
+      "target": "prop_types",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "prop_types passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.prop_overlap",
+      "type": "ValidationAssertion",
+      "target": "prop_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "prop_overlap passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.doorways_unblocked",
+      "type": "ValidationAssertion",
+      "target": "doorways_unblocked",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "doorways_unblocked passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.targets_unblocked",
+      "type": "ValidationAssertion",
+      "target": "targets_unblocked",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "targets_unblocked passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.navigability_after_props",
+      "type": "ValidationAssertion",
+      "target": "navigability_after_props",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "navigability_after_props passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.target_distance",
+      "type": "ValidationAssertion",
+      "target": "target_distance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_distance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.target_clearance",
+      "type": "ValidationAssertion",
+      "target": "target_clearance",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_clearance passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.target_reachability",
+      "type": "ValidationAssertion",
+      "target": "target_reachability",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_reachability passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.public_release_not_claimed",
+      "type": "ValidationAssertion",
+      "target": "public_release_not_claimed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "public_release_not_claimed passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.all_seeds_tested",
+      "type": "ValidationAssertion",
+      "target": "all_seeds_tested",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "all_seeds_tested passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.console_errors_zero",
+      "type": "ValidationAssertion",
+      "target": "console_errors_zero",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "console_errors_zero passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.stale_evidence",
+      "type": "ValidationAssertion",
+      "target": "stale_evidence",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "stale_evidence passed."
+    },
+    {
+      "checkId": "procedural.space_quality.assert.public_release_not_claimed",
+      "type": "ValidationAssertion",
+      "target": "public_release_not_claimed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "public_release_not_claimed passed."
+    },
+    {
+      "checkId": "bridge.wait.procedural_space_quality_play_mode_exit",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge was reachable after 773ms."
+    }
+  ],
+  "publicReleaseReady": false,
+  "nextAction": "Procedural space quality validation passed. Public Release Ready remains No."
+}

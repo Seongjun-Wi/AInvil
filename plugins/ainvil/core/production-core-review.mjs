@@ -23,6 +23,7 @@ export async function evaluateProductionCoreReview(options = {}) {
     .filter((item) => item.status !== "Passed")
     .map((item) => ({
       id: item.id,
+      status: item.status,
       summary: item.failureSummary,
       connectedArtifacts: item.connectedArtifacts,
       nextAction: item.nextAction
@@ -34,7 +35,9 @@ export async function evaluateProductionCoreReview(options = {}) {
       summary: item.successSummary,
       connectedArtifacts: item.connectedArtifacts
     }));
-  const newStatus = remainingChanges.length === 0 ? "Approved" : "Changes Requested";
+  const revalidationOnly = remainingChanges.length > 0
+    && remainingChanges.every((item) => item.status === "Revalidation Required");
+  const newStatus = remainingChanges.length === 0 ? "Approved" : revalidationOnly ? "Revalidation Required" : "Changes Requested";
   const evidenceUsed = evidenceRefs({ productization, release, doctor, harness, evidence, review });
   const releaseBlockersBefore = (release.data?.blockers || []).map((item) => gateBlocker(item));
   const releaseBlockersAfter = releaseBlockersBefore.filter((item) => item.gateId !== "GATE-REVIEW-001");
@@ -82,10 +85,13 @@ function buildCriteria({ productization, release, doctor, harness, evidence }) {
   const doctorCheck = (id) => (doctor.data?.checks || []).find((item) => item.id === id);
   const harnessScenario = (harness.data?.scenarios || []).find((item) => item.id === "ainvil_bridge_smoke_operational");
   const anyOperationalHarnessScenario = (harness.data?.scenarios || []).find((item) => item.classification === "Operational" && item.status === "Passed");
+  const environmentBlockedHarnessScenario = (harness.data?.scenarios || []).find((item) => item.classification === "Operational" && item.status === "Blocked" && isEnvironmentBlockedHarness(item));
   const productizationBlockers = productization.data?.releaseBlockers || [];
   const coreProductizationBlockers = productizationBlockers.filter((item) => item.id !== "BLOCKER-RELEASE-GATE-REVIEW-001");
   const releaseBlockers = release.data?.blockers || [];
   const nonReviewReleaseBlockers = releaseBlockers.filter((item) => item.gateId !== "GATE-REVIEW-001");
+  const productizationEnvironmentOnly = coreProductizationBlockers.length > 0 && coreProductizationBlockers.every(isEnvironmentBlocker);
+  const releaseEnvironmentOnly = nonReviewReleaseBlockers.length > 0 && nonReviewReleaseBlockers.every(isEnvironmentBlocker);
   const exampleGraphContamination = (productization.data?.exampleContamination || [])
     .some((item) => item.kind === "ExampleGraph" && item.status === "Blocked");
   const consoleErrors = evidence.data?.consoleErrorSummary?.errorCount;
@@ -161,9 +167,12 @@ function buildCriteria({ productization, release, doctor, harness, evidence }) {
         && harness.data?.summary?.failed === 0
         && harness.data?.summary?.blocked === 0
         && Boolean(anyOperationalHarnessScenario || (harnessScenario?.classification === "Operational" && harnessScenario?.status === "Passed")),
+      statusOverride: environmentBlockedHarnessScenario && evidence.data?.status === "Passed" ? "Revalidation Required" : null,
       evidence: harness.exists ? `summary passed=${harness.data?.summary?.passed}, failed=${harness.data?.summary?.failed}, blocked=${harness.data?.summary?.blocked}` : "Missing live harness report",
       successSummary: "Latest live harness report has a Passed Operational scenario; fixed smoke evidence remains available for the core gate.",
-      failureSummary: "Latest live harness report does not show any Operational scenario as Passed.",
+      failureSummary: environmentBlockedHarnessScenario
+        ? "Latest live harness run is environment-blocked by Unity Bridge, while last known Operational Passed evidence remains available."
+        : "Latest live harness report does not show any Operational scenario as Passed.",
       nextAction: "Run run-ainvil-live-harness.mjs --mode probe --scenario ainvil_bridge_smoke_operational or another Operational scenario.",
       connectedArtifacts: ["harness/reports/latest-live-harness-report.json"]
     }),
@@ -171,9 +180,12 @@ function buildCriteria({ productization, release, doctor, harness, evidence }) {
       id: "PCORE-APPROVAL-PRODUCTIZATION",
       title: "No productization core blockers",
       passed: productization.exists && coreProductizationBlockers.length === 0,
+      statusOverride: productizationEnvironmentOnly ? "Revalidation Required" : null,
       evidence: productization.exists ? `${coreProductizationBlockers.length} non-review productization blocker(s)` : "Missing productization report",
       successSummary: "Productization has no remaining core blocker outside the review gate itself.",
-      failureSummary: "Productization still reports core blockers other than the review gate.",
+      failureSummary: productizationEnvironmentOnly
+        ? "Productization has only environment revalidation blockers, not product requested changes."
+        : "Productization still reports core blockers other than the review gate.",
       nextAction: "Resolve non-review productization blockers and regenerate the productization report.",
       connectedArtifacts: ["reports/productization_status_report.json"]
     }),
@@ -181,20 +193,23 @@ function buildCriteria({ productization, release, doctor, harness, evidence }) {
       id: "PCORE-APPROVAL-RELEASE",
       title: "No non-review release blockers",
       passed: release.exists && nonReviewReleaseBlockers.length === 0,
+      statusOverride: releaseEnvironmentOnly ? "Revalidation Required" : null,
       evidence: release.exists ? `${nonReviewReleaseBlockers.length} non-review release blocker(s)` : "Missing release readiness report",
       successSummary: "Release readiness has no blocker outside the Production Core review gate.",
-      failureSummary: "Release readiness still has non-review blockers.",
+      failureSummary: releaseEnvironmentOnly
+        ? "Release readiness has only environment revalidation blockers, not product requested changes."
+        : "Release readiness still has non-review blockers.",
       nextAction: "Resolve non-review release blockers and regenerate release readiness.",
       connectedArtifacts: ["reports/release_readiness_report.json"]
     })
   ];
 }
 
-function criterion({ id, title, passed, evidence, successSummary, failureSummary, nextAction, connectedArtifacts }) {
+function criterion({ id, title, passed, evidence, successSummary, failureSummary, nextAction, connectedArtifacts, statusOverride = null }) {
   return {
     id,
     title,
-    status: passed ? "Passed" : "Needs Evidence",
+    status: passed ? "Passed" : statusOverride || "Needs Evidence",
     evidence,
     successSummary,
     failureSummary,
@@ -205,16 +220,22 @@ function criterion({ id, title, passed, evidence, successSummary, failureSummary
 
 function updateReviewRecord(review, evaluation, generatedAt) {
   const approved = evaluation.newStatus === "Approved";
+  const revalidationRequired = evaluation.newStatus === "Revalidation Required";
   return {
     ...review,
     date: generatedAt.slice(0, 10),
-    lifecycleState: approved ? "Approved" : "Changes Requested",
+    lifecycleState: approved ? "Approved" : revalidationRequired ? "Revalidation Required" : "Changes Requested",
     findings: approved
       ? [
         "Production Core live Unity proof is now available through the operational smoke scenario.",
         "Unity Bridge health, compile status, console check, hierarchy inspection, validation probe, and non-sample Operational Passed evidence are connected to productization and release readiness.",
         "No core blocker remains outside the Production Core review gate itself."
       ]
+      : revalidationRequired
+        ? [
+          "Production Core criteria remain satisfied by last known passed evidence, but the latest live harness run was environment-blocked.",
+          "Revalidation is required after Unity Bridge stability is restored."
+        ]
       : [
         "Production Core review was reevaluated against current productization, release, doctor, harness, and validation evidence.",
         `Remaining requested changes: ${evaluation.remainingChanges.map((item) => item.id).join(", ")}`
@@ -238,7 +259,7 @@ function updateReviewRecord(review, evaluation, generatedAt) {
       owner: "Orchestrator",
       referencesNodeIds: ["AC-E2E-002"]
     })),
-    decision: approved ? "Approved" : "Changes Requested",
+    decision: approved ? "Approved" : revalidationRequired ? "Revalidation Required" : "Changes Requested",
     confidence: approved ? "High" : "Medium",
     evidence: evaluation.evidenceUsed.map((item) => ({
       kind: item.kind,
@@ -246,6 +267,18 @@ function updateReviewRecord(review, evaluation, generatedAt) {
       path: item.path
     }))
   };
+}
+
+function isEnvironmentBlockedHarness(scenario) {
+  if (!scenario) return false;
+  if (scenario.blockerType === "UnityBridgeDisconnected" || scenario.revalidationStatus === "EnvironmentBlocked") return true;
+  return (scenario.checks || []).some((check) => check.failureClass === "BridgeDisconnected"
+    || /Unity Bridge|ECONNREFUSED|Unable to connect|EnvironmentBlocked|compile status did not become stable before timeout/i.test(check.message || ""));
+}
+
+function isEnvironmentBlocker(item) {
+  const text = `${item.id || item.gateId || ""} ${item.title || ""} ${item.category || ""} ${item.evidence || ""} ${item.nextAction || ""} ${item.blockerType || ""}`;
+  return /ENV|Environment|Unity Bridge|Bridge health check failed|Revalidation|compile gate.*Bridge/i.test(text);
 }
 
 function evidenceRefs({ productization, release, doctor, harness, evidence, review }) {

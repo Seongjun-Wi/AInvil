@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "dungeon_recovery_procedural_visual_validation",
+  "title": "Dungeon Recovery Company procedural visual validation",
+  "classification": "Operational",
+  "category": "ProductMvp",
+  "validationType": "VisualPlayabilityValidation",
+  "operationalUse": "Capture Play Mode visual evidence and automatically detect camera, UI, target visibility, and missing shader issues before human playability review.",
+  "userGoal": "Prove the procedural recovery job is visibly playable enough for manual review by capturing screenshots and visual assertions.",
+  "milestone": "Procedural recovery job visual gate",
+  "interactive": false,
+  "requirementIds": [
+    "REQ-DRC-PROC-009",
+    "REQ-DRC-PROC-010",
+    "REQ-DRC-VIS-001",
+    "REQ-DRC-VIS-002",
+    "REQ-DRC-VIS-003",
+    "REQ-DRC-VIS-004"
+  ],
+  "acceptanceIds": [
+    "AC-DRC-VIS-001",
+    "AC-DRC-VIS-002",
+    "AC-DRC-VIS-003",
+    "AC-DRC-VIS-004",
+    "AC-DRC-VIS-005",
+    "AC-DRC-VIS-006",
+    "AC-DRC-VIS-007"
+  ],
+  "evidenceOutputPath": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest.json",
+  "riskLevel": "Medium",
+  "expectedDocuments": [
+    {
+      "type": "GDD",
+      "requirementRef": "REQ-DRC-VIS-001",
+      "expected": "Dungeon Recovery Company procedural recovery job requires visual validation before human playability review."
+    },
+    {
+      "type": "Technical Design",
+      "requirementRef": "TASK-DRC-VIS-001",
+      "expected": "Generated visual probe captures camera-rendered PNG screenshots, camera framing state, UI visibility, target visibility, and material diagnostics."
+    },
+    {
+      "type": "Playtest Report",
+      "requirementRef": "EVID-DRC-VIS-001",
+      "expected": "Evidence records screenshot paths, camera framing assertions, UI visibility, target visibility, magenta ratio, and missing shader status."
+    },
+    {
+      "type": "TaskGraph",
+      "requirementRef": "FEAT-DRC-PROC-RecoveryJob",
+      "expected": "Production State Graph includes operational visual validation requirements and evidence mapping."
+    }
+  ],
+  "expectedUnityCapabilities": [
+    "Project inspection",
+    "Document traceability",
+    "Milestone planning",
+    "Scene construction",
+    "Component and script implementation",
+    "UI implementation",
+    "Input implementation",
+    "Camera and presentation",
+    "Physics and interaction",
+    "Build and release validation",
+    "Document synchronization"
+  ],
+  "expectedUnityArtifacts": [
+    {
+      "kind": "Scene",
+      "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+      "requirementRef": "SCENE-DRC-PROCEDURAL-RECOVERY-JOB",
+      "status": "Implemented"
+    },
+    {
+      "kind": "Component",
+      "path": "/AInvilProceduralRecoveryJob/AInvilProceduralVisualValidationProbe",
+      "gameObjectPath": "/AInvilProceduralRecoveryJob",
+      "requiredComponents": [
+        "AInvilProceduralVisualValidationProbe"
+      ],
+      "requirementRef": "TASK-DRC-VIS-001",
+      "status": "Implemented"
+    },
+    {
+      "kind": "Script",
+      "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralVisualValidationProbe.cs",
+      "requirementRef": "TASK-DRC-VIS-001",
+      "status": "Implemented"
+    },
+    {
+      "kind": "ValidationReport",
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest.json",
+      "requirementRef": "EVID-DRC-VIS-001",
+      "status": "Planned"
+    }
+  ],
+  "validationChecks": [
+    {
+      "id": "check.bridge.health",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "expected": "Unity Bridge health endpoint responds.",
+      "failureClass": "BridgeDisconnected"
+    },
+    {
+      "id": "check.compile",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "expected": "Generated visual validation probe and procedural scripts compile with zero compile errors.",
+      "failureClass": "CompileError"
+    },
+    {
+      "id": "check.visual.probe",
+      "type": "PlayMode",
+      "target": "AInvilProceduralVisualValidationProbe.RunVisualValidation",
+      "expected": "Visual validation probe captures screenshots and returns Passed/Failed/Blocked assertions.",
+      "failureClass": "GameLogicFailed"
+    },
+    {
+      "id": "check.visual.screenshots",
+      "type": "Asset",
+      "target": "reports/visual_review/screenshots",
+      "expected": "Screenshot files exist for spawn, mouse look, near target, interaction prompt, and job complete checkpoints.",
+      "failureClass": "ValidationNotRun"
+    },
+    {
+      "id": "check.visual.materials",
+      "type": "UI",
+      "target": "magentaPixelRatio",
+      "expected": "Magenta/missing shader ratio remains below threshold and missingShaderSuspected is false.",
+      "failureClass": "GameLogicFailed"
+    },
+    {
+      "id": "check.evidence.sync",
+      "type": "DocumentSync",
+      "target": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest.json",
+      "expected": "Visual validation evidence is exported and linked to REQ-DRC-VIS-* and AC-DRC-VIS-*.",
+      "failureClass": "ValidationNotRun"
+    }
+  ],
+  "passCriteria": [
+    "Unity Bridge health endpoint is reachable.",
+    "Procedural scene exists and can be opened.",
+    "Compile status passes after generated visual probe script is imported.",
+    "Play Mode enters successfully.",
+    "Five visual checkpoints produce PNG screenshots.",
+    "Screenshot width and height are greater than zero.",
+    "First-person camera exists and is valid.",
+    "Camera is not inside a wall or outside the generated dungeon.",
+    "Mouse-look equivalent rotation changes camera pose.",
+    "Forward movement changes player position.",
+    "Progress UI, seed UI, interaction prompt, and Job Complete UI are visible at their checkpoints.",
+    "A recovery target is visible at the near-target checkpoint.",
+    "Magenta pixel ratio stays below threshold.",
+    "Missing shader is not suspected.",
+    "Console error count is zero.",
+    "Public Release Ready remains No and humanReviewRequired remains true."
+  ]
+}

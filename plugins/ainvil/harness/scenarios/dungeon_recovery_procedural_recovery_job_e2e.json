@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "dungeon_recovery_procedural_recovery_job_e2e",
+  "title": "Dungeon Recovery Company procedural recovery job E2E",
+  "classification": "Operational",
+  "category": "ProductMvp",
+  "validationType": "ProceduralGenerationE2E",
+  "operationalUse": "Validate a seed-based procedural recovery dungeon v1 without claiming Public Release readiness.",
+  "userGoal": "Generate a deterministic dungeon layout from seed, place three reachable recovery targets, complete all targets, and record Play Mode evidence.",
+  "milestone": "Procedural recovery job v1 validation",
+  "interactive": false,
+  "requirementIds": [
+    "REQ-DRC-PROC-001",
+    "REQ-DRC-PROC-002",
+    "REQ-DRC-PROC-003",
+    "REQ-DRC-PROC-004",
+    "REQ-DRC-PROC-005",
+    "REQ-DRC-PROC-006",
+    "REQ-DRC-PROC-007",
+    "REQ-DRC-PROC-008",
+    "REQ-DRC-PROC-009",
+    "REQ-DRC-PROC-010"
+  ],
+  "acceptanceIds": [
+    "AC-DRC-PROC-001",
+    "AC-DRC-PROC-002",
+    "AC-DRC-PROC-003",
+    "AC-DRC-PROC-004",
+    "AC-DRC-PROC-005",
+    "AC-DRC-PROC-006",
+    "AC-DRC-PROC-007",
+    "AC-DRC-PROC-008",
+    "AC-DRC-PROC-009",
+    "AC-DRC-PROC-010"
+  ],
+  "evidenceOutputPath": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest.json",
+  "riskLevel": "Medium",
+  "expectedDocuments": [
+    {
+      "type": "GDD",
+      "requirementRef": "FEAT-DRC-PROC-001",
+      "expected": "Dungeon Recovery Company expands from a fixed first playable into a seed-based procedural recovery job v1."
+    },
+    {
+      "type": "Technical Design",
+      "requirementRef": "TASK-DRC-PROC-002",
+      "expected": "Generated procedural scripts use a deterministic grid room/corridor generator, BFS reachability validation, and deterministic Play Mode hooks."
+    },
+    {
+      "type": "Feature Spec",
+      "requirementRef": "TASK-DRC-PROC-001",
+      "expected": "Dry-run report lists generated Unity files, scene path, generation rules, reachability validation, fallback behavior, rollback scope, and risks."
+    },
+    {
+      "type": "TaskGraph",
+      "requirementRef": "FEAT-DRC-PROC-001",
+      "expected": "Production State Graph includes Procedural Recovery Job feature, requirements, tasks, acceptance criteria, and evidence mapping."
+    },
+    {
+      "type": "Scene Blueprint",
+      "requirementRef": "SCENE-DRC-PROCEDURAL-RECOVERY-JOB",
+      "expected": "Scene contains a procedural job controller, player, camera, light, UI canvas, and runtime-generated floor/wall/target objects."
+    },
+    {
+      "type": "Playtest Report",
+      "requirementRef": "EVID-DRC-PROC-001",
+      "expected": "Evidence records seeds 1001, 2026, and 7777 with generation, reachability, recovery, random startup seed, and console assertions."
+    }
+  ],
+  "expectedUnityCapabilities": [
+    "Project inspection",
+    "Document traceability",
+    "Milestone planning",
+    "Scene construction",
+    "Component and script implementation",
+    "UI implementation",
+    "Input implementation",
+    "Physics and interaction",
+    "Build and release validation",
+    "Document synchronization"
+  ],
+  "expectedUnityArtifacts": [
+    {
+      "kind": "Scene",
+      "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+      "requirementRef": "SCENE-DRC-PROCEDURAL-RECOVERY-JOB",
+      "status": "Implemented"
+    },
+    {
+      "kind": "Component",
+      "path": "/AInvilProceduralRecoveryJob/AInvilProceduralRecoveryJobController",
+      "requirementRef": "REQ-DRC-PROC-001",
+      "status": "Implemented"
+    },
+    {
+      "kind": "Script",
+      "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs",
+      "requirementRef": "TASK-DRC-PROC-007",
+      "status": "Implemented"
+    },
+    {
+      "kind": "Script",
+      "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryPlayerController.cs",
+      "requirementRef": "TASK-DRC-PROC-008",
+      "status": "Implemented"
+    },
+    {
+      "kind": "Script",
+      "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobBuilder.cs",
+      "requirementRef": "TASK-DRC-PROC-001",
+      "status": "Implemented"
+    },
+    {
+      "kind": "ValidationReport",
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest.json",
+      "requirementRef": "EVID-DRC-PROC-001",
+      "status": "Planned"
+    }
+  ],
+  "validationChecks": [
+    {
+      "id": "check.bridge.health",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "expected": "Unity Bridge health endpoint responds.",
+      "failureClass": "BridgeDisconnected"
+    },
+    {
+      "id": "check.compile",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "expected": "Generated procedural scripts compile with zero compile errors.",
+      "failureClass": "CompileError"
+    },
+    {
+      "id": "check.procedural.seed.validation",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "expected": "Seeds 1001, 2026, and 7777 generate valid connected maps with three reachable targets.",
+      "failureClass": "GameLogicFailed"
+    },
+    {
+      "id": "check.procedural.recovery",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.ValidationCompleteAllTargets",
+      "expected": "Every seed completes all three recovery targets and reaches Job Complete.",
+      "failureClass": "GameLogicFailed"
+    },
+    {
+      "id": "check.procedural.random_start_seed",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithRandomSeed",
+      "expected": "Runtime random seed sampling produces different non-zero seed values across startup generation samples.",
+      "failureClass": "GameLogicFailed"
+    },
+    {
+      "id": "check.camera.first_person_mouse_look",
+      "type": "Compile",
+      "target": "AInvilProceduralRecoveryPlayerController",
+      "expected": "Procedural player uses a first-person camera and mouse-look movement controller.",
+      "failureClass": "CompileError"
+    },
+    {
+      "id": "check.console.errors",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "expected": "Console error count is zero for the procedural validation run.",
+      "failureClass": "ConsoleError"
+    },
+    {
+      "id": "check.evidence.sync",
+      "type": "DocumentSync",
+      "target": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest.json",
+      "expected": "Procedural recovery job evidence is exported and linked to REQ-DRC-PROC-* and AC-DRC-PROC-*.",
+      "failureClass": "ValidationNotRun"
+    }
+  ],
+  "passCriteria": [
+    "Unity Bridge health endpoint is reachable.",
+    "Procedural scene exists and can be opened.",
+    "Compile status passes after generated scripts are imported.",
+    "Seeds 1001, 2026, and 7777 generate successfully.",
+    "Every seed has room count >= 4.",
+    "Every seed has floor cell count > 0.",
+    "Every seed has recovery target count == 3.",
+    "Every seed has reachable target count == 3.",
+    "Every seed has zero target wall overlaps.",
+    "Every seed has zero duplicate target cells.",
+    "Every seed reaches Job Complete after deterministic recovery hook.",
+    "Different seeds produce different layout signatures.",
+    "GenerateWithRandomSeed samples produce different non-zero seed values.",
+    "Playable camera is first-person and controlled by mouse-look code.",
+    "Console error count is zero.",
+    "Stale evidence reused is false."
+  ]
+}

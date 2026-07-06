@@ -30,33 +30,42 @@ const uxChangesApplied = [
 ];
 
 const manualAcceptanceCriteria = [
-  criterion("MAC-DRC-001", "Within 3 seconds of starting play, the player understands the objective and controls.", "Needs Improvement", "UI text exists, but the user noted this does not feel like a normal tutorial/navigation experience."),
-  criterion("MAC-DRC-002", "All three recovery targets are visually distinguishable on screen.", "Needs Improvement", "User could not evaluate target visibility because the camera/framing made gameplay objects unreadable."),
-  criterion("MAC-DRC-003", "The target that can be recovered near the player is visually distinguished.", "Needs Improvement", "User said interaction feedback is hard to evaluate because of the camera problem."),
-  criterion("MAC-DRC-004", "Recovering all targets clearly transitions the job to complete.", "Passed", "User understood the progress UI and Job Complete text, while noting the presentation is not ideal for a normal game."),
+  criterion("MAC-DRC-001", "Within 3 seconds of starting play, the player understands the objective and controls.", "Passed", "Manual retest confirmed the objective banner and controls text are clear enough for the first playable."),
+  criterion("MAC-DRC-002", "All three recovery targets are visually distinguishable on screen.", "Passed", "Manual retest confirmed all three recovery targets are visible and distinguishable with labels/markers."),
+  criterion("MAC-DRC-003", "The target that can be recovered near the player is visually distinguished.", "Passed", "Manual retest confirmed the nearby interaction state and Press E prompt are understandable."),
+  criterion("MAC-DRC-004", "Recovering all targets clearly transitions the job to complete.", "Passed", "Manual retest confirmed progress UI and Job Complete are understandable."),
   criterion("MAC-DRC-005", "Manual play remains free of visible errors, freezes, or abnormal behavior.", "Passed", "User reported no visible errors, freezes, or abnormal behavior. Automated console verification is tracked separately.")
 ];
 
 const reviewItems = [
-  item("objectiveClarity", "Player can understand what to do.", "Needs Improvement", "Controls are visible as text, but the user expects a more game-like tutorial/navigation pattern."),
-  item("movementFeel", "Movement can be judged.", "Needs Improvement", "User could not judge movement feel because the player was not visible."),
-  item("camera", "Camera framing supports play.", "Needs Improvement", "User reported the camera did not show the player or goals clearly."),
-  item("targetVisibility", "Three recovery targets are identifiable.", "Needs Improvement", "User reported targets could not be evaluated because they were not visible in the camera view."),
-  item("interactableFeedback", "Recoverable state is visually clear.", "Needs Improvement", "Press E text exists, but the user could not evaluate it due to camera/visibility issues."),
-  item("recoverResponse", "E-key recovery response is satisfying.", "Needs Improvement", "User said only text changes, so the response feels ambiguous."),
-  item("progressUi", "Progress UI is readable.", "Passed", "User said the UI can be understood, while noting it is not recommended as a normal game presentation."),
-  item("completion", "Job Complete is clear.", "Passed", "User said Job Complete is understandable."),
-  item("stability", "No errors, freezes, or abnormal behavior.", "Passed", "User reported no such symptoms."),
-  item("firstPlayableAcceptance", "Overall acceptable as a first playable.", "Needs Improvement", "User said it is not acceptable because nothing meaningful was visible and it feels like a WASD/interaction test.")
+  item("objectiveClarity", "Player can understand what to do.", "Passed", "Manual retest confirmed the objective and controls are understandable after the UX fixes."),
+  item("movementFeel", "Movement can be judged.", "Passed", "Manual retest confirmed the player is visible and movement is acceptable for a first playable."),
+  item("camera", "Camera framing supports play.", "Passed", "Manual retest confirmed the camera now frames the player and recovery targets."),
+  item("targetVisibility", "Three recovery targets are identifiable.", "Passed", "Manual retest confirmed all three targets are visible and distinguishable."),
+  item("interactableFeedback", "Recoverable state is visually clear.", "Passed", "Manual retest confirmed the nearby interaction state and Press E prompt are understandable."),
+  item("recoverResponse", "E-key recovery response is satisfying.", "Passed", "Manual retest confirmed E-key recovery response is sufficient for this first playable."),
+  item("progressUi", "Progress UI is readable.", "Passed", "Manual retest confirmed recovery progress is understandable."),
+  item("completion", "Job Complete is clear.", "Passed", "Manual retest confirmed the completion state is recognizable."),
+  item("labelColorDistance", "Labels, colors, and distance cues are readable.", "Passed", "Manual retest confirmed the previous invisible/magenta presentation problem is resolved for first-playable purposes."),
+  item("stability", "No errors, freezes, or abnormal behavior.", "Passed", "User reported no runtime errors, freezes, or abnormal behavior."),
+  item("firstPlayableAcceptance", "Overall acceptable as a first playable.", "Passed", "Manual retest confirmed this is acceptable as a first playable: not a finished game, but the core loop can be understood and played."),
+  item("futureImprovement", "Remaining improvements are future scope.", "Passed", "Art, sound, recovery presentation, tutorial flow, rewards, and the next-job/company loop remain future improvements, not blockers for this first playable.")
 ];
 
 const manualFeedback = {
   received: true,
-  source: "User request on 2026-07-04",
-  summary: "Manual playability review found major camera/framing and visibility issues. Progress UI and Job Complete were understandable, and no runtime instability was reported, but the build is not acceptable as a first playable yet.",
+  source: "User manual retest on 2026-07-05",
+  summary: "Manual retest confirmed the previous camera, visibility, and magenta presentation issues are resolved enough for a first playable. The player can understand the objective, move, recover three targets, read progress, and recognize Job Complete without visible runtime instability.",
   checklistItemsProvided: 12,
   expectedChecklistItems: 12
 };
+
+const remainingLimitations = [
+  "This is not a finished game.",
+  "Art, sound, and recovery presentation remain placeholder-level.",
+  "Tutorial flow is still simple instructional UI rather than a full game-like onboarding sequence.",
+  "Next-job, reward, and company management loops are not implemented yet."
+];
 
 const report = {
   schemaVersion: "1.0.0",
@@ -64,7 +73,12 @@ const report = {
   generatedAt,
   product: "DungeonRecoveryCompany",
   scenarioId: "dungeon_recovery_first_playable_e2e",
-  playabilityReviewStatus: "Needs Improvement",
+  playabilityReviewStatus: "Passed",
+  previousStatus: "Needs Improvement",
+  newStatus: "Passed",
+  reviewMethod: "Manual Retest",
+  retestResult: "Passed",
+  publicReleaseReady: false,
   relatedE2eEvidence: evidencePath,
   automatedE2eStatus: evidence?.status || "Unknown",
   automatedValidationLevel: evidence?.validationLevel || "Unknown",
@@ -74,13 +88,9 @@ const report = {
   uxChangesApplied,
   reviewItems,
   manualAcceptanceCriteria,
-  remainingPlayabilityIssues: [
-    "Retest required after camera, material, player marker, target marker, and objective banner fixes.",
-    "The current experience still relies on prototype UI/text and does not yet provide a full game-like tutorial flow.",
-    "E-key recovery feedback is still minimal and should eventually receive animation/audio/VFX beyond this generated primitive slice.",
-    "User requested broader design improvement; this pass only applies minimal generated-folder UX fixes."
-  ],
-  nextAction: "Rerun the generated build and confirm whether camera framing, material colors, player visibility, and target visibility are now acceptable."
+  remainingLimitations,
+  remainingPlayabilityIssues: remainingLimitations,
+  nextAction: "Treat this build as a Human Playable First Build Candidate and continue with art, sound, tutorial, reward, and next-job loop work before any public release claim."
 };
 
 const manualEvidence = {
@@ -91,9 +101,9 @@ const manualEvidence = {
   classification: "Operational",
   category: "ProductMvp",
   validationType: "HumanPlayabilityReview",
-  validationLevel: "Not Checked",
-  status: "Warning",
-  result: "Warning",
+  validationLevel: "Runtime Tested",
+  status: "Passed",
+  result: "Passed",
   validationIds: [],
   validationId: null,
   failureClass: "None",
@@ -104,7 +114,7 @@ const manualEvidence = {
   ],
   checks: manualAcceptanceCriteria.map((entry) => ({
     checkId: `manual.${entry.id}`,
-    type: "ManualPlayability",
+    type: "Input",
     target: "Human reviewer",
     status: entry.status === "Passed" ? "Passed" : "Warning",
     failureClass: "Unknown",
@@ -112,7 +122,7 @@ const manualEvidence = {
   })),
   checkedSteps: manualAcceptanceCriteria.map((entry) => ({
     checkId: `manual.${entry.id}`,
-    type: "ManualPlayability",
+    type: "Input",
     target: "Human reviewer",
     status: entry.status === "Passed" ? "Passed" : "Warning",
     failureClass: "Unknown",
@@ -124,9 +134,19 @@ const manualEvidence = {
   failureReason: null,
   blocker: null,
   bridgeDiagnostics: [],
-  validationResults: [],
+  validationResults: manualAcceptanceCriteria.map((entry) => ({
+    validationId: `manual-retest.${entry.id}`,
+    result: entry.status,
+    method: "Manual Retest",
+    summary: entry.summary,
+    note: entry.note
+  })),
   observations: null,
-  assertions: [],
+  assertions: reviewItems.map((entry) => ({
+    assertionId: `manual-retest.${entry.id}`,
+    result: entry.status,
+    message: entry.finding
+  })),
   sourceValidationDesign: null,
   startedAt: generatedAt,
   finishedAt: generatedAt,
@@ -135,11 +155,17 @@ const manualEvidence = {
   remainingGaps: report.remainingPlayabilityIssues,
   nextActions: [report.nextAction],
   playabilityReviewStatus: report.playabilityReviewStatus,
+  previousStatus: report.previousStatus,
+  newStatus: report.newStatus,
+  reviewMethod: report.reviewMethod,
+  retestResult: report.retestResult,
+  publicReleaseReady: report.publicReleaseReady,
   buildVerificationStatus: "Not Run",
   manualFeedback,
   uxChangesApplied,
   manualAcceptanceCriteria,
   automatedConsoleCheckStatus,
+  remainingLimitations,
   buildOutputPath: null,
   remainingPlayabilityIssues: report.remainingPlayabilityIssues
 };
@@ -186,6 +212,11 @@ function formatMarkdown(report) {
     "",
     `- Generated at: ${report.generatedAt}`,
     `- Status: ${report.playabilityReviewStatus}`,
+    `- Previous status: ${report.previousStatus}`,
+    `- New status: ${report.newStatus}`,
+    `- Review method: ${report.reviewMethod}`,
+    `- Retest result: ${report.retestResult}`,
+    `- Public Release Ready: ${report.publicReleaseReady ? "Yes" : "No"}`,
     `- Automated E2E: ${report.automatedE2eStatus} (${report.automatedValidationLevel})`,
     `- Automated console check: ${report.automatedConsoleCheckStatus}`,
     `- Console error count: ${report.consoleErrorCount}`,
@@ -212,9 +243,9 @@ function formatMarkdown(report) {
     "| --- | --- | --- |",
     ...report.manualAcceptanceCriteria.map((entry) => `| ${entry.id} | ${entry.summary} | ${entry.status} |`),
     "",
-    "## Remaining Issues",
+    "## Remaining Limitations",
     "",
-    ...report.remainingPlayabilityIssues.map((entry) => `- ${entry}`),
+    ...report.remainingLimitations.map((entry) => `- ${entry}`),
     ""
   ].join("\n");
 }

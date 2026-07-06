@@ -21,6 +21,9 @@ export async function createRcBaselineManifest(options = {}) {
   const reviewEvaluation = await loadJsonArtifact("reports/production_core_review_evaluation.json");
   const freshWorkspace = await loadJsonArtifact("reports/fresh_workspace_verification_report.json");
   const productMvp = productization.data?.productMvpWorkflow || null;
+  const procedural = productization.data?.proceduralRecoveryJob || null;
+  const visualValidation = productization.data?.visualValidation || null;
+  const spaceQuality = productization.data?.spaceQuality || null;
   const productMvpReadyCandidate = productMvp?.readyCandidate === true;
   const operationalScenarios = await loadOperationalScenarios();
   const environmentAudit = await createEnvironmentDependencyAudit({ write: options.write !== false, generatedAt });
@@ -51,6 +54,9 @@ export async function createRcBaselineManifest(options = {}) {
     },
     operationalScenarios,
     productMvpWorkflow: productMvp || null,
+    proceduralRecoveryJob: procedural || null,
+    visualValidation: visualValidation || null,
+    spaceQuality: spaceQuality || null,
     coreEvidence: [
       artifactRef("Production Core review", review, "Production Core review decision."),
       artifactRef("Production Core review evaluation", reviewEvaluation, "Criteria-based review reevaluation."),
@@ -290,6 +296,13 @@ function formatRcMarkdown(manifest) {
     `- Human Playability Review: ${manifest.productMvpWorkflow?.humanPlayabilityReview?.status || "Unknown"}`,
     `- Build Verification: ${manifest.productMvpWorkflow?.buildVerification?.status || "Unknown"}`,
     `- Product MVP Ready Candidate: ${manifest.productMvpWorkflow?.readyCandidate ? "Yes" : "No"}`,
+    `- Procedural Recovery Job: ${manifest.proceduralRecoveryJob?.status || "Unknown"}`,
+    `- Procedural Generation Verified: ${manifest.proceduralRecoveryJob?.proceduralGenerationVerified ? "Yes" : "No"}`,
+    `- Visual Validation: ${manifest.visualValidation?.status || "Unknown"}`,
+    `- Procedural Space Quality: ${manifest.spaceQuality?.status || "Unknown"}`,
+    `- Screenshot Evidence Available: ${manifest.visualValidation?.screenshotEvidenceAvailable ? "Yes" : "No"}`,
+    `- Camera Framing Check: ${manifest.visualValidation?.cameraFramingCheck || "Unknown"}`,
+    `- Missing Shader Suspected: ${manifest.visualValidation?.missingShaderSuspected ? "Yes" : "No"}`,
     `- Public Release Ready: No`,
     "",
     "## Evidence",

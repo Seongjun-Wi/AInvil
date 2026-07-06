@@ -2,6 +2,7 @@ import { access, mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { constants } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { runUnityValidationPreflight } from "../core/unity-compile-gate.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const pluginRoot = path.resolve(scriptDir, "..");
@@ -72,24 +73,38 @@ async function runScenario(scenario) {
   const validationDesigns = await loadValidationDesignsForScenario(scenario);
   let status = "Passed";
 
-  const health = await getHealth();
-  checks.push(health);
-  if (!health.ok) {
+  const stability = await bridgeStabilityPreflight(scenario);
+  checks.push(...stability.checks);
+  if (!stability.stable) {
     return scenarioResult("Blocked", scenario, checks, unityTargets, [
-      "Unity Bridge is not reachable. Review bridgeDiagnostics in the evidence/report, open Unity, install the canonical bridge package, and start Tools > Codex Unity Bridge > Start Server."
-    ]);
+      "Unity Bridge is environment-blocked. Restart Unity Bridge and rerun this scenario."
+    ], [], environmentBlockedEvidence(scenario, stability));
   }
 
-  const bridgeStatus = await callUnityCheck("unity_get_status", {});
-  checks.push(bridgeStatus);
-  if (!bridgeStatus.ok) {
+  const bridgeStatus = stability.statusCheck;
+  if (bridgeStatus && !checks.some((check) => check === bridgeStatus)) {
+    checks.push(bridgeStatus);
+  }
+  if (!bridgeStatus?.ok) {
     return scenarioResult("Blocked", scenario, checks, unityTargets, [
       "Unity Bridge health endpoint responded, but unity_get_status failed."
-    ]);
+    ], [], environmentBlockedEvidence(scenario, stability));
   }
 
   if (scenario.id === "dungeon_recovery_first_playable_e2e") {
     return await runDungeonRecoveryFirstPlayableScenario(scenario, checks, unityTargets);
+  }
+
+  if (scenario.id === "dungeon_recovery_procedural_recovery_job_e2e") {
+    return await runDungeonRecoveryProceduralRecoveryJobScenario(scenario, checks, unityTargets);
+  }
+
+  if (scenario.id === "dungeon_recovery_procedural_visual_validation") {
+    return await runDungeonRecoveryProceduralVisualValidationScenario(scenario, checks, unityTargets);
+  }
+
+  if (scenario.id === "dungeon_recovery_procedural_space_quality_validation") {
+    return await runDungeonRecoveryProceduralSpaceQualityScenario(scenario, checks, unityTargets);
   }
 
   if (options.prepareSample) {
@@ -162,6 +177,1145 @@ async function runScenario(scenario) {
   return scenarioResult(status, scenario, checks, unityTargets, nextActionsFor(status, scenario), validationResults);
 }
 
+async function runDungeonRecoveryProceduralRecoveryJobScenario(scenario, checks, unityTargets) {
+  const seeds = [1001, 2026, 7777];
+  const procedural = {
+    category: scenario.category || "ProductMvp",
+    validationType: scenario.validationType || "ProceduralGenerationE2E",
+    unityProjectPath: null,
+    generatedAssets: [
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs",
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryPlayerController.cs",
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobBuilder.cs"
+    ],
+    modifiedAssets: [],
+    dryRunReport: "reports/dungeon_recovery_procedural_recovery_job_dry_run.json",
+    compileStatus: null,
+    consoleErrorCount: null,
+    seedsTested: seeds,
+    perSeedResults: [],
+    randomSeedSamples: [],
+    randomStartupSeedVerified: false,
+    deterministicGenerationVerified: false,
+    differentSeedsProduceDifferentLayouts: false,
+    validationHookUsed: "AInvilProceduralRecoveryJobController.GenerateWithSeed/ValidationCompleteAllTargets",
+    staleEvidenceReused: false,
+    publicReleaseReady: false
+  };
+
+  const statusCheck = checks.find((check) => check.id === "bridge.unity_get_status");
+  procedural.unityProjectPath = statusCheck?.data?.projectPath || statusCheck?.data?.project?.path || null;
+
+  const compileGate = await runCompileGateBeforePlayMode(scenario, checks, procedural);
+  if (compileGate.blocked) return compileGate.result;
+
+  checks.push(await callUnityCheck("unity_clear_console", {}));
+  const initialCompile = await waitForCompileStatus("before_procedural_scene_build");
+  checks.push(initialCompile);
+  procedural.compileStatus = compileStatusForEvidence(initialCompile);
+  if (!initialCompile.ok || compileHasErrors(initialCompile)) {
+    return scenarioResult("Blocked", scenario, checks, unityTargets, [
+      "Resolve Unity compile errors before generating or validating the procedural recovery job scene."
+    ], [], procedural);
+  }
+
+  const builderTarget = await ensureProceduralBuilderTarget(checks);
+  checks.push(await callUnityCheck("unity_invoke_component_method", {
+    targetPath: builderTarget,
+    componentType: "AInvil.DungeonRecoveryFirstPlayable.AInvilProceduralRecoveryJobBuilder",
+    methodName: "BuildProceduralRecoveryJobScene",
+    args: [],
+    requirePlaying: false,
+    debugOnly: false
+  }));
+
+  const openScene = await callUnityCheck("unity_open_scene", {
+    scenePath: "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+    saveCurrentIfDirty: true,
+    dirtyScenePolicy: "save"
+  });
+  checks.push(openScene);
+
+  const postBuildCompile = await waitForCompileStatus("after_procedural_scene_build");
+  checks.push(postBuildCompile);
+  procedural.compileStatus = compileStatusForEvidence(postBuildCompile);
+
+  const consoleBefore = await callUnityCheck("unity_get_console_logs", { level: "error", limit: 50 });
+  checks.push(consoleBefore);
+  procedural.consoleErrorCount = consoleErrorCount(consoleBefore);
+  checks.push(await callUnityCheck("unity_clear_console", {}));
+
+  const artifactChecks = await inspectScenarioArtifacts(scenario);
+  checks.push(...artifactChecks);
+  unityTargets.push(...artifactChecks.map((check) => check.target).filter(Boolean));
+
+  if (!openScene.ok || !postBuildCompile.ok || compileHasErrors(postBuildCompile) || procedural.consoleErrorCount > 0) {
+    return scenarioResult("Blocked", scenario, checks, unityTargets, [
+      "Fix generated procedural scene, compile, or console errors, then rerun the procedural live harness."
+    ], [], procedural);
+  }
+
+  const enterPlay = await callUnityCheck("unity_enter_play_mode", {});
+  checks.push(enterPlay);
+  if (!enterPlay.ok) {
+    return scenarioResult("Blocked", scenario, checks, unityTargets, [
+      "Unity could not enter Play Mode for procedural recovery validation."
+    ], [], procedural);
+  }
+
+  await sleep(options.playModeWaitMs);
+  checks.push(await waitForUnityPlayMode("procedural_play_mode_enter", true));
+
+  const randomSeedCheck = await validateProceduralRandomSeeds();
+  checks.push(...randomSeedCheck.checks);
+  procedural.randomSeedSamples = randomSeedCheck.samples;
+  procedural.randomStartupSeedVerified = randomSeedCheck.verified;
+
+  const signatures = [];
+  for (const seed of seeds) {
+    const seedResult = await validateProceduralSeed(seed);
+    checks.push(...seedResult.checks);
+    procedural.perSeedResults.push(seedResult.result);
+    if (seedResult.result.layoutSignature) signatures.push(seedResult.result.layoutSignature);
+  }
+
+  procedural.deterministicGenerationVerified = procedural.perSeedResults.every((result) => result.deterministicMatch === true);
+  procedural.differentSeedsProduceDifferentLayouts = new Set(signatures).size > 1;
+  const assertionCheck = proceduralAssertions(procedural);
+  checks.push(assertionCheck);
+
+  const consoleAfter = await callUnityCheck("unity_get_console_logs", { level: "error", limit: 50 });
+  if (consoleErrorCount(consoleAfter) > 0) {
+    consoleAfter.status = "Failed";
+    consoleAfter.ok = false;
+    consoleAfter.failureClass = "ConsoleError";
+    consoleAfter.message = `Unity console contains ${consoleErrorCount(consoleAfter)} error(s) after procedural Play Mode validation.`;
+  }
+  checks.push(consoleAfter);
+  procedural.consoleErrorCount = consoleErrorCount(consoleAfter);
+
+  if (options.exitPlayMode) {
+    const exitPlay = await callUnityCheck("unity_exit_play_mode", {});
+    checks.push(exitPlay);
+    checks.push(await waitForUnityBridge("procedural_play_mode_exit"));
+  }
+
+  const failed = checks.filter((check) => check.status === "Failed");
+  const blocked = checks.filter((check) => check.status === "Blocked");
+  const warnings = checks.filter((check) => check.status === "Warning");
+  const status = failed.length > 0 ? "Failed" : blocked.length > 0 ? "Blocked" : warnings.length > 0 ? "Warning" : "Passed";
+  const validationResults = [proceduralValidationResult(scenario, status, procedural, assertionCheck)];
+  const nextActions = status === "Passed"
+    ? ["Procedural recovery job evidence is Passed. Keep Public Release Ready as No."]
+    : ["Inspect procedural evidence perSeedResults, fix generated AInvil procedural assets only, and rerun the scenario."];
+
+  return scenarioResult(status, scenario, checks, unityTargets, nextActions, validationResults, procedural);
+}
+
+async function runDungeonRecoveryProceduralVisualValidationScenario(scenario, checks, unityTargets) {
+  const visual = {
+    category: scenario.category || "ProductMvp",
+    validationType: scenario.validationType || "VisualPlayabilityValidation",
+    unityProjectPath: null,
+    scene: "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+    generatedAssets: [
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralVisualValidationProbe.cs"
+    ],
+    screenshotDirectory: "reports/visual_review/screenshots",
+    screenshots: [],
+    cameraMode: "FirstPerson",
+    seed: null,
+    cameraAssertions: {},
+    uiAssertions: {},
+    targetVisibilityAssertions: {},
+    magentaPixelRatio: null,
+    missingShaderSuspected: null,
+    mouseLookVerified: false,
+    playerMovementVerified: false,
+    consoleErrorCount: null,
+    visualIssues: [],
+    humanReviewRequired: true,
+    staleEvidenceReused: false,
+    publicReleaseReady: false
+  };
+
+  const statusCheck = checks.find((check) => check.id === "bridge.unity_get_status");
+  visual.unityProjectPath = statusCheck?.data?.projectPath || statusCheck?.data?.project?.path || null;
+
+  const compileGate = await runCompileGateBeforePlayMode(scenario, checks, visual);
+  if (compileGate.blocked) return compileGate.result;
+
+  checks.push(await callUnityCheck("unity_clear_console", {}));
+  const initialCompile = await waitForCompileStatus("before_visual_validation_scene_build");
+  checks.push(initialCompile);
+  if (!initialCompile.ok || compileHasErrors(initialCompile)) {
+    return scenarioResult("Blocked", scenario, checks, unityTargets, [
+      "Resolve Unity compile errors before running procedural visual validation."
+    ], [], visual);
+  }
+
+  const builderTarget = await ensureProceduralBuilderTarget(checks);
+  checks.push(await callUnityCheck("unity_invoke_component_method", {
+    targetPath: builderTarget,
+    componentType: "AInvil.DungeonRecoveryFirstPlayable.AInvilProceduralRecoveryJobBuilder",
+    methodName: "BuildProceduralRecoveryJobScene",
+    args: [],
+    requirePlaying: false,
+    debugOnly: false
+  }));
+
+  const openScene = await callUnityCheck("unity_open_scene", {
+    scenePath: visual.scene,
+    saveCurrentIfDirty: true,
+    dirtyScenePolicy: "save"
+  });
+  checks.push(openScene);
+
+  const postBuildCompile = await waitForCompileStatus("after_visual_validation_scene_build");
+  checks.push(postBuildCompile);
+  const consoleBefore = await callUnityCheck("unity_get_console_logs", { level: "error", limit: 50 });
+  checks.push(consoleBefore);
+  checks.push(await callUnityCheck("unity_clear_console", {}));
+
+  const artifactChecks = await inspectScenarioArtifacts(scenario);
+  checks.push(...artifactChecks);
+  unityTargets.push(...artifactChecks.map((check) => check.target).filter(Boolean));
+
+  if (!openScene.ok || !postBuildCompile.ok || compileHasErrors(postBuildCompile) || consoleErrorCount(consoleBefore) > 0) {
+    return scenarioResult("Blocked", scenario, checks, unityTargets, [
+      "Fix generated procedural scene, compile, or console errors before visual validation."
+    ], [], visual);
+  }
+
+  const enterPlay = await callUnityCheck("unity_enter_play_mode", {});
+  checks.push(enterPlay);
+  if (!enterPlay.ok) {
+    return scenarioResult("Blocked", scenario, checks, unityTargets, [
+      "Unity could not enter Play Mode for procedural visual validation."
+    ], [], visual);
+  }
+
+  await sleep(options.playModeWaitMs);
+  checks.push(await waitForUnityPlayMode("procedural_visual_play_mode_enter", true));
+
+  const screenshotDirectoryAbsolute = path.resolve(pluginRoot, "reports", "visual_review", "screenshots").replaceAll("\\", "/");
+  await mkdir(screenshotDirectoryAbsolute, { recursive: true });
+  const probeCheck = await callUnityCheck("unity_invoke_component_method", {
+    targetPath: "/AInvilProceduralRecoveryJob",
+    componentType: "AInvil.DungeonRecoveryFirstPlayable.AInvilProceduralVisualValidationProbe",
+    methodName: "RunVisualValidation",
+    args: [screenshotDirectoryAbsolute],
+    requirePlaying: true,
+    debugOnly: false
+  });
+  probeCheck.id = "procedural.visual.probe";
+  probeCheck.type = "PlayMode";
+  probeCheck.target = "AInvilProceduralVisualValidationProbe.RunVisualValidation";
+  const probeResult = parseInvocationJson(probeCheck) || {};
+  const visualChecks = await visualChecksFromProbe(probeResult);
+  checks.push(probeCheck, ...visualChecks);
+  Object.assign(visual, visualEvidenceFromProbe(probeResult));
+
+  const consoleAfter = await callUnityCheck("unity_get_console_logs", { level: "error", limit: 50 });
+  if (consoleErrorCount(consoleAfter) > 0) {
+    consoleAfter.status = "Failed";
+    consoleAfter.ok = false;
+    consoleAfter.failureClass = "ConsoleError";
+    consoleAfter.message = `Unity console contains ${consoleErrorCount(consoleAfter)} error(s) after visual validation.`;
+  }
+  checks.push(consoleAfter);
+  visual.consoleErrorCount = consoleErrorCount(consoleAfter);
+
+  if (options.exitPlayMode) {
+    const exitPlay = await callUnityCheck("unity_exit_play_mode", {});
+    checks.push(exitPlay);
+    checks.push(await waitForUnityBridge("procedural_visual_play_mode_exit"));
+  }
+
+  const failed = checks.filter((check) => check.status === "Failed");
+  const blocked = checks.filter((check) => check.status === "Blocked");
+  const warnings = checks.filter((check) => check.status === "Warning");
+  const status = failed.length > 0 ? "Failed" : blocked.length > 0 ? "Blocked" : warnings.length > 0 ? "Warning" : "Passed";
+  const assertionCheck = visualAssertionCheck(visual, status);
+  checks.push(assertionCheck);
+  const validationResults = [visualValidationResult(scenario, status, visual, assertionCheck)];
+  await writeVisualReviewReports(visual, status, checks);
+  const nextActions = status === "Passed"
+    ? ["Visual validation evidence is Passed. Human review is still required and Public Release Ready remains No."]
+    : ["Inspect visual review screenshots and visualIssues, fix generated AInvil procedural assets only, and rerun visual validation."];
+  return scenarioResult(status, scenario, checks, unityTargets, nextActions, validationResults, visual);
+}
+
+async function runDungeonRecoveryProceduralSpaceQualityScenario(scenario, checks, unityTargets) {
+  const seeds = [1001, 2026, 7777];
+  const spaceQuality = {
+    category: scenario.category || "ProductMvp",
+    validationType: scenario.validationType || "ProceduralSpaceQualityValidation",
+    unityProjectPath: null,
+    generatedAssets: [
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs",
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryPlayerController.cs",
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobBuilder.cs"
+    ],
+    modifiedAssets: [
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs"
+    ],
+    dryRunReport: "reports/dungeon_recovery_procedural_space_quality_dry_run.json",
+    seedsTested: seeds,
+    perSeedResults: [],
+    consoleErrorCount: null,
+    visualValidationStatus: "Unknown",
+    buildVerificationStatus: "Unknown",
+    staleEvidenceReused: false,
+    publicReleaseReady: false,
+    failureReason: null,
+    nextAction: null
+  };
+
+  const statusCheck = checks.find((check) => check.id === "bridge.unity_get_status");
+  spaceQuality.unityProjectPath = statusCheck?.data?.projectPath || statusCheck?.data?.project?.path || null;
+  spaceQuality.visualValidationStatus = (await readJsonIfExists(path.resolve(pluginRoot, "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest.json")))?.status || "Unknown";
+  spaceQuality.buildVerificationStatus = (await readJsonIfExists(path.resolve(pluginRoot, "reports/dungeon_recovery_procedural_recovery_job_build_verification.json")))?.buildVerificationStatus || "Unknown";
+
+  const compileGate = await runCompileGateBeforePlayMode(scenario, checks, spaceQuality);
+  if (compileGate.blocked) return compileGate.result;
+
+  checks.push(...(await importProceduralScripts()));
+  checks.push(await callUnityCheck("unity_clear_console", {}));
+  const initialCompile = await waitForCompileStatus("before_space_quality_scene_build");
+  checks.push(initialCompile);
+  if (!initialCompile.ok || compileHasErrors(initialCompile)) {
+    return scenarioResult("Blocked", scenario, checks, unityTargets, [
+      "Resolve Unity compile errors before running procedural space quality validation."
+    ], [], spaceQuality);
+  }
+
+  const builderTarget = await ensureProceduralBuilderTarget(checks);
+  checks.push(await callUnityCheck("unity_invoke_component_method", {
+    targetPath: builderTarget,
+    componentType: "AInvil.DungeonRecoveryFirstPlayable.AInvilProceduralRecoveryJobBuilder",
+    methodName: "BuildProceduralRecoveryJobScene",
+    args: [],
+    requirePlaying: false,
+    debugOnly: false
+  }));
+
+  const openScene = await callUnityCheck("unity_open_scene", {
+    scenePath: "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+    saveCurrentIfDirty: true,
+    dirtyScenePolicy: "save"
+  });
+  checks.push(openScene);
+
+  const postBuildCompile = await waitForCompileStatus("after_space_quality_scene_build");
+  checks.push(postBuildCompile);
+  const consoleBefore = await callUnityCheck("unity_get_console_logs", { level: "error", limit: 50 });
+  checks.push(consoleBefore);
+  checks.push(await callUnityCheck("unity_clear_console", {}));
+
+  const artifactChecks = await inspectScenarioArtifacts(scenario);
+  checks.push(...artifactChecks);
+  unityTargets.push(...artifactChecks.map((check) => check.target).filter(Boolean));
+
+  if (!openScene.ok || !postBuildCompile.ok || compileHasErrors(postBuildCompile) || consoleErrorCount(consoleBefore) > 0) {
+    return scenarioResult("Blocked", scenario, checks, unityTargets, [
+      "Fix generated procedural scene, compile, or console errors before space quality validation."
+    ], [], spaceQuality);
+  }
+
+  const enterPlay = await callUnityCheck("unity_enter_play_mode", {});
+  checks.push(enterPlay);
+  if (!enterPlay.ok) {
+    return scenarioResult("Blocked", scenario, checks, unityTargets, [
+      "Unity could not enter Play Mode for procedural space quality validation."
+    ], [], spaceQuality);
+  }
+
+  await sleep(options.playModeWaitMs);
+  checks.push(await waitForUnityPlayMode("procedural_space_quality_play_mode_enter", true));
+
+  for (const seed of seeds) {
+    const seedResult = await validateProceduralSpaceQualitySeed(seed);
+    checks.push(...seedResult.checks);
+    spaceQuality.perSeedResults.push(seedResult.result);
+  }
+
+  const assertionCheck = spaceQualityAssertionsCheck(spaceQuality);
+  checks.push(assertionCheck);
+
+  const consoleAfter = await callUnityCheck("unity_get_console_logs", { level: "error", limit: 50 });
+  if (consoleErrorCount(consoleAfter) > 0) {
+    consoleAfter.status = "Failed";
+    consoleAfter.ok = false;
+    consoleAfter.failureClass = "ConsoleError";
+    consoleAfter.message = `Unity console contains ${consoleErrorCount(consoleAfter)} error(s) after space quality validation.`;
+  }
+  checks.push(consoleAfter);
+  spaceQuality.consoleErrorCount = consoleErrorCount(consoleAfter);
+
+  if (options.exitPlayMode) {
+    const exitPlay = await callUnityCheck("unity_exit_play_mode", {});
+    checks.push(exitPlay);
+    checks.push(await waitForUnityBridge("procedural_space_quality_play_mode_exit"));
+  }
+
+  const failed = checks.filter((check) => check.status === "Failed");
+  const blocked = checks.filter((check) => check.status === "Blocked");
+  const warnings = checks.filter((check) => check.status === "Warning");
+  const status = failed.length > 0 ? "Failed" : blocked.length > 0 ? "Blocked" : warnings.length > 0 ? "Warning" : "Passed";
+  spaceQuality.failureReason = status === "Passed" ? null : firstNonPassedMessage(checks);
+  spaceQuality.nextAction = status === "Passed"
+    ? "Procedural space quality validation passed. Public Release Ready remains No."
+    : "Inspect perSeedResults, fix generated dungeon spacing/prop placement only, and rerun the space quality scenario.";
+  const validationResults = [spaceQualityValidationResult(scenario, status, spaceQuality, assertionCheck)];
+  await writeSpaceQualityReports(spaceQuality, status, checks);
+  return scenarioResult(status, scenario, checks, unityTargets, [spaceQuality.nextAction], validationResults, spaceQuality);
+}
+
+async function ensureProceduralBuilderTarget(checks) {
+  const sceneVerifier = await tryUnityCheck("unity_get_game_object", {
+    path: "/AInvilProceduralRecoveryJob/BuildVerifier",
+    includeSerializedFields: false
+  });
+  if (sceneVerifier.ok) {
+    checks.push({
+      ...sceneVerifier,
+      id: "procedural.builder.scene_verifier",
+      message: "Using generated scene BuildVerifier for procedural scene rebuild."
+    });
+    return "/AInvilProceduralRecoveryJob/BuildVerifier";
+  }
+
+  const created = await ensureGameObject({ path: "/AInvilProceduralRecoveryJobBuilder", name: "AInvilProceduralRecoveryJobBuilder", primitiveType: "empty" });
+  checks.push(created);
+  const component = await ensureComponent({
+    path: "/AInvilProceduralRecoveryJobBuilder",
+    componentType: "AInvil.DungeonRecoveryFirstPlayable.AInvilProceduralRecoveryJobBuilder"
+  });
+  checks.push(component);
+  return "/AInvilProceduralRecoveryJobBuilder";
+}
+
+async function importProceduralScripts() {
+  const scriptPaths = [
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryPlayerController.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobBuilder.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralVisualValidationProbe.cs"
+  ];
+  const checks = [];
+  for (const assetPath of scriptPaths) {
+    const check = await callUnityCheck("unity_import_asset", { assetPath, forceUpdate: true });
+    check.id = `procedural.import.${slug(assetPath)}`;
+    check.type = "Asset";
+    check.target = assetPath;
+    checks.push(check);
+  }
+  return checks;
+}
+
+async function runCompileGateBeforePlayMode(scenario, checks, productMvpEvidence) {
+  const gate = await runUnityValidationPreflight({
+    scenarioId: scenario.id,
+    classification: scenario.classification || "Operational",
+    category: scenario.category || productMvpEvidence?.category || "ProductMvp",
+    validationType: scenario.validationType || productMvpEvidence?.validationType || "PlayModeValidation",
+    unityUrl,
+    healthUrl,
+    rpcTimeoutMs: options.rpcTimeoutMs,
+    timeoutMs: Math.max(30000, options.playModeWaitMs + 20000)
+  });
+  const gateCheck = compileGateCheck(gate);
+  checks.push(gateCheck);
+  if (productMvpEvidence) {
+    Object.assign(productMvpEvidence, {
+      compileGate: gate,
+      compileStatus: gate.compileStatusResult || gate.compileStatus,
+      compileErrorCount: gate.compileErrorCount,
+      compileErrors: gate.compileErrors,
+      blockerType: gate.blockerType,
+      playModeAttempted: gate.status === "Passed" ? productMvpEvidence.playModeAttempted : false,
+      runtimeAssemblyFreshness: gate.runtimeAssemblyFreshness,
+      staleEvidenceReused: false,
+      publicReleaseReady: false,
+      failureReason: gate.failureReason,
+      nextAction: gate.nextAction
+    });
+  }
+  if (gate.status !== "Passed") {
+    const nextAction = gate.nextAction || "Fix compile errors before running Play Mode validation.";
+    return {
+      blocked: true,
+      result: scenarioResult("Blocked", scenario, checks, [], [nextAction], [], productMvpEvidence)
+    };
+  }
+  return { blocked: false, gate };
+}
+
+function compileGateCheck(gate) {
+  return {
+    id: "compile_gate.pre_play_mode",
+    type: "Compile",
+    target: "runUnityValidationPreflight",
+    status: gate.status === "Passed" ? "Passed" : "Blocked",
+    ok: gate.status === "Passed",
+    failureClass: gate.status === "Passed" ? "Unknown" : "CompileError",
+    message: gate.status === "Passed"
+      ? "Compile gate passed before Play Mode validation."
+      : `CompileBlocked: ${gate.failureReason}`,
+    data: gate,
+    childChecks: (gate.checks || []).map((check) => {
+      const optionalRefreshMiss = gate.status === "Passed"
+        && check.id === "compile_gate.unity_refresh_assets"
+        && check.status !== "Passed";
+      return {
+        id: check.id,
+        type: check.type,
+        target: check.target,
+        status: optionalRefreshMiss ? "Warning" : check.status,
+        failureClass: check.failureClass || "Unknown",
+        message: check.message
+      };
+    })
+  };
+}
+
+function visualEvidenceFromProbe(probeResult) {
+  const screenshots = Array.isArray(probeResult.screenshots) ? probeResult.screenshots : [];
+  return {
+    seed: probeResult.seed ?? null,
+    screenshots: screenshots.map((item) => ({
+      checkpoint: item.checkpoint,
+      purpose: item.purpose,
+      path: item.path ? relativePluginPath(item.path) : null,
+      absolutePath: item.path || null,
+      fileExists: item.fileExists === true,
+      width: item.width ?? 0,
+      height: item.height ?? 0,
+      magentaPixelRatio: item.magentaPixelRatio ?? null,
+      visibleTargetCount: item.visibleTargetCount ?? 0,
+      promptVisible: item.promptVisible === true,
+      progressUiVisible: item.progressUiVisible === true,
+      seedUiVisible: item.seedUiVisible === true,
+      jobCompleteUiVisible: item.jobCompleteUiVisible === true
+    })),
+    cameraMode: probeResult.cameraMode || "FirstPerson",
+    cameraPosition: probeResult.cameraPosition || null,
+    cameraRotation: probeResult.cameraRotation || null,
+    cameraAssertions: {
+      cameraExists: probeResult.cameraExists === true,
+      activeCameraValid: probeResult.activeCameraValid === true,
+      cameraPositionValid: probeResult.cameraPositionValid === true,
+      cameraInsideWall: probeResult.cameraInsideWall === true,
+      cameraOutsideDungeon: probeResult.cameraOutsideDungeon === true,
+      cameraChildOrControlledByPlayer: probeResult.cameraChildOrControlledByPlayer === true
+    },
+    uiAssertions: {
+      uiCanvasExists: probeResult.uiCanvasExists === true,
+      progressUiVisible: probeResult.progressUiVisible === true,
+      seedUiVisible: probeResult.seedUiVisible === true,
+      interactionPromptVisible: probeResult.interactionPromptVisible === true,
+      jobCompleteUiVisible: probeResult.jobCompleteUiVisible === true
+    },
+    targetVisibilityAssertions: {
+      visibleTargetCountAtCheckpoints: Object.fromEntries(screenshots.map((item) => [item.checkpoint, item.visibleTargetCount ?? 0])),
+      nearTargetVisible: screenshots.some((item) => item.checkpoint === "near_first_target_or_target_visible" && item.visibleTargetCount > 0),
+      promptVisibleAtInteractionCheckpoint: screenshots.some((item) => item.checkpoint === "interaction_prompt" && item.promptVisible === true)
+    },
+    magentaPixelRatio: probeResult.magentaPixelRatio ?? null,
+    missingShaderSuspected: probeResult.missingShaderSuspected === true,
+    mouseLookVerified: probeResult.mouseLookVerified === true,
+    playerMovementVerified: probeResult.playerMovementVerified === true,
+    visualIssues: Array.isArray(probeResult.visualIssues) ? probeResult.visualIssues : [],
+    humanReviewRequired: probeResult.humanReviewRequired !== false,
+    staleEvidenceReused: probeResult.staleEvidenceReused === true,
+    publicReleaseReady: false,
+    failureReason: probeResult.failureReason || null,
+    nextAction: probeResult.nextAction || null
+  };
+}
+
+function relativePluginPath(filePath) {
+  if (!filePath) return null;
+  const normalized = path.resolve(filePath).replaceAll("\\", "/");
+  const root = pluginRoot.replaceAll("\\", "/");
+  return normalized.startsWith(`${root}/`)
+    ? normalized.slice(root.length + 1)
+    : normalized;
+}
+
+async function visualChecksFromProbe(probeResult) {
+  const visual = visualEvidenceFromProbe(probeResult);
+  const screenshots = visual.screenshots;
+  const checks = [];
+  for (const screenshot of screenshots) {
+    let fileExists = screenshot.fileExists;
+    if (screenshot.absolutePath) {
+      try {
+        await access(screenshot.absolutePath, constants.F_OK);
+        fileExists = true;
+      } catch {
+        fileExists = false;
+      }
+    }
+    const ok = fileExists && screenshot.width > 0 && screenshot.height > 0;
+    checks.push({
+      id: `visual.screenshot.${slug(screenshot.checkpoint)}`,
+      type: "Artifact",
+      target: screenshot.path,
+      status: ok ? "Passed" : "Failed",
+      ok,
+      failureClass: ok ? "Unknown" : "ValidationNotRun",
+      message: ok
+        ? `Screenshot ${screenshot.checkpoint} exists (${screenshot.width}x${screenshot.height}).`
+        : `Screenshot ${screenshot.checkpoint} is missing or has invalid dimensions.`
+    });
+  }
+  const assertions = visualAssertions(visual);
+  checks.push({
+    id: "visual.assertions",
+    type: "Visual",
+    target: "AInvilProceduralVisualValidationProbe",
+    status: assertions.every((item) => item.result === "Passed") ? "Passed" : "Failed",
+    ok: assertions.every((item) => item.result === "Passed"),
+    failureClass: assertions.every((item) => item.result === "Passed") ? "Unknown" : "Visual",
+    message: assertions.every((item) => item.result === "Passed")
+      ? `${assertions.length} visual assertion(s) passed.`
+      : `${assertions.filter((item) => item.result !== "Passed").length} visual assertion(s) failed.`,
+    childChecks: assertions.map((item) => ({
+      id: `visual.assert.${item.id}`,
+      type: "ValidationAssertion",
+      target: item.id,
+      status: item.result,
+      failureClass: item.result === "Passed" ? "Unknown" : "Visual",
+      message: item.message
+    })),
+    assertions
+  });
+  return checks;
+}
+
+function visualAssertions(visual) {
+  return [
+    assertion("screenshots_exist", visual.screenshots.length >= 5 && visual.screenshots.every((item) => item.fileExists && item.width > 0 && item.height > 0), `Screenshot count=${visual.screenshots.length}.`),
+    assertion("camera_exists", visual.cameraAssertions.cameraExists === true, "First-person camera should exist."),
+    assertion("active_camera_valid", visual.cameraAssertions.activeCameraValid === true, "Active camera should be enabled and renderable."),
+    assertion("camera_position_valid", visual.cameraAssertions.cameraPositionValid === true, `Camera position=${visual.cameraPosition}; rotation=${visual.cameraRotation}.`),
+    assertion("camera_not_inside_wall", visual.cameraAssertions.cameraInsideWall === false, `cameraInsideWall=${visual.cameraAssertions.cameraInsideWall}.`),
+    assertion("camera_not_outside_dungeon", visual.cameraAssertions.cameraOutsideDungeon === false, `cameraOutsideDungeon=${visual.cameraAssertions.cameraOutsideDungeon}.`),
+    assertion("camera_first_person_controlled", visual.cameraAssertions.cameraChildOrControlledByPlayer === true, "Camera should be child or controlled by player."),
+    assertion("mouse_look_verified", visual.mouseLookVerified === true, `mouseLookVerified=${visual.mouseLookVerified}.`),
+    assertion("player_movement_verified", visual.playerMovementVerified === true, `playerMovementVerified=${visual.playerMovementVerified}.`),
+    assertion("ui_canvas_exists", visual.uiAssertions.uiCanvasExists === true, "HUD canvas should exist."),
+    assertion("progress_ui_visible", visual.uiAssertions.progressUiVisible === true, `progressUiVisible=${visual.uiAssertions.progressUiVisible}.`),
+    assertion("seed_ui_visible", visual.uiAssertions.seedUiVisible === true, `seedUiVisible=${visual.uiAssertions.seedUiVisible}.`),
+    assertion("interaction_prompt_visible", visual.uiAssertions.interactionPromptVisible === true, `interactionPromptVisible=${visual.uiAssertions.interactionPromptVisible}.`),
+    assertion("job_complete_ui_visible", visual.uiAssertions.jobCompleteUiVisible === true, `jobCompleteUiVisible=${visual.uiAssertions.jobCompleteUiVisible}.`),
+    assertion("near_target_visible", visual.targetVisibilityAssertions.nearTargetVisible === true, `visibleTargetCountAtCheckpoints=${JSON.stringify(visual.targetVisibilityAssertions.visibleTargetCountAtCheckpoints)}.`),
+    assertion("prompt_visible_at_interaction_checkpoint", visual.targetVisibilityAssertions.promptVisibleAtInteractionCheckpoint === true, `promptVisibleAtInteractionCheckpoint=${visual.targetVisibilityAssertions.promptVisibleAtInteractionCheckpoint}.`),
+    assertion("missing_shader_not_suspected", visual.missingShaderSuspected === false, `missingShaderSuspected=${visual.missingShaderSuspected}.`),
+    assertion("magenta_ratio_below_threshold", typeof visual.magentaPixelRatio === "number" && visual.magentaPixelRatio <= 0.02, `magentaPixelRatio=${visual.magentaPixelRatio}.`),
+    assertion("human_review_required", visual.humanReviewRequired === true, `humanReviewRequired=${visual.humanReviewRequired}.`),
+    assertion("public_release_not_claimed", visual.publicReleaseReady === false, `publicReleaseReady=${visual.publicReleaseReady}.`)
+  ];
+}
+
+function visualAssertionCheck(visual, status) {
+  const assertions = visualAssertions(visual);
+  const failed = assertions.filter((item) => item.result !== "Passed");
+  return {
+    id: "visual.validation.summary",
+    type: "Visual",
+    target: "VisualPlayabilityValidation",
+    status: status === "Passed" && failed.length === 0 ? "Passed" : "Failed",
+    ok: status === "Passed" && failed.length === 0,
+    failureClass: failed.length ? "Visual" : "Unknown",
+    message: failed.length ? `${failed.length} visual assertion(s) failed.` : `${assertions.length} visual assertion(s) passed.`,
+    assertions
+  };
+}
+
+function visualValidationResult(scenario, status, visual, assertionCheck) {
+  return {
+    validationId: "VAL-DRC-VIS-ProceduralVisualValidation",
+    requirementId: scenario.requirementIds?.[0] || "REQ-DRC-VIS-001",
+    requirementIds: idsFromScenario(scenario, "requirementIds", "requirementId"),
+    acceptanceIds: idsFromScenario(scenario, "acceptanceIds", "acceptanceId"),
+    scenario: scenario.id || "dungeon_recovery_procedural_visual_validation",
+    result: status,
+    beforeObservations: [],
+    afterObservations: [
+      {
+        name: "visual_validation",
+        type: "visualProbe",
+        phase: "after",
+        value: {
+          seed: visual.seed,
+          screenshots: visual.screenshots.map((item) => item.path),
+          cameraAssertions: visual.cameraAssertions,
+          uiAssertions: visual.uiAssertions,
+          targetVisibilityAssertions: visual.targetVisibilityAssertions,
+          magentaPixelRatio: visual.magentaPixelRatio,
+          missingShaderSuspected: visual.missingShaderSuspected,
+          visualIssues: visual.visualIssues
+        },
+        status
+      }
+    ],
+    assertions: assertionCheck.assertions || [],
+    timestamp: new Date().toISOString()
+  };
+}
+
+async function writeVisualReviewReports(visual, status, checks) {
+  const report = {
+    schemaVersion: "1.0.0",
+    reportId: `DRC-VISUAL-${new Date().toISOString().replace(/[:.]/g, "-")}`,
+    generatedAt: new Date().toISOString(),
+    scenarioId: "dungeon_recovery_procedural_visual_validation",
+    status,
+    validationLevel: "Visual Verified",
+    visual,
+    checks: flattenChecks(checks).filter((check) => check.checkId?.startsWith("visual.") || check.checkId === "procedural.visual.probe"),
+    humanReviewRequired: true,
+    publicReleaseReady: false,
+    nextAction: visual.nextAction || (status === "Passed" ? "Run human review against the screenshots." : "Fix visual issues and rerun.")
+  };
+  await writeFile(path.resolve(pluginRoot, "reports", "dungeon_recovery_procedural_visual_review.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
+  await writeFile(path.resolve(pluginRoot, "reports", "dungeon_recovery_procedural_visual_review.md"), formatVisualReviewMarkdown(report), "utf8");
+}
+
+function formatVisualReviewMarkdown(report) {
+  const visual = report.visual;
+  return [
+    "# Dungeon Recovery Procedural Visual Review",
+    "",
+    `- Scenario: ${report.scenarioId}`,
+    `- Status: ${report.status}`,
+    `- Validation level: ${report.validationLevel}`,
+    `- Seed: ${visual.seed ?? "Unknown"}`,
+    `- Camera mode: ${visual.cameraMode}`,
+    `- Human review required: ${visual.humanReviewRequired}`,
+    `- Public Release Ready: ${visual.publicReleaseReady ? "Yes" : "No"}`,
+    "",
+    "## Screenshots",
+    "",
+    "| Checkpoint | Purpose | File | Visible targets | Magenta ratio |",
+    "| --- | --- | --- | --- | --- |",
+    ...visual.screenshots.map((item) => `| ${item.checkpoint} | ${esc(item.purpose || "")} | ${item.path || "Missing"} | ${item.visibleTargetCount} | ${item.magentaPixelRatio ?? "n/a"} |`),
+    "",
+    "## Assertions",
+    "",
+    "| Assertion | Result | Message |",
+    "| --- | --- | --- |",
+    ...visualAssertions(visual).map((item) => `| ${item.id} | ${item.result} | ${esc(item.message)} |`),
+    "",
+    "## Camera Framing",
+    "",
+    `- Position: ${visual.cameraPosition || "Unknown"}`,
+    `- Rotation: ${visual.cameraRotation || "Unknown"}`,
+    `- Inside wall: ${visual.cameraAssertions.cameraInsideWall}`,
+    `- Outside dungeon: ${visual.cameraAssertions.cameraOutsideDungeon}`,
+    `- Mouse look verified: ${visual.mouseLookVerified}`,
+    `- Player movement verified: ${visual.playerMovementVerified}`,
+    "",
+    "## UI And Target Visibility",
+    "",
+    `- Progress UI visible: ${visual.uiAssertions.progressUiVisible}`,
+    `- Seed UI visible: ${visual.uiAssertions.seedUiVisible}`,
+    `- Interaction prompt visible: ${visual.uiAssertions.interactionPromptVisible}`,
+    `- Job Complete UI visible: ${visual.uiAssertions.jobCompleteUiVisible}`,
+    `- Visible target counts: ${JSON.stringify(visual.targetVisibilityAssertions.visibleTargetCountAtCheckpoints)}`,
+    "",
+    "## Material Check",
+    "",
+    `- Magenta pixel ratio: ${visual.magentaPixelRatio}`,
+    `- Missing shader suspected: ${visual.missingShaderSuspected}`,
+    "",
+    "## Detected Issues",
+    "",
+    ...(visual.visualIssues.length ? visual.visualIssues.map((item) => `- ${item}`) : ["- None"]),
+    "",
+    "## Human Review Prompt",
+    "",
+    "Review the attached screenshots for camera framing, target readability, prompt readability, UI placement, missing material artifacts, and whether the first-person view is comfortable enough for a first playable.",
+    ""
+  ].join("\n");
+}
+
+function esc(value) {
+  return String(value ?? "").replaceAll("|", "\\|").replace(/\r?\n/g, "<br>");
+}
+
+async function validateProceduralSeed(seed) {
+  const checks = [];
+  const firstGenerate = await invokeProceduralController("GenerateWithSeed", [seed]);
+  checks.push(firstGenerate);
+  const firstState = parseInvocationJson(firstGenerate) || {};
+  const firstSignatureCheck = await invokeProceduralController("GetLayoutSignature");
+  checks.push(firstSignatureCheck);
+  const firstSignature = parseInvocationString(firstSignatureCheck);
+
+  const secondGenerate = await invokeProceduralController("GenerateWithSeed", [seed]);
+  checks.push(secondGenerate);
+  const secondSignatureCheck = await invokeProceduralController("GetLayoutSignature");
+  checks.push(secondSignatureCheck);
+  const secondSignature = parseInvocationString(secondSignatureCheck);
+
+  const completeCheck = await invokeProceduralController("ValidationCompleteAllTargets");
+  checks.push(completeCheck);
+  const completeState = parseInvocationJson(completeCheck) || {};
+
+  const result = {
+    seed,
+    generationSucceeded: completeState.generationSucceeded === true,
+    roomCount: completeState.roomCount ?? null,
+    floorCellCount: completeState.floorCellCount ?? null,
+    playerStartIsValidFloor: completeState.playerStartIsValidFloor === true,
+    recoveryTargetCount: completeState.recoveryTargetCount ?? null,
+    reachableTargetCount: completeState.reachableTargetCount ?? null,
+    duplicateTargetCells: completeState.duplicateTargetCells ?? null,
+    targetWallOverlapCount: completeState.targetWallOverlapCount ?? null,
+    jobComplete: completeState.jobComplete === true,
+    deterministicMatch: firstSignature === secondSignature && Boolean(firstSignature),
+    layoutSignature: secondSignature || firstSignature || completeState.layoutSignature || null,
+    validationHookUsed: completeState.validationHookUsed || "AInvilProceduralRecoveryJobController",
+    failureReason: completeState.failureReason || firstState.failureReason || null
+  };
+  result.assertions = proceduralSeedAssertions(result);
+  const failed = result.assertions.filter((item) => item.result !== "Passed");
+  checks.push({
+    id: `procedural.seed.${seed}.assertions`,
+    type: "PlayMode",
+    target: `seed:${seed}`,
+    status: failed.length ? "Failed" : "Passed",
+    ok: failed.length === 0,
+    failureClass: failed.length ? "GameLogicFailed" : "Unknown",
+    message: failed.length ? `${failed.length} procedural assertion(s) failed for seed ${seed}.` : `${result.assertions.length} procedural assertion(s) passed for seed ${seed}.`,
+    childChecks: result.assertions.map((item) => ({
+      id: `procedural.seed.${seed}.${item.id}`,
+      type: "ValidationAssertion",
+      target: item.id,
+      status: item.result,
+      failureClass: item.result === "Passed" ? "Unknown" : "GameLogicFailed",
+      message: item.message
+    })),
+    assertions: result.assertions
+  });
+  return { checks, result };
+}
+
+async function validateProceduralRandomSeeds() {
+  const checks = [];
+  const samples = [];
+  for (let index = 0; index < 2; index++) {
+    const generate = await invokeProceduralController("GenerateWithRandomSeed");
+    checks.push(generate);
+    const state = parseInvocationJson(generate) || {};
+    samples.push(state.currentSeed ?? state.seed ?? null);
+  }
+  const distinct = samples.length === 2 && samples[0] != null && samples[1] != null && samples[0] !== samples[1];
+  checks.push({
+    id: "procedural.random_start_seed.assertions",
+    type: "PlayMode",
+    target: "AInvilProceduralRecoveryJobController.GenerateWithRandomSeed",
+    status: distinct ? "Passed" : "Failed",
+    ok: distinct,
+    failureClass: distinct ? "Unknown" : "GameLogicFailed",
+    message: distinct
+      ? `Random startup seed samples differed: ${samples.join(", ")}.`
+      : `Expected different random startup seed samples, got ${samples.join(", ")}.`,
+    assertions: [
+      assertion("random_start_seed", distinct, `Expected different random startup seed samples, got ${samples.join(", ")}.`)
+    ]
+  });
+  return { checks, samples, verified: distinct };
+}
+
+async function validateProceduralSpaceQualitySeed(seed) {
+  const checks = [];
+  const generate = await invokeProceduralController("GenerateWithSeed", [seed]);
+  checks.push(generate);
+  const generateState = parseInvocationJson(generate) || {};
+
+  const complete = await invokeProceduralController("ValidationCompleteAllTargets");
+  checks.push(complete);
+
+  const qualityCheck = await invokeProceduralController("GetValidationStateJson");
+  checks.push(qualityCheck);
+  const quality = parseInvocationJson(qualityCheck) || {};
+  const result = {
+    seed,
+    generationSucceeded: generateState.generationSucceeded === true,
+    roomCount: quality.generatedRoomCount ?? generateState.roomCount ?? null,
+    generatedRoomCount: quality.generatedRoomCount ?? null,
+    minRoomWidth: quality.minRoomWidth ?? null,
+    maxRoomWidth: quality.maxRoomWidth ?? null,
+    minRoomDepth: quality.minRoomDepth ?? null,
+    maxRoomDepth: quality.maxRoomDepth ?? null,
+    averageRoomArea: quality.averageRoomArea ?? null,
+    corridorWidth: quality.corridorWidth ?? null,
+    narrowPassageCount: quality.narrowPassageCount ?? null,
+    minimumNavigableWidth: quality.minimumNavigableWidth ?? null,
+    playerClearancePassed: quality.playerClearancePassed === true,
+    wallHeight: quality.wallHeight ?? null,
+    playerHeight: quality.playerHeight ?? null,
+    cameraHeight: quality.cameraHeight ?? null,
+    wallHeightSufficient: quality.wallHeightSufficient === true,
+    propCount: quality.propCount ?? null,
+    propTypes: Array.isArray(quality.propTypes) ? quality.propTypes : [],
+    propOverlapCount: quality.propOverlapCount ?? null,
+    blockedDoorwayCount: quality.blockedDoorwayCount ?? null,
+    blockedTargetCount: quality.blockedTargetCount ?? null,
+    recoveryTargetCount: quality.recoveryTargetCount ?? null,
+    reachableTargetCount: quality.reachableTargetCount ?? null,
+    navigabilityAfterPropsPassed: quality.navigabilityAfterPropsPassed === true,
+    targetRoomDistribution: quality.targetRoomDistribution || "",
+    targetMinDistance: quality.targetMinDistance ?? null,
+    targetInteractionClearancePassed: quality.targetInteractionClearancePassed === true,
+    targetReachabilityPassed: quality.targetReachabilityPassed === true,
+    jobComplete: quality.jobComplete === true,
+    publicReleaseReady: quality.publicReleaseReady === true,
+    validationHookUsed: quality.validationHookUsed || "AInvilProceduralRecoveryJobController.GetSpaceQualityStateJson",
+    failureReason: generateState.failureReason || null
+  };
+  result.assertions = proceduralSpaceQualitySeedAssertions(result);
+  const failed = result.assertions.filter((item) => item.result !== "Passed");
+  checks.push({
+    id: `procedural.space_quality.${seed}.assertions`,
+    type: "PlayMode",
+    target: `seed:${seed}`,
+    status: failed.length ? "Failed" : "Passed",
+    ok: failed.length === 0,
+    failureClass: failed.length ? "GameLogicFailed" : "Unknown",
+    message: failed.length ? `${failed.length} space quality assertion(s) failed for seed ${seed}.` : `${result.assertions.length} space quality assertion(s) passed for seed ${seed}.`,
+    childChecks: result.assertions.map((item) => ({
+      id: `procedural.space_quality.${seed}.${item.id}`,
+      type: "ValidationAssertion",
+      target: item.id,
+      status: item.result,
+      failureClass: item.result === "Passed" ? "Unknown" : "GameLogicFailed",
+      message: item.message
+    })),
+    assertions: result.assertions
+  });
+  return { checks, result };
+}
+
+async function invokeProceduralController(methodName, args = []) {
+  const check = await callUnityCheck("unity_invoke_component_method", {
+    targetPath: "/AInvilProceduralRecoveryJob",
+    componentType: "AInvil.DungeonRecoveryFirstPlayable.AInvilProceduralRecoveryJobController",
+    methodName,
+    args,
+    requirePlaying: false,
+    debugOnly: false
+  });
+  check.id = `procedural.controller.${slug(methodName)}${args.length ? `.${args.join("_")}` : ""}`;
+  check.type = "PlayMode";
+  check.target = `AInvilProceduralRecoveryJobController.${methodName}`;
+  return check;
+}
+
+function proceduralSeedAssertions(result) {
+  return [
+    assertion("generation_succeeded", result.generationSucceeded === true, `Seed ${result.seed}: generationSucceeded=${result.generationSucceeded}.`),
+    assertion("room_count", result.roomCount >= 4, `Seed ${result.seed}: expected roomCount >= 4, actual ${result.roomCount}.`),
+    assertion("floor_cell_count", result.floorCellCount > 0, `Seed ${result.seed}: expected floorCellCount > 0, actual ${result.floorCellCount}.`),
+    assertion("player_start_floor", result.playerStartIsValidFloor === true, `Seed ${result.seed}: playerStartIsValidFloor=${result.playerStartIsValidFloor}.`),
+    assertion("target_count", result.recoveryTargetCount === 3, `Seed ${result.seed}: expected recoveryTargetCount 3, actual ${result.recoveryTargetCount}.`),
+    assertion("reachable_targets", result.reachableTargetCount === 3, `Seed ${result.seed}: expected reachableTargetCount 3, actual ${result.reachableTargetCount}.`),
+    assertion("duplicate_targets", result.duplicateTargetCells === 0, `Seed ${result.seed}: expected duplicateTargetCells 0, actual ${result.duplicateTargetCells}.`),
+    assertion("wall_overlap", result.targetWallOverlapCount === 0, `Seed ${result.seed}: expected targetWallOverlapCount 0, actual ${result.targetWallOverlapCount}.`),
+    assertion("job_complete", result.jobComplete === true, `Seed ${result.seed}: jobComplete=${result.jobComplete}.`),
+    assertion("deterministic", result.deterministicMatch === true, `Seed ${result.seed}: deterministicMatch=${result.deterministicMatch}.`)
+  ];
+}
+
+function proceduralSpaceQualitySeedAssertions(result) {
+  return [
+    assertion("generation_succeeded", result.generationSucceeded === true, `Seed ${result.seed}: generationSucceeded=${result.generationSucceeded}.`),
+    assertion("room_count", result.roomCount >= 4, `Seed ${result.seed}: expected roomCount >= 4, actual ${result.roomCount}.`),
+    assertion("min_room_width", result.minRoomWidth >= 7, `Seed ${result.seed}: expected minRoomWidth >= 7, actual ${result.minRoomWidth}.`),
+    assertion("min_room_depth", result.minRoomDepth >= 7, `Seed ${result.seed}: expected minRoomDepth >= 7, actual ${result.minRoomDepth}.`),
+    assertion("average_room_area", result.averageRoomArea >= 49, `Seed ${result.seed}: expected averageRoomArea >= 49, actual ${result.averageRoomArea}.`),
+    assertion("corridor_width", result.corridorWidth >= 3, `Seed ${result.seed}: expected corridorWidth >= 3, actual ${result.corridorWidth}.`),
+    assertion("narrow_passages", result.narrowPassageCount === 0, `Seed ${result.seed}: expected narrowPassageCount 0, actual ${result.narrowPassageCount}.`),
+    assertion("player_clearance", result.playerClearancePassed === true, `Seed ${result.seed}: playerClearancePassed=${result.playerClearancePassed}.`),
+    assertion("wall_height", result.wallHeightSufficient === true, `Seed ${result.seed}: wallHeight=${result.wallHeight}, playerHeight=${result.playerHeight}, cameraHeight=${result.cameraHeight}.`),
+    assertion("props_exist", result.propCount > 0, `Seed ${result.seed}: expected propCount > 0, actual ${result.propCount}.`),
+    assertion("prop_types", result.propTypes.length >= 3, `Seed ${result.seed}: expected at least 3 prop types, actual ${result.propTypes.join(",")}.`),
+    assertion("prop_overlap", result.propOverlapCount === 0, `Seed ${result.seed}: expected propOverlapCount 0, actual ${result.propOverlapCount}.`),
+    assertion("doorways_unblocked", result.blockedDoorwayCount === 0, `Seed ${result.seed}: expected blockedDoorwayCount 0, actual ${result.blockedDoorwayCount}.`),
+    assertion("targets_unblocked", result.blockedTargetCount === 0, `Seed ${result.seed}: expected blockedTargetCount 0, actual ${result.blockedTargetCount}.`),
+    assertion("reachable_targets", result.reachableTargetCount === 3, `Seed ${result.seed}: expected reachableTargetCount 3, actual ${result.reachableTargetCount}.`),
+    assertion("navigability_after_props", result.navigabilityAfterPropsPassed === true, `Seed ${result.seed}: navigabilityAfterPropsPassed=${result.navigabilityAfterPropsPassed}.`),
+    assertion("target_distance", result.targetMinDistance >= 7, `Seed ${result.seed}: expected targetMinDistance >= 7, actual ${result.targetMinDistance}.`),
+    assertion("target_clearance", result.targetInteractionClearancePassed === true, `Seed ${result.seed}: targetInteractionClearancePassed=${result.targetInteractionClearancePassed}.`),
+    assertion("target_reachability", result.targetReachabilityPassed === true, `Seed ${result.seed}: targetReachabilityPassed=${result.targetReachabilityPassed}.`),
+    assertion("job_complete", result.jobComplete === true, `Seed ${result.seed}: jobComplete=${result.jobComplete}.`),
+    assertion("public_release_not_claimed", result.publicReleaseReady === false, `Seed ${result.seed}: publicReleaseReady=${result.publicReleaseReady}.`)
+  ];
+}
+
+function spaceQualityAssertionsCheck(spaceQuality) {
+  const assertions = [
+    ...spaceQuality.perSeedResults.flatMap((result) => result.assertions || []),
+    assertion("all_seeds_tested", spaceQuality.perSeedResults.length === spaceQuality.seedsTested.length, `Expected ${spaceQuality.seedsTested.length} seeds, actual ${spaceQuality.perSeedResults.length}.`),
+    assertion("console_errors_zero", spaceQuality.consoleErrorCount === null || spaceQuality.consoleErrorCount === 0, `consoleErrorCount=${spaceQuality.consoleErrorCount}.`),
+    assertion("stale_evidence", spaceQuality.staleEvidenceReused === false, `staleEvidenceReused=${spaceQuality.staleEvidenceReused}.`),
+    assertion("public_release_not_claimed", spaceQuality.publicReleaseReady === false, `publicReleaseReady=${spaceQuality.publicReleaseReady}.`)
+  ];
+  const failed = assertions.filter((item) => item.result !== "Passed");
+  return {
+    id: "procedural.space_quality.assertions",
+    type: "PlayMode",
+    target: "ProceduralSpaceQuality",
+    status: failed.length ? "Failed" : "Passed",
+    ok: failed.length === 0,
+    failureClass: failed.length ? "GameLogicFailed" : "Unknown",
+    message: failed.length ? `${failed.length} space quality assertion(s) failed.` : `${assertions.length} space quality assertion(s) passed.`,
+    childChecks: assertions.map((item) => ({
+      id: `procedural.space_quality.assert.${item.id}`,
+      type: "ValidationAssertion",
+      target: item.id,
+      status: item.result,
+      failureClass: item.result === "Passed" ? "Unknown" : "GameLogicFailed",
+      message: item.message
+    })),
+    assertions
+  };
+}
+
+function proceduralAssertions(procedural) {
+  const seedAssertions = procedural.perSeedResults.flatMap((result) => result.assertions || []);
+  const globalAssertions = [
+    assertion("all_seeds_tested", procedural.perSeedResults.length === procedural.seedsTested.length, `Expected ${procedural.seedsTested.length} seeds, actual ${procedural.perSeedResults.length}.`),
+    assertion("deterministic_generation", procedural.deterministicGenerationVerified === true, `deterministicGenerationVerified=${procedural.deterministicGenerationVerified}.`),
+    assertion("different_seeds", procedural.differentSeedsProduceDifferentLayouts === true, `differentSeedsProduceDifferentLayouts=${procedural.differentSeedsProduceDifferentLayouts}.`),
+    assertion("random_start_seed", procedural.randomStartupSeedVerified === true, `randomStartupSeedVerified=${procedural.randomStartupSeedVerified}; samples=${procedural.randomSeedSamples.join(",")}.`),
+    assertion("stale_evidence", procedural.staleEvidenceReused === false, `staleEvidenceReused=${procedural.staleEvidenceReused}.`)
+  ];
+  const assertions = [...seedAssertions, ...globalAssertions];
+  const failed = assertions.filter((item) => item.result !== "Passed");
+  return {
+    id: "procedural.assertions",
+    type: "PlayMode",
+    target: "ProceduralRecoveryJob",
+    status: failed.length ? "Failed" : "Passed",
+    ok: failed.length === 0,
+    failureClass: failed.length ? "GameLogicFailed" : "Unknown",
+    message: failed.length ? `${failed.length} procedural assertion(s) failed.` : `${assertions.length} procedural assertion(s) passed.`,
+    childChecks: assertions.map((item) => ({
+      id: `procedural.assert.${item.id}`,
+      type: "ValidationAssertion",
+      target: item.id,
+      status: item.result,
+      failureClass: item.result === "Passed" ? "Unknown" : "GameLogicFailed",
+      message: item.message
+    })),
+    assertions
+  };
+}
+
+function proceduralValidationResult(scenario, status, procedural, assertionCheck) {
+  return {
+    validationId: "VAL-DRC-PROC-ProceduralRecoveryJob-E2E",
+    requirementId: scenario.requirementIds?.[0] || "REQ-DRC-PROC-001",
+    requirementIds: idsFromScenario(scenario, "requirementIds", "requirementId"),
+    acceptanceIds: idsFromScenario(scenario, "acceptanceIds", "acceptanceId"),
+    scenario: scenario.id || "dungeon_recovery_procedural_recovery_job_e2e",
+    result: status,
+    beforeObservations: [],
+    afterObservations: procedural.perSeedResults.map((result) => ({
+      name: `seed_${result.seed}`,
+      type: "proceduralSeedValidation",
+      phase: "after",
+      value: result,
+      status: result.assertions?.every((item) => item.result === "Passed") ? "Passed" : "Failed"
+    })),
+    assertions: assertionCheck.assertions || [],
+    timestamp: new Date().toISOString()
+  };
+}
+
+function spaceQualityValidationResult(scenario, status, spaceQuality, assertionCheck) {
+  return {
+    validationId: "VAL-DRC-PROC-ProceduralSpaceQuality",
+    requirementId: scenario.requirementIds?.[0] || "REQ-DRC-SPACE-001",
+    requirementIds: idsFromScenario(scenario, "requirementIds", "requirementId"),
+    acceptanceIds: idsFromScenario(scenario, "acceptanceIds", "acceptanceId"),
+    scenario: scenario.id || "dungeon_recovery_procedural_space_quality_validation",
+    result: status,
+    beforeObservations: [],
+    afterObservations: spaceQuality.perSeedResults.map((result) => ({
+      name: `space_quality_seed_${result.seed}`,
+      type: "proceduralSpaceQuality",
+      phase: "after",
+      value: result,
+      status: result.assertions?.every((item) => item.result === "Passed") ? "Passed" : "Failed"
+    })),
+    assertions: assertionCheck.assertions || [],
+    timestamp: new Date().toISOString()
+  };
+}
+
+async function writeSpaceQualityReports(spaceQuality, status, checks) {
+  const report = {
+    schemaVersion: "1.0.0",
+    reportId: `DRC-SPACE-${new Date().toISOString().replace(/[:.]/g, "-")}`,
+    generatedAt: new Date().toISOString(),
+    scenarioId: "dungeon_recovery_procedural_space_quality_validation",
+    status,
+    validationLevel: "Play Mode Verified",
+    spaceQuality,
+    checks: flattenChecks(checks).filter((check) => check.checkId?.includes("space_quality") || check.checkId?.includes("procedural.controller")),
+    publicReleaseReady: false,
+    nextAction: spaceQuality.nextAction || (status === "Passed" ? "Keep procedural space quality evidence in Product MVP reports." : "Fix failed space quality assertions and rerun.")
+  };
+  await writeFile(path.resolve(pluginRoot, "reports", "dungeon_recovery_procedural_space_quality_review.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
+  await writeFile(path.resolve(pluginRoot, "reports", "dungeon_recovery_procedural_space_quality_review.md"), formatSpaceQualityMarkdown(report), "utf8");
+}
+
+function formatSpaceQualityMarkdown(report) {
+  const quality = report.spaceQuality;
+  return [
+    "# Dungeon Recovery Procedural Space Quality Review",
+    "",
+    `- Scenario: ${report.scenarioId}`,
+    `- Status: ${report.status}`,
+    `- Validation level: ${report.validationLevel}`,
+    `- Public Release Ready: ${report.publicReleaseReady ? "Yes" : "No"}`,
+    `- Dry-run report: ${quality.dryRunReport}`,
+    "",
+    "## Seed Results",
+    "",
+    "| Seed | Rooms | Avg room area | Corridor width | Wall height | Props | Blocked doorways | Blocked targets | Reachable targets | Job complete |",
+    "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |",
+    ...quality.perSeedResults.map((item) => `| ${item.seed} | ${item.generatedRoomCount ?? item.roomCount} | ${item.averageRoomArea} | ${item.corridorWidth} | ${item.wallHeight} | ${item.propCount} | ${item.blockedDoorwayCount} | ${item.blockedTargetCount} | ${item.reachableTargetCount} | ${item.jobComplete} |`),
+    "",
+    "## Prop And Target Validation",
+    "",
+    "| Seed | Prop types | Prop overlaps | Target distribution | Target min distance | Target clearance | Navigability after props |",
+    "| --- | --- | ---: | --- | ---: | --- | --- |",
+    ...quality.perSeedResults.map((item) => `| ${item.seed} | ${esc((item.propTypes || []).join(", "))} | ${item.propOverlapCount} | ${esc(item.targetRoomDistribution)} | ${item.targetMinDistance} | ${item.targetInteractionClearancePassed} | ${item.navigabilityAfterPropsPassed} |`),
+    "",
+    "## Assertions",
+    "",
+    "| Assertion | Result | Message |",
+    "| --- | --- | --- |",
+    ...spaceQualityAssertionsCheck(quality).assertions.map((item) => `| ${item.id} | ${item.result} | ${esc(item.message)} |`),
+    "",
+    "## Next Action",
+    "",
+    report.nextAction,
+    ""
+  ].join("\n");
+}
+
 async function runDungeonRecoveryFirstPlayableScenario(scenario, checks, unityTargets) {
   const productMvp = {
     category: scenario.category || "ProductMvp",
@@ -196,6 +1350,9 @@ async function runDungeonRecoveryFirstPlayableScenario(scenario, checks, unityTa
 
   const statusCheck = checks.find((check) => check.id === "bridge.unity_get_status");
   productMvp.unityProjectPath = statusCheck?.data?.projectPath || statusCheck?.data?.project?.path || null;
+
+  const compileGate = await runCompileGateBeforePlayMode(scenario, checks, productMvp);
+  if (compileGate.blocked) return compileGate.result;
 
   checks.push(await callUnityCheck("unity_clear_console", {}));
   const initialCompile = await waitForCompileStatus("before_product_mvp_scene_build");
@@ -253,7 +1410,7 @@ async function runDungeonRecoveryFirstPlayableScenario(scenario, checks, unityTa
   }
 
   await sleep(options.playModeWaitMs);
-  checks.push(await waitForUnityBridge("product_mvp_play_mode_enter"));
+  checks.push(await waitForUnityPlayMode("product_mvp_play_mode_enter", true));
 
   const resetCheck = await invokeProductController("ResetValidationState");
   checks.push(resetCheck);
@@ -357,8 +1514,10 @@ async function waitForCompileStatus(label) {
     target: "unity_compile_status",
     status: "Blocked",
     ok: false,
-    failureClass: "CompileError",
-    message: "Unity compile status did not become stable before timeout."
+    failureClass: lastCheck?.failureClass === "BridgeDisconnected" ? "BridgeDisconnected" : "CompileError",
+    message: lastCheck?.failureClass === "BridgeDisconnected"
+      ? "Unity Bridge disconnected while waiting for compile status stability."
+      : "Unity compile status did not become stable before timeout."
   };
 }
 
@@ -618,6 +1777,28 @@ async function ensureGameObject({ path: targetPath, name, parentPath, primitiveT
 
 async function runInteractiveApplyChecks() {
   const childChecks = [];
+  const gate = await runUnityValidationPreflight({
+    scenarioId: options.scenario || "interactive-apply",
+    classification: "Operational",
+    category: "ProductMvp",
+    validationType: "InteractivePlayModeValidation",
+    unityUrl,
+    healthUrl,
+    rpcTimeoutMs: options.rpcTimeoutMs,
+    timeoutMs: Math.max(30000, options.playModeWaitMs + 20000)
+  });
+  childChecks.push(compileGateCheck(gate));
+  if (gate.status !== "Passed") {
+    return {
+      id: "live.interactive.apply",
+      type: "PlayMode",
+      target: "AInvilInputTestBridge",
+      status: "Blocked",
+      failureClass: "CompileError",
+      message: "CompileBlocked: interactive Play Mode validation was not attempted.",
+      childChecks
+    };
+  }
   childChecks.push(await callUnityCheck("unity_create_input_test_bridge", {}));
   childChecks.push(await callUnityCheck("unity_enter_play_mode", {}));
   await sleep(options.playModeWaitMs);
@@ -720,6 +1901,19 @@ async function runValidationAction(action) {
     });
   }
   if (action.type === "enterPlayMode") {
+    const gate = await runUnityValidationPreflight({
+      scenarioId: options.scenario || "validation-design",
+      classification: "Operational",
+      category: "ProductMvp",
+      validationType: "ValidationDesignPlayMode",
+      unityUrl,
+      healthUrl,
+      rpcTimeoutMs: options.rpcTimeoutMs,
+      timeoutMs: Math.max(30000, options.playModeWaitMs + 20000)
+    });
+    if (gate.status !== "Passed") {
+      return compileGateCheck(gate);
+    }
     const check = await callUnityCheck("unity_enter_play_mode", {});
     if (check.ok) await sleep(action.waitMs ?? options.playModeWaitMs);
     return check;
@@ -925,10 +2119,43 @@ async function waitForUnityBridge(label) {
     id: `bridge.wait.${slug(label)}`,
     type: "Static",
     target: healthUrl,
-    status: "Failed",
+    status: "Blocked",
     ok: false,
     failureClass: "BridgeDisconnected",
     message: `Unity Bridge did not become reachable within ${timeoutMs}ms after ${label}. Last result: ${lastCheck?.message || "no response"}`
+  };
+}
+
+async function waitForUnityPlayMode(label, expectedPlaying) {
+  const timeoutMs = Math.max(30000, options.playModeWaitMs + 20000);
+  const started = Date.now();
+  let lastCheck = null;
+
+  while (Date.now() - started <= timeoutMs) {
+    const status = await callUnityCheck("unity_get_status", {});
+    lastCheck = status;
+    if (status.ok && Boolean(status.data?.isPlaying) === expectedPlaying) {
+      return {
+        ...status,
+        id: `bridge.wait.${slug(label)}`,
+        type: "PlayMode",
+        status: "Passed",
+        ok: true,
+        message: `Unity Play Mode reached isPlaying=${expectedPlaying} after ${Date.now() - started}ms.`
+      };
+    }
+    await sleep(750);
+  }
+
+  return {
+    ...(lastCheck || {}),
+    id: `bridge.wait.${slug(label)}`,
+    type: "PlayMode",
+    target: "unity_get_status.isPlaying",
+    status: "Failed",
+    ok: false,
+    failureClass: "PreconditionFailed",
+    message: `Unity Play Mode did not reach isPlaying=${expectedPlaying} within ${timeoutMs}ms after ${label}. Last isPlaying=${lastCheck?.data?.isPlaying}.`
   };
 }
 
@@ -976,6 +2203,106 @@ async function getHealth() {
   }
 }
 
+async function bridgeStabilityPreflight(scenario) {
+  const checks = [];
+  let statusCheck = null;
+  const samples = [];
+  const sampleCount = Number(process.env.AINVIL_BRIDGE_STABILITY_SAMPLES || 3);
+  const intervalMs = Number(process.env.AINVIL_BRIDGE_STABILITY_INTERVAL_MS || 1500);
+
+  for (let index = 0; index < sampleCount; index += 1) {
+    const health = await getHealth();
+    health.id = `bridge.stability.health.${index + 1}`;
+    checks.push(health);
+    samples.push({
+      sample: index + 1,
+      health: health.status,
+      rpc: "NotRun",
+      message: health.message
+    });
+
+    if (!health.ok) {
+      return {
+        stable: false,
+        blockerType: "UnityBridgeDisconnected",
+        failureReason: "Unity Bridge health endpoint was unreachable during stability preflight.",
+        checks,
+        samples,
+        statusCheck: null,
+        nextAction: "Open Unity, start Tools > Codex Unity Bridge > Start Server, then rerun the live harness."
+      };
+    }
+
+    const rpc = await callUnityCheck("unity_get_status", {});
+    rpc.id = `bridge.stability.rpc.${index + 1}`;
+    checks.push(rpc);
+    statusCheck = rpc;
+    samples[samples.length - 1].rpc = rpc.status;
+    samples[samples.length - 1].projectPath = rpc.data?.projectPath || null;
+
+    if (!rpc.ok) {
+      return {
+        stable: false,
+        blockerType: "UnityBridgeDisconnected",
+        failureReason: "Unity Bridge RPC endpoint failed during stability preflight.",
+        checks,
+        samples,
+        statusCheck,
+        nextAction: "Confirm UNITY_BRIDGE_URL and restart the Unity Bridge server."
+      };
+    }
+
+    if (rpc.data?.isCompiling || rpc.data?.isUpdating) {
+      return {
+        stable: false,
+        blockerType: "UnityEditorBusy",
+        failureReason: "Unity was compiling or updating during stability preflight.",
+        checks,
+        samples,
+        statusCheck,
+        nextAction: "Wait for Unity compilation/import to finish, then rerun the live harness."
+      };
+    }
+
+    if (index < sampleCount - 1) await sleep(intervalMs);
+  }
+
+  return {
+    stable: true,
+    blockerType: null,
+    failureReason: null,
+    checks,
+    samples,
+    statusCheck,
+    nextAction: null,
+    scenarioId: scenario.id
+  };
+}
+
+function environmentBlockedEvidence(scenario, stability) {
+  return {
+    category: scenario.category || "ProductMvp",
+    validationType: scenario.validationType || "EnvironmentPreflight",
+    blockerType: stability.blockerType || "UnityBridgeDisconnected",
+    validationLevel: "Environment Blocked",
+    playModeAttempted: false,
+    compileStatus: "Unknown",
+    bridgeHealth: "Failed",
+    bridgeStability: {
+      status: "EnvironmentBlocked",
+      samples: stability.samples || [],
+      failureReason: stability.failureReason,
+      nextAction: stability.nextAction
+    },
+    productValidationStatus: "LastKnownPassed",
+    revalidationStatus: "EnvironmentBlocked",
+    failureReason: stability.failureReason || "Unity Bridge disconnected before live validation could run.",
+    nextActions: [stability.nextAction || "Restart Unity Bridge and rerun this scenario."],
+    staleEvidenceReused: false,
+    publicReleaseReady: false
+  };
+}
+
 async function callUnityCheck(method, params) {
   try {
     const data = await callUnity(method, params);
@@ -990,13 +2317,14 @@ async function callUnityCheck(method, params) {
       data
     };
   } catch (error) {
+    const bridgeDisconnected = /fetch failed|ECONNREFUSED|Unable to connect|socket hang up|terminated/i.test(error.message || "");
     return {
       id: `bridge.${method}`,
       type: methodToValidationType(method),
       target: method,
-      status: "Failed",
+      status: bridgeDisconnected ? "Blocked" : "Failed",
       ok: false,
-      failureClass: classifyMethodFailure(method),
+      failureClass: bridgeDisconnected ? "BridgeDisconnected" : classifyMethodFailure(method),
       message: error.message
     };
   }
@@ -1331,6 +2659,9 @@ async function writeEvidence(harnessReport, relativePath) {
   const firstValidation = validationResults[0] || null;
   const status = scenario?.status || "NotRun";
   const failureClass = status === "Passed" ? "None" : firstFailureClass(checks);
+  const playModeAttempted = playModeAttemptedForEvidence(checks, productMvpEvidence, status);
+  const environmentBlocked = isEnvironmentBlocked(status, checks);
+  const lastKnownPassed = await loadSiblingEvidence(relativePath, "Passed");
   const evidence = {
     schemaVersion: "1.0.0",
     evidenceId: `EVID-${slug(scenario?.id || "live-harness")}-${harnessReport.startedAt.replace(/[:.]/g, "-")}`,
@@ -1339,7 +2670,7 @@ async function writeEvidence(harnessReport, relativePath) {
     classification: scenario?.classification || "Operational",
     category: scenario?.category || productMvpEvidence?.category || undefined,
     validationType: scenario?.validationType || productMvpEvidence?.validationType || undefined,
-    validationLevel: validationLevelFor(status, checks),
+    validationLevel: productMvpEvidence?.validationLevel || validationLevelFor(status, checks),
     status,
     result: status,
     validationIds: validationResults.map((result) => result.validationId).filter(Boolean),
@@ -1350,13 +2681,20 @@ async function writeEvidence(harnessReport, relativePath) {
     unityTargets: scenario?.unityTargets || [],
     checks: flattenChecks(checks),
     checkedSteps: flattenChecks(checks),
-    bridgeHealthResult: checkSummary(checks, "bridge.health"),
+    bridgeHealthResult: checkSummary(checks, "bridge.health")
+      || checkSummary(checks, "bridge.stability.health.1"),
     compileStatusResult: checkSummary(checks, "bridge.unity_compile_status")
+      || checkSummary(checks, "compile_gate.pre_play_mode")
       || checkSummary(checks, "bridge.unity_compile_status.before_product_mvp_scene_build")
       || checkSummary(checks, "bridge.unity_compile_status.after_product_mvp_scene_build"),
+    compileErrorCount: productMvpEvidence?.compileErrorCount ?? null,
+    compileErrors: productMvpEvidence?.compileErrors || [],
+    blockerType: environmentBlocked ? "UnityBridgeDisconnected" : productMvpEvidence?.blockerType || null,
+    playModeAttempted,
+    runtimeAssemblyFreshness: productMvpEvidence?.runtimeAssemblyFreshness || null,
     consoleErrorSummary: consoleErrorSummary(checks),
-    failureReason: status === "Passed" ? null : firstNonPassedMessage(checks),
-    blocker: status === "Passed" ? null : failureClass,
+    failureReason: productMvpEvidence?.failureReason || (status === "Passed" ? null : firstNonPassedMessage(checks)),
+    blocker: status === "Passed" ? null : productMvpEvidence?.blockerType || failureClass,
     bridgeDiagnostics: checks.find((check) => check.id === "bridge.health")?.diagnostics || [],
     validationResults,
     observations: firstValidation ? { before: firstValidation.beforeObservations, after: firstValidation.afterObservations } : null,
@@ -1367,7 +2705,15 @@ async function writeEvidence(harnessReport, relativePath) {
     completedAt: harnessReport.finishedAt,
     timestamp: harnessReport.finishedAt,
     remainingGaps: evidenceGaps(scenario, status),
-    nextActions: scenario?.nextActions || ["Rerun live harness after resolving environment or validation gaps."]
+    nextActions: environmentBlocked
+      ? ["Restart Unity Bridge and rerun this scenario. Do not classify this as product validation failure."]
+      : productMvpEvidence?.nextActions || scenario?.nextActions || ["Rerun live harness after resolving environment or validation gaps."],
+    lastKnownPassedEvidence: status === "Blocked" ? lastKnownPassed?.evidenceId || null : null,
+    lastKnownPassedAt: status === "Blocked" ? lastKnownPassed?.finishedAt || lastKnownPassed?.completedAt || lastKnownPassed?.timestamp || null : null,
+    lastKnownPassedEvidencePath: status === "Blocked" && lastKnownPassed ? classifiedEvidencePath(relativePath, "Passed") : null,
+    productValidationStatus: productMvpEvidence?.productValidationStatus || (status === "Blocked" && lastKnownPassed ? "LastKnownPassed" : status),
+    revalidationStatus: environmentBlocked ? "EnvironmentBlocked" : productMvpEvidence?.revalidationStatus || (status === "Blocked" ? "RevalidationRequired" : "Current"),
+    latestRunStatus: status
   };
   if (productMvpEvidence) {
     Object.assign(evidence, {
@@ -1377,6 +2723,12 @@ async function writeEvidence(harnessReport, relativePath) {
       generatedAssets: productMvpEvidence.generatedAssets,
       dryRunReport: productMvpEvidence.dryRunReport,
       compileStatus: productMvpEvidence.compileStatus,
+      compileGate: productMvpEvidence.compileGate,
+      compileErrorCount: productMvpEvidence.compileErrorCount,
+      compileErrors: productMvpEvidence.compileErrors,
+      blockerType: productMvpEvidence.blockerType,
+      playModeAttempted,
+      runtimeAssemblyFreshness: productMvpEvidence.runtimeAssemblyFreshness,
       consoleErrorCount: productMvpEvidence.consoleErrorCount,
       playModeStatus: productMvpEvidence.playModeStatus,
       totalRecoveryTargetCount: productMvpEvidence.totalRecoveryTargetCount,
@@ -1386,12 +2738,85 @@ async function writeEvidence(harnessReport, relativePath) {
       isJobComplete: productMvpEvidence.isJobComplete,
       progressText: productMvpEvidence.progressText,
       validationHookUsed: productMvpEvidence.validationHookUsed,
-      staleEvidenceReused: productMvpEvidence.staleEvidenceReused
+      staleEvidenceReused: productMvpEvidence.staleEvidenceReused,
+      modifiedAssets: productMvpEvidence.modifiedAssets,
+      seedsTested: productMvpEvidence.seedsTested,
+      perSeedResults: productMvpEvidence.perSeedResults,
+      randomSeedSamples: productMvpEvidence.randomSeedSamples,
+      randomStartupSeedVerified: productMvpEvidence.randomStartupSeedVerified,
+      deterministicGenerationVerified: productMvpEvidence.deterministicGenerationVerified,
+      differentSeedsProduceDifferentLayouts: productMvpEvidence.differentSeedsProduceDifferentLayouts,
+      scene: productMvpEvidence.scene,
+      screenshots: productMvpEvidence.screenshots,
+      screenshotDirectory: productMvpEvidence.screenshotDirectory,
+      cameraMode: productMvpEvidence.cameraMode,
+      cameraPosition: productMvpEvidence.cameraPosition,
+      cameraRotation: productMvpEvidence.cameraRotation,
+      cameraAssertions: productMvpEvidence.cameraAssertions,
+      uiAssertions: productMvpEvidence.uiAssertions,
+      targetVisibilityAssertions: productMvpEvidence.targetVisibilityAssertions,
+      magentaPixelRatio: productMvpEvidence.magentaPixelRatio,
+      missingShaderSuspected: productMvpEvidence.missingShaderSuspected,
+      mouseLookVerified: productMvpEvidence.mouseLookVerified,
+      playerMovementVerified: productMvpEvidence.playerMovementVerified,
+      visualIssues: productMvpEvidence.visualIssues,
+      humanReviewRequired: productMvpEvidence.humanReviewRequired,
+      publicReleaseReady: productMvpEvidence.publicReleaseReady,
+      visualValidationStatus: productMvpEvidence.visualValidationStatus,
+      buildVerificationStatus: productMvpEvidence.buildVerificationStatus,
+      minRoomWidth: productMvpEvidence.minRoomWidth,
+      maxRoomWidth: productMvpEvidence.maxRoomWidth,
+      minRoomDepth: productMvpEvidence.minRoomDepth,
+      maxRoomDepth: productMvpEvidence.maxRoomDepth,
+      averageRoomArea: productMvpEvidence.averageRoomArea,
+      generatedRoomCount: productMvpEvidence.generatedRoomCount,
+      corridorWidth: productMvpEvidence.corridorWidth,
+      narrowPassageCount: productMvpEvidence.narrowPassageCount,
+      minimumNavigableWidth: productMvpEvidence.minimumNavigableWidth,
+      playerClearancePassed: productMvpEvidence.playerClearancePassed,
+      wallHeight: productMvpEvidence.wallHeight,
+      playerHeight: productMvpEvidence.playerHeight,
+      cameraHeight: productMvpEvidence.cameraHeight,
+      wallHeightSufficient: productMvpEvidence.wallHeightSufficient,
+      propCount: productMvpEvidence.propCount,
+      propTypes: productMvpEvidence.propTypes,
+      propOverlapCount: productMvpEvidence.propOverlapCount,
+      blockedDoorwayCount: productMvpEvidence.blockedDoorwayCount,
+      blockedTargetCount: productMvpEvidence.blockedTargetCount,
+      targetRoomDistribution: productMvpEvidence.targetRoomDistribution,
+      targetMinDistance: productMvpEvidence.targetMinDistance,
+      targetInteractionClearancePassed: productMvpEvidence.targetInteractionClearancePassed,
+      targetReachabilityPassed: productMvpEvidence.targetReachabilityPassed,
+      navigabilityAfterPropsPassed: productMvpEvidence.navigabilityAfterPropsPassed
     });
   }
   const evidencePath = path.resolve(pluginRoot, relativePath);
   await mkdir(path.dirname(evidencePath), { recursive: true });
   await writeFile(evidencePath, `${JSON.stringify(evidence, null, 2)}\n`, "utf8");
+  if (status === "Passed" || status === "Blocked" || status === "Failed") {
+    const classifiedPath = path.resolve(pluginRoot, classifiedEvidencePath(relativePath, status));
+    await mkdir(path.dirname(classifiedPath), { recursive: true });
+    await writeFile(classifiedPath, `${JSON.stringify(evidence, null, 2)}\n`, "utf8");
+  }
+}
+
+async function loadSiblingEvidence(relativePath, status) {
+  try {
+    const filePath = path.resolve(pluginRoot, classifiedEvidencePath(relativePath, status));
+    return JSON.parse(await readFile(filePath, "utf8"));
+  } catch {
+    return null;
+  }
+}
+
+function classifiedEvidencePath(relativePath, status) {
+  const suffix = status.toLowerCase();
+  return relativePath.replace(/-latest\.json$/, `-latest-${suffix}.json`);
+}
+
+function isEnvironmentBlocked(status, checks) {
+  return status === "Blocked" && flattenChecks(checks).some((check) => check.failureClass === "BridgeDisconnected"
+    || /compile status did not become stable before timeout|Unity Bridge disconnected|Unable to connect|ECONNREFUSED/i.test(check.message || ""));
 }
 
 function checkSummary(checks, id) {
@@ -1459,8 +2884,17 @@ function parseInvocationJson(check) {
   return null;
 }
 
+function parseInvocationString(check) {
+  const raw = check?.data?.result ?? check?.data?.returnValue ?? check?.data?.value ?? check?.data;
+  if (typeof raw === "string") return raw;
+  if (raw == null) return "";
+  return String(raw);
+}
+
 function firstNonPassedMessage(checks) {
-  const failed = flattenChecks(checks).find((check) => check.status !== "Passed");
+  const flat = flattenChecks(checks);
+  const failed = flat.find((check) => ["Failed", "Blocked"].includes(check.status))
+    || flat.find((check) => check.status !== "Passed");
   return failed?.message || null;
 }
 
@@ -1486,7 +2920,9 @@ function flattenChecks(checks) {
 }
 
 function firstFailureClass(checks) {
-  const failed = flattenChecks(checks).find((check) => check.status !== "Passed");
+  const flat = flattenChecks(checks);
+  const failed = flat.find((check) => ["Failed", "Blocked"].includes(check.status))
+    || flat.find((check) => check.status !== "Passed");
   return normalizeFailureClass(failed?.failureClass || "Unknown");
 }
 
@@ -1499,12 +2935,23 @@ function normalizeFailureClass(value) {
 }
 
 function validationLevelFor(status, checks) {
+  if (flattenChecks(checks).some((check) => check.checkId === "compile_gate.pre_play_mode" && check.status === "Blocked")) return "Compile Failed";
   if (status === "Blocked" || status === "NotRun") return "Not Checked";
   const flat = flattenChecks(checks);
+  if (flat.some((check) => check.type === "Visual")) return "Visual Verified";
   if (flat.some((check) => check.type === "PlayMode" && check.status === "Passed")) return "Play Mode Verified";
   if (flat.some((check) => check.type === "Compile" && check.status === "Passed")) return "Compile Verified";
   if (flat.some((check) => ["Scene", "Asset", "Static"].includes(check.type) && check.status === "Passed")) return "Unity Inspection";
   return "Not Checked";
+}
+
+function playModeAttemptedForEvidence(checks, productMvpEvidence, status) {
+  if (productMvpEvidence?.blockerType === "CompileBlocked") return false;
+  const flat = flattenChecks(checks);
+  if (flat.some((check) => check.target === "unity_enter_play_mode")) return true;
+  if (productMvpEvidence?.playModeAttempted === true) return true;
+  if (productMvpEvidence?.playModeAttempted === false) return false;
+  return status !== "Blocked" && flat.some((check) => check.type === "PlayMode");
 }
 
 function evidenceGaps(scenario, status) {
@@ -1525,7 +2972,10 @@ function idsFromValidationResults(results) {
 }
 
 function requirementIdsFromValidationResults(results) {
-  return [...new Set(results.map((result) => result.requirementId).filter(Boolean))];
+  return [...new Set(results.flatMap((result) => [
+    ...(Array.isArray(result.requirementIds) ? result.requirementIds : []),
+    result.requirementId
+  ]).filter(Boolean))];
 }
 
 function idsFromScenario(scenario, arrayField, singleField) {

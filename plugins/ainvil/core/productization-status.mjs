@@ -259,6 +259,9 @@ export async function createProductizationStatusReport(options = {}) {
   const traceability = await loadJsonArtifact("reports/traceability_view.json");
   const playabilityReview = await loadJsonArtifact("reports/dungeon_recovery_first_playable_playability_review.json");
   const buildVerification = await loadJsonArtifact("reports/dungeon_recovery_first_playable_build_verification.json");
+  const proceduralBuildVerification = await loadJsonArtifact("reports/dungeon_recovery_procedural_recovery_job_build_verification.json");
+  const compileGate = await loadJsonArtifact("reports/unity_compile_gate_report.json");
+  const compileGateSafety = await loadJsonArtifact("validation/evidence/EVID-ainvil-compile-gate-blocks-playmode-latest.json");
   const scenarios = await loadJsonDirectory("harness/scenarios");
   const evidence = await loadJsonDirectory("validation/evidence");
 
@@ -274,6 +277,9 @@ export async function createProductizationStatusReport(options = {}) {
   const operationalScenarios = scenarios.filter((item) => scenarioClassification(item.data) === "Operational");
   const latestOperationalEvidence = latestOperationalEvidenceRecord(evidence);
   const productMvp = productMvpWorkflowStatus(scenarios, evidence, latestHarness, playabilityReview, buildVerification);
+  const procedural = proceduralRecoveryJobStatus(scenarios, evidence, latestHarness, proceduralBuildVerification);
+  const visualValidation = proceduralVisualValidationStatus(scenarios, evidence, latestHarness);
+  const spaceQuality = proceduralSpaceQualityStatus(scenarios, evidence, latestHarness);
 
   const e2eSteps = [
     step("E2E-001", "사용자 요청 수신", "Codex Plugin / Orchestrator", STATUS.SPEC_ONLY, "대화형 에이전트 지침으로 정의되어 있으며 독립 런타임 이벤트로 기록되지는 않습니다.", "제품 이벤트 로그가 필요하면 별도 run log에 사용자 요청 ID를 기록합니다."),
@@ -309,7 +315,7 @@ export async function createProductizationStatusReport(options = {}) {
     feature("Root UnityPackage Mirror", packageStatus.rootMirrorExists ? STATUS.DEPRECATED_SAMPLE : STATUS.VERIFIED, packageStatus.rootMirrorExists ? "루트 UnityPackage는 설치 편의 mirror/deprecated artifact로만 취급합니다." : "루트 mirror가 없습니다.", ["UnityPackage/"])
   ];
 
-  const blockers = releaseBlockers({ doctor, release, graphClass, hasOperationalScenario, hasPassedEvidence, exampleContamination });
+  const blockers = releaseBlockers({ doctor, release, graphClass, hasOperationalScenario, hasPassedEvidence, exampleContamination, compileGate, compileGateSafety });
   const normalizedE2eSteps = createE2eSteps({
     graph,
     graphClass,
@@ -349,6 +355,30 @@ export async function createProductizationStatusReport(options = {}) {
       } : null
     },
     productMvpWorkflow: productMvp,
+    proceduralRecoveryJob: procedural,
+    visualValidation,
+    spaceQuality,
+    compileGate: compileGate.exists ? {
+      status: compileGate.data?.status || "Unknown",
+      blockerType: compileGate.data?.blockerType || null,
+      canEnterPlayMode: compileGate.data?.canEnterPlayMode === true,
+      compileErrorCount: compileGate.data?.compileErrorCount ?? null,
+      reportPath: relativeAInvilPath(compileGate.path),
+      nextAction: compileGate.data?.nextAction || null
+    } : null,
+    compileGateSafety: compileGate.exists || compileGateSafety.exists ? {
+      status: compileGateSafety.exists ? compileGateSafety.data?.status || "Unknown" : "Not Run",
+      evidencePath: compileGateSafety.exists ? relativeAInvilPath(compileGateSafety.path) : null,
+      playModeBlockedOnCompileError: compileGateSafety.data?.playModeAttempted === false
+        && compileGateSafety.data?.downstreamValidationSkipped === true
+        && compileGateSafety.data?.blockerType === "CompileBlocked",
+      compileErrorsDetected: compileGateSafety.data?.compileErrorsDetected ?? null,
+      errorFile: compileGateSafety.data?.errorFile || null,
+      errorCode: compileGateSafety.data?.errorCode || null,
+      compileGateStatusWithError: compileGateSafety.data?.compileGateStatusWithError || "Not Run",
+      compileGateStatusAfterCleanup: compileGateSafety.data?.compileGateStatusAfterCleanup || "Not Run",
+      publicReleaseReady: false
+    } : null,
     releaseLevel: {
       coreReleaseReady: release.data?.decision === "Release Ready",
       coreRcReproducibilityVerified: await coreRcReproducibilityVerified(),
@@ -357,6 +387,21 @@ export async function createProductizationStatusReport(options = {}) {
       humanPlayabilityReview: productMvp.humanPlayabilityReview.status,
       buildVerification: productMvp.buildVerification.status,
       productMvpReadyCandidate: productMvp.readyCandidate,
+      humanPlayableFirstBuildCandidate: productMvp.humanPlayableFirstBuildCandidate,
+      productMvpFirstPlayableVerified: productMvp.productMvpFirstPlayableVerified,
+      firstGameplayLoop: productMvp.productMvpFirstPlayableVerified ? "Verified" : productMvp.status,
+      proceduralRecoveryJob: procedural.status,
+      proceduralGenerationVerified: procedural.proceduralGenerationVerified,
+      visualValidation: visualValidation.status,
+      proceduralSpaceQuality: spaceQuality.status,
+      compileGate: compileGate.exists ? compileGate.data?.status || "Unknown" : "Not Run",
+      compileGateSafety: compileGateSafety.exists ? compileGateSafety.data?.status || "Not Run" : "Not Run",
+      playModeBlockedOnCompileError: compileGateSafety.data?.playModeAttempted === false
+        && compileGateSafety.data?.downstreamValidationSkipped === true
+        && compileGateSafety.data?.blockerType === "CompileBlocked",
+      screenshotEvidenceAvailable: visualValidation.screenshotEvidenceAvailable,
+      missingShaderSuspected: visualValidation.missingShaderSuspected,
+      cameraFramingCheck: visualValidation.cameraFramingCheck,
       publicReleaseReady: false
     },
     exampleContamination,
@@ -368,7 +413,9 @@ export async function createProductizationStatusReport(options = {}) {
       "node plugins/ainvil/cli/ainvil-cli.mjs doctor",
       "node plugins/ainvil/cli/ainvil-cli.mjs release",
       "node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario <project-scenario-id>",
-      "node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_first_playable_e2e"
+      "node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_first_playable_e2e",
+      "node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_procedural_visual_validation",
+      "node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_procedural_space_quality_validation"
     ]
   };
 
@@ -444,6 +491,14 @@ function productMvpWorkflowStatus(scenarios, evidenceRecords, latestHarness, pla
       && latestEvidence?.data?.category === "ProductMvp"
       && latestEvidence?.data?.validationLevel === "Play Mode Verified"
       && latestEvidence?.data?.isJobComplete === true,
+    humanPlayableFirstBuildCandidate: playabilityReview.data?.playabilityReviewStatus === "Passed"
+      && buildVerification.data?.buildVerificationStatus === "Passed",
+    productMvpFirstPlayableVerified: latestEvidence?.data?.status === "Passed"
+      && latestEvidence?.data?.category === "ProductMvp"
+      && latestEvidence?.data?.validationLevel === "Play Mode Verified"
+      && latestEvidence?.data?.isJobComplete === true
+      && playabilityReview.data?.playabilityReviewStatus === "Passed"
+      && buildVerification.data?.buildVerificationStatus === "Passed",
     latestEvidence: latestEvidence ? {
       evidenceId: latestEvidence.data.evidenceId,
       status: latestEvidence.data.status,
@@ -464,6 +519,243 @@ function productMvpWorkflowStatus(scenarios, evidenceRecords, latestHarness, pla
         ? "Run the Product MVP live harness scenario in the target Unity project."
         : "Create the dungeon_recovery_first_playable_e2e operational scenario."
   };
+}
+
+function proceduralRecoveryJobStatus(scenarios, evidenceRecords, latestHarness, buildVerification) {
+  const scenario = scenarios.find((item) => item.data?.id === "dungeon_recovery_procedural_recovery_job_e2e");
+  const records = evidenceRecords
+    .filter((item) => item.data?.scenarioId === "dungeon_recovery_procedural_recovery_job_e2e"
+      && item.data?.classification === "Operational"
+      && item.data?.validationType === "ProceduralGenerationE2E")
+    .sort((left, right) => new Date(right.data?.finishedAt || right.data?.timestamp || 0) - new Date(left.data?.finishedAt || left.data?.timestamp || 0));
+  const latestEvidence = records[0] || null;
+  const latestHarnessScenario = latestHarness.data?.scenarios?.find((item) => item.id === "dungeon_recovery_procedural_recovery_job_e2e") || null;
+  const status = latestEvidence
+    ? latestEvidence.data.status
+    : scenario
+      ? "Not Run"
+      : "Blocked";
+  const proceduralGenerationVerified = latestEvidence?.data?.status === "Passed"
+    && latestEvidence?.data?.randomStartupSeedVerified === true
+    && latestEvidence?.data?.deterministicGenerationVerified === true
+    && latestEvidence?.data?.differentSeedsProduceDifferentLayouts === true
+    && latestEvidence?.data?.staleEvidenceReused === false;
+  return {
+    scenarioExists: Boolean(scenario),
+    scenarioId: scenario?.data?.id || null,
+    category: scenario?.data?.category || "ProductMvp",
+    validationType: scenario?.data?.validationType || "ProceduralGenerationE2E",
+    status,
+    proceduralGenerationVerified,
+    buildVerification: {
+      status: buildVerification.exists ? buildVerification.data?.buildVerificationStatus || "Unknown" : "Not Run",
+      outputPath: buildVerification.data?.buildOutputPath || null,
+      reportPath: buildVerification.exists ? relativeAInvilPath(buildVerification.path) : null,
+      failureReason: buildVerification.data?.failureReason || null
+    },
+    latestEvidence: latestEvidence ? {
+      evidenceId: latestEvidence.data.evidenceId,
+      status: latestEvidence.data.status,
+      validationLevel: latestEvidence.data.validationLevel,
+      seedsTested: latestEvidence.data.seedsTested || [],
+      deterministicGenerationVerified: latestEvidence.data.deterministicGenerationVerified === true,
+      randomStartupSeedVerified: latestEvidence.data.randomStartupSeedVerified === true,
+      randomSeedSamples: latestEvidence.data.randomSeedSamples || [],
+      differentSeedsProduceDifferentLayouts: latestEvidence.data.differentSeedsProduceDifferentLayouts === true,
+      path: relativeAInvilPath(latestEvidence.path)
+    } : null,
+    latestHarness: latestHarnessScenario ? {
+      status: latestHarnessScenario.status,
+      reportPath: latestHarness.exists ? relativeAInvilPath(latestHarness.path) : null
+    } : null,
+    nextAction: proceduralGenerationVerified
+      ? "Treat as procedural recovery job v1 evidence; Public Release Ready remains a separate gate."
+      : scenario
+        ? "Run the procedural recovery job live harness scenario in the target Unity project."
+        : "Create the procedural recovery job operational scenario."
+  };
+}
+
+function proceduralVisualValidationStatus(scenarios, evidenceRecords, latestHarness) {
+  const scenario = scenarios.find((item) => item.data?.id === "dungeon_recovery_procedural_visual_validation");
+  const records = evidenceRecords
+    .filter((item) => item.data?.scenarioId === "dungeon_recovery_procedural_visual_validation"
+      && item.data?.classification === "Operational"
+      && item.data?.validationType === "VisualPlayabilityValidation")
+    .sort((left, right) => new Date(right.data?.finishedAt || right.data?.timestamp || 0) - new Date(left.data?.finishedAt || left.data?.timestamp || 0));
+  const latestEvidence = records[0] || null;
+  const latestPassedEvidence = records.find((item) => item.data?.status === "Passed") || null;
+  const latestBlockedEvidence = records.find((item) => item.data?.status === "Blocked") || null;
+  const latestHarnessScenario = latestHarness.data?.scenarios?.find((item) => item.id === "dungeon_recovery_procedural_visual_validation") || null;
+  const environmentBlocked = isEnvironmentBlockedEvidence(latestEvidence?.data) || isEnvironmentBlockedHarness(latestHarnessScenario);
+  const validationSource = latestEvidence?.data?.status === "Passed" ? latestEvidence : latestPassedEvidence;
+  const screenshotEvidenceAvailable = Array.isArray(validationSource?.data?.screenshots)
+    && validationSource.data.screenshots.length >= 5
+    && validationSource.data.screenshots.every((item) => item.fileExists === true && item.width > 0 && item.height > 0);
+  const cameraAssertions = validationSource?.data?.cameraAssertions || {};
+  const cameraFramingPassed = validationSource?.data?.status === "Passed"
+    && cameraAssertions.cameraExists === true
+    && cameraAssertions.activeCameraValid === true
+    && cameraAssertions.cameraInsideWall === false
+    && cameraAssertions.cameraOutsideDungeon === false;
+  const status = environmentBlocked && validationSource?.data?.status === "Passed"
+    ? "LastKnownPassed"
+    : latestEvidence
+      ? latestEvidence.data.status
+      : scenario
+        ? "Not Run"
+        : "Blocked";
+  return {
+    scenarioExists: Boolean(scenario),
+    scenarioId: scenario?.data?.id || null,
+    category: scenario?.data?.category || "ProductMvp",
+    validationType: scenario?.data?.validationType || "VisualPlayabilityValidation",
+    status,
+    productValidationStatus: validationSource?.data?.status === "Passed" ? "LastKnownPassed" : status,
+    revalidationStatus: environmentBlocked ? "EnvironmentBlocked" : "Current",
+    blockerType: environmentBlocked ? "UnityBridgeDisconnected" : latestEvidence?.data?.blockerType || null,
+    screenshotEvidenceAvailable,
+    missingShaderSuspected: latestEvidence?.data?.missingShaderSuspected === true,
+    cameraFramingCheck: latestEvidence ? (cameraFramingPassed ? "Passed" : "Failed") : scenario ? "Not Run" : "Blocked",
+    humanReviewRequired: validationSource?.data?.humanReviewRequired !== false,
+    latestEvidence: latestEvidence ? {
+      evidenceId: latestEvidence.data.evidenceId,
+      status: latestEvidence.data.status,
+      validationLevel: latestEvidence.data.validationLevel,
+      seed: latestEvidence.data.seed ?? null,
+      screenshotCount: latestEvidence.data.screenshots?.length || 0,
+      magentaPixelRatio: latestEvidence.data.magentaPixelRatio ?? null,
+      missingShaderSuspected: latestEvidence.data.missingShaderSuspected === true,
+      mouseLookVerified: latestEvidence.data.mouseLookVerified === true,
+      playerMovementVerified: latestEvidence.data.playerMovementVerified === true,
+      path: relativeAInvilPath(latestEvidence.path)
+    } : null,
+    latestHarness: latestHarnessScenario ? {
+      status: latestHarnessScenario.status,
+      blockerType: latestHarnessScenario.blockerType || null,
+      reportPath: latestHarness.exists ? relativeAInvilPath(latestHarness.path) : null
+    } : null,
+    latestPassedEvidence: latestPassedEvidence ? {
+      evidenceId: latestPassedEvidence.data.evidenceId,
+      status: latestPassedEvidence.data.status,
+      validationLevel: latestPassedEvidence.data.validationLevel,
+      path: relativeAInvilPath(latestPassedEvidence.path)
+    } : null,
+    latestBlockedEvidence: latestBlockedEvidence ? {
+      evidenceId: latestBlockedEvidence.data.evidenceId,
+      status: latestBlockedEvidence.data.status,
+      blockerType: latestBlockedEvidence.data.blockerType || null,
+      revalidationStatus: latestBlockedEvidence.data.revalidationStatus || null,
+      path: relativeAInvilPath(latestBlockedEvidence.path)
+    } : null,
+    nextAction: environmentBlocked
+      ? "Last known passed visual evidence remains available, but Unity Bridge stability must be restored and this scenario revalidated."
+      : latestEvidence?.data?.status === "Passed"
+      ? "Review screenshots manually; visual automation does not replace Human Playability Review."
+      : scenario
+        ? "Run the procedural visual validation live harness scenario in the target Unity project."
+        : "Create the procedural visual validation operational scenario."
+  };
+}
+
+function proceduralSpaceQualityStatus(scenarios, evidenceRecords, latestHarness) {
+  const scenario = scenarios.find((item) => item.data?.id === "dungeon_recovery_procedural_space_quality_validation");
+  const records = evidenceRecords
+    .filter((item) => item.data?.scenarioId === "dungeon_recovery_procedural_space_quality_validation"
+      && item.data?.classification === "Operational"
+      && item.data?.validationType === "ProceduralSpaceQualityValidation")
+    .sort((left, right) => new Date(right.data?.finishedAt || right.data?.timestamp || 0) - new Date(left.data?.finishedAt || left.data?.timestamp || 0));
+  const latestEvidence = records[0] || null;
+  const latestPassedEvidence = records.find((item) => item.data?.status === "Passed") || null;
+  const latestBlockedEvidence = records.find((item) => item.data?.status === "Blocked") || null;
+  const latestHarnessScenario = latestHarness.data?.scenarios?.find((item) => item.id === "dungeon_recovery_procedural_space_quality_validation") || null;
+  const environmentBlocked = isEnvironmentBlockedEvidence(latestEvidence?.data) || isEnvironmentBlockedHarness(latestHarnessScenario);
+  const validationSource = latestEvidence?.data?.status === "Passed" ? latestEvidence : latestPassedEvidence;
+  const perSeedResults = validationSource?.data?.perSeedResults || [];
+  const passed = validationSource?.data?.status === "Passed"
+    && perSeedResults.length >= 3
+    && perSeedResults.every((item) => item.generatedRoomCount >= 4
+      && item.averageRoomArea >= 49
+      && item.corridorWidth >= 3
+      && item.wallHeightSufficient === true
+      && item.propCount > 0
+      && item.blockedDoorwayCount === 0
+      && item.blockedTargetCount === 0
+      && item.reachableTargetCount === 3
+      && item.targetInteractionClearancePassed === true
+      && item.jobComplete === true);
+  const status = environmentBlocked && passed
+    ? "LastKnownPassed"
+    : latestEvidence
+      ? (passed ? "Passed" : latestEvidence.data.status)
+      : scenario
+        ? "Not Run"
+        : "Blocked";
+  return {
+    scenarioExists: Boolean(scenario),
+    scenarioId: scenario?.data?.id || null,
+    category: scenario?.data?.category || "ProductMvp",
+    validationType: scenario?.data?.validationType || "ProceduralSpaceQualityValidation",
+    status,
+    productValidationStatus: passed ? "LastKnownPassed" : status,
+    revalidationStatus: environmentBlocked ? "EnvironmentBlocked" : "Current",
+    blockerType: environmentBlocked ? "UnityBridgeDisconnected" : latestEvidence?.data?.blockerType || null,
+    proceduralSpaceQualityVerified: passed,
+    latestEvidence: latestEvidence ? {
+      evidenceId: latestEvidence.data.evidenceId,
+      status: latestEvidence.data.status,
+      validationLevel: latestEvidence.data.validationLevel,
+      seedsTested: latestEvidence.data.seedsTested || [],
+      path: relativeAInvilPath(latestEvidence.path)
+    } : null,
+    latestPassedEvidence: latestPassedEvidence ? {
+      evidenceId: latestPassedEvidence.data.evidenceId,
+      status: latestPassedEvidence.data.status,
+      validationLevel: latestPassedEvidence.data.validationLevel,
+      seedsTested: latestPassedEvidence.data.seedsTested || [],
+      path: relativeAInvilPath(latestPassedEvidence.path)
+    } : null,
+    latestBlockedEvidence: latestBlockedEvidence ? {
+      evidenceId: latestBlockedEvidence.data.evidenceId,
+      status: latestBlockedEvidence.data.status,
+      blockerType: latestBlockedEvidence.data.blockerType || null,
+      revalidationStatus: latestBlockedEvidence.data.revalidationStatus || null,
+      path: relativeAInvilPath(latestBlockedEvidence.path)
+    } : null,
+    latestHarness: latestHarnessScenario ? {
+      status: latestHarnessScenario.status,
+      blockerType: latestHarnessScenario.blockerType || null,
+      reportPath: latestHarness.exists ? relativeAInvilPath(latestHarness.path) : null
+    } : null,
+    nextAction: environmentBlocked
+      ? "Last known passed space-quality evidence remains available, but Unity Bridge stability must be restored and this scenario revalidated."
+      : passed
+      ? "Procedural space quality is verified for seeds 1001, 2026, and 7777. Public Release Ready remains a separate gate."
+      : scenario
+        ? "Run the procedural space quality live harness scenario in the target Unity project."
+        : "Create the procedural space quality operational scenario."
+  };
+}
+
+function isEnvironmentBlockedEvidence(evidence) {
+  return evidence?.status === "Blocked" && (
+    evidence.blockerType === "UnityBridgeDisconnected"
+    || evidence.revalidationStatus === "EnvironmentBlocked"
+    || evidence.failureClass === "BridgeDisconnected"
+  );
+}
+
+function isEnvironmentBlockedHarness(scenario) {
+  if (!scenario || scenario.status !== "Blocked") return false;
+  if (scenario.blockerType === "UnityBridgeDisconnected" || scenario.revalidationStatus === "EnvironmentBlocked") return true;
+  const checks = scenario.checks || [];
+  return checks.some((check) => check.failureClass === "BridgeDisconnected"
+    || /Unity Bridge|ECONNREFUSED|Unable to connect|compile status did not become stable before timeout/i.test(check.message || ""));
+}
+
+function isEnvironmentBlocker(item) {
+  const text = `${item.id || item.gateId || ""} ${item.title || ""} ${item.category || ""} ${item.evidence || ""} ${item.nextAction || ""} ${item.blockerType || ""}`;
+  return /ENV|Environment|Unity Bridge|Bridge health check failed|Revalidation|compile gate.*Bridge/i.test(text);
 }
 
 async function coreRcReproducibilityVerified() {
@@ -548,8 +840,21 @@ function contaminationFindings(graph, scenarios, evidenceRecords) {
   return findings;
 }
 
-function releaseBlockers({ doctor, release, graphClass, hasOperationalScenario, hasPassedEvidence, exampleContamination }) {
+function releaseBlockers({ doctor, release, graphClass, hasOperationalScenario, hasPassedEvidence, exampleContamination, compileGate, compileGateSafety }) {
   const blockers = [];
+  if (compileGate?.exists && compileGate.data?.status && compileGate.data.status !== "Passed") {
+    const environmentBlocked = compileGate.data?.blockerType === "BridgeDisconnected";
+    blockers.push(blocker(
+      environmentBlocked ? "BLOCKER-ENV-UNITY-BRIDGE-001" : "BLOCKER-COMPILE-GATE-001",
+      environmentBlocked ? "Unity Bridge environment" : "Unity compile gate",
+      compileGate.data.failureReason || `Compile gate status is ${compileGate.data.status}.`,
+      compileGate.data.nextAction || (environmentBlocked ? "Restart Unity Bridge before live validation." : "Fix compile errors before running Play Mode validation."),
+      environmentBlocked ? "EnvironmentBlocked" : "CompileBlocked"
+    ));
+  }
+  if (compileGateSafety?.exists && compileGateSafety.data?.status && compileGateSafety.data.status !== "Passed") {
+    blockers.push(blocker("BLOCKER-COMPILE-GATE-SAFETY-001", "Compile Gate Safety", compileGateSafety.data.failureReason || `Compile gate safety status is ${compileGateSafety.data.status}.`, "Run `node plugins/ainvil/cli/ainvil-cli.mjs regression --compile-gate-safety --unity-project <UnityProjectPath>` and fix the safety regression."));
+  }
   if (graphClass !== "Operational") {
     blockers.push(blocker("BLOCKER-GRAPH-001", "Example graph contamination", `Current graph classification is ${graphClass}.`, "Run init-production-graph or create a project-specific graph before release."));
   }
@@ -565,7 +870,7 @@ function releaseBlockers({ doctor, release, graphClass, hasOperationalScenario, 
     }
   }
   for (const gate of release.data?.blockers || []) {
-    blockers.push(blocker(`BLOCKER-RELEASE-${gate.gateId}`, gate.title, gate.evidence, gate.nextAction));
+    blockers.push(blocker(`BLOCKER-RELEASE-${gate.gateId}`, gate.title, gate.evidence, gate.nextAction, gate.blockerType || (isEnvironmentBlocker(gate) ? "EnvironmentBlocked" : null)));
   }
   for (const finding of exampleContamination.filter((item) => item.kind === "ExampleGraph")) {
     blockers.push(blocker("BLOCKER-CONTAMINATION-001", finding.kind, finding.summary, "Keep examples under examples/ and regenerate operational reports from the production graph."));
@@ -573,8 +878,8 @@ function releaseBlockers({ doctor, release, graphClass, hasOperationalScenario, 
   return uniqueBlockers(blockers);
 }
 
-function blocker(id, title, evidence, nextAction) {
-  return { id, title, status: STATUS.BLOCKED, evidence, nextAction };
+function blocker(id, title, evidence, nextAction, blockerType = null) {
+  return { id, title, status: STATUS.BLOCKED, evidence, nextAction, blockerType };
 }
 
 function uniqueBlockers(blockers) {
@@ -584,11 +889,13 @@ function uniqueBlockers(blockers) {
 }
 
 function summarize(features, steps, blockers) {
+  const environmentBlocked = blockers.some((item) => item.blockerType === "EnvironmentBlocked" || item.id.includes("ENV"));
   return {
     featureCounts: countByStatus(features),
     e2eCounts: countByStatus(steps),
     blockerCount: blockers.length,
-    decision: blockers.length ? "Not Release Ready" : "Release Candidate"
+    decision: environmentBlocked ? "Not Release Ready - Revalidation Blocked" : blockers.length ? "Not Release Ready" : "Release Candidate",
+    revalidationStatus: environmentBlocked ? "EnvironmentBlocked" : "Current"
   };
 }
 
@@ -645,8 +952,53 @@ function formatProductizationMarkdown(report) {
     `- Human Playability Review: ${report.productMvpWorkflow.humanPlayabilityReview.status}`,
     `- Build Verification: ${report.productMvpWorkflow.buildVerification.status}`,
     `- Product MVP Ready Candidate: ${report.productMvpWorkflow.readyCandidate ? "Yes" : "No"}`,
+    `- Human Playable First Build Candidate: ${report.productMvpWorkflow.humanPlayableFirstBuildCandidate ? "Yes" : "No"}`,
+    `- Product MVP First Playable Verified: ${report.productMvpWorkflow.productMvpFirstPlayableVerified ? "Yes" : "No"}`,
     `- Latest evidence: ${report.productMvpWorkflow.latestEvidence?.path || "Missing"}`,
     `- Public Release Ready: ${report.releaseLevel.publicReleaseReady ? "Yes" : "No"}`,
+    "",
+    "## Compile Gate",
+    "",
+    `- Status: ${report.compileGate?.status || "Not Run"}`,
+    `- Blocker Type: ${report.compileGate?.blockerType || "None"}`,
+    `- Can Enter Play Mode: ${report.compileGate?.canEnterPlayMode ? "Yes" : "No"}`,
+    `- Compile Error Count: ${report.compileGate?.compileErrorCount ?? "n/a"}`,
+    `- Report: ${report.compileGate?.reportPath || "Missing"}`,
+    "",
+    "## Compile Gate Safety",
+    "",
+    `- Status: ${report.compileGateSafety?.status || "Not Run"}`,
+    `- Play Mode Blocked On Compile Error: ${report.compileGateSafety?.playModeBlockedOnCompileError ? "Yes" : "No"}`,
+    `- Compile Gate With Error: ${report.compileGateSafety?.compileGateStatusWithError || "Not Run"}`,
+    `- Compile Gate After Cleanup: ${report.compileGateSafety?.compileGateStatusAfterCleanup || "Not Run"}`,
+    `- Compile Errors Detected: ${report.compileGateSafety?.compileErrorsDetected ?? "n/a"}`,
+    `- Evidence: ${report.compileGateSafety?.evidencePath || "Missing"}`,
+    `- Public Release Ready: No`,
+    "",
+    "## Procedural Recovery Job",
+    "",
+    `- Scenario: ${report.proceduralRecoveryJob.scenarioId || "Missing"}`,
+    `- Status: ${report.proceduralRecoveryJob.status}`,
+    `- Procedural Generation Verified: ${report.proceduralRecoveryJob.proceduralGenerationVerified ? "Yes" : "No"}`,
+    `- Build Verification: ${report.proceduralRecoveryJob.buildVerification.status}`,
+    `- Latest evidence: ${report.proceduralRecoveryJob.latestEvidence?.path || "Missing"}`,
+    "",
+    "## Visual Validation",
+    "",
+    `- Scenario: ${report.visualValidation.scenarioId || "Missing"}`,
+    `- Status: ${report.visualValidation.status}`,
+    `- Screenshot Evidence Available: ${report.visualValidation.screenshotEvidenceAvailable ? "Yes" : "No"}`,
+    `- Missing Shader Suspected: ${report.visualValidation.missingShaderSuspected ? "Yes" : "No"}`,
+    `- Camera Framing Check: ${report.visualValidation.cameraFramingCheck}`,
+    `- Human Review Required: ${report.visualValidation.humanReviewRequired ? "Yes" : "No"}`,
+    `- Latest evidence: ${report.visualValidation.latestEvidence?.path || "Missing"}`,
+    "",
+    "## Procedural Space Quality",
+    "",
+    `- Scenario: ${report.spaceQuality.scenarioId || "Missing"}`,
+    `- Status: ${report.spaceQuality.status}`,
+    `- Procedural Space Quality Verified: ${report.spaceQuality.proceduralSpaceQualityVerified ? "Yes" : "No"}`,
+    `- Latest evidence: ${report.spaceQuality.latestEvidence?.path || "Missing"}`,
     ""
   ].join("\n");
 }

@@ -1,7 +1,12 @@
 # Dungeon Recovery First Playable Playability Review
 
-- Generated at: 2026-07-04T14:47:46.151Z
-- Status: Needs Improvement
+- Generated at: 2026-07-04T19:50:37.227Z
+- Status: Passed
+- Previous status: Needs Improvement
+- New status: Passed
+- Review method: Manual Retest
+- Retest result: Passed
+- Public Release Ready: No
 - Automated E2E: Passed (Play Mode Verified)
 - Automated console check: Passed
 - Console error count: 0
@@ -10,7 +15,7 @@
 
 - Received: yes
 - Checklist items provided: 12 / 12
-- Summary: Manual playability review found major camera/framing and visibility issues. Progress UI and Job Complete were understandable, and no runtime instability was reported, but the build is not acceptable as a first playable yet.
+- Summary: Manual retest confirmed the previous camera, visibility, and magenta presentation issues are resolved enough for a first playable. The player can understand the objective, move, recover three targets, read progress, and recognize Job Complete without visible runtime instability.
 
 ## UX Changes Applied
 
@@ -29,30 +34,32 @@
 
 | Item | Status | Finding |
 | --- | --- | --- |
-| Player can understand what to do. | Needs Improvement | Controls are visible as text, but the user expects a more game-like tutorial/navigation pattern. |
-| Movement can be judged. | Needs Improvement | User could not judge movement feel because the player was not visible. |
-| Camera framing supports play. | Needs Improvement | User reported the camera did not show the player or goals clearly. |
-| Three recovery targets are identifiable. | Needs Improvement | User reported targets could not be evaluated because they were not visible in the camera view. |
-| Recoverable state is visually clear. | Needs Improvement | Press E text exists, but the user could not evaluate it due to camera/visibility issues. |
-| E-key recovery response is satisfying. | Needs Improvement | User said only text changes, so the response feels ambiguous. |
-| Progress UI is readable. | Passed | User said the UI can be understood, while noting it is not recommended as a normal game presentation. |
-| Job Complete is clear. | Passed | User said Job Complete is understandable. |
-| No errors, freezes, or abnormal behavior. | Passed | User reported no such symptoms. |
-| Overall acceptable as a first playable. | Needs Improvement | User said it is not acceptable because nothing meaningful was visible and it feels like a WASD/interaction test. |
+| Player can understand what to do. | Passed | Manual retest confirmed the objective and controls are understandable after the UX fixes. |
+| Movement can be judged. | Passed | Manual retest confirmed the player is visible and movement is acceptable for a first playable. |
+| Camera framing supports play. | Passed | Manual retest confirmed the camera now frames the player and recovery targets. |
+| Three recovery targets are identifiable. | Passed | Manual retest confirmed all three targets are visible and distinguishable. |
+| Recoverable state is visually clear. | Passed | Manual retest confirmed the nearby interaction state and Press E prompt are understandable. |
+| E-key recovery response is satisfying. | Passed | Manual retest confirmed E-key recovery response is sufficient for this first playable. |
+| Progress UI is readable. | Passed | Manual retest confirmed recovery progress is understandable. |
+| Job Complete is clear. | Passed | Manual retest confirmed the completion state is recognizable. |
+| Labels, colors, and distance cues are readable. | Passed | Manual retest confirmed the previous invisible/magenta presentation problem is resolved for first-playable purposes. |
+| No errors, freezes, or abnormal behavior. | Passed | User reported no runtime errors, freezes, or abnormal behavior. |
+| Overall acceptable as a first playable. | Passed | Manual retest confirmed this is acceptable as a first playable: not a finished game, but the core loop can be understood and played. |
+| Remaining improvements are future scope. | Passed | Art, sound, recovery presentation, tutorial flow, rewards, and the next-job/company loop remain future improvements, not blockers for this first playable. |
 
 ## Manual Acceptance Criteria
 
 | ID | Criterion | Status |
 | --- | --- | --- |
-| MAC-DRC-001 | Within 3 seconds of starting play, the player understands the objective and controls. | Needs Improvement |
-| MAC-DRC-002 | All three recovery targets are visually distinguishable on screen. | Needs Improvement |
-| MAC-DRC-003 | The target that can be recovered near the player is visually distinguished. | Needs Improvement |
+| MAC-DRC-001 | Within 3 seconds of starting play, the player understands the objective and controls. | Passed |
+| MAC-DRC-002 | All three recovery targets are visually distinguishable on screen. | Passed |
+| MAC-DRC-003 | The target that can be recovered near the player is visually distinguished. | Passed |
 | MAC-DRC-004 | Recovering all targets clearly transitions the job to complete. | Passed |
 | MAC-DRC-005 | Manual play remains free of visible errors, freezes, or abnormal behavior. | Passed |
 
-## Remaining Issues
+## Remaining Limitations
 
-- Retest required after camera, material, player marker, target marker, and objective banner fixes.
-- The current experience still relies on prototype UI/text and does not yet provide a full game-like tutorial flow.
-- E-key recovery feedback is still minimal and should eventually receive animation/audio/VFX beyond this generated primitive slice.
-- User requested broader design improvement; this pass only applies minimal generated-folder UX fixes.
+- This is not a finished game.
+- Art, sound, and recovery presentation remain placeholder-level.
+- Tutorial flow is still simple instructional UI rather than a full game-like onboarding sequence.
+- Next-job, reward, and company management loops are not implemented yet.

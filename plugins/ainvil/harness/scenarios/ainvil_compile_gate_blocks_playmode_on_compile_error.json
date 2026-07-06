@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "ainvil_compile_gate_blocks_playmode_on_compile_error",
+  "title": "AInvil compile gate blocks Play Mode on compile error",
+  "classification": "Operational",
+  "category": "ValidationSafety",
+  "validationType": "CompileGateRegression",
+  "operationalUse": "Prove that AInvil does not attempt Play Mode validation when Unity C# compilation is broken.",
+  "userGoal": "Create an intentional temporary C# compile error, verify CompileBlocked evidence, skip downstream runtime validation, clean up the error, and verify compile returns to Passed.",
+  "milestone": "Compile gate safety regression",
+  "interactive": false,
+  "requirementIds": [
+    "REQ-AINVIL-COMPILE-GATE-SAFETY-001"
+  ],
+  "acceptanceIds": [
+    "AC-AINVIL-COMPILE-GATE-SAFETY-001"
+  ],
+  "evidenceOutputPath": "validation/evidence/EVID-ainvil-compile-gate-blocks-playmode-latest.json",
+  "riskLevel": "High",
+  "expectedDocuments": [
+    {
+      "type": "GDD",
+      "requirementRef": "REQ-AINVIL-COMPILE-GATE-SAFETY-001",
+      "expected": "AInvil validation safety requires compile errors to block runtime validation before Play Mode entry."
+    },
+    {
+      "type": "Technical Design",
+      "requirementRef": "REQ-AINVIL-COMPILE-GATE-SAFETY-001",
+      "expected": "Compile gate preflight checks Unity Bridge compile state and local C# build state before any Play Mode validation."
+    },
+    {
+      "type": "TaskGraph",
+      "requirementRef": "AC-AINVIL-COMPILE-GATE-SAFETY-001",
+      "expected": "Safety regression evidence is linked as an operational validation safety artifact."
+    }
+  ],
+  "expectedUnityCapabilities": [
+    "Project inspection",
+    "Document traceability",
+    "Milestone planning",
+    "Document synchronization"
+  ],
+  "expectedUnityArtifacts": [
+    {
+      "kind": "Script",
+      "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs",
+      "requirementRef": "REQ-AINVIL-COMPILE-GATE-SAFETY-001",
+      "status": "Planned"
+    },
+    {
+      "kind": "ValidationReport",
+      "path": "validation/evidence/EVID-ainvil-compile-gate-blocks-playmode-latest.json",
+      "requirementRef": "AC-AINVIL-COMPILE-GATE-SAFETY-001",
+      "status": "Planned"
+    }
+  ],
+  "validationChecks": [
+    {
+      "id": "check.intentional_compile_error.created",
+      "type": "Compile",
+      "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs",
+      "expected": "Temporary compile error file is created only during the safety regression.",
+      "failureClass": "CompileError"
+    },
+    {
+      "id": "check.compile_gate.blocks",
+      "type": "Compile",
+      "target": "UNITY-COMPILE-GATE",
+      "expected": "Compile gate returns CompileBlocked and reports the intentional compiler error.",
+      "failureClass": "CompileError"
+    },
+    {
+      "id": "check.play_mode.not_attempted",
+      "type": "PlayMode",
+      "target": "unity_enter_play_mode",
+      "expected": "Play Mode validation is not attempted while compile gate is blocked.",
+      "failureClass": "ValidationNotRun"
+    },
+    {
+      "id": "check.cleanup.compile_passed",
+      "type": "Compile",
+      "target": "compile-check",
+      "expected": "Temporary compile error file and csproj include are removed, then compile gate returns Passed.",
+      "failureClass": "CompileError"
+    },
+    {
+      "id": "check.evidence.sync",
+      "type": "DocumentSync",
+      "target": "validation/evidence/EVID-ainvil-compile-gate-blocks-playmode-latest.json",
+      "expected": "Compile gate safety regression evidence is exported and productization/release reports can read it.",
+      "failureClass": "ValidationNotRun"
+    }
+  ],
+  "passCriteria": [
+    "Intentional compile error file is created.",
+    "Compile gate detects the compiler error.",
+    "Play Mode attempted is false.",
+    "Downstream runtime validation is skipped.",
+    "CompileBlocked evidence is written.",
+    "Temporary compile error file is deleted.",
+    "Compile gate returns Passed after cleanup.",
+    "Public Release Ready remains No."
+  ]
+}

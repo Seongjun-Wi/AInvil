@@ -36,6 +36,14 @@
       "message": "Unity Bridge health endpoint is reachable."
     },
     {
+      "checkId": "build.compile_gate",
+      "type": "Compile",
+      "target": "build.compile_gate",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Compile gate passed before build verification."
+    },
+    {
       "checkId": "build.unity_clear_console",
       "type": "UnityBridge",
       "target": "build.unity_clear_console",
@@ -92,6 +100,14 @@
       "status": "Passed",
       "failureClass": "Unknown",
       "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "build.compile_gate",
+      "type": "Compile",
+      "target": "build.compile_gate",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Compile gate passed before build verification."
     },
     {
       "checkId": "build.unity_clear_console",
@@ -166,11 +182,204 @@
     "data": {
       "isCompiling": false,
       "isUpdating": false,
+      "hasCompileErrors": false,
+      "compileErrorCount": 0,
       "errorCount": 0,
-      "recentErrors": []
+      "errors": [],
+      "recentErrors": [],
+      "lastCompileFinishedAt": null,
+      "editorCanEnterPlayMode": true,
+      "isPlaying": false,
+      "isPlayingOrWillChangePlaymode": false
     }
   },
+  "compileGate": {
+    "schemaVersion": "1.0.0",
+    "gateId": "UNITY-COMPILE-GATE",
+    "scenarioId": "dungeon_recovery_first_playable_e2e",
+    "classification": "Operational",
+    "category": "ProductMvp",
+    "validationType": "BuildVerification",
+    "startedAt": "2026-07-06T06:14:18.578Z",
+    "finishedAt": "2026-07-06T06:14:20.163Z",
+    "status": "Passed",
+    "canEnterPlayMode": true,
+    "compileStatus": "Passed",
+    "compileErrorCount": 0,
+    "compileErrors": [],
+    "consoleErrorSummary": {
+      "status": "Passed",
+      "errorCount": 0,
+      "message": "unity_get_console_logs succeeded."
+    },
+    "unityProjectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany",
+    "unityUrl": "http://127.0.0.1:17777/rpc",
+    "healthUrl": "http://127.0.0.1:17777/health",
+    "checks": [
+      {
+        "id": "compile_gate.bridge_health",
+        "type": "Static",
+        "target": "http://127.0.0.1:17777/health",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "Unity Bridge health endpoint is reachable.",
+        "data": {
+          "ok": true,
+          "bridgeRunning": true,
+          "bridgeStatus": "running",
+          "capabilityVersion": "0.6.0-validation-probes",
+          "unityVersion": "6000.5.0f1",
+          "isPlaying": false,
+          "isPlayingOrWillChangePlaymode": false,
+          "playModeTransitionCount": 3
+        }
+      },
+      {
+        "id": "compile_gate.unity_get_status",
+        "type": "Static",
+        "target": "unity_get_status",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "unity_get_status succeeded.",
+        "data": {
+          "ok": true,
+          "bridgeRunning": true,
+          "bridgeStatus": "running",
+          "capabilityVersion": "0.6.0-validation-probes",
+          "unityVersion": "6000.5.0f1",
+          "projectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets",
+          "isPlaying": false,
+          "isPaused": false,
+          "isPlayingOrWillChangePlaymode": false,
+          "isCompiling": false,
+          "isUpdating": false,
+          "playModeTransitionCount": 3,
+          "inputTestBridgeAvailable": false,
+          "activeScene": {
+            "name": "DRC_ProceduralRecoveryJob",
+            "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+            "isDirty": false,
+            "isLoaded": true,
+            "rootCount": 1
+          },
+          "selection": {
+            "activeObject": null,
+            "objects": []
+          }
+        }
+      },
+      {
+        "id": "compile_gate.unity_refresh_assets",
+        "type": "Asset",
+        "target": "unity_refresh_assets",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "unity_refresh_assets succeeded.",
+        "data": {
+          "ok": true,
+          "isCompiling": false,
+          "isUpdating": false
+        }
+      },
+      {
+        "id": "compile_gate.unity_compile_status",
+        "type": "Compile",
+        "target": "unity_compile_status",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "Unity compile status is stable and has no compile errors.",
+        "data": {
+          "isCompiling": false,
+          "isUpdating": false,
+          "hasCompileErrors": false,
+          "compileErrorCount": 0,
+          "errorCount": 0,
+          "errors": [],
+          "recentErrors": [],
+          "lastCompileFinishedAt": null,
+          "editorCanEnterPlayMode": true,
+          "isPlaying": false,
+          "isPlayingOrWillChangePlaymode": false
+        }
+      },
+      {
+        "id": "compile_gate.unity_get_console_logs",
+        "type": "Console",
+        "target": "unity_get_console_logs",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "unity_get_console_logs succeeded.",
+        "data": {
+          "logs": []
+        }
+      },
+      {
+        "id": "compile_gate.local_csharp_build",
+        "type": "Compile",
+        "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "Local C# compile check passed.",
+        "data": {
+          "exitCode": 0,
+          "timedOut": false,
+          "errors": [],
+          "outputTail": "10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.ShaderGraph.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor.Shared\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\n  Assembly-CSharp -> E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Temp\\bin\\Debug\\Assembly-CSharp.dll\r\n\r\n빌드했습니다.\r\n\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3274: 기본 참조 \"nunit.framework\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성되었기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Universal.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.Rider.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.VisualStudio.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.ShaderGraph.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor.Shared\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\n    경고 7개\r\n    오류 0개\r\n\r\n경과 시간: 00:00:01.16\r\n"
+        }
+      }
+    ],
+    "compileStatusResult": {
+      "id": "compile_gate.unity_compile_status",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "ok": true,
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors.",
+      "data": {
+        "isCompiling": false,
+        "isUpdating": false,
+        "hasCompileErrors": false,
+        "compileErrorCount": 0,
+        "errorCount": 0,
+        "errors": [],
+        "recentErrors": [],
+        "lastCompileFinishedAt": null,
+        "editorCanEnterPlayMode": true,
+        "isPlaying": false,
+        "isPlayingOrWillChangePlaymode": false
+      }
+    },
+    "blockerType": null,
+    "playModeAttempted": false,
+    "runtimeAssemblyFreshness": {
+      "status": "Fresh",
+      "reason": "Compile gate passed immediately before Play Mode validation.",
+      "compileCheckedBeforePlayMode": true,
+      "lastCompileStatus": "Passed",
+      "recommendation": "Proceed to Play Mode validation."
+    },
+    "failureReason": null,
+    "nextAction": "Compile gate passed. Runtime validation may enter Play Mode."
+  },
+  "compileErrorCount": 0,
+  "compileErrors": [],
   "consoleErrorSummary": null,
+  "blockerType": null,
+  "playModeAttempted": false,
+  "runtimeAssemblyFreshness": {
+    "status": "Fresh",
+    "reason": "Compile gate passed immediately before Play Mode validation.",
+    "compileCheckedBeforePlayMode": true,
+    "lastCompileStatus": "Passed",
+    "recommendation": "Proceed to Play Mode validation."
+  },
   "failureReason": null,
   "blocker": null,
   "bridgeDiagnostics": [],
@@ -192,7 +401,7 @@
           "message": "Windows development build succeeded."
         }
       ],
-      "timestamp": "2026-07-04T14:49:58.464Z"
+      "timestamp": "2026-07-06T06:14:54.105Z"
     }
   ],
   "observations": null,
@@ -204,10 +413,10 @@
     }
   ],
   "sourceValidationDesign": null,
-  "startedAt": "2026-07-04T14:48:10.904Z",
-  "finishedAt": "2026-07-04T14:49:58.464Z",
-  "completedAt": "2026-07-04T14:49:58.464Z",
-  "timestamp": "2026-07-04T14:49:58.464Z",
+  "startedAt": "2026-07-06T06:14:18.516Z",
+  "finishedAt": "2026-07-06T06:14:54.105Z",
+  "completedAt": "2026-07-06T06:14:54.105Z",
+  "timestamp": "2026-07-06T06:14:54.105Z",
   "remainingGaps": [
     "Executable launch and human playability confirmation remain separate gates."
   ],

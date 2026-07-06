@@ -5,10 +5,10 @@
   "projectName": "AInvil Productization",
   "version": "0.2.0",
   "createdAt": "2026-07-03T18:59:19.970Z",
-  "updatedAt": "2026-07-04T13:34:12.721Z",
+  "updatedAt": "2026-07-05T14:29:40.133Z",
   "currentVisionNodeId": "VISION-AInvil-Productization",
   "currentMilestoneNodeId": "MILESTONE-DRC-MVP-FirstPlayable",
-  "activeFeatureNodeId": "FEAT-DRC-MVP-FirstRecoveryJob",
+  "activeFeatureNodeId": "FEAT-DRC-PROC-RecoveryJob",
   "healthSummary": {
     "designHealth": "Yellow",
     "implementationHealth": "Yellow",
@@ -19,13 +19,13 @@
     "summary": "Operational source-of-truth has been reset from the example graph. Unity Bridge and Play Mode evidence remain blocked until live Unity connectivity is restored."
   },
   "nextRecommendedAction": {
-    "actionId": "NEXT-DRC-MVP-Manual-Playtest",
-    "title": "Run manual playability review for the Dungeon Recovery first playable.",
+    "actionId": "NEXT-DRC-PROC-Validate",
+    "title": "Run procedural recovery job E2E validation for seeds 1001, 2026, and 7777.",
     "owner": "Input Agent",
     "status": "Planned",
-    "reason": "Automated Product MVP E2E passed through deterministic hooks; manual player-input feel and UX review are still separate from Public Release readiness.",
-    "referencesNodeId": "FEAT-DRC-MVP-FirstRecoveryJob",
-    "requiredValidationLevel": "User Confirmed"
+    "reason": "Procedural generation must prove deterministic layouts, reachable targets, recovery completion, and zero console errors before further gameplay expansion.",
+    "referencesNodeId": "FEAT-DRC-PROC-RecoveryJob",
+    "requiredValidationLevel": "Play Mode Verified"
   },
   "nodes": [
     {
@@ -341,6 +341,636 @@
       "summary": "Run live harness for dungeon_recovery_first_playable_e2e and promote Product MVP Ready Candidate only if Passed evidence exists.",
       "status": "Planned",
       "owner": "Input Agent"
+    },
+    {
+      "id": "FEAT-DRC-PROC-RecoveryJob",
+      "type": "Feature",
+      "title": "Procedural Recovery Job",
+      "summary": "Seed-based procedural dungeon generation with reachable recovery target placement and deterministic validation hooks.",
+      "status": "Implemented",
+      "owner": "GDD Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "REQ-DRC-PROC-001",
+      "type": "Requirement",
+      "title": "Seed generates dungeon map",
+      "summary": "The procedural recovery job must generate a dungeon map from a configured seed.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "REQ-DRC-PROC-002",
+      "type": "Requirement",
+      "title": "Same seed produces same map",
+      "summary": "The same seed must produce the same layout signature.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "REQ-DRC-PROC-003",
+      "type": "Requirement",
+      "title": "Different seeds produce different maps",
+      "summary": "Different tested seeds should not all produce the same layout signature.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "REQ-DRC-PROC-004",
+      "type": "Requirement",
+      "title": "Dungeon has rooms and corridors",
+      "summary": "Each generated dungeon must contain at least four rooms connected by corridors as one reachable component.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "REQ-DRC-PROC-005",
+      "type": "Requirement",
+      "title": "Player starts on valid floor",
+      "summary": "The player start must be generated on a valid floor cell.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "REQ-DRC-PROC-006",
+      "type": "Requirement",
+      "title": "Three recovery targets are placed on valid floor",
+      "summary": "Exactly three recovery targets must be placed on valid non-wall floor cells without duplicate target cells.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "REQ-DRC-PROC-007",
+      "type": "Requirement",
+      "title": "All recovery targets are reachable",
+      "summary": "All three recovery targets must be reachable from the player start by floor-cell BFS.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "REQ-DRC-PROC-008",
+      "type": "Requirement",
+      "title": "Recovering all procedural targets completes the job",
+      "summary": "Recovering all three procedural targets must set Job Complete true.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "TASK-DRC-PROC-001",
+      "type": "ImplementationTask",
+      "title": "Create procedural dungeon scene",
+      "summary": "Create DRC_ProceduralRecoveryJob.unity under generated assets only.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "TASK-DRC-PROC-002",
+      "type": "ImplementationTask",
+      "title": "Implement seed-based dungeon generator",
+      "summary": "Implement deterministic grid room/corridor generation with fallback behavior.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "TASK-DRC-PROC-003",
+      "type": "ImplementationTask",
+      "title": "Implement recovery target random placement",
+      "summary": "Place three reachable non-overlapping targets on valid floor cells.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "TASK-DRC-PROC-004",
+      "type": "ImplementationTask",
+      "title": "Implement reachability validation",
+      "summary": "Validate generated layout with BFS over floor cells.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "TASK-DRC-PROC-005",
+      "type": "ImplementationTask",
+      "title": "Implement procedural job UI",
+      "summary": "Display seed, recovered count, movement input, and recovery input.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "TASK-DRC-PROC-006",
+      "type": "ImplementationTask",
+      "title": "Implement procedural Play Mode validation",
+      "summary": "Run seed 1001, 2026, and 7777 through deterministic Play Mode hooks and export evidence.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "AC-DRC-PROC-001",
+      "type": "AcceptanceCriterion",
+      "title": "Seeds generate successfully",
+      "summary": "Seeds 1001, 2026, and 7777 generate successfully.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "AC-DRC-PROC-002",
+      "type": "AcceptanceCriterion",
+      "title": "Each seed has at least four rooms",
+      "summary": "Each tested seed reports room count >= 4.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "AC-DRC-PROC-003",
+      "type": "AcceptanceCriterion",
+      "title": "Each seed has exactly three targets",
+      "summary": "Each tested seed reports recoveryTargetCount == 3.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "AC-DRC-PROC-004",
+      "type": "AcceptanceCriterion",
+      "title": "Each seed has three reachable targets",
+      "summary": "Each tested seed reports reachableTargetCount == 3.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "AC-DRC-PROC-005",
+      "type": "AcceptanceCriterion",
+      "title": "No duplicate target cells",
+      "summary": "Each tested seed reports duplicateTargetCells == 0.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "AC-DRC-PROC-006",
+      "type": "AcceptanceCriterion",
+      "title": "Procedural recovery reaches Job Complete",
+      "summary": "Each tested seed can complete all three targets and reports jobComplete true.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "AC-DRC-PROC-007",
+      "type": "AcceptanceCriterion",
+      "title": "Procedural run has zero console errors",
+      "summary": "The procedural validation run reports console error count 0.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "AC-DRC-PROC-008",
+      "type": "AcceptanceCriterion",
+      "title": "No stale evidence reuse",
+      "summary": "The procedural evidence records staleEvidenceReused false.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "UNITY-DRC-ProceduralRecoveryJob-Scene",
+      "type": "UnityTarget",
+      "title": "DRC_ProceduralRecoveryJob scene",
+      "summary": "Generated procedural recovery job scene.",
+      "status": "Implemented",
+      "owner": "Unity Agent",
+      "metadata": {
+        "unityKind": "Scene",
+        "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity"
+      }
+    },
+    {
+      "id": "UNITY-DRC-ProceduralRecoveryJob-Scripts",
+      "type": "UnityTarget",
+      "title": "Procedural recovery job scripts",
+      "summary": "Generated procedural controller, player controller, generator, validator, and builder scripts.",
+      "status": "Implemented",
+      "owner": "Unity Agent",
+      "metadata": {
+        "unityKind": "ScriptFolder",
+        "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts"
+      }
+    },
+    {
+      "id": "EVID-DRC-PROC-001",
+      "type": "ValidationEvidence",
+      "title": "Procedural recovery job E2E evidence",
+      "summary": "Latest evidence for dungeon_recovery_procedural_recovery_job_e2e.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified",
+      "evidence": {
+        "evidenceId": "EVID-dungeon-recovery-procedural-recovery-job-e2e-latest",
+        "source": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest.json",
+        "status": "Not tested",
+        "validationLevel": "Play Mode Verified",
+        "timestamp": null,
+        "summary": "Seeds 1001, 2026, 7777 procedural validation."
+      }
+    },
+    {
+      "id": "NEXT-DRC-PROC-Validate",
+      "type": "NextAction",
+      "title": "Run procedural recovery job E2E validation.",
+      "summary": "Run live harness for dungeon_recovery_procedural_recovery_job_e2e and keep Public Release Ready as No.",
+      "status": "Planned",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "REQ-DRC-PROC-009",
+      "type": "Requirement",
+      "title": "Normal play assigns random startup seed",
+      "summary": "Normal play must assign a fresh non-zero random seed at startup and display the active seed in the HUD; fixed seed generation remains available only for validation hooks.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "REQ-DRC-PROC-010",
+      "type": "Requirement",
+      "title": "Procedural job uses first-person mouse-look view",
+      "summary": "The procedural recovery job must use a first-person camera parented to the player and rotate the view with mouse movement.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "TASK-DRC-PROC-007",
+      "type": "ImplementationTask",
+      "title": "Implement random startup seed flow",
+      "summary": "Generate a fresh runtime seed on start while retaining deterministic GenerateWithSeed validation hooks.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "TASK-DRC-PROC-008",
+      "type": "ImplementationTask",
+      "title": "Implement first-person procedural player camera",
+      "summary": "Attach a first-person camera to the procedural player, drive yaw/pitch from mouse movement, and move relative to view direction.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "AC-DRC-PROC-009",
+      "type": "AcceptanceCriterion",
+      "title": "Random startup seed changes between samples",
+      "summary": "The operational harness samples GenerateWithRandomSeed twice and records different non-zero seed values.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "id": "AC-DRC-PROC-010",
+      "type": "AcceptanceCriterion",
+      "title": "Procedural playable uses first-person mouse look",
+      "summary": "The procedural player controller compiles with first-person camera binding, mouse-look yaw/pitch, and view-relative movement.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Compile Verified"
+    },
+    {
+      "id": "REQ-DRC-VIS-001",
+      "type": "Requirement",
+      "title": "Visual screenshots are captured during Play Mode",
+      "summary": "The procedural visual gate must capture non-stale PNG screenshots for spawn, mouse look, near target, interaction prompt, and job complete checkpoints.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "REQ-DRC-VIS-002",
+      "type": "Requirement",
+      "title": "Camera framing is automatically checked",
+      "summary": "The visual gate must detect invalid first-person camera state, camera inside wall, camera outside dungeon, and failed mouse-look or movement checks.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "REQ-DRC-VIS-003",
+      "type": "Requirement",
+      "title": "UI and target visibility are automatically checked",
+      "summary": "The visual gate must verify progress UI, seed UI, interaction prompt, job complete UI, and near-target visibility.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "REQ-DRC-VIS-004",
+      "type": "Requirement",
+      "title": "Missing shader artifacts are automatically checked",
+      "summary": "The visual gate must detect suspected missing shaders and high magenta pixel ratio from rendered screenshots.",
+      "status": "Confirmed",
+      "owner": "GDD Agent"
+    },
+    {
+      "id": "TASK-DRC-VIS-001",
+      "type": "ImplementationTask",
+      "title": "Implement procedural visual validation probe",
+      "summary": "Add a generated visual validation probe under DungeonRecoveryFirstPlayable that captures screenshots and returns camera/UI/material assertions.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "TASK-DRC-VIS-002",
+      "type": "ImplementationTask",
+      "title": "Integrate visual gate with AInvil live harness",
+      "summary": "Add an operational visual validation scenario, evidence export, review report, and regression --visual support.",
+      "status": "Implemented",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "AC-DRC-VIS-001",
+      "type": "AcceptanceCriterion",
+      "title": "Five screenshots are captured",
+      "summary": "Visual evidence includes five checkpoint screenshots with valid width and height.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "id": "AC-DRC-VIS-002",
+      "type": "AcceptanceCriterion",
+      "title": "First-person camera framing passes",
+      "summary": "Camera exists, is active, is not inside a wall, and is not outside the generated dungeon.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "id": "AC-DRC-VIS-003",
+      "type": "AcceptanceCriterion",
+      "title": "Mouse look and movement are verified",
+      "summary": "Visual probe verifies camera pose changes and forward movement changes player position.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "id": "AC-DRC-VIS-004",
+      "type": "AcceptanceCriterion",
+      "title": "UI visibility passes",
+      "summary": "Progress, seed, interaction prompt, and Job Complete UI are visible at their checkpoints.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "id": "AC-DRC-VIS-005",
+      "type": "AcceptanceCriterion",
+      "title": "Target visibility passes near target",
+      "summary": "At least one recovery target is visible at the near-target checkpoint.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "id": "AC-DRC-VIS-006",
+      "type": "AcceptanceCriterion",
+      "title": "Missing shader checks pass",
+      "summary": "Missing shader is not suspected and magenta pixel ratio is below threshold.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "id": "AC-DRC-VIS-007",
+      "type": "AcceptanceCriterion",
+      "title": "Public release remains unclaimed",
+      "summary": "Visual validation keeps humanReviewRequired true and publicReleaseReady false.",
+      "status": "Validated",
+      "owner": "Input Agent",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "id": "EVID-DRC-VIS-001",
+      "type": "ValidationEvidence",
+      "title": "Procedural visual validation evidence",
+      "summary": "Latest evidence for dungeon_recovery_procedural_visual_validation.",
+      "status": "Planned",
+      "owner": "Input Agent",
+      "refs": [
+        {
+          "kind": "Evidence",
+          "path": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest.json"
+        }
+      ]
+    },
+    {
+      "id": "FEAT-DRC-SPACE-001",
+      "type": "Feature",
+      "title": "Procedural Dungeon Space Quality",
+      "summary": "Expand the procedural recovery job from narrow corridor test geometry into wider first-person dungeon rooms with non-blocking primitive props.",
+      "status": "Implemented",
+      "owner": "Unity Agent",
+      "refs": [
+        {
+          "kind": "Scenario",
+          "path": "harness/scenarios/dungeon_recovery_procedural_space_quality_validation.json"
+        }
+      ]
+    },
+    {
+      "id": "REQ-DRC-SPACE-001",
+      "type": "Requirement",
+      "title": "Wider first-person rooms",
+      "summary": "Rooms must be large enough for first-person exploration, turning, lateral movement, and target search.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "REQ-DRC-SPACE-002",
+      "type": "Requirement",
+      "title": "Comfortable corridor width",
+      "summary": "Corridors must be wide enough to reduce wall snagging and support first-person movement.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "REQ-DRC-SPACE-003",
+      "type": "Requirement",
+      "title": "Tall dungeon walls",
+      "summary": "Walls must be higher than player and camera height to read as dungeon boundaries.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "REQ-DRC-SPACE-004",
+      "type": "Requirement",
+      "title": "Primitive room props",
+      "summary": "Rooms must contain primitive props such as crates, shelves, barrels, pillars, debris, and racks to create exploration structure.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "REQ-DRC-SPACE-005",
+      "type": "Requirement",
+      "title": "Non-blocking prop placement",
+      "summary": "Props must not block player start, doorways/corridors, target cells, target-adjacent interaction space, or target reachability.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "REQ-DRC-SPACE-006",
+      "type": "Requirement",
+      "title": "Reachable distributed targets",
+      "summary": "All three targets must remain reachable and sufficiently separated for each operational validation seed.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "TASK-DRC-SPACE-001",
+      "type": "ImplementationTask",
+      "title": "Adjust room size range",
+      "summary": "Increase procedural room width/depth range and grid size for first-person exploration.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "TASK-DRC-SPACE-002",
+      "type": "ImplementationTask",
+      "title": "Adjust corridor width",
+      "summary": "Carve 3-cell corridors and record corridor width/narrow passage metrics.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "TASK-DRC-SPACE-003",
+      "type": "ImplementationTask",
+      "title": "Adjust wall height",
+      "summary": "Raise procedural wall height and expose wall height sufficiency metrics.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "TASK-DRC-SPACE-004",
+      "type": "ImplementationTask",
+      "title": "Add primitive prop placement",
+      "summary": "Generate room props from Unity primitives while avoiding reserved cells.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "TASK-DRC-SPACE-005",
+      "type": "ImplementationTask",
+      "title": "Add prop and target clearance validation",
+      "summary": "Expose prop overlap, doorway blocking, target blocking, clearance, and reachability metrics.",
+      "status": "Implemented",
+      "owner": "Unity Agent"
+    },
+    {
+      "id": "TASK-DRC-SPACE-006",
+      "type": "ImplementationTask",
+      "title": "Run space quality, visual, and build verification",
+      "summary": "Validate procedural space quality alongside procedural E2E, visual validation, and build verification.",
+      "status": "In Progress",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "AC-DRC-SPACE-001",
+      "type": "AcceptanceCriterion",
+      "title": "Seeds generate at least four rooms",
+      "summary": "Seeds 1001, 2026, and 7777 each produce room count >= 4.",
+      "status": "Needs validation",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "AC-DRC-SPACE-002",
+      "type": "AcceptanceCriterion",
+      "title": "Average room area increased",
+      "summary": "Each validation seed records averageRoomArea >= 49 after room size expansion.",
+      "status": "Needs validation",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "AC-DRC-SPACE-003",
+      "type": "AcceptanceCriterion",
+      "title": "Corridor width sufficient",
+      "summary": "Each validation seed records corridorWidth >= 3, narrowPassageCount == 0, and playerClearancePassed == true.",
+      "status": "Needs validation",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "AC-DRC-SPACE-004",
+      "type": "AcceptanceCriterion",
+      "title": "Wall height sufficient",
+      "summary": "Each validation seed records wallHeightSufficient == true.",
+      "status": "Needs validation",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "AC-DRC-SPACE-005",
+      "type": "AcceptanceCriterion",
+      "title": "Props are present",
+      "summary": "Each validation seed records propCount > 0 and multiple primitive prop types.",
+      "status": "Needs validation",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "AC-DRC-SPACE-006",
+      "type": "AcceptanceCriterion",
+      "title": "Props do not block traversal or targets",
+      "summary": "Each validation seed records propOverlapCount == 0, blockedDoorwayCount == 0, blockedTargetCount == 0, and navigabilityAfterPropsPassed == true.",
+      "status": "Needs validation",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "AC-DRC-SPACE-007",
+      "type": "AcceptanceCriterion",
+      "title": "Targets remain reachable",
+      "summary": "Each validation seed records reachableTargetCount == 3 and targetReachabilityPassed == true.",
+      "status": "Needs validation",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "AC-DRC-SPACE-008",
+      "type": "AcceptanceCriterion",
+      "title": "Targets have interaction clearance",
+      "summary": "Each validation seed records targetInteractionClearancePassed == true.",
+      "status": "Needs validation",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "AC-DRC-SPACE-009",
+      "type": "AcceptanceCriterion",
+      "title": "Job completes on each seed",
+      "summary": "Each validation seed reaches jobComplete == true.",
+      "status": "Needs validation",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "AC-DRC-SPACE-010",
+      "type": "AcceptanceCriterion",
+      "title": "Visual validation remains passed",
+      "summary": "Procedural visual validation remains Passed after spatial changes.",
+      "status": "Needs validation",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "AC-DRC-SPACE-011",
+      "type": "AcceptanceCriterion",
+      "title": "Build verification remains passed",
+      "summary": "Procedural build verification remains Passed after spatial changes.",
+      "status": "Needs validation",
+      "owner": "Input Agent"
+    },
+    {
+      "id": "EVID-DRC-SPACE-001",
+      "type": "ValidationEvidence",
+      "title": "Procedural space quality latest evidence",
+      "summary": "Latest evidence for dungeon_recovery_procedural_space_quality_validation.",
+      "status": "Planned",
+      "owner": "Input Agent",
+      "refs": [
+        {
+          "kind": "Evidence",
+          "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest.json"
+        }
+      ]
     }
   ],
   "edges": [
@@ -541,6 +1171,540 @@
       "type": "next_step_for",
       "from": "NEXT-DRC-MVP-Validate-FirstPlayable",
       "to": "TASK-DRC-MVP-003"
+    },
+    {
+      "id": "EDGE-REQ-DRC-PROC-001-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-PROC-001",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
+    },
+    {
+      "id": "EDGE-REQ-DRC-PROC-002-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-PROC-002",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
+    },
+    {
+      "id": "EDGE-REQ-DRC-PROC-003-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-PROC-003",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
+    },
+    {
+      "id": "EDGE-REQ-DRC-PROC-004-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-PROC-004",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
+    },
+    {
+      "id": "EDGE-REQ-DRC-PROC-005-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-PROC-005",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
+    },
+    {
+      "id": "EDGE-REQ-DRC-PROC-006-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-PROC-006",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
+    },
+    {
+      "id": "EDGE-REQ-DRC-PROC-007-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-PROC-007",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
+    },
+    {
+      "id": "EDGE-REQ-DRC-PROC-008-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-PROC-008",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
+    },
+    {
+      "id": "EDGE-DRC-PROC-FEAT-DERIVES-MILESTONE",
+      "type": "derives_from",
+      "from": "FEAT-DRC-PROC-RecoveryJob",
+      "to": "MILESTONE-DRC-MVP-FirstPlayable"
+    },
+    {
+      "id": "EDGE-TASK-DRC-PROC-001-IMPLEMENTS-REQ-DRC-PROC-001",
+      "type": "implements",
+      "from": "TASK-DRC-PROC-001",
+      "to": "REQ-DRC-PROC-001"
+    },
+    {
+      "id": "EDGE-TASK-DRC-PROC-002-IMPLEMENTS-REQ-DRC-PROC-002",
+      "type": "implements",
+      "from": "TASK-DRC-PROC-002",
+      "to": "REQ-DRC-PROC-002"
+    },
+    {
+      "id": "EDGE-TASK-DRC-PROC-003-IMPLEMENTS-REQ-DRC-PROC-006",
+      "type": "implements",
+      "from": "TASK-DRC-PROC-003",
+      "to": "REQ-DRC-PROC-006"
+    },
+    {
+      "id": "EDGE-TASK-DRC-PROC-004-IMPLEMENTS-REQ-DRC-PROC-007",
+      "type": "implements",
+      "from": "TASK-DRC-PROC-004",
+      "to": "REQ-DRC-PROC-007"
+    },
+    {
+      "id": "EDGE-TASK-DRC-PROC-005-IMPLEMENTS-REQ-DRC-PROC-005",
+      "type": "implements",
+      "from": "TASK-DRC-PROC-005",
+      "to": "REQ-DRC-PROC-005"
+    },
+    {
+      "id": "EDGE-TASK-DRC-PROC-006-IMPLEMENTS-REQ-DRC-PROC-008",
+      "type": "implements",
+      "from": "TASK-DRC-PROC-006",
+      "to": "REQ-DRC-PROC-008"
+    },
+    {
+      "id": "EDGE-AC-DRC-PROC-001-DERIVES-REQ",
+      "type": "derives_from",
+      "from": "AC-DRC-PROC-001",
+      "to": "REQ-DRC-PROC-001"
+    },
+    {
+      "id": "EDGE-AC-DRC-PROC-002-DERIVES-REQ",
+      "type": "derives_from",
+      "from": "AC-DRC-PROC-002",
+      "to": "REQ-DRC-PROC-001"
+    },
+    {
+      "id": "EDGE-AC-DRC-PROC-003-DERIVES-REQ",
+      "type": "derives_from",
+      "from": "AC-DRC-PROC-003",
+      "to": "REQ-DRC-PROC-001"
+    },
+    {
+      "id": "EDGE-AC-DRC-PROC-004-DERIVES-REQ",
+      "type": "derives_from",
+      "from": "AC-DRC-PROC-004",
+      "to": "REQ-DRC-PROC-001"
+    },
+    {
+      "id": "EDGE-AC-DRC-PROC-005-DERIVES-REQ",
+      "type": "derives_from",
+      "from": "AC-DRC-PROC-005",
+      "to": "REQ-DRC-PROC-001"
+    },
+    {
+      "id": "EDGE-AC-DRC-PROC-006-DERIVES-REQ",
+      "type": "derives_from",
+      "from": "AC-DRC-PROC-006",
+      "to": "REQ-DRC-PROC-001"
+    },
+    {
+      "id": "EDGE-AC-DRC-PROC-007-DERIVES-REQ",
+      "type": "derives_from",
+      "from": "AC-DRC-PROC-007",
+      "to": "REQ-DRC-PROC-001"
+    },
+    {
+      "id": "EDGE-AC-DRC-PROC-008-DERIVES-REQ",
+      "type": "derives_from",
+      "from": "AC-DRC-PROC-008",
+      "to": "REQ-DRC-PROC-001"
+    },
+    {
+      "id": "EDGE-DRC-PROC-SCENE-MAPS-TASK1",
+      "type": "maps_to",
+      "from": "UNITY-DRC-ProceduralRecoveryJob-Scene",
+      "to": "TASK-DRC-PROC-001"
+    },
+    {
+      "id": "EDGE-DRC-PROC-SCRIPTS-MAPS-TASK2",
+      "type": "maps_to",
+      "from": "UNITY-DRC-ProceduralRecoveryJob-Scripts",
+      "to": "TASK-DRC-PROC-002"
+    },
+    {
+      "id": "EDGE-DRC-PROC-EVID-VALIDATES-AC-DRC-PROC-001",
+      "type": "validates",
+      "from": "EVID-DRC-PROC-001",
+      "to": "AC-DRC-PROC-001"
+    },
+    {
+      "id": "EDGE-DRC-PROC-EVID-VALIDATES-AC-DRC-PROC-002",
+      "type": "validates",
+      "from": "EVID-DRC-PROC-001",
+      "to": "AC-DRC-PROC-002"
+    },
+    {
+      "id": "EDGE-DRC-PROC-EVID-VALIDATES-AC-DRC-PROC-003",
+      "type": "validates",
+      "from": "EVID-DRC-PROC-001",
+      "to": "AC-DRC-PROC-003"
+    },
+    {
+      "id": "EDGE-DRC-PROC-EVID-VALIDATES-AC-DRC-PROC-004",
+      "type": "validates",
+      "from": "EVID-DRC-PROC-001",
+      "to": "AC-DRC-PROC-004"
+    },
+    {
+      "id": "EDGE-DRC-PROC-EVID-VALIDATES-AC-DRC-PROC-005",
+      "type": "validates",
+      "from": "EVID-DRC-PROC-001",
+      "to": "AC-DRC-PROC-005"
+    },
+    {
+      "id": "EDGE-DRC-PROC-EVID-VALIDATES-AC-DRC-PROC-006",
+      "type": "validates",
+      "from": "EVID-DRC-PROC-001",
+      "to": "AC-DRC-PROC-006"
+    },
+    {
+      "id": "EDGE-DRC-PROC-EVID-VALIDATES-AC-DRC-PROC-007",
+      "type": "validates",
+      "from": "EVID-DRC-PROC-001",
+      "to": "AC-DRC-PROC-007"
+    },
+    {
+      "id": "EDGE-DRC-PROC-EVID-VALIDATES-AC-DRC-PROC-008",
+      "type": "validates",
+      "from": "EVID-DRC-PROC-001",
+      "to": "AC-DRC-PROC-008"
+    },
+    {
+      "id": "EDGE-DRC-PROC-NEXT-FOR-TASK6",
+      "type": "next_step_for",
+      "from": "NEXT-DRC-PROC-Validate",
+      "to": "TASK-DRC-PROC-006"
+    },
+    {
+      "id": "EDGE-REQ-DRC-PROC-009-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-PROC-009",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
+    },
+    {
+      "id": "EDGE-REQ-DRC-PROC-010-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-PROC-010",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
+    },
+    {
+      "id": "EDGE-TASK-DRC-PROC-007-IMPLEMENTS-REQ-DRC-PROC-009",
+      "type": "implements",
+      "from": "TASK-DRC-PROC-007",
+      "to": "REQ-DRC-PROC-009"
+    },
+    {
+      "id": "EDGE-TASK-DRC-PROC-008-IMPLEMENTS-REQ-DRC-PROC-010",
+      "type": "implements",
+      "from": "TASK-DRC-PROC-008",
+      "to": "REQ-DRC-PROC-010"
+    },
+    {
+      "id": "EDGE-AC-DRC-PROC-009-DERIVES-REQ",
+      "type": "derives_from",
+      "from": "AC-DRC-PROC-009",
+      "to": "REQ-DRC-PROC-009"
+    },
+    {
+      "id": "EDGE-AC-DRC-PROC-010-DERIVES-REQ",
+      "type": "derives_from",
+      "from": "AC-DRC-PROC-010",
+      "to": "REQ-DRC-PROC-010"
+    },
+    {
+      "id": "EDGE-DRC-PROC-EVID-VALIDATES-AC-DRC-PROC-009",
+      "type": "validates",
+      "from": "EVID-DRC-PROC-001",
+      "to": "AC-DRC-PROC-009"
+    },
+    {
+      "id": "EDGE-DRC-PROC-EVID-VALIDATES-AC-DRC-PROC-010",
+      "type": "validates",
+      "from": "EVID-DRC-PROC-001",
+      "to": "AC-DRC-PROC-010"
+    },
+    {
+      "id": "EDGE-REQ-DRC-VIS-001-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-VIS-001",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
+    },
+    {
+      "id": "EDGE-REQ-DRC-VIS-002-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-VIS-002",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
+    },
+    {
+      "id": "EDGE-REQ-DRC-VIS-003-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-VIS-003",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
+    },
+    {
+      "id": "EDGE-REQ-DRC-VIS-004-DERIVES-FEAT",
+      "type": "derives_from",
+      "from": "REQ-DRC-VIS-004",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
+    },
+    {
+      "id": "EDGE-TASK-DRC-VIS-001-IMPLEMENTS-REQ-DRC-VIS-001",
+      "type": "implements",
+      "from": "TASK-DRC-VIS-001",
+      "to": "REQ-DRC-VIS-001"
+    },
+    {
+      "id": "EDGE-TASK-DRC-VIS-001-IMPLEMENTS-REQ-DRC-VIS-002",
+      "type": "implements",
+      "from": "TASK-DRC-VIS-001",
+      "to": "REQ-DRC-VIS-002"
+    },
+    {
+      "id": "EDGE-TASK-DRC-VIS-001-IMPLEMENTS-REQ-DRC-VIS-003",
+      "type": "implements",
+      "from": "TASK-DRC-VIS-001",
+      "to": "REQ-DRC-VIS-003"
+    },
+    {
+      "id": "EDGE-TASK-DRC-VIS-001-IMPLEMENTS-REQ-DRC-VIS-004",
+      "type": "implements",
+      "from": "TASK-DRC-VIS-001",
+      "to": "REQ-DRC-VIS-004"
+    },
+    {
+      "id": "EDGE-TASK-DRC-VIS-002-IMPLEMENTS-REQ-DRC-VIS-001",
+      "type": "implements",
+      "from": "TASK-DRC-VIS-002",
+      "to": "REQ-DRC-VIS-001"
+    },
+    {
+      "id": "EDGE-AC-DRC-VIS-001-DERIVES-REQ-DRC-VIS-001",
+      "type": "derives_from",
+      "from": "AC-DRC-VIS-001",
+      "to": "REQ-DRC-VIS-001"
+    },
+    {
+      "id": "EDGE-DRC-VIS-EVID-VALIDATES-AC-DRC-VIS-001",
+      "type": "validates",
+      "from": "EVID-DRC-VIS-001",
+      "to": "AC-DRC-VIS-001"
+    },
+    {
+      "id": "EDGE-AC-DRC-VIS-002-DERIVES-REQ-DRC-VIS-002",
+      "type": "derives_from",
+      "from": "AC-DRC-VIS-002",
+      "to": "REQ-DRC-VIS-002"
+    },
+    {
+      "id": "EDGE-DRC-VIS-EVID-VALIDATES-AC-DRC-VIS-002",
+      "type": "validates",
+      "from": "EVID-DRC-VIS-001",
+      "to": "AC-DRC-VIS-002"
+    },
+    {
+      "id": "EDGE-AC-DRC-VIS-003-DERIVES-REQ-DRC-VIS-002",
+      "type": "derives_from",
+      "from": "AC-DRC-VIS-003",
+      "to": "REQ-DRC-VIS-002"
+    },
+    {
+      "id": "EDGE-DRC-VIS-EVID-VALIDATES-AC-DRC-VIS-003",
+      "type": "validates",
+      "from": "EVID-DRC-VIS-001",
+      "to": "AC-DRC-VIS-003"
+    },
+    {
+      "id": "EDGE-AC-DRC-VIS-004-DERIVES-REQ-DRC-VIS-003",
+      "type": "derives_from",
+      "from": "AC-DRC-VIS-004",
+      "to": "REQ-DRC-VIS-003"
+    },
+    {
+      "id": "EDGE-DRC-VIS-EVID-VALIDATES-AC-DRC-VIS-004",
+      "type": "validates",
+      "from": "EVID-DRC-VIS-001",
+      "to": "AC-DRC-VIS-004"
+    },
+    {
+      "id": "EDGE-AC-DRC-VIS-005-DERIVES-REQ-DRC-VIS-003",
+      "type": "derives_from",
+      "from": "AC-DRC-VIS-005",
+      "to": "REQ-DRC-VIS-003"
+    },
+    {
+      "id": "EDGE-DRC-VIS-EVID-VALIDATES-AC-DRC-VIS-005",
+      "type": "validates",
+      "from": "EVID-DRC-VIS-001",
+      "to": "AC-DRC-VIS-005"
+    },
+    {
+      "id": "EDGE-AC-DRC-VIS-006-DERIVES-REQ-DRC-VIS-004",
+      "type": "derives_from",
+      "from": "AC-DRC-VIS-006",
+      "to": "REQ-DRC-VIS-004"
+    },
+    {
+      "id": "EDGE-DRC-VIS-EVID-VALIDATES-AC-DRC-VIS-006",
+      "type": "validates",
+      "from": "EVID-DRC-VIS-001",
+      "to": "AC-DRC-VIS-006"
+    },
+    {
+      "id": "EDGE-AC-DRC-VIS-007-DERIVES-REQ-DRC-VIS-001",
+      "type": "derives_from",
+      "from": "AC-DRC-VIS-007",
+      "to": "REQ-DRC-VIS-001"
+    },
+    {
+      "id": "EDGE-DRC-VIS-EVID-VALIDATES-AC-DRC-VIS-007",
+      "type": "validates",
+      "from": "EVID-DRC-VIS-001",
+      "to": "AC-DRC-VIS-007"
+    },
+    {
+      "id": "EDGE-REQ-DRC-SPACE-001-MAPS-FEAT-DRC-SPACE-001",
+      "type": "maps_to",
+      "from": "REQ-DRC-SPACE-001",
+      "to": "FEAT-DRC-SPACE-001"
+    },
+    {
+      "id": "EDGE-REQ-DRC-SPACE-002-MAPS-FEAT-DRC-SPACE-001",
+      "type": "maps_to",
+      "from": "REQ-DRC-SPACE-002",
+      "to": "FEAT-DRC-SPACE-001"
+    },
+    {
+      "id": "EDGE-REQ-DRC-SPACE-003-MAPS-FEAT-DRC-SPACE-001",
+      "type": "maps_to",
+      "from": "REQ-DRC-SPACE-003",
+      "to": "FEAT-DRC-SPACE-001"
+    },
+    {
+      "id": "EDGE-REQ-DRC-SPACE-004-MAPS-FEAT-DRC-SPACE-001",
+      "type": "maps_to",
+      "from": "REQ-DRC-SPACE-004",
+      "to": "FEAT-DRC-SPACE-001"
+    },
+    {
+      "id": "EDGE-REQ-DRC-SPACE-005-MAPS-FEAT-DRC-SPACE-001",
+      "type": "maps_to",
+      "from": "REQ-DRC-SPACE-005",
+      "to": "FEAT-DRC-SPACE-001"
+    },
+    {
+      "id": "EDGE-REQ-DRC-SPACE-006-MAPS-FEAT-DRC-SPACE-001",
+      "type": "maps_to",
+      "from": "REQ-DRC-SPACE-006",
+      "to": "FEAT-DRC-SPACE-001"
+    },
+    {
+      "id": "EDGE-TASK-DRC-SPACE-001-IMPLEMENTS-FEAT-DRC-SPACE-001",
+      "type": "implements",
+      "from": "TASK-DRC-SPACE-001",
+      "to": "FEAT-DRC-SPACE-001"
+    },
+    {
+      "id": "EDGE-TASK-DRC-SPACE-002-IMPLEMENTS-FEAT-DRC-SPACE-001",
+      "type": "implements",
+      "from": "TASK-DRC-SPACE-002",
+      "to": "FEAT-DRC-SPACE-001"
+    },
+    {
+      "id": "EDGE-TASK-DRC-SPACE-003-IMPLEMENTS-FEAT-DRC-SPACE-001",
+      "type": "implements",
+      "from": "TASK-DRC-SPACE-003",
+      "to": "FEAT-DRC-SPACE-001"
+    },
+    {
+      "id": "EDGE-TASK-DRC-SPACE-004-IMPLEMENTS-FEAT-DRC-SPACE-001",
+      "type": "implements",
+      "from": "TASK-DRC-SPACE-004",
+      "to": "FEAT-DRC-SPACE-001"
+    },
+    {
+      "id": "EDGE-TASK-DRC-SPACE-005-IMPLEMENTS-FEAT-DRC-SPACE-001",
+      "type": "implements",
+      "from": "TASK-DRC-SPACE-005",
+      "to": "FEAT-DRC-SPACE-001"
+    },
+    {
+      "id": "EDGE-TASK-DRC-SPACE-006-IMPLEMENTS-FEAT-DRC-SPACE-001",
+      "type": "implements",
+      "from": "TASK-DRC-SPACE-006",
+      "to": "FEAT-DRC-SPACE-001"
+    },
+    {
+      "id": "EDGE-EVID-DRC-SPACE-001-VALIDATES-AC-DRC-SPACE-001",
+      "type": "validates",
+      "from": "EVID-DRC-SPACE-001",
+      "to": "AC-DRC-SPACE-001"
+    },
+    {
+      "id": "EDGE-EVID-DRC-SPACE-001-VALIDATES-AC-DRC-SPACE-002",
+      "type": "validates",
+      "from": "EVID-DRC-SPACE-001",
+      "to": "AC-DRC-SPACE-002"
+    },
+    {
+      "id": "EDGE-EVID-DRC-SPACE-001-VALIDATES-AC-DRC-SPACE-003",
+      "type": "validates",
+      "from": "EVID-DRC-SPACE-001",
+      "to": "AC-DRC-SPACE-003"
+    },
+    {
+      "id": "EDGE-EVID-DRC-SPACE-001-VALIDATES-AC-DRC-SPACE-004",
+      "type": "validates",
+      "from": "EVID-DRC-SPACE-001",
+      "to": "AC-DRC-SPACE-004"
+    },
+    {
+      "id": "EDGE-EVID-DRC-SPACE-001-VALIDATES-AC-DRC-SPACE-005",
+      "type": "validates",
+      "from": "EVID-DRC-SPACE-001",
+      "to": "AC-DRC-SPACE-005"
+    },
+    {
+      "id": "EDGE-EVID-DRC-SPACE-001-VALIDATES-AC-DRC-SPACE-006",
+      "type": "validates",
+      "from": "EVID-DRC-SPACE-001",
+      "to": "AC-DRC-SPACE-006"
+    },
+    {
+      "id": "EDGE-EVID-DRC-SPACE-001-VALIDATES-AC-DRC-SPACE-007",
+      "type": "validates",
+      "from": "EVID-DRC-SPACE-001",
+      "to": "AC-DRC-SPACE-007"
+    },
+    {
+      "id": "EDGE-EVID-DRC-SPACE-001-VALIDATES-AC-DRC-SPACE-008",
+      "type": "validates",
+      "from": "EVID-DRC-SPACE-001",
+      "to": "AC-DRC-SPACE-008"
+    },
+    {
+      "id": "EDGE-EVID-DRC-SPACE-001-VALIDATES-AC-DRC-SPACE-009",
+      "type": "validates",
+      "from": "EVID-DRC-SPACE-001",
+      "to": "AC-DRC-SPACE-009"
+    },
+    {
+      "id": "EDGE-EVID-DRC-SPACE-001-VALIDATES-AC-DRC-SPACE-010",
+      "type": "validates",
+      "from": "EVID-DRC-SPACE-001",
+      "to": "AC-DRC-SPACE-010"
+    },
+    {
+      "id": "EDGE-EVID-DRC-SPACE-001-VALIDATES-AC-DRC-SPACE-011",
+      "type": "validates",
+      "from": "EVID-DRC-SPACE-001",
+      "to": "AC-DRC-SPACE-011"
+    },
+    {
+      "id": "EDGE-FEAT-DRC-SPACE-001-DEPENDS-FEAT-DRC-PROC-001",
+      "type": "depends_on",
+      "from": "FEAT-DRC-SPACE-001",
+      "to": "FEAT-DRC-PROC-RecoveryJob"
     }
   ]
 }

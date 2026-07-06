@@ -6,9 +6,9 @@
   "classification": "Operational",
   "category": "ProductMvp",
   "validationType": "HumanPlayabilityReview",
-  "validationLevel": "Not Checked",
-  "status": "Warning",
-  "result": "Warning",
+  "validationLevel": "Runtime Tested",
+  "status": "Passed",
+  "result": "Passed",
   "validationIds": [],
   "validationId": null,
   "failureClass": "None",
@@ -26,39 +26,39 @@
   "checks": [
     {
       "checkId": "manual.MAC-DRC-001",
-      "type": "ManualPlayability",
-      "target": "Human reviewer",
-      "status": "Warning",
-      "failureClass": "Unknown",
-      "message": "Within 3 seconds of starting play, the player understands the objective and controls. Status: Needs Improvement. UI text exists, but the user noted this does not feel like a normal tutorial/navigation experience."
-    },
-    {
-      "checkId": "manual.MAC-DRC-002",
-      "type": "ManualPlayability",
-      "target": "Human reviewer",
-      "status": "Warning",
-      "failureClass": "Unknown",
-      "message": "All three recovery targets are visually distinguishable on screen. Status: Needs Improvement. User could not evaluate target visibility because the camera/framing made gameplay objects unreadable."
-    },
-    {
-      "checkId": "manual.MAC-DRC-003",
-      "type": "ManualPlayability",
-      "target": "Human reviewer",
-      "status": "Warning",
-      "failureClass": "Unknown",
-      "message": "The target that can be recovered near the player is visually distinguished. Status: Needs Improvement. User said interaction feedback is hard to evaluate because of the camera problem."
-    },
-    {
-      "checkId": "manual.MAC-DRC-004",
-      "type": "ManualPlayability",
+      "type": "Input",
       "target": "Human reviewer",
       "status": "Passed",
       "failureClass": "Unknown",
-      "message": "Recovering all targets clearly transitions the job to complete. Status: Passed. User understood the progress UI and Job Complete text, while noting the presentation is not ideal for a normal game."
+      "message": "Within 3 seconds of starting play, the player understands the objective and controls. Status: Passed. Manual retest confirmed the objective banner and controls text are clear enough for the first playable."
+    },
+    {
+      "checkId": "manual.MAC-DRC-002",
+      "type": "Input",
+      "target": "Human reviewer",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "All three recovery targets are visually distinguishable on screen. Status: Passed. Manual retest confirmed all three recovery targets are visible and distinguishable with labels/markers."
+    },
+    {
+      "checkId": "manual.MAC-DRC-003",
+      "type": "Input",
+      "target": "Human reviewer",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "The target that can be recovered near the player is visually distinguished. Status: Passed. Manual retest confirmed the nearby interaction state and Press E prompt are understandable."
+    },
+    {
+      "checkId": "manual.MAC-DRC-004",
+      "type": "Input",
+      "target": "Human reviewer",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Recovering all targets clearly transitions the job to complete. Status: Passed. Manual retest confirmed progress UI and Job Complete are understandable."
     },
     {
       "checkId": "manual.MAC-DRC-005",
-      "type": "ManualPlayability",
+      "type": "Input",
       "target": "Human reviewer",
       "status": "Passed",
       "failureClass": "Unknown",
@@ -68,39 +68,39 @@
   "checkedSteps": [
     {
       "checkId": "manual.MAC-DRC-001",
-      "type": "ManualPlayability",
-      "target": "Human reviewer",
-      "status": "Warning",
-      "failureClass": "Unknown",
-      "message": "Within 3 seconds of starting play, the player understands the objective and controls. Status: Needs Improvement. UI text exists, but the user noted this does not feel like a normal tutorial/navigation experience."
-    },
-    {
-      "checkId": "manual.MAC-DRC-002",
-      "type": "ManualPlayability",
-      "target": "Human reviewer",
-      "status": "Warning",
-      "failureClass": "Unknown",
-      "message": "All three recovery targets are visually distinguishable on screen. Status: Needs Improvement. User could not evaluate target visibility because the camera/framing made gameplay objects unreadable."
-    },
-    {
-      "checkId": "manual.MAC-DRC-003",
-      "type": "ManualPlayability",
-      "target": "Human reviewer",
-      "status": "Warning",
-      "failureClass": "Unknown",
-      "message": "The target that can be recovered near the player is visually distinguished. Status: Needs Improvement. User said interaction feedback is hard to evaluate because of the camera problem."
-    },
-    {
-      "checkId": "manual.MAC-DRC-004",
-      "type": "ManualPlayability",
+      "type": "Input",
       "target": "Human reviewer",
       "status": "Passed",
       "failureClass": "Unknown",
-      "message": "Recovering all targets clearly transitions the job to complete. Status: Passed. User understood the progress UI and Job Complete text, while noting the presentation is not ideal for a normal game."
+      "message": "Within 3 seconds of starting play, the player understands the objective and controls. Status: Passed. Manual retest confirmed the objective banner and controls text are clear enough for the first playable."
+    },
+    {
+      "checkId": "manual.MAC-DRC-002",
+      "type": "Input",
+      "target": "Human reviewer",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "All three recovery targets are visually distinguishable on screen. Status: Passed. Manual retest confirmed all three recovery targets are visible and distinguishable with labels/markers."
+    },
+    {
+      "checkId": "manual.MAC-DRC-003",
+      "type": "Input",
+      "target": "Human reviewer",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "The target that can be recovered near the player is visually distinguished. Status: Passed. Manual retest confirmed the nearby interaction state and Press E prompt are understandable."
+    },
+    {
+      "checkId": "manual.MAC-DRC-004",
+      "type": "Input",
+      "target": "Human reviewer",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Recovering all targets clearly transitions the job to complete. Status: Passed. Manual retest confirmed progress UI and Job Complete are understandable."
     },
     {
       "checkId": "manual.MAC-DRC-005",
-      "type": "ManualPlayability",
+      "type": "Input",
       "target": "Human reviewer",
       "status": "Passed",
       "failureClass": "Unknown",
@@ -113,29 +113,131 @@
   "failureReason": null,
   "blocker": null,
   "bridgeDiagnostics": [],
-  "validationResults": [],
+  "validationResults": [
+    {
+      "validationId": "manual-retest.MAC-DRC-001",
+      "result": "Passed",
+      "method": "Manual Retest",
+      "summary": "Within 3 seconds of starting play, the player understands the objective and controls.",
+      "note": "Manual retest confirmed the objective banner and controls text are clear enough for the first playable."
+    },
+    {
+      "validationId": "manual-retest.MAC-DRC-002",
+      "result": "Passed",
+      "method": "Manual Retest",
+      "summary": "All three recovery targets are visually distinguishable on screen.",
+      "note": "Manual retest confirmed all three recovery targets are visible and distinguishable with labels/markers."
+    },
+    {
+      "validationId": "manual-retest.MAC-DRC-003",
+      "result": "Passed",
+      "method": "Manual Retest",
+      "summary": "The target that can be recovered near the player is visually distinguished.",
+      "note": "Manual retest confirmed the nearby interaction state and Press E prompt are understandable."
+    },
+    {
+      "validationId": "manual-retest.MAC-DRC-004",
+      "result": "Passed",
+      "method": "Manual Retest",
+      "summary": "Recovering all targets clearly transitions the job to complete.",
+      "note": "Manual retest confirmed progress UI and Job Complete are understandable."
+    },
+    {
+      "validationId": "manual-retest.MAC-DRC-005",
+      "result": "Passed",
+      "method": "Manual Retest",
+      "summary": "Manual play remains free of visible errors, freezes, or abnormal behavior.",
+      "note": "User reported no visible errors, freezes, or abnormal behavior. Automated console verification is tracked separately."
+    }
+  ],
   "observations": null,
-  "assertions": [],
+  "assertions": [
+    {
+      "assertionId": "manual-retest.objectiveClarity",
+      "result": "Passed",
+      "message": "Manual retest confirmed the objective and controls are understandable after the UX fixes."
+    },
+    {
+      "assertionId": "manual-retest.movementFeel",
+      "result": "Passed",
+      "message": "Manual retest confirmed the player is visible and movement is acceptable for a first playable."
+    },
+    {
+      "assertionId": "manual-retest.camera",
+      "result": "Passed",
+      "message": "Manual retest confirmed the camera now frames the player and recovery targets."
+    },
+    {
+      "assertionId": "manual-retest.targetVisibility",
+      "result": "Passed",
+      "message": "Manual retest confirmed all three targets are visible and distinguishable."
+    },
+    {
+      "assertionId": "manual-retest.interactableFeedback",
+      "result": "Passed",
+      "message": "Manual retest confirmed the nearby interaction state and Press E prompt are understandable."
+    },
+    {
+      "assertionId": "manual-retest.recoverResponse",
+      "result": "Passed",
+      "message": "Manual retest confirmed E-key recovery response is sufficient for this first playable."
+    },
+    {
+      "assertionId": "manual-retest.progressUi",
+      "result": "Passed",
+      "message": "Manual retest confirmed recovery progress is understandable."
+    },
+    {
+      "assertionId": "manual-retest.completion",
+      "result": "Passed",
+      "message": "Manual retest confirmed the completion state is recognizable."
+    },
+    {
+      "assertionId": "manual-retest.labelColorDistance",
+      "result": "Passed",
+      "message": "Manual retest confirmed the previous invisible/magenta presentation problem is resolved for first-playable purposes."
+    },
+    {
+      "assertionId": "manual-retest.stability",
+      "result": "Passed",
+      "message": "User reported no runtime errors, freezes, or abnormal behavior."
+    },
+    {
+      "assertionId": "manual-retest.firstPlayableAcceptance",
+      "result": "Passed",
+      "message": "Manual retest confirmed this is acceptable as a first playable: not a finished game, but the core loop can be understood and played."
+    },
+    {
+      "assertionId": "manual-retest.futureImprovement",
+      "result": "Passed",
+      "message": "Art, sound, recovery presentation, tutorial flow, rewards, and the next-job/company loop remain future improvements, not blockers for this first playable."
+    }
+  ],
   "sourceValidationDesign": null,
-  "startedAt": "2026-07-04T14:47:46.151Z",
-  "finishedAt": "2026-07-04T14:47:46.151Z",
-  "completedAt": "2026-07-04T14:47:46.151Z",
-  "timestamp": "2026-07-04T14:47:46.151Z",
+  "startedAt": "2026-07-04T19:50:37.227Z",
+  "finishedAt": "2026-07-04T19:50:37.227Z",
+  "completedAt": "2026-07-04T19:50:37.227Z",
+  "timestamp": "2026-07-04T19:50:37.227Z",
   "remainingGaps": [
-    "Retest required after camera, material, player marker, target marker, and objective banner fixes.",
-    "The current experience still relies on prototype UI/text and does not yet provide a full game-like tutorial flow.",
-    "E-key recovery feedback is still minimal and should eventually receive animation/audio/VFX beyond this generated primitive slice.",
-    "User requested broader design improvement; this pass only applies minimal generated-folder UX fixes."
+    "This is not a finished game.",
+    "Art, sound, and recovery presentation remain placeholder-level.",
+    "Tutorial flow is still simple instructional UI rather than a full game-like onboarding sequence.",
+    "Next-job, reward, and company management loops are not implemented yet."
   ],
   "nextActions": [
-    "Rerun the generated build and confirm whether camera framing, material colors, player visibility, and target visibility are now acceptable."
+    "Treat this build as a Human Playable First Build Candidate and continue with art, sound, tutorial, reward, and next-job loop work before any public release claim."
   ],
-  "playabilityReviewStatus": "Needs Improvement",
+  "playabilityReviewStatus": "Passed",
+  "previousStatus": "Needs Improvement",
+  "newStatus": "Passed",
+  "reviewMethod": "Manual Retest",
+  "retestResult": "Passed",
+  "publicReleaseReady": false,
   "buildVerificationStatus": "Not Run",
   "manualFeedback": {
     "received": true,
-    "source": "User request on 2026-07-04",
-    "summary": "Manual playability review found major camera/framing and visibility issues. Progress UI and Job Complete were understandable, and no runtime instability was reported, but the build is not acceptable as a first playable yet.",
+    "source": "User manual retest on 2026-07-05",
+    "summary": "Manual retest confirmed the previous camera, visibility, and magenta presentation issues are resolved enough for a first playable. The player can understand the objective, move, recover three targets, read progress, and recognize Job Complete without visible runtime instability.",
     "checklistItemsProvided": 12,
     "expectedChecklistItems": 12
   },
@@ -155,26 +257,26 @@
     {
       "id": "MAC-DRC-001",
       "summary": "Within 3 seconds of starting play, the player understands the objective and controls.",
-      "status": "Needs Improvement",
-      "note": "UI text exists, but the user noted this does not feel like a normal tutorial/navigation experience."
+      "status": "Passed",
+      "note": "Manual retest confirmed the objective banner and controls text are clear enough for the first playable."
     },
     {
       "id": "MAC-DRC-002",
       "summary": "All three recovery targets are visually distinguishable on screen.",
-      "status": "Needs Improvement",
-      "note": "User could not evaluate target visibility because the camera/framing made gameplay objects unreadable."
+      "status": "Passed",
+      "note": "Manual retest confirmed all three recovery targets are visible and distinguishable with labels/markers."
     },
     {
       "id": "MAC-DRC-003",
       "summary": "The target that can be recovered near the player is visually distinguished.",
-      "status": "Needs Improvement",
-      "note": "User said interaction feedback is hard to evaluate because of the camera problem."
+      "status": "Passed",
+      "note": "Manual retest confirmed the nearby interaction state and Press E prompt are understandable."
     },
     {
       "id": "MAC-DRC-004",
       "summary": "Recovering all targets clearly transitions the job to complete.",
       "status": "Passed",
-      "note": "User understood the progress UI and Job Complete text, while noting the presentation is not ideal for a normal game."
+      "note": "Manual retest confirmed progress UI and Job Complete are understandable."
     },
     {
       "id": "MAC-DRC-005",
@@ -184,11 +286,17 @@
     }
   ],
   "automatedConsoleCheckStatus": "Passed",
+  "remainingLimitations": [
+    "This is not a finished game.",
+    "Art, sound, and recovery presentation remain placeholder-level.",
+    "Tutorial flow is still simple instructional UI rather than a full game-like onboarding sequence.",
+    "Next-job, reward, and company management loops are not implemented yet."
+  ],
   "buildOutputPath": null,
   "remainingPlayabilityIssues": [
-    "Retest required after camera, material, player marker, target marker, and objective banner fixes.",
-    "The current experience still relies on prototype UI/text and does not yet provide a full game-like tutorial flow.",
-    "E-key recovery feedback is still minimal and should eventually receive animation/audio/VFX beyond this generated primitive slice.",
-    "User requested broader design improvement; this pass only applies minimal generated-folder UX fixes."
+    "This is not a finished game.",
+    "Art, sound, and recovery presentation remain placeholder-level.",
+    "Tutorial flow is still simple instructional UI rather than a full game-like onboarding sequence.",
+    "Next-job, reward, and company management loops are not implemented yet."
   ]
 }

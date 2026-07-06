@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "reportId": "REL-2026-07-04T14-50-39-101Z",
-  "generatedAt": "2026-07-04T14:50:39.103Z",
+  "reportId": "REL-2026-07-06T06-17-16-746Z",
+  "generatedAt": "2026-07-06T06:17:16.747Z",
   "product": "AInvil",
   "decision": "Release Ready",
   "confidence": "Medium",
@@ -10,10 +10,24 @@
     "coreRcReproducibilityVerified": true,
     "canonicalUnityBridgePackageVerified": true,
     "productMvpWorkflow": "Passed",
-    "humanPlayabilityReview": "Needs Improvement",
+    "humanPlayabilityReview": "Passed",
     "buildVerification": "Passed",
     "productMvpReadyCandidate": true,
+    "humanPlayableFirstBuildCandidate": true,
+    "productMvpFirstPlayableVerified": true,
+    "firstGameplayLoop": "Verified",
+    "proceduralRecoveryJob": "Passed",
+    "proceduralGenerationVerified": true,
+    "visualValidation": "Passed",
+    "proceduralSpaceQuality": "Passed",
+    "compileGate": "Passed",
+    "compileGateSafety": "Passed",
+    "playModeBlockedOnCompileError": true,
+    "screenshotEvidenceAvailable": true,
+    "missingShaderSuspected": false,
+    "cameraFramingCheck": "Passed",
     "publicReleaseReady": false,
+    "revalidationStatus": "Current",
     "publicReleaseNote": "Public Release Ready is not claimed by the core release gate or Product MVP smoke evidence."
   },
   "productMvpWorkflow": {
@@ -23,13 +37,13 @@
     "validationType": "UnityFeatureE2E",
     "status": "Passed",
     "humanPlayabilityReview": {
-      "status": "Needs Improvement",
+      "status": "Passed",
       "reportPath": "reports/dungeon_recovery_first_playable_playability_review.json",
       "remainingIssues": [
-        "Retest required after camera, material, player marker, target marker, and objective banner fixes.",
-        "The current experience still relies on prototype UI/text and does not yet provide a full game-like tutorial flow.",
-        "E-key recovery feedback is still minimal and should eventually receive animation/audio/VFX beyond this generated primitive slice.",
-        "User requested broader design improvement; this pass only applies minimal generated-folder UX fixes."
+        "This is not a finished game.",
+        "Art, sound, and recovery presentation remain placeholder-level.",
+        "Tutorial flow is still simple instructional UI rather than a full game-like onboarding sequence.",
+        "Next-job, reward, and company management loops are not implemented yet."
       ]
     },
     "buildVerification": {
@@ -39,8 +53,10 @@
       "failureReason": null
     },
     "readyCandidate": true,
+    "humanPlayableFirstBuildCandidate": true,
+    "productMvpFirstPlayableVerified": true,
     "latestEvidence": {
-      "evidenceId": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T14-47-56-627Z",
+      "evidenceId": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T19-50-44-904Z",
       "status": "Passed",
       "validationLevel": "Play Mode Verified",
       "totalRecoveryTargetCount": 3,
@@ -49,11 +65,312 @@
       "progressText": "Recovered: 3 / 3\nJob Complete",
       "path": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json"
     },
+    "latestHarness": null,
+    "nextAction": "Treat as Product MVP Ready Candidate evidence; continue manual playability and public install gates separately."
+  },
+  "proceduralRecoveryJob": {
+    "scenarioExists": true,
+    "scenarioId": "dungeon_recovery_procedural_recovery_job_e2e",
+    "category": "ProductMvp",
+    "validationType": "ProceduralGenerationE2E",
+    "status": "Passed",
+    "proceduralGenerationVerified": true,
+    "buildVerification": {
+      "status": "Passed",
+      "outputPath": "E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/reports/builds/dungeon_recovery_procedural_recovery_job/DungeonRecoveryProceduralRecoveryJob.exe",
+      "reportPath": "reports/dungeon_recovery_procedural_recovery_job_build_verification.json",
+      "failureReason": null
+    },
+    "latestEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "status": "Passed",
+      "validationLevel": "Play Mode Verified",
+      "seedsTested": [
+        1001,
+        2026,
+        7777
+      ],
+      "deterministicGenerationVerified": true,
+      "randomStartupSeedVerified": true,
+      "randomSeedSamples": [
+        320100795,
+        1714198222
+      ],
+      "differentSeedsProduceDifferentLayouts": true,
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest-passed.json"
+    },
+    "latestHarness": null,
+    "nextAction": "Treat as procedural recovery job v1 evidence; Public Release Ready remains a separate gate."
+  },
+  "visualValidation": {
+    "scenarioExists": true,
+    "scenarioId": "dungeon_recovery_procedural_visual_validation",
+    "category": "ProductMvp",
+    "validationType": "VisualPlayabilityValidation",
+    "status": "Passed",
+    "productValidationStatus": "LastKnownPassed",
+    "revalidationStatus": "Current",
+    "blockerType": null,
+    "screenshotEvidenceAvailable": true,
+    "missingShaderSuspected": false,
+    "cameraFramingCheck": "Passed",
+    "humanReviewRequired": true,
+    "latestEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "status": "Passed",
+      "validationLevel": "Visual Verified",
+      "seed": null,
+      "screenshotCount": 5,
+      "magentaPixelRatio": 0,
+      "missingShaderSuspected": false,
+      "mouseLookVerified": true,
+      "playerMovementVerified": true,
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest-passed.json"
+    },
+    "latestHarness": null,
+    "latestPassedEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "status": "Passed",
+      "validationLevel": "Visual Verified",
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest-passed.json"
+    },
+    "latestBlockedEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T05-51-49-360Z",
+      "status": "Blocked",
+      "blockerType": "UnityBridgeDisconnected",
+      "revalidationStatus": "EnvironmentBlocked",
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest-blocked.json"
+    },
+    "nextAction": "Review screenshots manually; visual automation does not replace Human Playability Review."
+  },
+  "spaceQuality": {
+    "scenarioExists": true,
+    "scenarioId": "dungeon_recovery_procedural_space_quality_validation",
+    "category": "ProductMvp",
+    "validationType": "ProceduralSpaceQualityValidation",
+    "status": "Passed",
+    "productValidationStatus": "LastKnownPassed",
+    "revalidationStatus": "Current",
+    "blockerType": null,
+    "proceduralSpaceQualityVerified": true,
+    "latestEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "status": "Passed",
+      "validationLevel": "Play Mode Verified",
+      "seedsTested": [
+        1001,
+        2026,
+        7777
+      ],
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-passed.json"
+    },
+    "latestPassedEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "status": "Passed",
+      "validationLevel": "Play Mode Verified",
+      "seedsTested": [
+        1001,
+        2026,
+        7777
+      ],
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-passed.json"
+    },
+    "latestBlockedEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T05-48-27-667Z",
+      "status": "Blocked",
+      "blockerType": "UnityBridgeDisconnected",
+      "revalidationStatus": "EnvironmentBlocked",
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-blocked.json"
+    },
     "latestHarness": {
       "status": "Passed",
+      "blockerType": null,
       "reportPath": "harness/reports/latest-live-harness-report.json"
     },
-    "nextAction": "Treat as Product MVP Ready Candidate evidence; continue manual playability and public install gates separately."
+    "nextAction": "Procedural space quality is verified for seeds 1001, 2026, and 7777. Public Release Ready remains a separate gate."
+  },
+  "compileGate": {
+    "schemaVersion": "1.0.0",
+    "gateId": "UNITY-COMPILE-GATE",
+    "scenarioId": "regression",
+    "classification": "Operational",
+    "category": "ProductMvp",
+    "validationType": "RegressionCompileGate",
+    "startedAt": "2026-07-06T06:14:16.254Z",
+    "finishedAt": "2026-07-06T06:14:17.897Z",
+    "status": "Passed",
+    "canEnterPlayMode": true,
+    "compileStatus": "Passed",
+    "compileErrorCount": 0,
+    "compileErrors": [],
+    "consoleErrorSummary": {
+      "status": "Passed",
+      "errorCount": 0,
+      "message": "unity_get_console_logs succeeded."
+    },
+    "unityProjectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany",
+    "unityUrl": "http://127.0.0.1:17777/rpc",
+    "healthUrl": "http://127.0.0.1:17777/health",
+    "checks": [
+      {
+        "id": "compile_gate.bridge_health",
+        "type": "Static",
+        "target": "http://127.0.0.1:17777/health",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "Unity Bridge health endpoint is reachable.",
+        "data": {
+          "ok": true,
+          "bridgeRunning": true,
+          "bridgeStatus": "running",
+          "capabilityVersion": "0.6.0-validation-probes",
+          "unityVersion": "6000.5.0f1",
+          "isPlaying": false,
+          "isPlayingOrWillChangePlaymode": false,
+          "playModeTransitionCount": 3
+        }
+      },
+      {
+        "id": "compile_gate.unity_get_status",
+        "type": "Static",
+        "target": "unity_get_status",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "unity_get_status succeeded.",
+        "data": {
+          "ok": true,
+          "bridgeRunning": true,
+          "bridgeStatus": "running",
+          "capabilityVersion": "0.6.0-validation-probes",
+          "unityVersion": "6000.5.0f1",
+          "projectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets",
+          "isPlaying": false,
+          "isPaused": false,
+          "isPlayingOrWillChangePlaymode": false,
+          "isCompiling": false,
+          "isUpdating": false,
+          "playModeTransitionCount": 3,
+          "inputTestBridgeAvailable": false,
+          "activeScene": {
+            "name": "DRC_ProceduralRecoveryJob",
+            "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+            "isDirty": false,
+            "isLoaded": true,
+            "rootCount": 1
+          },
+          "selection": {
+            "activeObject": null,
+            "objects": []
+          }
+        }
+      },
+      {
+        "id": "compile_gate.unity_refresh_assets",
+        "type": "Asset",
+        "target": "unity_refresh_assets",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "unity_refresh_assets succeeded.",
+        "data": {
+          "ok": true,
+          "isCompiling": false,
+          "isUpdating": false
+        }
+      },
+      {
+        "id": "compile_gate.unity_compile_status",
+        "type": "Compile",
+        "target": "unity_compile_status",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "Unity compile status is stable and has no compile errors.",
+        "data": {
+          "isCompiling": false,
+          "isUpdating": false,
+          "hasCompileErrors": false,
+          "compileErrorCount": 0,
+          "errorCount": 0,
+          "errors": [],
+          "recentErrors": [],
+          "lastCompileFinishedAt": null,
+          "editorCanEnterPlayMode": true,
+          "isPlaying": false,
+          "isPlayingOrWillChangePlaymode": false
+        }
+      },
+      {
+        "id": "compile_gate.unity_get_console_logs",
+        "type": "Console",
+        "target": "unity_get_console_logs",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "unity_get_console_logs succeeded.",
+        "data": {
+          "logs": []
+        }
+      },
+      {
+        "id": "compile_gate.local_csharp_build",
+        "type": "Compile",
+        "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "Local C# compile check passed.",
+        "data": {
+          "exitCode": 0,
+          "timedOut": false,
+          "errors": [],
+          "outputTail": "10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.ShaderGraph.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor.Shared\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\n  Assembly-CSharp -> E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Temp\\bin\\Debug\\Assembly-CSharp.dll\r\n\r\n빌드했습니다.\r\n\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3274: 기본 참조 \"nunit.framework\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성되었기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Universal.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.Rider.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.VisualStudio.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.ShaderGraph.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor.Shared\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\n    경고 7개\r\n    오류 0개\r\n\r\n경과 시간: 00:00:01.13\r\n"
+        }
+      }
+    ],
+    "compileStatusResult": {
+      "id": "compile_gate.unity_compile_status",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "ok": true,
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors.",
+      "data": {
+        "isCompiling": false,
+        "isUpdating": false,
+        "hasCompileErrors": false,
+        "compileErrorCount": 0,
+        "errorCount": 0,
+        "errors": [],
+        "recentErrors": [],
+        "lastCompileFinishedAt": null,
+        "editorCanEnterPlayMode": true,
+        "isPlaying": false,
+        "isPlayingOrWillChangePlaymode": false
+      }
+    },
+    "blockerType": null,
+    "playModeAttempted": false,
+    "runtimeAssemblyFreshness": {
+      "status": "Fresh",
+      "reason": "Compile gate passed immediately before Play Mode validation.",
+      "compileCheckedBeforePlayMode": true,
+      "lastCompileStatus": "Passed",
+      "recommendation": "Proceed to Play Mode validation."
+    },
+    "failureReason": null,
+    "nextAction": "Compile gate passed. Runtime validation may enter Play Mode."
+  },
+  "compileGateSafety": {
+    "status": "Passed",
+    "evidencePath": "validation/evidence/EVID-ainvil-compile-gate-blocks-playmode-latest.json",
+    "playModeBlockedOnCompileError": true,
+    "compileGateStatusWithError": "Failed",
+    "compileGateStatusAfterCleanup": "Passed",
+    "publicReleaseReady": false
   },
   "gates": [
     {
@@ -92,6 +409,20 @@
       "nextAction": null
     },
     {
+      "gateId": "GATE-UNITY-COMPILE-GATE-001",
+      "title": "Unity compile gate before Play Mode",
+      "status": "Passed",
+      "evidence": "Passed: compile gate report exists",
+      "nextAction": null
+    },
+    {
+      "gateId": "GATE-UNITY-COMPILE-GATE-SAFETY-001",
+      "title": "Compile gate safety regression",
+      "status": "Passed",
+      "evidence": "Passed: playModeAttempted=false",
+      "nextAction": null
+    },
+    {
       "gateId": "GATE-VALIDATION-001",
       "title": "Operational Play Mode validation",
       "status": "Passed",
@@ -102,7 +433,7 @@
       "gateId": "GATE-TRACE-001",
       "title": "Resume dashboard",
       "status": "Passed",
-      "evidence": "Run manual playability review for the Dungeon Recovery first playable.",
+      "evidence": "Run procedural recovery job E2E validation for seeds 1001, 2026, and 7777.",
       "nextAction": null
     },
     {
@@ -121,20 +452,15 @@
     }
   ],
   "blockers": [],
-  "blockerDetails": [
-    {
-      "blockerId": "BLOCKER-RELEASE-GATE-REVIEW-001",
-      "category": "Production Core review",
-      "evidence": "Changes Requested",
-      "nextAction": "Resolve changes requested in the Production Core readiness review."
-    }
-  ],
+  "blockerDetails": [],
   "warnings": [],
   "evidenceRefs": [
     "reports/onboarding_doctor_report.json",
     "reports/project_dashboard.json",
     "reviews/production_core_readiness_review.json",
-    "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
+    "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json",
+    "reports/unity_compile_gate_report.json",
+    "validation/evidence/EVID-ainvil-compile-gate-blocks-playmode-latest.json"
   ],
   "nextActions": []
 }

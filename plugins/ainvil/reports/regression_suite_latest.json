@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.0.0",
-  "reportId": "REG-2026-07-04T14-50-04-028Z",
-  "startedAt": "2026-07-04T14:47:56.537Z",
-  "finishedAt": "2026-07-04T14:50:04.028Z",
+  "reportId": "REG-2026-07-06T06-16-54-088Z",
+  "startedAt": "2026-07-06T06:14:16.252Z",
+  "finishedAt": "2026-07-06T06:16:54.088Z",
   "mode": "offline-plus-live",
   "status": "Passed",
   "summary": {
-    "total": 15,
-    "passed": 15,
+    "total": 21,
+    "passed": 21,
     "failed": 0,
     "blocked": 0,
     "optionalBlocked": 0
@@ -19,14 +19,16 @@
     "evidenceFileUsed": "validation/evidence/EVID-ainvil-bridge-smoke-operational-fresh-workspace-latest.json",
     "staleEvidenceReused": false
   },
+  "revalidationStatus": "Current",
+  "blockerType": null,
   "liveSmoke": {
     "requested": false,
     "required": false,
     "status": "NotRun"
   },
   "productMvp": {
-    "requested": true,
-    "status": "Passed",
+    "requested": false,
+    "status": "NotRun",
     "evidenceFileUsed": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json",
     "playability": {
       "requested": false,
@@ -39,15 +41,64 @@
       "reportPath": "reports/dungeon_recovery_first_playable_build_verification.json"
     }
   },
+  "procedural": {
+    "requested": true,
+    "status": "Passed",
+    "evidenceFileUsed": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest.json",
+    "build": {
+      "requested": true,
+      "status": "Passed",
+      "reportPath": "reports/dungeon_recovery_procedural_recovery_job_build_verification.json"
+    }
+  },
+  "visualValidation": {
+    "requested": true,
+    "status": "Passed",
+    "evidenceFileUsed": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest.json",
+    "reportPath": "reports/dungeon_recovery_procedural_visual_review.json",
+    "screenshotDirectory": "reports/visual_review/screenshots",
+    "humanReviewRequired": true
+  },
+  "compileGate": {
+    "requested": true,
+    "status": "Passed",
+    "blockerType": null,
+    "canEnterPlayMode": true,
+    "compileErrorCount": 0,
+    "reportPath": "reports/unity_compile_gate_report.json"
+  },
+  "compileGateSafety": {
+    "requested": false,
+    "status": "NotRun",
+    "evidenceFileUsed": "validation/evidence/EVID-ainvil-compile-gate-blocks-playmode-latest.json",
+    "reportPath": "reports/ainvil_compile_gate_safety_regression_report.json"
+  },
+  "spaceQuality": {
+    "requested": true,
+    "status": "Passed",
+    "evidenceFileUsed": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest.json",
+    "reportPath": "reports/dungeon_recovery_procedural_space_quality_review.json",
+    "dryRunReport": "reports/dungeon_recovery_procedural_space_quality_dry_run.json"
+  },
   "steps": [
     {
-      "id": "product-mvp-live-harness",
-      "title": "Dungeon Recovery Company Product MVP first playable E2E",
-      "command": "node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_first_playable_e2e",
+      "id": "compile-gate",
+      "title": "Unity compile gate before live/build regression",
+      "command": "node plugins/ainvil/cli/ainvil-cli.mjs compile-check",
       "optional": false,
       "status": "Passed",
       "exitCode": 0,
-      "outputTail": "AInvil live harness (probe)\nUnity: http://127.0.0.1:17777/rpc\nScenarios: 1, passed: 1, warning: 0, failed: 0, blocked: 0\nReport: harness/reports/latest-live-harness-report.json\n- Passed: dungeon_recovery_first_playable_e2e - Dungeon Recovery Company first playable recovery job E2E\n  next: Product MVP first playable evidence is Passed. Keep this as Product MVP Ready Candidate proof, not Public Release proof.",
+      "outputTail": "Compile gate passed.",
+      "nextAction": null
+    },
+    {
+      "id": "unity-edit-mode-before-product-build",
+      "title": "Unity Edit Mode guard before build verification",
+      "command": "unity_exit_play_mode + unity_get_status",
+      "optional": false,
+      "status": "Passed",
+      "exitCode": 0,
+      "outputTail": "Unity is in Edit Mode before build verification.",
       "nextAction": null
     },
     {
@@ -56,8 +107,68 @@
       "command": "node plugins/ainvil/scripts/verify-dungeon-recovery-first-playable-build.mjs",
       "optional": false,
       "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
       "exitCode": 0,
       "outputTail": "Dungeon Recovery build verification: Passed\nOutput: E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable.exe\nReport: reports/dungeon_recovery_first_playable_build_verification.json",
+      "nextAction": null
+    },
+    {
+      "id": "procedural-live-harness",
+      "title": "Dungeon Recovery procedural recovery job E2E",
+      "command": "node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_procedural_recovery_job_e2e",
+      "optional": false,
+      "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
+      "exitCode": 0,
+      "outputTail": "AInvil live harness (probe)\nUnity: http://127.0.0.1:17777/rpc\nScenarios: 1, passed: 1, warning: 0, failed: 0, blocked: 0\nReport: harness/reports/latest-live-harness-report.json\n- Passed: dungeon_recovery_procedural_recovery_job_e2e - Dungeon Recovery Company procedural recovery job E2E\n  next: Procedural recovery job evidence is Passed. Keep Public Release Ready as No.",
+      "nextAction": null
+    },
+    {
+      "id": "unity-edit-mode-before-procedural-build",
+      "title": "Unity Edit Mode guard before build verification",
+      "command": "unity_exit_play_mode + unity_get_status",
+      "optional": false,
+      "status": "Passed",
+      "exitCode": 0,
+      "outputTail": "Unity is in Edit Mode before build verification.",
+      "nextAction": null
+    },
+    {
+      "id": "procedural-build-verification",
+      "title": "Dungeon Recovery procedural Windows development build verification",
+      "command": "node plugins/ainvil/scripts/verify-dungeon-recovery-procedural-recovery-job-build.mjs",
+      "optional": false,
+      "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
+      "exitCode": 0,
+      "outputTail": "Dungeon Recovery procedural build verification: Passed\nOutput: E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/reports/builds/dungeon_recovery_procedural_recovery_job/DungeonRecoveryProceduralRecoveryJob.exe\nReport: reports/dungeon_recovery_procedural_recovery_job_build_verification.json",
+      "nextAction": null
+    },
+    {
+      "id": "procedural-visual-validation",
+      "title": "Dungeon Recovery procedural visual validation gate",
+      "command": "node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_procedural_visual_validation",
+      "optional": false,
+      "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
+      "exitCode": 0,
+      "outputTail": "AInvil live harness (probe)\nUnity: http://127.0.0.1:17777/rpc\nScenarios: 1, passed: 1, warning: 0, failed: 0, blocked: 0\nReport: harness/reports/latest-live-harness-report.json\n- Passed: dungeon_recovery_procedural_visual_validation - Dungeon Recovery Company procedural visual validation\n  next: Visual validation evidence is Passed. Human review is still required and Public Release Ready remains No.",
+      "nextAction": null
+    },
+    {
+      "id": "procedural-space-quality-validation",
+      "title": "Dungeon Recovery procedural space quality validation gate",
+      "command": "node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_procedural_space_quality_validation",
+      "optional": false,
+      "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
+      "exitCode": 0,
+      "outputTail": "AInvil live harness (probe)\nUnity: http://127.0.0.1:17777/rpc\nScenarios: 1, passed: 1, warning: 0, failed: 0, blocked: 0\nReport: harness/reports/latest-live-harness-report.json\n- Passed: dungeon_recovery_procedural_space_quality_validation - Dungeon Recovery Company procedural space quality validation\n  next: Procedural space quality validation passed. Public Release Ready remains No.",
       "nextAction": null
     },
     {
@@ -66,8 +177,10 @@
       "command": "node plugins/ainvil/cli/ainvil-cli.mjs review",
       "optional": false,
       "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
       "exitCode": 0,
-      "outputTail": "Production Core Review Evaluation\n=================================\nReview ID: REVIEW-ProductionCore-Readiness-001\nGate: GATE-REVIEW-001\nPrevious status: Changes Requested\nNew status: Changes Requested\nEvaluation report: reports/production_core_review_evaluation.json\nCriteria report: docs/Production_Core_Review_Criteria.md\nResolved changes:\n  - PCORE-APPROVAL-GRAPH: Production graph is classified as Operational.\n  - PCORE-APPROVAL-CONTAMINATION: No blocked ExampleGraph contamination remains in operational release gates.\n  - PCORE-APPROVAL-CONSOLE: Operational evidence reports zero Unity console errors.\n  - PCORE-APPROVAL-EVIDENCE: Latest smoke evidence is non-sample Operational Passed evidence.\n  - PCORE-APPROVAL-HARNESS: Latest live harness report has a Passed Operational scenario; fixed smoke evidence remains available for the core gate.\nRemaining changes:\n  - PCORE-APPROVAL-BRIDGE: Unity Bridge health is not passed in both doctor and operational evidence. -> Open Unity, start the canonical Unity Bridge server, rerun doctor, then rerun the operational smoke harness.\n  - PCORE-APPROVAL-COMPILE: Unity compile status is not passed in both doctor and operational evidence. -> Resolve Unity compile errors and rerun doctor plus the operational smoke harness.\n  - PCORE-APPROVAL-PRODUCTIZATION: Productization still reports core blockers other than the review gate. -> Resolve non-review productization blockers and regenerate the productization report.\n  - PCORE-APPROVAL-RELEASE: Release readiness still has non-review blockers. -> Resolve non-review release blockers and regenerate release readiness.",
+      "outputTail": "Production Core Review Evaluation\n=================================\nReview ID: REVIEW-ProductionCore-Readiness-001\nGate: GATE-REVIEW-001\nPrevious status: Revalidation Required\nNew status: Revalidation Required\nEvaluation report: reports/production_core_review_evaluation.json\nCriteria report: docs/Production_Core_Review_Criteria.md\nResolved changes:\n  - PCORE-APPROVAL-GRAPH: Production graph is classified as Operational.\n  - PCORE-APPROVAL-CONTAMINATION: No blocked ExampleGraph contamination remains in operational release gates.\n  - PCORE-APPROVAL-BRIDGE: Unity Bridge health is passed in doctor and operational evidence.\n  - PCORE-APPROVAL-COMPILE: Unity compile status is passed in doctor and operational evidence.\n  - PCORE-APPROVAL-CONSOLE: Operational evidence reports zero Unity console errors.\n  - PCORE-APPROVAL-EVIDENCE: Latest smoke evidence is non-sample Operational Passed evidence.\n  - PCORE-APPROVAL-HARNESS: Latest live harness report has a Passed Operational scenario; fixed smoke evidence remains available for the core gate.\nRemaining changes:\n  - PCORE-APPROVAL-PRODUCTIZATION: Productization has only environment revalidation blockers, not product requested changes. -> Resolve non-review productization blockers and regenerate the productization report.\n  - PCORE-APPROVAL-RELEASE: Release readiness has only environment revalidation blockers, not product requested changes. -> Resolve non-review release blockers and regenerate release readiness.",
       "nextAction": null
     },
     {
@@ -76,8 +189,10 @@
       "command": "node plugins/ainvil/cli/ainvil-cli.mjs productization",
       "optional": false,
       "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
       "exitCode": 0,
-      "outputTail": "AInvil Productization Status\n============================\nJSON report: reports/productization_status_report.json\nMarkdown report: reports/productization_status_report.md\nDecision: Not Release Ready\nGraph classification: Operational\nCore Release Ready: No\nCore RC Reproducibility Verified: Yes\nCanonical Unity Bridge Package Verified: Yes\nProduct MVP Workflow: Passed\nHuman Playability Review: Needs Improvement\nBuild Verification: Passed\nProduct MVP Ready Candidate: Yes\nPublic Release Ready: No\nFeature status counts:\n  - Verified: 1\n  - Spec-only: 2\n  - Partial: 12\n  - Blocked: 2\n  - Deprecated/Sample: 2\nE2E status counts:\n  - Spec-only: 1\n  - Partial: 4\n  - Blocked: 2\n  - Verified: 3\nRelease blockers:\n  - BLOCKER-DOCTOR-unity.bridge.health: unity.bridge.health -> Open Unity, import the bridge package, start the server, then rerun doctor.\n  - BLOCKER-DOCTOR-unity.status: unity.status -> Open Unity, import the AInvil Unity package, start Tools > Codex Unity Bridge > Start Server, then rerun ainvil doctor.\n  - BLOCKER-DOCTOR-unity.compile: unity.compile -> Restore Unity Bridge connectivity before claiming Compile Verified validation.\n  - BLOCKER-RELEASE-GATE-ENV-001: Onboarding environment -> Run `ainvil doctor` and resolve failed or blocked checks.\n  - BLOCKER-RELEASE-GATE-UNITY-BRIDGE-001: Unity Bridge health -> Open Unity, import the canonical bridge package, start Tools > Codex Unity Bridge > Start Server, then rerun doctor.\n  - BLOCKER-RELEASE-GATE-UNITY-COMPILE-001: Unity compile check -> Restore Unity Bridge connectivity and resolve compile errors before claiming Compile Verified.\n  - BLOCKER-RELEASE-GATE-REVIEW-001: Production Core review -> Resolve changes requested in the Production Core readiness review.\nNext commands:\n  - node plugins/ainvil/cli/ainvil-cli.mjs productization\n  - node plugins/ainvil/cli/ainvil-cli.mjs doctor\n  - node plugins/ainvil/cli/ainvil-cli.mjs release\n  - node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario <project-scenario-id>\n  - node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_first_playable_e2e",
+      "outputTail": "AInvil Productization Status\n============================\nJSON report: reports/productization_status_report.json\nMarkdown report: reports/productization_status_report.md\nDecision: Not Release Ready - Revalidation Blocked\nGraph classification: Operational\nCore Release Ready: No\nCore RC Reproducibility Verified: Yes\nCanonical Unity Bridge Package Verified: Yes\nProduct MVP Workflow: Passed\nHuman Playability Review: Passed\nBuild Verification: Passed\nProduct MVP Ready Candidate: Yes\nHuman Playable First Build Candidate: Yes\nProduct MVP First Playable Verified: Yes\nFirst Gameplay Loop: Verified\nProcedural Recovery Job: Passed\nProcedural Generation Verified: Yes\nVisual Validation: Passed\nProcedural Space Quality: Passed\nCompile Gate: Passed\nCompile Gate Safety: Passed\nPlay Mode Blocked On Compile Error: Yes\nScreenshot Evidence Available: Yes\nMissing Shader Suspected: No\nCamera Framing Check: Passed\nPublic Release Ready: No\nFeature status counts:\n  - Verified: 1\n  - Spec-only: 2\n  - Partial: 14\n  - Deprecated/Sample: 2\nE2E status counts:\n  - Spec-only: 1\n  - Partial: 5\n  - Verified: 4\nRelease blockers:\n  - BLOCKER-RELEASE-GATE-UNITY-COMPILE-GATE-001: Unity compile gate before Play Mode -> Restart Unity Bridge and rerun compile-check before live validation.\nNext commands:\n  - node plugins/ainvil/cli/ainvil-cli.mjs productization\n  - node plugins/ainvil/cli/ainvil-cli.mjs doctor\n  - node plugins/ainvil/cli/ainvil-cli.mjs release\n  - node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario <project-scenario-id>\n  - node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_first_playable_e2e\n  - node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_procedural_visual_validation\n  - node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_procedural_space_quality_validation",
       "nextAction": null
     },
     {
@@ -86,8 +201,10 @@
       "command": "node plugins/ainvil/cli/ainvil-cli.mjs release",
       "optional": false,
       "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
       "exitCode": 0,
-      "outputTail": "Release Readiness\n=================\nReport: reports/release_readiness_report.json\nDecision: Not Release Ready\nConfidence: High\nCore Release Ready: No\nProduct MVP Workflow: Passed\nHuman Playability Review: Needs Improvement\nBuild Verification: Passed\nProduct MVP Ready Candidate: Yes\nPublic Release Ready: No\nGates:\n  - Blocked: GATE-ENV-001 - Onboarding environment (Environment Blocked)\n  - Passed: GATE-DOC-001 - Korean product/technical documents (Korean docs index check)\n  - Passed: GATE-SOT-001 - Operational source of truth (Graph classification: Operational)\n  - Blocked: GATE-UNITY-BRIDGE-001 - Unity Bridge health (Unity Bridge health is not reachable: fetch failed)\n  - Blocked: GATE-UNITY-COMPILE-001 - Unity compile check (Compile status was not checked because Unity Bridge is not reachable.)\n  - Passed: GATE-VALIDATION-001 - Operational Play Mode validation (Passed (Compile Verified))\n  - Passed: GATE-TRACE-001 - Resume dashboard (Run manual playability review for the Dungeon Recovery first playable.)\n  - Blocked: GATE-REVIEW-001 - Production Core review (Changes Requested)\n  - Passed: GATE-CONTAMINATION-001 - Example fixture contamination (0 operational graph contamination blocker(s))\nNext actions:\n  - GATE-ENV-001: Run `ainvil doctor` and resolve failed or blocked checks.\n  - GATE-UNITY-BRIDGE-001: Open Unity, import the canonical bridge package, start Tools > Codex Unity Bridge > Start Server, then rerun doctor.\n  - GATE-UNITY-COMPILE-001: Restore Unity Bridge connectivity and resolve compile errors before claiming Compile Verified.\n  - GATE-REVIEW-001: Resolve changes requested in the Production Core readiness review.",
+      "outputTail": "Release Readiness\n=================\nReport: reports/release_readiness_report.json\nDecision: Release Candidate With Warnings\nConfidence: Medium\nCore Release Ready: No\nProduct MVP Workflow: Passed\nHuman Playability Review: Passed\nBuild Verification: Passed\nProduct MVP Ready Candidate: Yes\nHuman Playable First Build Candidate: Yes\nProduct MVP First Playable Verified: Yes\nFirst Gameplay Loop: Verified\nProcedural Recovery Job: Passed\nProcedural Generation Verified: Yes\nVisual Validation: Passed\nProcedural Space Quality: Passed\nCompile Gate: Passed\nCompile Gate Safety: Passed\nPlay Mode Blocked On Compile Error: Yes\nScreenshot Evidence Available: Yes\nMissing Shader Suspected: No\nCamera Framing Check: Passed\nPublic Release Ready: No\nGates:\n  - Passed: GATE-ENV-001 - Onboarding environment (Ready For Next Gate)\n  - Passed: GATE-DOC-001 - Korean product/technical documents (Korean docs index check)\n  - Passed: GATE-SOT-001 - Operational source of truth (Graph classification: Operational)\n  - Passed: GATE-UNITY-BRIDGE-001 - Unity Bridge health (Unity Bridge health endpoint is reachable.)\n  - Passed: GATE-UNITY-COMPILE-001 - Unity compile check (unity_compile_status succeeded.)\n  - Passed: GATE-UNITY-COMPILE-GATE-001 - Unity compile gate before Play Mode (Passed: compile gate report exists)\n  - Passed: GATE-UNITY-COMPILE-GATE-SAFETY-001 - Compile gate safety regression (Passed: playModeAttempted=false)\n  - Passed: GATE-VALIDATION-001 - Operational Play Mode validation (Passed (Compile Verified))\n  - Passed: GATE-TRACE-001 - Resume dashboard (Run procedural recovery job E2E validation for seeds 1001, 2026, and 7777.)\n  - Warning: GATE-REVIEW-001 - Production Core review (Revalidation Required)\n  - Passed: GATE-CONTAMINATION-001 - Example fixture contamination (0 operational graph contamination blocker(s))\nNext actions:\n  - None",
       "nextAction": null
     },
     {
@@ -96,8 +213,10 @@
       "command": "node plugins/ainvil/cli/ainvil-cli.mjs productization",
       "optional": false,
       "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
       "exitCode": 0,
-      "outputTail": "AInvil Productization Status\n============================\nJSON report: reports/productization_status_report.json\nMarkdown report: reports/productization_status_report.md\nDecision: Not Release Ready\nGraph classification: Operational\nCore Release Ready: No\nCore RC Reproducibility Verified: Yes\nCanonical Unity Bridge Package Verified: Yes\nProduct MVP Workflow: Passed\nHuman Playability Review: Needs Improvement\nBuild Verification: Passed\nProduct MVP Ready Candidate: Yes\nPublic Release Ready: No\nFeature status counts:\n  - Verified: 1\n  - Spec-only: 2\n  - Partial: 12\n  - Blocked: 2\n  - Deprecated/Sample: 2\nE2E status counts:\n  - Spec-only: 1\n  - Partial: 4\n  - Blocked: 2\n  - Verified: 3\nRelease blockers:\n  - BLOCKER-DOCTOR-unity.bridge.health: unity.bridge.health -> Open Unity, import the bridge package, start the server, then rerun doctor.\n  - BLOCKER-DOCTOR-unity.status: unity.status -> Open Unity, import the AInvil Unity package, start Tools > Codex Unity Bridge > Start Server, then rerun ainvil doctor.\n  - BLOCKER-DOCTOR-unity.compile: unity.compile -> Restore Unity Bridge connectivity before claiming Compile Verified validation.\n  - BLOCKER-RELEASE-GATE-ENV-001: Onboarding environment -> Run `ainvil doctor` and resolve failed or blocked checks.\n  - BLOCKER-RELEASE-GATE-UNITY-BRIDGE-001: Unity Bridge health -> Open Unity, import the canonical bridge package, start Tools > Codex Unity Bridge > Start Server, then rerun doctor.\n  - BLOCKER-RELEASE-GATE-UNITY-COMPILE-001: Unity compile check -> Restore Unity Bridge connectivity and resolve compile errors before claiming Compile Verified.\n  - BLOCKER-RELEASE-GATE-REVIEW-001: Production Core review -> Resolve changes requested in the Production Core readiness review.\nNext commands:\n  - node plugins/ainvil/cli/ainvil-cli.mjs productization\n  - node plugins/ainvil/cli/ainvil-cli.mjs doctor\n  - node plugins/ainvil/cli/ainvil-cli.mjs release\n  - node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario <project-scenario-id>\n  - node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_first_playable_e2e",
+      "outputTail": "AInvil Productization Status\n============================\nJSON report: reports/productization_status_report.json\nMarkdown report: reports/productization_status_report.md\nDecision: Release Candidate\nGraph classification: Operational\nCore Release Ready: No\nCore RC Reproducibility Verified: Yes\nCanonical Unity Bridge Package Verified: Yes\nProduct MVP Workflow: Passed\nHuman Playability Review: Passed\nBuild Verification: Passed\nProduct MVP Ready Candidate: Yes\nHuman Playable First Build Candidate: Yes\nProduct MVP First Playable Verified: Yes\nFirst Gameplay Loop: Verified\nProcedural Recovery Job: Passed\nProcedural Generation Verified: Yes\nVisual Validation: Passed\nProcedural Space Quality: Passed\nCompile Gate: Passed\nCompile Gate Safety: Passed\nPlay Mode Blocked On Compile Error: Yes\nScreenshot Evidence Available: Yes\nMissing Shader Suspected: No\nCamera Framing Check: Passed\nPublic Release Ready: No\nFeature status counts:\n  - Verified: 1\n  - Spec-only: 2\n  - Partial: 14\n  - Deprecated/Sample: 2\nE2E status counts:\n  - Spec-only: 1\n  - Partial: 5\n  - Verified: 4\nRelease blockers:\n  - None\nNext commands:\n  - node plugins/ainvil/cli/ainvil-cli.mjs productization\n  - node plugins/ainvil/cli/ainvil-cli.mjs doctor\n  - node plugins/ainvil/cli/ainvil-cli.mjs release\n  - node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario <project-scenario-id>\n  - node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_first_playable_e2e\n  - node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_procedural_visual_validation\n  - node plugins/ainvil/scripts/run-ainvil-live-harness.mjs --mode probe --scenario dungeon_recovery_procedural_space_quality_validation",
       "nextAction": null
     },
     {
@@ -106,6 +225,8 @@
       "command": "node plugins/ainvil/scripts/generate-project-dashboard.mjs",
       "optional": false,
       "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
       "exitCode": 0,
       "outputTail": "Project dashboard generated: reports/project_dashboard.json",
       "nextAction": null
@@ -116,6 +237,8 @@
       "command": "node plugins/ainvil/scripts/generate-rc-baseline.mjs",
       "optional": false,
       "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
       "exitCode": 0,
       "outputTail": "RC baseline manifest generated: reports/rc_baseline_manifest.json\nRC baseline markdown generated: reports/rc_baseline_manifest.md\nEnvironment audit generated: reports/environment_dependency_audit.json",
       "nextAction": null
@@ -126,6 +249,8 @@
       "command": "node plugins/ainvil/scripts/validate-review-records.mjs",
       "optional": false,
       "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
       "exitCode": 0,
       "outputTail": "Review record validation passed (2 file(s)).",
       "nextAction": null
@@ -136,6 +261,8 @@
       "command": "node plugins/ainvil/scripts/validate-release-readiness-report.mjs",
       "optional": false,
       "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
       "exitCode": 0,
       "outputTail": "Release readiness validation passed: reports/release_readiness_report.json.",
       "nextAction": null
@@ -146,6 +273,8 @@
       "command": "node plugins/ainvil/scripts/validate-project-dashboard.mjs",
       "optional": false,
       "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
       "exitCode": 0,
       "outputTail": "Project dashboard validation passed: reports/project_dashboard.json.",
       "nextAction": null
@@ -156,8 +285,10 @@
       "command": "node plugins/ainvil/scripts/validate-validation-evidence.mjs",
       "optional": false,
       "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
       "exitCode": 0,
-      "outputTail": "Validation evidence validation passed (6 file(s)).",
+      "outputTail": "Validation evidence validation passed (19 file(s)).",
       "nextAction": null
     },
     {
@@ -166,6 +297,8 @@
       "command": "node plugins/ainvil/scripts/validate-ainvil-harness.mjs",
       "optional": false,
       "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
       "exitCode": 0,
       "outputTail": "AInvil harness validation passed.",
       "nextAction": null
@@ -176,6 +309,8 @@
       "command": "node plugins/ainvil/scripts/validate-validation-design.mjs",
       "optional": false,
       "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
       "exitCode": 0,
       "outputTail": "Validation design validation passed (2 file(s)).",
       "nextAction": null
@@ -186,6 +321,8 @@
       "command": "node plugins/ainvil/scripts/validate-ainvil-cli.mjs --offline",
       "optional": false,
       "status": "Passed",
+      "blockerType": null,
+      "revalidationStatus": "Current",
       "exitCode": 0,
       "outputTail": "AInvil CLI smoke validation passed (19 command(s), offline=true).",
       "nextAction": null

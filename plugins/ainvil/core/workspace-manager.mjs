@@ -1,3 +1,4 @@
+import { spawn } from "node:child_process";
 import { access, mkdir, readdir, readFile, stat, writeFile } from "node:fs/promises";
 import { constants } from "node:fs";
 import path from "node:path";
@@ -95,6 +96,7 @@ export async function runOnboardingDoctor(options = {}) {
   checks.push(await unityProjectCheck(manifest.unityProjectPath));
   checks.push(...(await unityFolderChecks(manifest.unityProjectPath)));
   checks.push(await unityBridgeDependencyCheck(manifest.unityProjectPath, manifest.unityBridgePackagePath));
+  checks.push(await localCSharpCompileCheck(manifest.unityProjectPath, options.localCompileTimeoutMs || 60000));
 
   const summary = summarizeChecks(checks);
   const report = {
@@ -293,10 +295,109 @@ async function unityRpcCheck(unityRpcUrl, method, params, id, timeoutMs = 4000) 
     if (!response.ok || payload.error) {
       return failedCheck(id, payload.error || `Unity RPC ${method} returned HTTP ${response.status}.`, "Open the Unity console, resolve bridge/compile errors, and rerun doctor.");
     }
-    return { ...passedCheck(id, `${method} succeeded.`), data: payload.result ?? payload };
+    const data = payload.result ?? payload;
+    if (method === "unity_compile_status" && compileStatusHasErrors(data)) {
+      return failedCheck(
+        id,
+        `Compile Check: Failed. Unity reports ${data.compileErrorCount ?? data.errorCount ?? 0} compile error(s). Play Mode Validation: Blocked. Do not run runtime validation until compile errors are fixed.`,
+        "Fix Unity compile errors, wait for compilation to finish, then rerun doctor and compile-check."
+      );
+    }
+    return { ...passedCheck(id, `${method} succeeded.`), data };
   } catch (error) {
     return failedCheck(id, `${method} failed: ${error.message}`, "Check Unity Bridge logs and rerun doctor.");
   }
+}
+
+function compileStatusHasErrors(data) {
+  if (!data) return false;
+  if (data.hasCompileErrors === true || data.hasErrors === true) return true;
+  if (typeof data.compileErrorCount === "number") return data.compileErrorCount > 0;
+  if (typeof data.errorCount === "number") return data.errorCount > 0;
+  if (Array.isArray(data.errors)) return data.errors.length > 0;
+  if (Array.isArray(data.recentErrors)) return data.recentErrors.length > 0;
+  return false;
+}
+
+async function localCSharpCompileCheck(unityProjectPath, timeoutMs) {
+  if (!unityProjectPath) {
+    return warningCheck(
+      "unity.compile.localCSharpBuild",
+      "Local C# compile check was skipped because Unity project path is not configured.",
+      "Run doctor with --unity-project <UnityProjectPath>."
+    );
+  }
+  const csprojPath = path.join(unityProjectPath, "Assembly-CSharp.csproj");
+  if (!(await exists(csprojPath))) {
+    return warningCheck(
+      "unity.compile.localCSharpBuild",
+      `Assembly-CSharp.csproj was not found: ${csprojPath}`,
+      "Open the project in Unity so generated C# project files are available, then rerun doctor."
+    );
+  }
+  return new Promise((resolve) => {
+    const child = spawn("dotnet", ["build", csprojPath, "--no-restore", "--nologo", "-v:minimal", "/p:UseSharedCompilation=false"], {
+      cwd: unityProjectPath,
+      windowsHide: true
+    });
+    let output = "";
+    let timedOut = false;
+    const timer = setTimeout(() => {
+      timedOut = true;
+      child.kill();
+    }, timeoutMs);
+    child.stdout.on("data", (chunk) => {
+      output += chunk.toString();
+    });
+    child.stderr.on("data", (chunk) => {
+      output += chunk.toString();
+    });
+    child.on("error", (error) => {
+      clearTimeout(timer);
+      resolve(warningCheck(
+        "unity.compile.localCSharpBuild",
+        `Local C# compile check could not start: ${error.message}`,
+        "Install the .NET SDK or rely on Unity compile-check output, then rerun doctor."
+      ));
+    });
+    child.on("close", (code) => {
+      clearTimeout(timer);
+      const errors = parseCompilerMessages(output);
+      if (timedOut || code !== 0 || errors.length > 0) {
+        resolve({
+          ...failedCheck(
+            "unity.compile.localCSharpBuild",
+            timedOut
+              ? `Local C# compile check timed out after ${timeoutMs}ms.`
+              : `Local C# compile check failed with ${errors.length} compiler error(s). Play Mode Validation: Blocked.`,
+            "Fix C# compiler errors, wait for Unity compilation to finish, then rerun doctor and compile-check."
+          ),
+          target: csprojPath,
+          errors,
+          outputTail: output.slice(-4000)
+        });
+      } else {
+        resolve({
+          ...passedCheck("unity.compile.localCSharpBuild", "Local C# compile check passed."),
+          target: csprojPath
+        });
+      }
+    });
+  });
+}
+
+function parseCompilerMessages(output) {
+  return String(output)
+    .split(/\r?\n/)
+    .map((line) => line.trim().match(/^(?<file>.+?)\((?<line>\d+),(?<column>\d+)\):\s*error\s+(?<code>CS\d+):\s*(?<message>.+)$/)?.groups)
+    .filter(Boolean)
+    .map((error) => ({
+      file: error.file.replaceAll("\\", "/"),
+      line: Number(error.line),
+      column: Number(error.column),
+      code: error.code,
+      message: error.message
+    }));
 }
 
 async function fetchWithTimeout(url, options, timeoutMs) {

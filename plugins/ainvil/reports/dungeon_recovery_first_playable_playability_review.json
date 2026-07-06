@@ -1,10 +1,15 @@
 {
   "schemaVersion": "1.0.0",
-  "reportId": "DRC-PLAYABILITY-2026-07-04T14-47-46-151Z",
-  "generatedAt": "2026-07-04T14:47:46.151Z",
+  "reportId": "DRC-PLAYABILITY-2026-07-04T19-50-37-227Z",
+  "generatedAt": "2026-07-04T19:50:37.227Z",
   "product": "DungeonRecoveryCompany",
   "scenarioId": "dungeon_recovery_first_playable_e2e",
-  "playabilityReviewStatus": "Needs Improvement",
+  "playabilityReviewStatus": "Passed",
+  "previousStatus": "Needs Improvement",
+  "newStatus": "Passed",
+  "reviewMethod": "Manual Retest",
+  "retestResult": "Passed",
+  "publicReleaseReady": false,
   "relatedE2eEvidence": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json",
   "automatedE2eStatus": "Passed",
   "automatedValidationLevel": "Play Mode Verified",
@@ -12,8 +17,8 @@
   "consoleErrorCount": 0,
   "manualFeedback": {
     "received": true,
-    "source": "User request on 2026-07-04",
-    "summary": "Manual playability review found major camera/framing and visibility issues. Progress UI and Job Complete were understandable, and no runtime instability was reported, but the build is not acceptable as a first playable yet.",
+    "source": "User manual retest on 2026-07-05",
+    "summary": "Manual retest confirmed the previous camera, visibility, and magenta presentation issues are resolved enough for a first playable. The player can understand the objective, move, recover three targets, read progress, and recognize Job Complete without visible runtime instability.",
     "checklistItemsProvided": 12,
     "expectedChecklistItems": 12
   },
@@ -33,88 +38,100 @@
     {
       "id": "objectiveClarity",
       "question": "Player can understand what to do.",
-      "status": "Needs Improvement",
-      "finding": "Controls are visible as text, but the user expects a more game-like tutorial/navigation pattern."
+      "status": "Passed",
+      "finding": "Manual retest confirmed the objective and controls are understandable after the UX fixes."
     },
     {
       "id": "movementFeel",
       "question": "Movement can be judged.",
-      "status": "Needs Improvement",
-      "finding": "User could not judge movement feel because the player was not visible."
+      "status": "Passed",
+      "finding": "Manual retest confirmed the player is visible and movement is acceptable for a first playable."
     },
     {
       "id": "camera",
       "question": "Camera framing supports play.",
-      "status": "Needs Improvement",
-      "finding": "User reported the camera did not show the player or goals clearly."
+      "status": "Passed",
+      "finding": "Manual retest confirmed the camera now frames the player and recovery targets."
     },
     {
       "id": "targetVisibility",
       "question": "Three recovery targets are identifiable.",
-      "status": "Needs Improvement",
-      "finding": "User reported targets could not be evaluated because they were not visible in the camera view."
+      "status": "Passed",
+      "finding": "Manual retest confirmed all three targets are visible and distinguishable."
     },
     {
       "id": "interactableFeedback",
       "question": "Recoverable state is visually clear.",
-      "status": "Needs Improvement",
-      "finding": "Press E text exists, but the user could not evaluate it due to camera/visibility issues."
+      "status": "Passed",
+      "finding": "Manual retest confirmed the nearby interaction state and Press E prompt are understandable."
     },
     {
       "id": "recoverResponse",
       "question": "E-key recovery response is satisfying.",
-      "status": "Needs Improvement",
-      "finding": "User said only text changes, so the response feels ambiguous."
+      "status": "Passed",
+      "finding": "Manual retest confirmed E-key recovery response is sufficient for this first playable."
     },
     {
       "id": "progressUi",
       "question": "Progress UI is readable.",
       "status": "Passed",
-      "finding": "User said the UI can be understood, while noting it is not recommended as a normal game presentation."
+      "finding": "Manual retest confirmed recovery progress is understandable."
     },
     {
       "id": "completion",
       "question": "Job Complete is clear.",
       "status": "Passed",
-      "finding": "User said Job Complete is understandable."
+      "finding": "Manual retest confirmed the completion state is recognizable."
+    },
+    {
+      "id": "labelColorDistance",
+      "question": "Labels, colors, and distance cues are readable.",
+      "status": "Passed",
+      "finding": "Manual retest confirmed the previous invisible/magenta presentation problem is resolved for first-playable purposes."
     },
     {
       "id": "stability",
       "question": "No errors, freezes, or abnormal behavior.",
       "status": "Passed",
-      "finding": "User reported no such symptoms."
+      "finding": "User reported no runtime errors, freezes, or abnormal behavior."
     },
     {
       "id": "firstPlayableAcceptance",
       "question": "Overall acceptable as a first playable.",
-      "status": "Needs Improvement",
-      "finding": "User said it is not acceptable because nothing meaningful was visible and it feels like a WASD/interaction test."
+      "status": "Passed",
+      "finding": "Manual retest confirmed this is acceptable as a first playable: not a finished game, but the core loop can be understood and played."
+    },
+    {
+      "id": "futureImprovement",
+      "question": "Remaining improvements are future scope.",
+      "status": "Passed",
+      "finding": "Art, sound, recovery presentation, tutorial flow, rewards, and the next-job/company loop remain future improvements, not blockers for this first playable."
     }
   ],
   "manualAcceptanceCriteria": [
     {
       "id": "MAC-DRC-001",
       "summary": "Within 3 seconds of starting play, the player understands the objective and controls.",
-      "status": "Needs Improvement",
-      "note": "UI text exists, but the user noted this does not feel like a normal tutorial/navigation experience."
+      "status": "Passed",
+      "note": "Manual retest confirmed the objective banner and controls text are clear enough for the first playable."
     },
     {
       "id": "MAC-DRC-002",
       "summary": "All three recovery targets are visually distinguishable on screen.",
-      "status": "Needs Improvement",
-      "note": "User could not evaluate target visibility because the camera/framing made gameplay objects unreadable."
+      "status": "Passed",
+      "note": "Manual retest confirmed all three recovery targets are visible and distinguishable with labels/markers."
     },
     {
       "id": "MAC-DRC-003",
       "summary": "The target that can be recovered near the player is visually distinguished.",
-      "status": "Needs Improvement",
-      "note": "User said interaction feedback is hard to evaluate because of the camera problem."
+      "status": "Passed",
+      "note": "Manual retest confirmed the nearby interaction state and Press E prompt are understandable."
     },
     {
       "id": "MAC-DRC-004",
       "summary": "Recovering all targets clearly transitions the job to complete.",
       "status": "Passed",
-      "note": "User understood the progress UI and Job Complete text, while noting the presentation is not ideal for a normal game."
+      "note": "Manual retest confirmed progress UI and Job Complete are understandable."
     },
     {
       "id": "MAC-DRC-005",
@@ -123,11 +140,17 @@
       "note": "User reported no visible errors, freezes, or abnormal behavior. Automated console verification is tracked separately."
     }
   ],
-  "remainingPlayabilityIssues": [
-    "Retest required after camera, material, player marker, target marker, and objective banner fixes.",
-    "The current experience still relies on prototype UI/text and does not yet provide a full game-like tutorial flow.",
-    "E-key recovery feedback is still minimal and should eventually receive animation/audio/VFX beyond this generated primitive slice.",
-    "User requested broader design improvement; this pass only applies minimal generated-folder UX fixes."
+  "remainingLimitations": [
+    "This is not a finished game.",
+    "Art, sound, and recovery presentation remain placeholder-level.",
+    "Tutorial flow is still simple instructional UI rather than a full game-like onboarding sequence.",
+    "Next-job, reward, and company management loops are not implemented yet."
   ],
-  "nextAction": "Rerun the generated build and confirm whether camera framing, material colors, player visibility, and target visibility are now acceptable."
+  "remainingPlayabilityIssues": [
+    "This is not a finished game.",
+    "Art, sound, and recovery presentation remain placeholder-level.",
+    "Tutorial flow is still simple instructional UI rather than a full game-like onboarding sequence.",
+    "Next-job, reward, and company management loops are not implemented yet."
+  ],
+  "nextAction": "Treat this build as a Human Playable First Build Candidate and continue with art, sound, tutorial, reward, and next-job loop work before any public release claim."
 }

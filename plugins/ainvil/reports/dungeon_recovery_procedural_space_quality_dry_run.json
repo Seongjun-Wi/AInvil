@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "DRC-SPACE-QUALITY-DRY-RUN",
+  "generatedAt": "2026-07-05T00:00:00.000Z",
+  "scope": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/",
+  "unityProjectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany",
+  "publicReleaseReady": false,
+  "plannedChanges": {
+    "generatorParameters": {
+      "gridWidth": 42,
+      "gridHeight": 34,
+      "roomWidthRange": "7-11",
+      "roomDepthRange": "7-11",
+      "desiredRoomCountRange": "4-5",
+      "corridorWidth": 3,
+      "wallHeight": 3.2,
+      "playerHeight": 1.8,
+      "cameraHeight": 1.62
+    },
+    "roomSizeChange": "Increase minimum room dimensions from compact 3-5 cell rooms to 7-11 cell rooms so first-person movement has lateral exploration space.",
+    "corridorWidthChange": "Carve corridors with a 3x3 brush around the path centerline, reducing narrow one-cell passage pressure.",
+    "wallHeightChange": "Raise generated walls to 3.2 world units, above player and camera height, to strengthen dungeon enclosure.",
+    "propPlacementAlgorithm": "Place primitive crate, shelf, barrel, broken pillar, debris pile, and storage rack props inside room interior cells. Exclude player start, target cells, target-adjacent cells, and corridor cells.",
+    "propValidation": "Record prop count, prop types, duplicate prop cells, doorway/corridor blocking, target-adjacent blocking, and post-prop target reachability.",
+    "targetClearanceValidation": "Require target min distance >= 7, targetInteractionClearancePassed=true, targetReachabilityPassed=true, and reachableTargetCount=3 for seeds 1001, 2026, and 7777."
+  },
+  "expectedRisks": [
+    "Large room placement can fail on small grids; fallback rooms remain defined at expanded sizes.",
+    "Props may visually obstruct targets too strongly; validation avoids blocking target-adjacent cells but human review remains separate.",
+    "Scene rebuild through Unity Bridge may require domain reload recovery if Unity recompiles scripts."
+  ],
+  "rollbackScope": [
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs",
+    "plugins/ainvil/harness/scenarios/dungeon_recovery_procedural_space_quality_validation.json",
+    "plugins/ainvil/scripts/run-ainvil-live-harness.mjs",
+    "plugins/ainvil/scripts/run-ainvil-regression-suite.mjs",
+    "plugins/ainvil/core/productization-status.mjs",
+    "plugins/ainvil/core/rc-baseline.mjs",
+    "plugins/ainvil/core/release-readiness.mjs"
+  ]
+}

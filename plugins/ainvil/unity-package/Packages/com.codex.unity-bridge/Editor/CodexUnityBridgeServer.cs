@@ -5,11 +5,13 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEditor;
 using UnityEditor.Animations;
+using UnityEditor.Compilation;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -32,6 +34,7 @@ namespace Codex.UnityBridge.Editor
         private static volatile bool running;
         private static int playModeTransitionCount;
         private static int restoreRetryCount;
+        private static string lastCompileFinishedAt;
 
         static CodexUnityBridgeServer()
         {
@@ -39,6 +42,7 @@ namespace Codex.UnityBridge.Editor
             EditorApplication.quitting += StopServerForReloadOrQuit;
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
             AssemblyReloadEvents.beforeAssemblyReload += StopServerForReloadOrQuit;
+            CompilationPipeline.compilationFinished += OnCompilationFinished;
             EditorApplication.delayCall += RestoreServerIfEnabled;
             Application.logMessageReceived += OnLogMessageReceived;
         }
@@ -342,6 +346,8 @@ namespace Codex.UnityBridge.Editor
                     return CreateAsset(parameters);
                 case "unity_import_asset":
                     return ImportAsset(parameters);
+                case "unity_refresh_assets":
+                    return RefreshAssets();
                 case "unity_find_animation_assets":
                     return FindAnimationAssets(parameters);
                 case "unity_create_animator_controller":
@@ -1390,6 +1396,17 @@ namespace Codex.UnityBridge.Editor
             return new JObject { ["ok"] = true, ["path"] = assetPath };
         }
 
+        private static JToken RefreshAssets()
+        {
+            AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
+            return new JObject
+            {
+                ["ok"] = true,
+                ["isCompiling"] = EditorApplication.isCompiling,
+                ["isUpdating"] = EditorApplication.isUpdating
+            };
+        }
+
         private static JToken FindAnimationAssets(JObject parameters)
         {
             var limit = Math.Max(1, Math.Min(parameters.Value<int?>("limit") ?? 100, 300));
@@ -2058,22 +2075,57 @@ namespace Codex.UnityBridge.Editor
 
         private static JToken CompileStatus()
         {
-            var errors = new JArray();
+            var rawErrors = new List<ConsoleEntry>();
             lock (ConsoleLock)
             {
-                foreach (var entry in ConsoleEntries.Where(item => item.Level == "error").Reverse().Take(50).Reverse())
-                {
-                    errors.Add(JObject.FromObject(entry));
-                }
+                rawErrors = ConsoleEntries.Where(item => item.Level == "error").Reverse().Take(50).Reverse().ToList();
             }
 
+            var errors = new JArray(rawErrors.Select(NormalizeCompileError));
+            var hasCompileErrors = errors.Count > 0;
             return new JObject
             {
                 ["isCompiling"] = EditorApplication.isCompiling,
                 ["isUpdating"] = EditorApplication.isUpdating,
+                ["hasCompileErrors"] = hasCompileErrors,
+                ["compileErrorCount"] = errors.Count,
                 ["errorCount"] = errors.Count,
-                ["recentErrors"] = errors
+                ["errors"] = errors,
+                ["recentErrors"] = new JArray(rawErrors.Select(entry => JObject.FromObject(entry))),
+                ["lastCompileFinishedAt"] = lastCompileFinishedAt,
+                ["editorCanEnterPlayMode"] = !EditorApplication.isCompiling && !EditorApplication.isUpdating && !hasCompileErrors,
+                ["isPlaying"] = EditorApplication.isPlaying,
+                ["isPlayingOrWillChangePlaymode"] = EditorApplication.isPlayingOrWillChangePlaymode
             };
+        }
+
+        private static JObject NormalizeCompileError(ConsoleEntry entry)
+        {
+            var normalized = new JObject
+            {
+                ["time"] = entry.Time,
+                ["level"] = entry.Level,
+                ["type"] = entry.Type,
+                ["message"] = entry.Message,
+                ["stackTrace"] = entry.StackTrace,
+                ["file"] = null,
+                ["line"] = 0,
+                ["column"] = 0,
+                ["code"] = null
+            };
+
+            var text = entry.Message ?? string.Empty;
+            var match = Regex.Match(text, @"^(?<file>.+?)\((?<line>\d+),(?<column>\d+)\):\s*error\s+(?<code>CS\d+):\s*(?<message>.+)$");
+            if (match.Success)
+            {
+                normalized["file"] = match.Groups["file"].Value.Replace("\\", "/");
+                normalized["line"] = int.Parse(match.Groups["line"].Value);
+                normalized["column"] = int.Parse(match.Groups["column"].Value);
+                normalized["code"] = match.Groups["code"].Value;
+                normalized["message"] = match.Groups["message"].Value;
+            }
+
+            return normalized;
         }
 
         private static JToken GetSelection()
@@ -3073,6 +3125,11 @@ namespace Codex.UnityBridge.Editor
                     ConsoleEntries.RemoveRange(0, ConsoleEntries.Count - 1000);
                 }
             }
+        }
+
+        private static void OnCompilationFinished(object _)
+        {
+            lastCompileFinishedAt = DateTimeOffset.Now.ToString("o");
         }
 
         private static GameObject RequireGameObject(string path)

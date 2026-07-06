@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0.0",
+  "evidenceId": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T05-51-49-360Z",
+  "source": "LiveHarness",
+  "scenarioId": "dungeon_recovery_procedural_visual_validation",
+  "classification": "Operational",
+  "category": "ProductMvp",
+  "validationType": "VisualPlayabilityValidation",
+  "validationLevel": "Environment Blocked",
+  "status": "Blocked",
+  "result": "Blocked",
+  "validationIds": [],
+  "validationId": null,
+  "failureClass": "BridgeDisconnected",
+  "acceptanceIds": [
+    "AC-DRC-VIS-001",
+    "AC-DRC-VIS-002",
+    "AC-DRC-VIS-003",
+    "AC-DRC-VIS-004",
+    "AC-DRC-VIS-005",
+    "AC-DRC-VIS-006",
+    "AC-DRC-VIS-007"
+  ],
+  "requirementIds": [
+    "REQ-DRC-PROC-009",
+    "REQ-DRC-PROC-010",
+    "REQ-DRC-VIS-001",
+    "REQ-DRC-VIS-002",
+    "REQ-DRC-VIS-003",
+    "REQ-DRC-VIS-004"
+  ],
+  "unityTargets": [],
+  "checks": [
+    {
+      "checkId": "bridge.stability.health.1",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Blocked",
+      "failureClass": "BridgeDisconnected",
+      "message": "fetch failed"
+    }
+  ],
+  "checkedSteps": [
+    {
+      "checkId": "bridge.stability.health.1",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Blocked",
+      "failureClass": "BridgeDisconnected",
+      "message": "fetch failed"
+    }
+  ],
+  "bridgeHealthResult": {
+    "checkId": "bridge.stability.health.1",
+    "status": "Blocked",
+    "failureClass": "BridgeDisconnected",
+    "message": "fetch failed"
+  },
+  "compileStatusResult": null,
+  "blockerType": "UnityBridgeDisconnected",
+  "playModeAttempted": false,
+  "consoleErrorSummary": {
+    "status": "NotRun",
+    "errorCount": null,
+    "message": "Console logs were not checked."
+  },
+  "failureReason": "Unity Bridge health endpoint was unreachable during stability preflight.",
+  "blocker": "UnityBridgeDisconnected",
+  "bridgeDiagnostics": [],
+  "validationResults": [],
+  "observations": null,
+  "assertions": [],
+  "sourceValidationDesign": null,
+  "startedAt": "2026-07-06T05:51:49.360Z",
+  "finishedAt": "2026-07-06T05:51:49.454Z",
+  "completedAt": "2026-07-06T05:51:49.454Z",
+  "timestamp": "2026-07-06T05:51:49.454Z",
+  "remainingGaps": [
+    "Scenario did not pass live validation."
+  ],
+  "nextActions": [
+    "Restart Unity Bridge and rerun this scenario. Do not classify this as product validation failure."
+  ],
+  "lastKnownPassedEvidence": "EVID-dungeon-recovery-procedural-visual-validation-latest-passed",
+  "lastKnownPassedAt": "2026-07-06T04:53:45.944Z",
+  "lastKnownPassedEvidencePath": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest-passed.json",
+  "productValidationStatus": "LastKnownPassed",
+  "revalidationStatus": "EnvironmentBlocked",
+  "latestRunStatus": "Blocked",
+  "compileStatus": "Unknown",
+  "staleEvidenceReused": false,
+  "publicReleaseReady": false
+}

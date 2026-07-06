@@ -1,0 +1,3283 @@
+{
+  "schemaVersion": "1.0.0",
+  "evidenceId": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+  "source": "LiveHarness",
+  "scenarioId": "dungeon_recovery_procedural_recovery_job_e2e",
+  "classification": "Operational",
+  "category": "ProductMvp",
+  "validationType": "ProceduralGenerationE2E",
+  "validationLevel": "Play Mode Verified",
+  "status": "Passed",
+  "result": "Passed",
+  "validationIds": [
+    "VAL-DRC-PROC-ProceduralRecoveryJob-E2E"
+  ],
+  "validationId": "VAL-DRC-PROC-ProceduralRecoveryJob-E2E",
+  "failureClass": "None",
+  "acceptanceIds": [
+    "AC-DRC-PROC-001",
+    "AC-DRC-PROC-002",
+    "AC-DRC-PROC-003",
+    "AC-DRC-PROC-004",
+    "AC-DRC-PROC-005",
+    "AC-DRC-PROC-006",
+    "AC-DRC-PROC-007",
+    "AC-DRC-PROC-008",
+    "AC-DRC-PROC-009",
+    "AC-DRC-PROC-010"
+  ],
+  "requirementIds": [
+    "REQ-DRC-PROC-001",
+    "REQ-DRC-PROC-002",
+    "REQ-DRC-PROC-003",
+    "REQ-DRC-PROC-004",
+    "REQ-DRC-PROC-005",
+    "REQ-DRC-PROC-006",
+    "REQ-DRC-PROC-007",
+    "REQ-DRC-PROC-008",
+    "REQ-DRC-PROC-009",
+    "REQ-DRC-PROC-010"
+  ],
+  "unityTargets": [
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+    "/AInvilProceduralRecoveryJob/AInvilProceduralRecoveryJobController",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryPlayerController.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobBuilder.cs",
+    "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest.json"
+  ],
+  "checks": [
+    {
+      "checkId": "bridge.stability.health.1",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "bridge.stability.rpc.1",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_status succeeded."
+    },
+    {
+      "checkId": "bridge.stability.health.2",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "bridge.stability.rpc.2",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_status succeeded."
+    },
+    {
+      "checkId": "bridge.stability.health.3",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "bridge.stability.rpc.3",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_status succeeded."
+    },
+    {
+      "checkId": "compile_gate.pre_play_mode",
+      "type": "Compile",
+      "target": "runUnityValidationPreflight",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Compile gate passed before Play Mode validation."
+    },
+    {
+      "checkId": "compile_gate.bridge_health",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "compile_gate.unity_get_status",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_status succeeded."
+    },
+    {
+      "checkId": "compile_gate.unity_refresh_assets",
+      "type": "Asset",
+      "target": "unity_refresh_assets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_refresh_assets succeeded."
+    },
+    {
+      "checkId": "compile_gate.unity_compile_status",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors."
+    },
+    {
+      "checkId": "compile_gate.unity_get_console_logs",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_console_logs succeeded."
+    },
+    {
+      "checkId": "compile_gate.local_csharp_build",
+      "type": "Compile",
+      "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Local C# compile check passed."
+    },
+    {
+      "checkId": "bridge.unity_clear_console",
+      "type": "Console",
+      "target": "unity_clear_console",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_clear_console succeeded."
+    },
+    {
+      "checkId": "bridge.unity_compile_status.before_procedural_scene_build",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors."
+    },
+    {
+      "checkId": "prepare.create.ainvilproceduralrecoveryjobbuilder",
+      "type": "Scene",
+      "target": "/AInvilProceduralRecoveryJobBuilder",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Prepared /AInvilProceduralRecoveryJobBuilder."
+    },
+    {
+      "checkId": "prepare.component.ainvilproceduralrecoveryjobbuilder.ainvil_dungeonrecoveryfirstplayable_ainvilproceduralrecoveryjobbuilder",
+      "type": "Component",
+      "target": "/AInvilProceduralRecoveryJobBuilder/AInvil.DungeonRecoveryFirstPlayable.AInvilProceduralRecoveryJobBuilder",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Prepared AInvil.DungeonRecoveryFirstPlayable.AInvilProceduralRecoveryJobBuilder on /AInvilProceduralRecoveryJobBuilder."
+    },
+    {
+      "checkId": "bridge.unity_invoke_component_method",
+      "type": "Static",
+      "target": "unity_invoke_component_method",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "bridge.unity_open_scene",
+      "type": "Static",
+      "target": "unity_open_scene",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_open_scene succeeded."
+    },
+    {
+      "checkId": "bridge.unity_compile_status.after_procedural_scene_build",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors."
+    },
+    {
+      "checkId": "bridge.unity_get_console_logs",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_console_logs succeeded."
+    },
+    {
+      "checkId": "bridge.unity_clear_console",
+      "type": "Console",
+      "target": "unity_clear_console",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_clear_console succeeded."
+    },
+    {
+      "checkId": "artifact.assets_ainvilgenerated_dungeonrecoveryfirstplayable_scenes_drc_proceduralrecover",
+      "type": "Scene",
+      "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Found exact asset match for Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity."
+    },
+    {
+      "checkId": "artifact.ainvilproceduralrecoveryjob_ainvilproceduralrecoveryjobcontroller",
+      "type": "Component",
+      "target": "/AInvilProceduralRecoveryJob/AInvilProceduralRecoveryJobController",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Live component check succeeded for /AInvilProceduralRecoveryJob: AInvilProceduralRecoveryJobController."
+    },
+    {
+      "checkId": "artifact.assets_ainvilgenerated_dungeonrecoveryfirstplayable_scripts_ainvilproceduralreco",
+      "type": "Script",
+      "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Found exact asset match for Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs."
+    },
+    {
+      "checkId": "artifact.assets_ainvilgenerated_dungeonrecoveryfirstplayable_scripts_ainvilproceduralreco",
+      "type": "Script",
+      "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryPlayerController.cs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Found exact asset match for Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryPlayerController.cs."
+    },
+    {
+      "checkId": "artifact.assets_ainvilgenerated_dungeonrecoveryfirstplayable_scripts_ainvilproceduralreco",
+      "type": "Script",
+      "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobBuilder.cs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Found exact asset match for Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobBuilder.cs."
+    },
+    {
+      "checkId": "artifact.validation_evidence_evid_dungeon_recovery_procedural_recovery_job_e2e_latest_jso.planned",
+      "type": "Static",
+      "target": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest.json",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Artifact is planned by the scenario and does not require live existence."
+    },
+    {
+      "checkId": "bridge.unity_enter_play_mode",
+      "type": "PlayMode",
+      "target": "unity_enter_play_mode",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_enter_play_mode succeeded."
+    },
+    {
+      "checkId": "bridge.wait.procedural_play_mode_enter",
+      "type": "PlayMode",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Play Mode reached isPlaying=true after 5955ms."
+    },
+    {
+      "checkId": "procedural.controller.generatewithrandomseed",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithRandomSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.generatewithrandomseed",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithRandomSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.random_start_seed.assertions",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithRandomSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Random startup seed samples differed: 320100795, 1714198222."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.1001",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getlayoutsignature",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetLayoutSignature",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.1001",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getlayoutsignature",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetLayoutSignature",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.validationcompletealltargets",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.ValidationCompleteAllTargets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.seed.1001.assertions",
+      "type": "PlayMode",
+      "target": "seed:1001",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "10 procedural assertion(s) passed for seed 1001."
+    },
+    {
+      "checkId": "procedural.seed.1001.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.floor_cell_count",
+      "type": "ValidationAssertion",
+      "target": "floor_cell_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.player_start_floor",
+      "type": "ValidationAssertion",
+      "target": "player_start_floor",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_start_floor passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.target_count",
+      "type": "ValidationAssertion",
+      "target": "target_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_count passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.duplicate_targets",
+      "type": "ValidationAssertion",
+      "target": "duplicate_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.wall_overlap",
+      "type": "ValidationAssertion",
+      "target": "wall_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_overlap passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.deterministic",
+      "type": "ValidationAssertion",
+      "target": "deterministic",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "deterministic passed."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.2026",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getlayoutsignature",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetLayoutSignature",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.2026",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getlayoutsignature",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetLayoutSignature",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.validationcompletealltargets",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.ValidationCompleteAllTargets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.seed.2026.assertions",
+      "type": "PlayMode",
+      "target": "seed:2026",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "10 procedural assertion(s) passed for seed 2026."
+    },
+    {
+      "checkId": "procedural.seed.2026.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.floor_cell_count",
+      "type": "ValidationAssertion",
+      "target": "floor_cell_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.player_start_floor",
+      "type": "ValidationAssertion",
+      "target": "player_start_floor",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_start_floor passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.target_count",
+      "type": "ValidationAssertion",
+      "target": "target_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_count passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.duplicate_targets",
+      "type": "ValidationAssertion",
+      "target": "duplicate_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.wall_overlap",
+      "type": "ValidationAssertion",
+      "target": "wall_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_overlap passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.deterministic",
+      "type": "ValidationAssertion",
+      "target": "deterministic",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "deterministic passed."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.7777",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getlayoutsignature",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetLayoutSignature",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.7777",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getlayoutsignature",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetLayoutSignature",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.validationcompletealltargets",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.ValidationCompleteAllTargets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.seed.7777.assertions",
+      "type": "PlayMode",
+      "target": "seed:7777",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "10 procedural assertion(s) passed for seed 7777."
+    },
+    {
+      "checkId": "procedural.seed.7777.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.floor_cell_count",
+      "type": "ValidationAssertion",
+      "target": "floor_cell_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.player_start_floor",
+      "type": "ValidationAssertion",
+      "target": "player_start_floor",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_start_floor passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.target_count",
+      "type": "ValidationAssertion",
+      "target": "target_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_count passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.duplicate_targets",
+      "type": "ValidationAssertion",
+      "target": "duplicate_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.wall_overlap",
+      "type": "ValidationAssertion",
+      "target": "wall_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_overlap passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.deterministic",
+      "type": "ValidationAssertion",
+      "target": "deterministic",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "deterministic passed."
+    },
+    {
+      "checkId": "procedural.assertions",
+      "type": "PlayMode",
+      "target": "ProceduralRecoveryJob",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "35 procedural assertion(s) passed."
+    },
+    {
+      "checkId": "procedural.assert.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.assert.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.assert.floor_cell_count",
+      "type": "ValidationAssertion",
+      "target": "floor_cell_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "checkId": "procedural.assert.player_start_floor",
+      "type": "ValidationAssertion",
+      "target": "player_start_floor",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_start_floor passed."
+    },
+    {
+      "checkId": "procedural.assert.target_count",
+      "type": "ValidationAssertion",
+      "target": "target_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_count passed."
+    },
+    {
+      "checkId": "procedural.assert.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.assert.duplicate_targets",
+      "type": "ValidationAssertion",
+      "target": "duplicate_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "checkId": "procedural.assert.wall_overlap",
+      "type": "ValidationAssertion",
+      "target": "wall_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_overlap passed."
+    },
+    {
+      "checkId": "procedural.assert.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.assert.deterministic",
+      "type": "ValidationAssertion",
+      "target": "deterministic",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "deterministic passed."
+    },
+    {
+      "checkId": "procedural.assert.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.assert.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.assert.floor_cell_count",
+      "type": "ValidationAssertion",
+      "target": "floor_cell_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "checkId": "procedural.assert.player_start_floor",
+      "type": "ValidationAssertion",
+      "target": "player_start_floor",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_start_floor passed."
+    },
+    {
+      "checkId": "procedural.assert.target_count",
+      "type": "ValidationAssertion",
+      "target": "target_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_count passed."
+    },
+    {
+      "checkId": "procedural.assert.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.assert.duplicate_targets",
+      "type": "ValidationAssertion",
+      "target": "duplicate_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "checkId": "procedural.assert.wall_overlap",
+      "type": "ValidationAssertion",
+      "target": "wall_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_overlap passed."
+    },
+    {
+      "checkId": "procedural.assert.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.assert.deterministic",
+      "type": "ValidationAssertion",
+      "target": "deterministic",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "deterministic passed."
+    },
+    {
+      "checkId": "procedural.assert.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.assert.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.assert.floor_cell_count",
+      "type": "ValidationAssertion",
+      "target": "floor_cell_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "checkId": "procedural.assert.player_start_floor",
+      "type": "ValidationAssertion",
+      "target": "player_start_floor",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_start_floor passed."
+    },
+    {
+      "checkId": "procedural.assert.target_count",
+      "type": "ValidationAssertion",
+      "target": "target_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_count passed."
+    },
+    {
+      "checkId": "procedural.assert.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.assert.duplicate_targets",
+      "type": "ValidationAssertion",
+      "target": "duplicate_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "checkId": "procedural.assert.wall_overlap",
+      "type": "ValidationAssertion",
+      "target": "wall_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_overlap passed."
+    },
+    {
+      "checkId": "procedural.assert.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.assert.deterministic",
+      "type": "ValidationAssertion",
+      "target": "deterministic",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "deterministic passed."
+    },
+    {
+      "checkId": "procedural.assert.all_seeds_tested",
+      "type": "ValidationAssertion",
+      "target": "all_seeds_tested",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "all_seeds_tested passed."
+    },
+    {
+      "checkId": "procedural.assert.deterministic_generation",
+      "type": "ValidationAssertion",
+      "target": "deterministic_generation",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "deterministic_generation passed."
+    },
+    {
+      "checkId": "procedural.assert.different_seeds",
+      "type": "ValidationAssertion",
+      "target": "different_seeds",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "different_seeds passed."
+    },
+    {
+      "checkId": "procedural.assert.random_start_seed",
+      "type": "ValidationAssertion",
+      "target": "random_start_seed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "random_start_seed passed."
+    },
+    {
+      "checkId": "procedural.assert.stale_evidence",
+      "type": "ValidationAssertion",
+      "target": "stale_evidence",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "stale_evidence passed."
+    },
+    {
+      "checkId": "bridge.unity_get_console_logs",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_console_logs succeeded."
+    },
+    {
+      "checkId": "bridge.unity_exit_play_mode",
+      "type": "PlayMode",
+      "target": "unity_exit_play_mode",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_exit_play_mode succeeded."
+    },
+    {
+      "checkId": "bridge.wait.procedural_play_mode_exit",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge was reachable after 775ms."
+    }
+  ],
+  "checkedSteps": [
+    {
+      "checkId": "bridge.stability.health.1",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "bridge.stability.rpc.1",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_status succeeded."
+    },
+    {
+      "checkId": "bridge.stability.health.2",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "bridge.stability.rpc.2",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_status succeeded."
+    },
+    {
+      "checkId": "bridge.stability.health.3",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "bridge.stability.rpc.3",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_status succeeded."
+    },
+    {
+      "checkId": "compile_gate.pre_play_mode",
+      "type": "Compile",
+      "target": "runUnityValidationPreflight",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Compile gate passed before Play Mode validation."
+    },
+    {
+      "checkId": "compile_gate.bridge_health",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    {
+      "checkId": "compile_gate.unity_get_status",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_status succeeded."
+    },
+    {
+      "checkId": "compile_gate.unity_refresh_assets",
+      "type": "Asset",
+      "target": "unity_refresh_assets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_refresh_assets succeeded."
+    },
+    {
+      "checkId": "compile_gate.unity_compile_status",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors."
+    },
+    {
+      "checkId": "compile_gate.unity_get_console_logs",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_console_logs succeeded."
+    },
+    {
+      "checkId": "compile_gate.local_csharp_build",
+      "type": "Compile",
+      "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Local C# compile check passed."
+    },
+    {
+      "checkId": "bridge.unity_clear_console",
+      "type": "Console",
+      "target": "unity_clear_console",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_clear_console succeeded."
+    },
+    {
+      "checkId": "bridge.unity_compile_status.before_procedural_scene_build",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors."
+    },
+    {
+      "checkId": "prepare.create.ainvilproceduralrecoveryjobbuilder",
+      "type": "Scene",
+      "target": "/AInvilProceduralRecoveryJobBuilder",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Prepared /AInvilProceduralRecoveryJobBuilder."
+    },
+    {
+      "checkId": "prepare.component.ainvilproceduralrecoveryjobbuilder.ainvil_dungeonrecoveryfirstplayable_ainvilproceduralrecoveryjobbuilder",
+      "type": "Component",
+      "target": "/AInvilProceduralRecoveryJobBuilder/AInvil.DungeonRecoveryFirstPlayable.AInvilProceduralRecoveryJobBuilder",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Prepared AInvil.DungeonRecoveryFirstPlayable.AInvilProceduralRecoveryJobBuilder on /AInvilProceduralRecoveryJobBuilder."
+    },
+    {
+      "checkId": "bridge.unity_invoke_component_method",
+      "type": "Static",
+      "target": "unity_invoke_component_method",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "bridge.unity_open_scene",
+      "type": "Static",
+      "target": "unity_open_scene",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_open_scene succeeded."
+    },
+    {
+      "checkId": "bridge.unity_compile_status.after_procedural_scene_build",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors."
+    },
+    {
+      "checkId": "bridge.unity_get_console_logs",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_console_logs succeeded."
+    },
+    {
+      "checkId": "bridge.unity_clear_console",
+      "type": "Console",
+      "target": "unity_clear_console",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_clear_console succeeded."
+    },
+    {
+      "checkId": "artifact.assets_ainvilgenerated_dungeonrecoveryfirstplayable_scenes_drc_proceduralrecover",
+      "type": "Scene",
+      "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Found exact asset match for Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity."
+    },
+    {
+      "checkId": "artifact.ainvilproceduralrecoveryjob_ainvilproceduralrecoveryjobcontroller",
+      "type": "Component",
+      "target": "/AInvilProceduralRecoveryJob/AInvilProceduralRecoveryJobController",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Live component check succeeded for /AInvilProceduralRecoveryJob: AInvilProceduralRecoveryJobController."
+    },
+    {
+      "checkId": "artifact.assets_ainvilgenerated_dungeonrecoveryfirstplayable_scripts_ainvilproceduralreco",
+      "type": "Script",
+      "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Found exact asset match for Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs."
+    },
+    {
+      "checkId": "artifact.assets_ainvilgenerated_dungeonrecoveryfirstplayable_scripts_ainvilproceduralreco",
+      "type": "Script",
+      "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryPlayerController.cs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Found exact asset match for Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryPlayerController.cs."
+    },
+    {
+      "checkId": "artifact.assets_ainvilgenerated_dungeonrecoveryfirstplayable_scripts_ainvilproceduralreco",
+      "type": "Script",
+      "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobBuilder.cs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Found exact asset match for Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobBuilder.cs."
+    },
+    {
+      "checkId": "artifact.validation_evidence_evid_dungeon_recovery_procedural_recovery_job_e2e_latest_jso.planned",
+      "type": "Static",
+      "target": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest.json",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Artifact is planned by the scenario and does not require live existence."
+    },
+    {
+      "checkId": "bridge.unity_enter_play_mode",
+      "type": "PlayMode",
+      "target": "unity_enter_play_mode",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_enter_play_mode succeeded."
+    },
+    {
+      "checkId": "bridge.wait.procedural_play_mode_enter",
+      "type": "PlayMode",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Play Mode reached isPlaying=true after 5955ms."
+    },
+    {
+      "checkId": "procedural.controller.generatewithrandomseed",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithRandomSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.generatewithrandomseed",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithRandomSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.random_start_seed.assertions",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithRandomSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Random startup seed samples differed: 320100795, 1714198222."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.1001",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getlayoutsignature",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetLayoutSignature",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.1001",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getlayoutsignature",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetLayoutSignature",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.validationcompletealltargets",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.ValidationCompleteAllTargets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.seed.1001.assertions",
+      "type": "PlayMode",
+      "target": "seed:1001",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "10 procedural assertion(s) passed for seed 1001."
+    },
+    {
+      "checkId": "procedural.seed.1001.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.floor_cell_count",
+      "type": "ValidationAssertion",
+      "target": "floor_cell_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.player_start_floor",
+      "type": "ValidationAssertion",
+      "target": "player_start_floor",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_start_floor passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.target_count",
+      "type": "ValidationAssertion",
+      "target": "target_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_count passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.duplicate_targets",
+      "type": "ValidationAssertion",
+      "target": "duplicate_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.wall_overlap",
+      "type": "ValidationAssertion",
+      "target": "wall_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_overlap passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.seed.1001.deterministic",
+      "type": "ValidationAssertion",
+      "target": "deterministic",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "deterministic passed."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.2026",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getlayoutsignature",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetLayoutSignature",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.2026",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getlayoutsignature",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetLayoutSignature",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.validationcompletealltargets",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.ValidationCompleteAllTargets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.seed.2026.assertions",
+      "type": "PlayMode",
+      "target": "seed:2026",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "10 procedural assertion(s) passed for seed 2026."
+    },
+    {
+      "checkId": "procedural.seed.2026.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.floor_cell_count",
+      "type": "ValidationAssertion",
+      "target": "floor_cell_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.player_start_floor",
+      "type": "ValidationAssertion",
+      "target": "player_start_floor",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_start_floor passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.target_count",
+      "type": "ValidationAssertion",
+      "target": "target_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_count passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.duplicate_targets",
+      "type": "ValidationAssertion",
+      "target": "duplicate_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.wall_overlap",
+      "type": "ValidationAssertion",
+      "target": "wall_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_overlap passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.seed.2026.deterministic",
+      "type": "ValidationAssertion",
+      "target": "deterministic",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "deterministic passed."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.7777",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getlayoutsignature",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetLayoutSignature",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.generatewithseed.7777",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GenerateWithSeed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.getlayoutsignature",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetLayoutSignature",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.controller.validationcompletealltargets",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.ValidationCompleteAllTargets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_invoke_component_method succeeded."
+    },
+    {
+      "checkId": "procedural.seed.7777.assertions",
+      "type": "PlayMode",
+      "target": "seed:7777",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "10 procedural assertion(s) passed for seed 7777."
+    },
+    {
+      "checkId": "procedural.seed.7777.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.floor_cell_count",
+      "type": "ValidationAssertion",
+      "target": "floor_cell_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.player_start_floor",
+      "type": "ValidationAssertion",
+      "target": "player_start_floor",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_start_floor passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.target_count",
+      "type": "ValidationAssertion",
+      "target": "target_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_count passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.duplicate_targets",
+      "type": "ValidationAssertion",
+      "target": "duplicate_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.wall_overlap",
+      "type": "ValidationAssertion",
+      "target": "wall_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_overlap passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.seed.7777.deterministic",
+      "type": "ValidationAssertion",
+      "target": "deterministic",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "deterministic passed."
+    },
+    {
+      "checkId": "procedural.assertions",
+      "type": "PlayMode",
+      "target": "ProceduralRecoveryJob",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "35 procedural assertion(s) passed."
+    },
+    {
+      "checkId": "procedural.assert.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.assert.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.assert.floor_cell_count",
+      "type": "ValidationAssertion",
+      "target": "floor_cell_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "checkId": "procedural.assert.player_start_floor",
+      "type": "ValidationAssertion",
+      "target": "player_start_floor",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_start_floor passed."
+    },
+    {
+      "checkId": "procedural.assert.target_count",
+      "type": "ValidationAssertion",
+      "target": "target_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_count passed."
+    },
+    {
+      "checkId": "procedural.assert.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.assert.duplicate_targets",
+      "type": "ValidationAssertion",
+      "target": "duplicate_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "checkId": "procedural.assert.wall_overlap",
+      "type": "ValidationAssertion",
+      "target": "wall_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_overlap passed."
+    },
+    {
+      "checkId": "procedural.assert.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.assert.deterministic",
+      "type": "ValidationAssertion",
+      "target": "deterministic",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "deterministic passed."
+    },
+    {
+      "checkId": "procedural.assert.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.assert.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.assert.floor_cell_count",
+      "type": "ValidationAssertion",
+      "target": "floor_cell_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "checkId": "procedural.assert.player_start_floor",
+      "type": "ValidationAssertion",
+      "target": "player_start_floor",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_start_floor passed."
+    },
+    {
+      "checkId": "procedural.assert.target_count",
+      "type": "ValidationAssertion",
+      "target": "target_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_count passed."
+    },
+    {
+      "checkId": "procedural.assert.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.assert.duplicate_targets",
+      "type": "ValidationAssertion",
+      "target": "duplicate_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "checkId": "procedural.assert.wall_overlap",
+      "type": "ValidationAssertion",
+      "target": "wall_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_overlap passed."
+    },
+    {
+      "checkId": "procedural.assert.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.assert.deterministic",
+      "type": "ValidationAssertion",
+      "target": "deterministic",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "deterministic passed."
+    },
+    {
+      "checkId": "procedural.assert.generation_succeeded",
+      "type": "ValidationAssertion",
+      "target": "generation_succeeded",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "checkId": "procedural.assert.room_count",
+      "type": "ValidationAssertion",
+      "target": "room_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "room_count passed."
+    },
+    {
+      "checkId": "procedural.assert.floor_cell_count",
+      "type": "ValidationAssertion",
+      "target": "floor_cell_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "checkId": "procedural.assert.player_start_floor",
+      "type": "ValidationAssertion",
+      "target": "player_start_floor",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "player_start_floor passed."
+    },
+    {
+      "checkId": "procedural.assert.target_count",
+      "type": "ValidationAssertion",
+      "target": "target_count",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "target_count passed."
+    },
+    {
+      "checkId": "procedural.assert.reachable_targets",
+      "type": "ValidationAssertion",
+      "target": "reachable_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "reachable_targets passed."
+    },
+    {
+      "checkId": "procedural.assert.duplicate_targets",
+      "type": "ValidationAssertion",
+      "target": "duplicate_targets",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "checkId": "procedural.assert.wall_overlap",
+      "type": "ValidationAssertion",
+      "target": "wall_overlap",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "wall_overlap passed."
+    },
+    {
+      "checkId": "procedural.assert.job_complete",
+      "type": "ValidationAssertion",
+      "target": "job_complete",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "job_complete passed."
+    },
+    {
+      "checkId": "procedural.assert.deterministic",
+      "type": "ValidationAssertion",
+      "target": "deterministic",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "deterministic passed."
+    },
+    {
+      "checkId": "procedural.assert.all_seeds_tested",
+      "type": "ValidationAssertion",
+      "target": "all_seeds_tested",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "all_seeds_tested passed."
+    },
+    {
+      "checkId": "procedural.assert.deterministic_generation",
+      "type": "ValidationAssertion",
+      "target": "deterministic_generation",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "deterministic_generation passed."
+    },
+    {
+      "checkId": "procedural.assert.different_seeds",
+      "type": "ValidationAssertion",
+      "target": "different_seeds",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "different_seeds passed."
+    },
+    {
+      "checkId": "procedural.assert.random_start_seed",
+      "type": "ValidationAssertion",
+      "target": "random_start_seed",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "random_start_seed passed."
+    },
+    {
+      "checkId": "procedural.assert.stale_evidence",
+      "type": "ValidationAssertion",
+      "target": "stale_evidence",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "stale_evidence passed."
+    },
+    {
+      "checkId": "bridge.unity_get_console_logs",
+      "type": "Console",
+      "target": "unity_get_console_logs",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_get_console_logs succeeded."
+    },
+    {
+      "checkId": "bridge.unity_exit_play_mode",
+      "type": "PlayMode",
+      "target": "unity_exit_play_mode",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_exit_play_mode succeeded."
+    },
+    {
+      "checkId": "bridge.wait.procedural_play_mode_exit",
+      "type": "Static",
+      "target": "unity_get_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge was reachable after 775ms."
+    }
+  ],
+  "bridgeHealthResult": {
+    "checkId": "bridge.stability.health.1",
+    "status": "Passed",
+    "failureClass": "Unknown",
+    "message": "Unity Bridge health endpoint is reachable."
+  },
+  "compileStatusResult": {
+    "checkId": "compile_gate.pre_play_mode",
+    "status": "Passed",
+    "failureClass": "Unknown",
+    "message": "Compile gate passed before Play Mode validation."
+  },
+  "compileErrorCount": 0,
+  "compileErrors": [],
+  "blockerType": null,
+  "playModeAttempted": true,
+  "runtimeAssemblyFreshness": {
+    "status": "Fresh",
+    "reason": "Compile gate passed immediately before Play Mode validation.",
+    "compileCheckedBeforePlayMode": true,
+    "lastCompileStatus": "Passed",
+    "recommendation": "Proceed to Play Mode validation."
+  },
+  "consoleErrorSummary": {
+    "status": "Passed",
+    "errorCount": 0,
+    "message": "unity_get_console_logs succeeded."
+  },
+  "failureReason": null,
+  "blocker": null,
+  "bridgeDiagnostics": [],
+  "validationResults": [
+    {
+      "validationId": "VAL-DRC-PROC-ProceduralRecoveryJob-E2E",
+      "requirementId": "REQ-DRC-PROC-001",
+      "requirementIds": [
+        "REQ-DRC-PROC-001",
+        "REQ-DRC-PROC-002",
+        "REQ-DRC-PROC-003",
+        "REQ-DRC-PROC-004",
+        "REQ-DRC-PROC-005",
+        "REQ-DRC-PROC-006",
+        "REQ-DRC-PROC-007",
+        "REQ-DRC-PROC-008",
+        "REQ-DRC-PROC-009",
+        "REQ-DRC-PROC-010"
+      ],
+      "acceptanceIds": [
+        "AC-DRC-PROC-001",
+        "AC-DRC-PROC-002",
+        "AC-DRC-PROC-003",
+        "AC-DRC-PROC-004",
+        "AC-DRC-PROC-005",
+        "AC-DRC-PROC-006",
+        "AC-DRC-PROC-007",
+        "AC-DRC-PROC-008",
+        "AC-DRC-PROC-009",
+        "AC-DRC-PROC-010"
+      ],
+      "scenario": "dungeon_recovery_procedural_recovery_job_e2e",
+      "result": "Passed",
+      "beforeObservations": [],
+      "afterObservations": [
+        {
+          "name": "seed_1001",
+          "type": "proceduralSeedValidation",
+          "phase": "after",
+          "value": {
+            "seed": 1001,
+            "generationSucceeded": true,
+            "roomCount": 5,
+            "floorCellCount": 493,
+            "playerStartIsValidFloor": true,
+            "recoveryTargetCount": 3,
+            "reachableTargetCount": 3,
+            "duplicateTargetCells": 0,
+            "targetWallOverlapCount": 0,
+            "jobComplete": true,
+            "deterministicMatch": true,
+            "layoutSignature": "5,18;5,19;5,20;5,21;5,22;5,23;5,24;5,25;5,26;5,27;6,18;6,19;6,20;6,21;6,22;6,23;6,24;6,25;6,26;6,27;7,18;7,19;7,20;7,21;7,22;7,23;7,24;7,25;7,26;7,27;8,5;8,6;8,7;8,8;8,9;8,10;8,11;8,12;8,13;8,14;8,15;8,16;8,17;8,18;8,19;8,20;8,21;8,22;8,23;8,24;8,25;8,26;8,27;9,5;9,6;9,7;9,8;9,9;9,10;9,11;9,12;9,13;9,14;9,15;9,16;9,17;9,18;9,19;9,20;9,21;9,22;9,23;9,24;9,25;9,26;9,27;10,5;10,6;10,7;10,8;10,9;10,10;10,11;10,12;10,13;10,14;10,15;10,16;10,17;10,18;10,19;10,20;10,21;10,22;10,23;10,24;10,25;10,26;10,27;11,5;11,6;11,7;11,8;11,9;11,10;11,11;11,12;11,13;11,18;11,19;11,20;11,21;11,22;11,23;11,24;11,25;11,26;11,27;12,5;12,6;12,7;12,8;12,9;12,10;12,11;12,12;12,13;12,18;12,19;12,20;12,21;12,22;12,23;12,24;12,25;12,26;12,27;13,5;13,6;13,7;13,8;13,9;13,10;13,11;13,12;13,13;13,22;13,23;13,24;14,5;14,6;14,7;14,8;14,9;14,10;14,11;14,12;14,13;14,22;14,23;14,24;15,5;15,6;15,7;15,8;15,9;15,10;15,11;15,12;15,13;15,22;15,23;15,24;16,5;16,6;16,7;16,8;16,9;16,10;16,11;16,12;16,13;16,22;16,23;16,24;17,22;17,23;17,24;18,22;18,23;18,24;19,22;19,23;19,24;20,19;20,20;20,21;20,22;20,23;20,24;20,25;20,26;20,27;21,19;21,20;21,21;21,22;21,23;21,24;21,25;21,26;21,27;22,19;22,20;22,21;22,22;22,23;22,24;22,25;22,26;22,27;23,5;23,6;23,7;23,8;23,9;23,10;23,11;23,12;23,13;23,14;23,15;23,16;23,17;23,18;23,19;23,20;23,21;23,22;23,23;23,24;23,25;23,26;23,27;24,5;24,6;24,7;24,8;24,9;24,10;24,11;24,12;24,13;24,14;24,15;24,16;24,17;24,18;24,19;24,20;24,21;24,22;24,23;24,24;24,25;24,26;24,27;25,5;25,6;25,7;25,8;25,9;25,10;25,11;25,12;25,13;25,14;25,15;25,16;25,17;25,18;25,19;25,20;25,21;25,22;25,23;25,24;25,25;25,26;25,27;26,5;26,6;26,7;26,19;26,20;26,21;26,22;26,23;26,24;26,25;26,26;26,27;27,5;27,6;27,7;27,19;27,20;27,21;27,22;27,23;27,24;27,25;27,26;27,27;28,5;28,6;28,7;28,22;28,23;28,24;29,2;29,3;29,4;29,5;29,6;29,7;29,8;29,9;29,10;29,22;29,23;29,24;30,2;30,3;30,4;30,5;30,6;30,7;30,8;30,9;30,10;30,17;30,18;30,19;30,20;30,21;30,22;30,23;30,24;30,25;30,26;31,2;31,3;31,4;31,5;31,6;31,7;31,8;31,9;31,10;31,17;31,18;31,19;31,20;31,21;31,22;31,23;31,24;31,25;31,26;32,2;32,3;32,4;32,5;32,6;32,7;32,8;32,9;32,10;32,11;32,12;32,13;32,14;32,15;32,16;32,17;32,18;32,19;32,20;32,21;32,22;32,23;32,24;32,25;32,26;33,2;33,3;33,4;33,5;33,6;33,7;33,8;33,9;33,10;33,11;33,12;33,13;33,14;33,15;33,16;33,17;33,18;33,19;33,20;33,21;33,22;33,23;33,24;33,25;33,26;34,2;34,3;34,4;34,5;34,6;34,7;34,8;34,9;34,10;34,11;34,12;34,13;34,14;34,15;34,16;34,17;34,18;34,19;34,20;34,21;34,22;34,23;34,24;34,25;34,26;35,2;35,3;35,4;35,5;35,6;35,7;35,8;35,9;35,10;35,17;35,18;35,19;35,20;35,21;35,22;35,23;35,24;35,25;35,26;36,2;36,3;36,4;36,5;36,6;36,7;36,8;36,9;36,10;36,17;36,18;36,19;36,20;36,21;36,22;36,23;36,24;36,25;36,26;37,17;37,18;37,19;37,20;37,21;37,22;37,23;37,24;37,25;37,26|targets:8,22;25,26;34,25",
+            "validationHookUsed": "AInvilProceduralRecoveryJobController.GenerateWithSeed/ValidationCompleteAllTargets/GetValidationStateJson",
+            "failureReason": null,
+            "assertions": [
+              {
+                "id": "generation_succeeded",
+                "result": "Passed",
+                "message": "generation_succeeded passed."
+              },
+              {
+                "id": "room_count",
+                "result": "Passed",
+                "message": "room_count passed."
+              },
+              {
+                "id": "floor_cell_count",
+                "result": "Passed",
+                "message": "floor_cell_count passed."
+              },
+              {
+                "id": "player_start_floor",
+                "result": "Passed",
+                "message": "player_start_floor passed."
+              },
+              {
+                "id": "target_count",
+                "result": "Passed",
+                "message": "target_count passed."
+              },
+              {
+                "id": "reachable_targets",
+                "result": "Passed",
+                "message": "reachable_targets passed."
+              },
+              {
+                "id": "duplicate_targets",
+                "result": "Passed",
+                "message": "duplicate_targets passed."
+              },
+              {
+                "id": "wall_overlap",
+                "result": "Passed",
+                "message": "wall_overlap passed."
+              },
+              {
+                "id": "job_complete",
+                "result": "Passed",
+                "message": "job_complete passed."
+              },
+              {
+                "id": "deterministic",
+                "result": "Passed",
+                "message": "deterministic passed."
+              }
+            ]
+          },
+          "status": "Passed"
+        },
+        {
+          "name": "seed_2026",
+          "type": "proceduralSeedValidation",
+          "phase": "after",
+          "value": {
+            "seed": 2026,
+            "generationSucceeded": true,
+            "roomCount": 4,
+            "floorCellCount": 463,
+            "playerStartIsValidFloor": true,
+            "recoveryTargetCount": 3,
+            "reachableTargetCount": 3,
+            "duplicateTargetCells": 0,
+            "targetWallOverlapCount": 0,
+            "jobComplete": true,
+            "deterministicMatch": true,
+            "layoutSignature": "7,9;7,10;7,11;7,12;7,13;7,14;7,15;7,16;7,17;7,18;7,19;7,22;7,23;7,24;7,25;7,26;7,27;7,28;8,9;8,10;8,11;8,12;8,13;8,14;8,15;8,16;8,17;8,18;8,19;8,22;8,23;8,24;8,25;8,26;8,27;8,28;9,9;9,10;9,11;9,12;9,13;9,14;9,15;9,16;9,17;9,18;9,19;9,22;9,23;9,24;9,25;9,26;9,27;9,28;10,9;10,10;10,11;10,12;10,13;10,14;10,15;10,16;10,17;10,18;10,19;10,22;10,23;10,24;10,25;10,26;10,27;10,28;11,5;11,6;11,7;11,8;11,9;11,10;11,11;11,12;11,13;11,14;11,15;11,16;11,17;11,18;11,19;11,20;11,21;11,22;11,23;11,24;11,25;11,26;11,27;11,28;12,5;12,6;12,7;12,8;12,9;12,10;12,11;12,12;12,13;12,14;12,15;12,16;12,17;12,18;12,19;12,20;12,21;12,22;12,23;12,24;12,25;12,26;12,27;12,28;13,5;13,6;13,7;13,8;13,9;13,10;13,11;13,12;13,13;13,14;13,15;13,16;13,17;13,18;13,19;13,20;13,21;13,22;13,23;13,24;13,25;13,26;13,27;13,28;14,5;14,6;14,7;14,9;14,10;14,11;14,12;14,13;14,14;14,15;14,16;14,17;14,18;14,19;14,22;14,23;14,24;14,25;14,26;14,27;14,28;15,5;15,6;15,7;15,13;15,14;15,15;15,22;15,23;15,24;15,25;15,26;15,27;15,28;16,5;16,6;16,7;16,13;16,14;16,15;16,22;16,23;16,24;16,25;16,26;16,27;16,28;17,5;17,6;17,7;17,13;17,14;17,15;17,22;17,23;17,24;17,25;17,26;17,27;17,28;18,5;18,6;18,7;18,13;18,14;18,15;18,24;18,25;18,26;19,5;19,6;19,7;19,13;19,14;19,15;19,24;19,25;19,26;20,5;20,6;20,7;20,13;20,14;20,15;20,24;20,25;20,26;21,5;21,6;21,7;21,13;21,14;21,15;21,24;21,25;21,26;22,5;22,6;22,7;22,13;22,14;22,15;22,24;22,25;22,26;23,5;23,6;23,7;23,13;23,14;23,15;23,24;23,25;23,26;24,5;24,6;24,7;24,13;24,14;24,15;24,24;24,25;24,26;25,5;25,6;25,7;25,13;25,14;25,15;25,24;25,25;25,26;26,2;26,3;26,4;26,5;26,6;26,7;26,8;26,9;26,10;26,13;26,14;26,15;26,24;26,25;26,26;27,2;27,3;27,4;27,5;27,6;27,7;27,8;27,9;27,10;27,13;27,14;27,15;27,24;27,25;27,26;28,2;28,3;28,4;28,5;28,6;28,7;28,8;28,9;28,10;28,11;28,12;28,13;28,14;28,15;28,24;28,25;28,26;29,2;29,3;29,4;29,5;29,6;29,7;29,8;29,9;29,10;29,11;29,12;29,13;29,14;29,15;29,24;29,25;29,26;30,2;30,3;30,4;30,5;30,6;30,7;30,8;30,9;30,10;30,11;30,12;30,13;30,14;30,15;30,24;30,25;30,26;31,2;31,3;31,4;31,5;31,6;31,7;31,8;31,9;31,10;31,19;31,20;31,21;31,22;31,23;31,24;31,25;31,26;31,27;31,28;31,29;32,2;32,3;32,4;32,5;32,6;32,7;32,8;32,9;32,10;32,19;32,20;32,21;32,22;32,23;32,24;32,25;32,26;32,27;32,28;32,29;33,19;33,20;33,21;33,22;33,23;33,24;33,25;33,26;33,27;33,28;33,29;34,19;34,20;34,21;34,22;34,23;34,24;34,25;34,26;34,27;34,28;34,29;35,19;35,20;35,21;35,22;35,23;35,24;35,25;35,26;35,27;35,28;35,29;36,19;36,20;36,21;36,22;36,23;36,24;36,25;36,26;36,27;36,28;36,29;37,19;37,20;37,21;37,22;37,23;37,24;37,25;37,26;37,27;37,28;37,29;38,19;38,20;38,21;38,22;38,23;38,24;38,25;38,26;38,27;38,28;38,29|targets:12,18;31,8;36,24",
+            "validationHookUsed": "AInvilProceduralRecoveryJobController.GenerateWithSeed/ValidationCompleteAllTargets/GetValidationStateJson",
+            "failureReason": null,
+            "assertions": [
+              {
+                "id": "generation_succeeded",
+                "result": "Passed",
+                "message": "generation_succeeded passed."
+              },
+              {
+                "id": "room_count",
+                "result": "Passed",
+                "message": "room_count passed."
+              },
+              {
+                "id": "floor_cell_count",
+                "result": "Passed",
+                "message": "floor_cell_count passed."
+              },
+              {
+                "id": "player_start_floor",
+                "result": "Passed",
+                "message": "player_start_floor passed."
+              },
+              {
+                "id": "target_count",
+                "result": "Passed",
+                "message": "target_count passed."
+              },
+              {
+                "id": "reachable_targets",
+                "result": "Passed",
+                "message": "reachable_targets passed."
+              },
+              {
+                "id": "duplicate_targets",
+                "result": "Passed",
+                "message": "duplicate_targets passed."
+              },
+              {
+                "id": "wall_overlap",
+                "result": "Passed",
+                "message": "wall_overlap passed."
+              },
+              {
+                "id": "job_complete",
+                "result": "Passed",
+                "message": "job_complete passed."
+              },
+              {
+                "id": "deterministic",
+                "result": "Passed",
+                "message": "deterministic passed."
+              }
+            ]
+          },
+          "status": "Passed"
+        },
+        {
+          "name": "seed_7777",
+          "type": "proceduralSeedValidation",
+          "phase": "after",
+          "value": {
+            "seed": 7777,
+            "generationSucceeded": true,
+            "roomCount": 5,
+            "floorCellCount": 546,
+            "playerStartIsValidFloor": true,
+            "recoveryTargetCount": 3,
+            "reachableTargetCount": 3,
+            "duplicateTargetCells": 0,
+            "targetWallOverlapCount": 0,
+            "jobComplete": true,
+            "deterministicMatch": true,
+            "layoutSignature": "3,4;3,5;3,6;3,7;3,8;3,9;3,10;3,11;3,12;4,4;4,5;4,6;4,7;4,8;4,9;4,10;4,11;4,12;4,19;4,20;4,21;4,22;4,23;4,24;4,25;4,26;4,27;4,28;4,29;5,4;5,5;5,6;5,7;5,8;5,9;5,10;5,11;5,12;5,19;5,20;5,21;5,22;5,23;5,24;5,25;5,26;5,27;5,28;5,29;6,4;6,5;6,6;6,7;6,8;6,9;6,10;6,11;6,12;6,13;6,14;6,15;6,16;6,17;6,18;6,19;6,20;6,21;6,22;6,23;6,24;6,25;6,26;6,27;6,28;6,29;7,4;7,5;7,6;7,7;7,8;7,9;7,10;7,11;7,12;7,13;7,14;7,15;7,16;7,17;7,18;7,19;7,20;7,21;7,22;7,23;7,24;7,25;7,26;7,27;7,28;7,29;8,4;8,5;8,6;8,7;8,8;8,9;8,10;8,11;8,12;8,13;8,14;8,15;8,16;8,17;8,18;8,19;8,20;8,21;8,22;8,23;8,24;8,25;8,26;8,27;8,28;8,29;9,4;9,5;9,6;9,7;9,8;9,9;9,10;9,11;9,12;9,19;9,20;9,21;9,22;9,23;9,24;9,25;9,26;9,27;9,28;9,29;10,4;10,5;10,6;10,7;10,8;10,9;10,10;10,11;10,12;10,19;10,20;10,21;10,22;10,23;10,24;10,25;10,26;10,27;10,28;10,29;11,4;11,5;11,6;11,7;11,8;11,9;11,10;11,11;11,12;11,23;11,24;11,25;12,4;12,5;12,6;12,7;12,8;12,9;12,10;12,11;12,12;12,23;12,24;12,25;13,4;13,5;13,6;13,7;13,8;13,9;13,10;13,11;13,12;13,23;13,24;13,25;14,23;14,24;14,25;15,23;15,24;15,25;16,10;16,11;16,12;16,13;16,14;16,15;16,16;16,17;16,18;16,19;16,23;16,24;16,25;17,10;17,11;17,12;17,13;17,14;17,15;17,16;17,17;17,18;17,19;17,23;17,24;17,25;18,10;18,11;18,12;18,13;18,14;18,15;18,16;18,17;18,18;18,19;18,23;18,24;18,25;19,10;19,11;19,12;19,13;19,14;19,15;19,16;19,17;19,18;19,19;19,23;19,24;19,25;20,10;20,11;20,12;20,13;20,14;20,15;20,16;20,17;20,18;20,19;20,20;20,21;20,22;20,23;20,24;20,25;21,10;21,11;21,12;21,13;21,14;21,15;21,16;21,17;21,18;21,19;21,20;21,21;21,22;21,23;21,24;21,25;22,10;22,11;22,12;22,13;22,14;22,15;22,16;22,17;22,18;22,19;22,20;22,21;22,22;22,23;22,24;22,25;23,10;23,11;23,12;23,13;23,14;23,15;23,16;23,17;23,18;23,19;24,10;24,11;24,12;24,13;24,14;24,15;24,16;24,17;24,18;24,19;25,10;25,11;25,12;25,13;25,14;25,15;25,16;25,17;25,18;25,19;26,14;26,15;26,16;27,14;27,15;27,16;28,8;28,9;28,10;28,11;28,12;28,13;28,14;28,15;28,16;28,21;28,22;28,23;28,24;28,25;28,26;28,27;28,28;28,29;28,30;29,8;29,9;29,10;29,11;29,12;29,13;29,14;29,15;29,16;29,21;29,22;29,23;29,24;29,25;29,26;29,27;29,28;29,29;29,30;30,8;30,9;30,10;30,11;30,12;30,13;30,14;30,15;30,16;30,21;30,22;30,23;30,24;30,25;30,26;30,27;30,28;30,29;30,30;31,8;31,9;31,10;31,11;31,12;31,13;31,14;31,15;31,16;31,17;31,18;31,19;31,20;31,21;31,22;31,23;31,24;31,25;31,26;31,27;31,28;31,29;31,30;32,8;32,9;32,10;32,11;32,12;32,13;32,14;32,15;32,16;32,17;32,18;32,19;32,20;32,21;32,22;32,23;32,24;32,25;32,26;32,27;32,28;32,29;32,30;33,8;33,9;33,10;33,11;33,12;33,13;33,14;33,15;33,16;33,17;33,18;33,19;33,20;33,21;33,22;33,23;33,24;33,25;33,26;33,27;33,28;33,29;33,30;34,8;34,9;34,10;34,11;34,12;34,13;34,14;34,15;34,16;34,21;34,22;34,23;34,24;34,25;34,26;34,27;34,28;34,29;34,30;35,8;35,9;35,10;35,11;35,12;35,13;35,14;35,15;35,16;35,21;35,22;35,23;35,24;35,25;35,26;35,27;35,28;35,29;35,30;36,8;36,9;36,10;36,11;36,12;36,13;36,14;36,15;36,16;36,21;36,22;36,23;36,24;36,25;36,26;36,27;36,28;36,29;36,30;37,8;37,9;37,10;37,11;37,12;37,13;37,14;37,15;37,16;38,8;38,9;38,10;38,11;38,12;38,13;38,14;38,15;38,16|targets:7,19;22,12;30,23",
+            "validationHookUsed": "AInvilProceduralRecoveryJobController.GenerateWithSeed/ValidationCompleteAllTargets/GetValidationStateJson",
+            "failureReason": null,
+            "assertions": [
+              {
+                "id": "generation_succeeded",
+                "result": "Passed",
+                "message": "generation_succeeded passed."
+              },
+              {
+                "id": "room_count",
+                "result": "Passed",
+                "message": "room_count passed."
+              },
+              {
+                "id": "floor_cell_count",
+                "result": "Passed",
+                "message": "floor_cell_count passed."
+              },
+              {
+                "id": "player_start_floor",
+                "result": "Passed",
+                "message": "player_start_floor passed."
+              },
+              {
+                "id": "target_count",
+                "result": "Passed",
+                "message": "target_count passed."
+              },
+              {
+                "id": "reachable_targets",
+                "result": "Passed",
+                "message": "reachable_targets passed."
+              },
+              {
+                "id": "duplicate_targets",
+                "result": "Passed",
+                "message": "duplicate_targets passed."
+              },
+              {
+                "id": "wall_overlap",
+                "result": "Passed",
+                "message": "wall_overlap passed."
+              },
+              {
+                "id": "job_complete",
+                "result": "Passed",
+                "message": "job_complete passed."
+              },
+              {
+                "id": "deterministic",
+                "result": "Passed",
+                "message": "deterministic passed."
+              }
+            ]
+          },
+          "status": "Passed"
+        }
+      ],
+      "assertions": [
+        {
+          "id": "generation_succeeded",
+          "result": "Passed",
+          "message": "generation_succeeded passed."
+        },
+        {
+          "id": "room_count",
+          "result": "Passed",
+          "message": "room_count passed."
+        },
+        {
+          "id": "floor_cell_count",
+          "result": "Passed",
+          "message": "floor_cell_count passed."
+        },
+        {
+          "id": "player_start_floor",
+          "result": "Passed",
+          "message": "player_start_floor passed."
+        },
+        {
+          "id": "target_count",
+          "result": "Passed",
+          "message": "target_count passed."
+        },
+        {
+          "id": "reachable_targets",
+          "result": "Passed",
+          "message": "reachable_targets passed."
+        },
+        {
+          "id": "duplicate_targets",
+          "result": "Passed",
+          "message": "duplicate_targets passed."
+        },
+        {
+          "id": "wall_overlap",
+          "result": "Passed",
+          "message": "wall_overlap passed."
+        },
+        {
+          "id": "job_complete",
+          "result": "Passed",
+          "message": "job_complete passed."
+        },
+        {
+          "id": "deterministic",
+          "result": "Passed",
+          "message": "deterministic passed."
+        },
+        {
+          "id": "generation_succeeded",
+          "result": "Passed",
+          "message": "generation_succeeded passed."
+        },
+        {
+          "id": "room_count",
+          "result": "Passed",
+          "message": "room_count passed."
+        },
+        {
+          "id": "floor_cell_count",
+          "result": "Passed",
+          "message": "floor_cell_count passed."
+        },
+        {
+          "id": "player_start_floor",
+          "result": "Passed",
+          "message": "player_start_floor passed."
+        },
+        {
+          "id": "target_count",
+          "result": "Passed",
+          "message": "target_count passed."
+        },
+        {
+          "id": "reachable_targets",
+          "result": "Passed",
+          "message": "reachable_targets passed."
+        },
+        {
+          "id": "duplicate_targets",
+          "result": "Passed",
+          "message": "duplicate_targets passed."
+        },
+        {
+          "id": "wall_overlap",
+          "result": "Passed",
+          "message": "wall_overlap passed."
+        },
+        {
+          "id": "job_complete",
+          "result": "Passed",
+          "message": "job_complete passed."
+        },
+        {
+          "id": "deterministic",
+          "result": "Passed",
+          "message": "deterministic passed."
+        },
+        {
+          "id": "generation_succeeded",
+          "result": "Passed",
+          "message": "generation_succeeded passed."
+        },
+        {
+          "id": "room_count",
+          "result": "Passed",
+          "message": "room_count passed."
+        },
+        {
+          "id": "floor_cell_count",
+          "result": "Passed",
+          "message": "floor_cell_count passed."
+        },
+        {
+          "id": "player_start_floor",
+          "result": "Passed",
+          "message": "player_start_floor passed."
+        },
+        {
+          "id": "target_count",
+          "result": "Passed",
+          "message": "target_count passed."
+        },
+        {
+          "id": "reachable_targets",
+          "result": "Passed",
+          "message": "reachable_targets passed."
+        },
+        {
+          "id": "duplicate_targets",
+          "result": "Passed",
+          "message": "duplicate_targets passed."
+        },
+        {
+          "id": "wall_overlap",
+          "result": "Passed",
+          "message": "wall_overlap passed."
+        },
+        {
+          "id": "job_complete",
+          "result": "Passed",
+          "message": "job_complete passed."
+        },
+        {
+          "id": "deterministic",
+          "result": "Passed",
+          "message": "deterministic passed."
+        },
+        {
+          "id": "all_seeds_tested",
+          "result": "Passed",
+          "message": "all_seeds_tested passed."
+        },
+        {
+          "id": "deterministic_generation",
+          "result": "Passed",
+          "message": "deterministic_generation passed."
+        },
+        {
+          "id": "different_seeds",
+          "result": "Passed",
+          "message": "different_seeds passed."
+        },
+        {
+          "id": "random_start_seed",
+          "result": "Passed",
+          "message": "random_start_seed passed."
+        },
+        {
+          "id": "stale_evidence",
+          "result": "Passed",
+          "message": "stale_evidence passed."
+        }
+      ],
+      "timestamp": "2026-07-06T06:15:36.355Z"
+    }
+  ],
+  "observations": {
+    "before": [],
+    "after": [
+      {
+        "name": "seed_1001",
+        "type": "proceduralSeedValidation",
+        "phase": "after",
+        "value": {
+          "seed": 1001,
+          "generationSucceeded": true,
+          "roomCount": 5,
+          "floorCellCount": 493,
+          "playerStartIsValidFloor": true,
+          "recoveryTargetCount": 3,
+          "reachableTargetCount": 3,
+          "duplicateTargetCells": 0,
+          "targetWallOverlapCount": 0,
+          "jobComplete": true,
+          "deterministicMatch": true,
+          "layoutSignature": "5,18;5,19;5,20;5,21;5,22;5,23;5,24;5,25;5,26;5,27;6,18;6,19;6,20;6,21;6,22;6,23;6,24;6,25;6,26;6,27;7,18;7,19;7,20;7,21;7,22;7,23;7,24;7,25;7,26;7,27;8,5;8,6;8,7;8,8;8,9;8,10;8,11;8,12;8,13;8,14;8,15;8,16;8,17;8,18;8,19;8,20;8,21;8,22;8,23;8,24;8,25;8,26;8,27;9,5;9,6;9,7;9,8;9,9;9,10;9,11;9,12;9,13;9,14;9,15;9,16;9,17;9,18;9,19;9,20;9,21;9,22;9,23;9,24;9,25;9,26;9,27;10,5;10,6;10,7;10,8;10,9;10,10;10,11;10,12;10,13;10,14;10,15;10,16;10,17;10,18;10,19;10,20;10,21;10,22;10,23;10,24;10,25;10,26;10,27;11,5;11,6;11,7;11,8;11,9;11,10;11,11;11,12;11,13;11,18;11,19;11,20;11,21;11,22;11,23;11,24;11,25;11,26;11,27;12,5;12,6;12,7;12,8;12,9;12,10;12,11;12,12;12,13;12,18;12,19;12,20;12,21;12,22;12,23;12,24;12,25;12,26;12,27;13,5;13,6;13,7;13,8;13,9;13,10;13,11;13,12;13,13;13,22;13,23;13,24;14,5;14,6;14,7;14,8;14,9;14,10;14,11;14,12;14,13;14,22;14,23;14,24;15,5;15,6;15,7;15,8;15,9;15,10;15,11;15,12;15,13;15,22;15,23;15,24;16,5;16,6;16,7;16,8;16,9;16,10;16,11;16,12;16,13;16,22;16,23;16,24;17,22;17,23;17,24;18,22;18,23;18,24;19,22;19,23;19,24;20,19;20,20;20,21;20,22;20,23;20,24;20,25;20,26;20,27;21,19;21,20;21,21;21,22;21,23;21,24;21,25;21,26;21,27;22,19;22,20;22,21;22,22;22,23;22,24;22,25;22,26;22,27;23,5;23,6;23,7;23,8;23,9;23,10;23,11;23,12;23,13;23,14;23,15;23,16;23,17;23,18;23,19;23,20;23,21;23,22;23,23;23,24;23,25;23,26;23,27;24,5;24,6;24,7;24,8;24,9;24,10;24,11;24,12;24,13;24,14;24,15;24,16;24,17;24,18;24,19;24,20;24,21;24,22;24,23;24,24;24,25;24,26;24,27;25,5;25,6;25,7;25,8;25,9;25,10;25,11;25,12;25,13;25,14;25,15;25,16;25,17;25,18;25,19;25,20;25,21;25,22;25,23;25,24;25,25;25,26;25,27;26,5;26,6;26,7;26,19;26,20;26,21;26,22;26,23;26,24;26,25;26,26;26,27;27,5;27,6;27,7;27,19;27,20;27,21;27,22;27,23;27,24;27,25;27,26;27,27;28,5;28,6;28,7;28,22;28,23;28,24;29,2;29,3;29,4;29,5;29,6;29,7;29,8;29,9;29,10;29,22;29,23;29,24;30,2;30,3;30,4;30,5;30,6;30,7;30,8;30,9;30,10;30,17;30,18;30,19;30,20;30,21;30,22;30,23;30,24;30,25;30,26;31,2;31,3;31,4;31,5;31,6;31,7;31,8;31,9;31,10;31,17;31,18;31,19;31,20;31,21;31,22;31,23;31,24;31,25;31,26;32,2;32,3;32,4;32,5;32,6;32,7;32,8;32,9;32,10;32,11;32,12;32,13;32,14;32,15;32,16;32,17;32,18;32,19;32,20;32,21;32,22;32,23;32,24;32,25;32,26;33,2;33,3;33,4;33,5;33,6;33,7;33,8;33,9;33,10;33,11;33,12;33,13;33,14;33,15;33,16;33,17;33,18;33,19;33,20;33,21;33,22;33,23;33,24;33,25;33,26;34,2;34,3;34,4;34,5;34,6;34,7;34,8;34,9;34,10;34,11;34,12;34,13;34,14;34,15;34,16;34,17;34,18;34,19;34,20;34,21;34,22;34,23;34,24;34,25;34,26;35,2;35,3;35,4;35,5;35,6;35,7;35,8;35,9;35,10;35,17;35,18;35,19;35,20;35,21;35,22;35,23;35,24;35,25;35,26;36,2;36,3;36,4;36,5;36,6;36,7;36,8;36,9;36,10;36,17;36,18;36,19;36,20;36,21;36,22;36,23;36,24;36,25;36,26;37,17;37,18;37,19;37,20;37,21;37,22;37,23;37,24;37,25;37,26|targets:8,22;25,26;34,25",
+          "validationHookUsed": "AInvilProceduralRecoveryJobController.GenerateWithSeed/ValidationCompleteAllTargets/GetValidationStateJson",
+          "failureReason": null,
+          "assertions": [
+            {
+              "id": "generation_succeeded",
+              "result": "Passed",
+              "message": "generation_succeeded passed."
+            },
+            {
+              "id": "room_count",
+              "result": "Passed",
+              "message": "room_count passed."
+            },
+            {
+              "id": "floor_cell_count",
+              "result": "Passed",
+              "message": "floor_cell_count passed."
+            },
+            {
+              "id": "player_start_floor",
+              "result": "Passed",
+              "message": "player_start_floor passed."
+            },
+            {
+              "id": "target_count",
+              "result": "Passed",
+              "message": "target_count passed."
+            },
+            {
+              "id": "reachable_targets",
+              "result": "Passed",
+              "message": "reachable_targets passed."
+            },
+            {
+              "id": "duplicate_targets",
+              "result": "Passed",
+              "message": "duplicate_targets passed."
+            },
+            {
+              "id": "wall_overlap",
+              "result": "Passed",
+              "message": "wall_overlap passed."
+            },
+            {
+              "id": "job_complete",
+              "result": "Passed",
+              "message": "job_complete passed."
+            },
+            {
+              "id": "deterministic",
+              "result": "Passed",
+              "message": "deterministic passed."
+            }
+          ]
+        },
+        "status": "Passed"
+      },
+      {
+        "name": "seed_2026",
+        "type": "proceduralSeedValidation",
+        "phase": "after",
+        "value": {
+          "seed": 2026,
+          "generationSucceeded": true,
+          "roomCount": 4,
+          "floorCellCount": 463,
+          "playerStartIsValidFloor": true,
+          "recoveryTargetCount": 3,
+          "reachableTargetCount": 3,
+          "duplicateTargetCells": 0,
+          "targetWallOverlapCount": 0,
+          "jobComplete": true,
+          "deterministicMatch": true,
+          "layoutSignature": "7,9;7,10;7,11;7,12;7,13;7,14;7,15;7,16;7,17;7,18;7,19;7,22;7,23;7,24;7,25;7,26;7,27;7,28;8,9;8,10;8,11;8,12;8,13;8,14;8,15;8,16;8,17;8,18;8,19;8,22;8,23;8,24;8,25;8,26;8,27;8,28;9,9;9,10;9,11;9,12;9,13;9,14;9,15;9,16;9,17;9,18;9,19;9,22;9,23;9,24;9,25;9,26;9,27;9,28;10,9;10,10;10,11;10,12;10,13;10,14;10,15;10,16;10,17;10,18;10,19;10,22;10,23;10,24;10,25;10,26;10,27;10,28;11,5;11,6;11,7;11,8;11,9;11,10;11,11;11,12;11,13;11,14;11,15;11,16;11,17;11,18;11,19;11,20;11,21;11,22;11,23;11,24;11,25;11,26;11,27;11,28;12,5;12,6;12,7;12,8;12,9;12,10;12,11;12,12;12,13;12,14;12,15;12,16;12,17;12,18;12,19;12,20;12,21;12,22;12,23;12,24;12,25;12,26;12,27;12,28;13,5;13,6;13,7;13,8;13,9;13,10;13,11;13,12;13,13;13,14;13,15;13,16;13,17;13,18;13,19;13,20;13,21;13,22;13,23;13,24;13,25;13,26;13,27;13,28;14,5;14,6;14,7;14,9;14,10;14,11;14,12;14,13;14,14;14,15;14,16;14,17;14,18;14,19;14,22;14,23;14,24;14,25;14,26;14,27;14,28;15,5;15,6;15,7;15,13;15,14;15,15;15,22;15,23;15,24;15,25;15,26;15,27;15,28;16,5;16,6;16,7;16,13;16,14;16,15;16,22;16,23;16,24;16,25;16,26;16,27;16,28;17,5;17,6;17,7;17,13;17,14;17,15;17,22;17,23;17,24;17,25;17,26;17,27;17,28;18,5;18,6;18,7;18,13;18,14;18,15;18,24;18,25;18,26;19,5;19,6;19,7;19,13;19,14;19,15;19,24;19,25;19,26;20,5;20,6;20,7;20,13;20,14;20,15;20,24;20,25;20,26;21,5;21,6;21,7;21,13;21,14;21,15;21,24;21,25;21,26;22,5;22,6;22,7;22,13;22,14;22,15;22,24;22,25;22,26;23,5;23,6;23,7;23,13;23,14;23,15;23,24;23,25;23,26;24,5;24,6;24,7;24,13;24,14;24,15;24,24;24,25;24,26;25,5;25,6;25,7;25,13;25,14;25,15;25,24;25,25;25,26;26,2;26,3;26,4;26,5;26,6;26,7;26,8;26,9;26,10;26,13;26,14;26,15;26,24;26,25;26,26;27,2;27,3;27,4;27,5;27,6;27,7;27,8;27,9;27,10;27,13;27,14;27,15;27,24;27,25;27,26;28,2;28,3;28,4;28,5;28,6;28,7;28,8;28,9;28,10;28,11;28,12;28,13;28,14;28,15;28,24;28,25;28,26;29,2;29,3;29,4;29,5;29,6;29,7;29,8;29,9;29,10;29,11;29,12;29,13;29,14;29,15;29,24;29,25;29,26;30,2;30,3;30,4;30,5;30,6;30,7;30,8;30,9;30,10;30,11;30,12;30,13;30,14;30,15;30,24;30,25;30,26;31,2;31,3;31,4;31,5;31,6;31,7;31,8;31,9;31,10;31,19;31,20;31,21;31,22;31,23;31,24;31,25;31,26;31,27;31,28;31,29;32,2;32,3;32,4;32,5;32,6;32,7;32,8;32,9;32,10;32,19;32,20;32,21;32,22;32,23;32,24;32,25;32,26;32,27;32,28;32,29;33,19;33,20;33,21;33,22;33,23;33,24;33,25;33,26;33,27;33,28;33,29;34,19;34,20;34,21;34,22;34,23;34,24;34,25;34,26;34,27;34,28;34,29;35,19;35,20;35,21;35,22;35,23;35,24;35,25;35,26;35,27;35,28;35,29;36,19;36,20;36,21;36,22;36,23;36,24;36,25;36,26;36,27;36,28;36,29;37,19;37,20;37,21;37,22;37,23;37,24;37,25;37,26;37,27;37,28;37,29;38,19;38,20;38,21;38,22;38,23;38,24;38,25;38,26;38,27;38,28;38,29|targets:12,18;31,8;36,24",
+          "validationHookUsed": "AInvilProceduralRecoveryJobController.GenerateWithSeed/ValidationCompleteAllTargets/GetValidationStateJson",
+          "failureReason": null,
+          "assertions": [
+            {
+              "id": "generation_succeeded",
+              "result": "Passed",
+              "message": "generation_succeeded passed."
+            },
+            {
+              "id": "room_count",
+              "result": "Passed",
+              "message": "room_count passed."
+            },
+            {
+              "id": "floor_cell_count",
+              "result": "Passed",
+              "message": "floor_cell_count passed."
+            },
+            {
+              "id": "player_start_floor",
+              "result": "Passed",
+              "message": "player_start_floor passed."
+            },
+            {
+              "id": "target_count",
+              "result": "Passed",
+              "message": "target_count passed."
+            },
+            {
+              "id": "reachable_targets",
+              "result": "Passed",
+              "message": "reachable_targets passed."
+            },
+            {
+              "id": "duplicate_targets",
+              "result": "Passed",
+              "message": "duplicate_targets passed."
+            },
+            {
+              "id": "wall_overlap",
+              "result": "Passed",
+              "message": "wall_overlap passed."
+            },
+            {
+              "id": "job_complete",
+              "result": "Passed",
+              "message": "job_complete passed."
+            },
+            {
+              "id": "deterministic",
+              "result": "Passed",
+              "message": "deterministic passed."
+            }
+          ]
+        },
+        "status": "Passed"
+      },
+      {
+        "name": "seed_7777",
+        "type": "proceduralSeedValidation",
+        "phase": "after",
+        "value": {
+          "seed": 7777,
+          "generationSucceeded": true,
+          "roomCount": 5,
+          "floorCellCount": 546,
+          "playerStartIsValidFloor": true,
+          "recoveryTargetCount": 3,
+          "reachableTargetCount": 3,
+          "duplicateTargetCells": 0,
+          "targetWallOverlapCount": 0,
+          "jobComplete": true,
+          "deterministicMatch": true,
+          "layoutSignature": "3,4;3,5;3,6;3,7;3,8;3,9;3,10;3,11;3,12;4,4;4,5;4,6;4,7;4,8;4,9;4,10;4,11;4,12;4,19;4,20;4,21;4,22;4,23;4,24;4,25;4,26;4,27;4,28;4,29;5,4;5,5;5,6;5,7;5,8;5,9;5,10;5,11;5,12;5,19;5,20;5,21;5,22;5,23;5,24;5,25;5,26;5,27;5,28;5,29;6,4;6,5;6,6;6,7;6,8;6,9;6,10;6,11;6,12;6,13;6,14;6,15;6,16;6,17;6,18;6,19;6,20;6,21;6,22;6,23;6,24;6,25;6,26;6,27;6,28;6,29;7,4;7,5;7,6;7,7;7,8;7,9;7,10;7,11;7,12;7,13;7,14;7,15;7,16;7,17;7,18;7,19;7,20;7,21;7,22;7,23;7,24;7,25;7,26;7,27;7,28;7,29;8,4;8,5;8,6;8,7;8,8;8,9;8,10;8,11;8,12;8,13;8,14;8,15;8,16;8,17;8,18;8,19;8,20;8,21;8,22;8,23;8,24;8,25;8,26;8,27;8,28;8,29;9,4;9,5;9,6;9,7;9,8;9,9;9,10;9,11;9,12;9,19;9,20;9,21;9,22;9,23;9,24;9,25;9,26;9,27;9,28;9,29;10,4;10,5;10,6;10,7;10,8;10,9;10,10;10,11;10,12;10,19;10,20;10,21;10,22;10,23;10,24;10,25;10,26;10,27;10,28;10,29;11,4;11,5;11,6;11,7;11,8;11,9;11,10;11,11;11,12;11,23;11,24;11,25;12,4;12,5;12,6;12,7;12,8;12,9;12,10;12,11;12,12;12,23;12,24;12,25;13,4;13,5;13,6;13,7;13,8;13,9;13,10;13,11;13,12;13,23;13,24;13,25;14,23;14,24;14,25;15,23;15,24;15,25;16,10;16,11;16,12;16,13;16,14;16,15;16,16;16,17;16,18;16,19;16,23;16,24;16,25;17,10;17,11;17,12;17,13;17,14;17,15;17,16;17,17;17,18;17,19;17,23;17,24;17,25;18,10;18,11;18,12;18,13;18,14;18,15;18,16;18,17;18,18;18,19;18,23;18,24;18,25;19,10;19,11;19,12;19,13;19,14;19,15;19,16;19,17;19,18;19,19;19,23;19,24;19,25;20,10;20,11;20,12;20,13;20,14;20,15;20,16;20,17;20,18;20,19;20,20;20,21;20,22;20,23;20,24;20,25;21,10;21,11;21,12;21,13;21,14;21,15;21,16;21,17;21,18;21,19;21,20;21,21;21,22;21,23;21,24;21,25;22,10;22,11;22,12;22,13;22,14;22,15;22,16;22,17;22,18;22,19;22,20;22,21;22,22;22,23;22,24;22,25;23,10;23,11;23,12;23,13;23,14;23,15;23,16;23,17;23,18;23,19;24,10;24,11;24,12;24,13;24,14;24,15;24,16;24,17;24,18;24,19;25,10;25,11;25,12;25,13;25,14;25,15;25,16;25,17;25,18;25,19;26,14;26,15;26,16;27,14;27,15;27,16;28,8;28,9;28,10;28,11;28,12;28,13;28,14;28,15;28,16;28,21;28,22;28,23;28,24;28,25;28,26;28,27;28,28;28,29;28,30;29,8;29,9;29,10;29,11;29,12;29,13;29,14;29,15;29,16;29,21;29,22;29,23;29,24;29,25;29,26;29,27;29,28;29,29;29,30;30,8;30,9;30,10;30,11;30,12;30,13;30,14;30,15;30,16;30,21;30,22;30,23;30,24;30,25;30,26;30,27;30,28;30,29;30,30;31,8;31,9;31,10;31,11;31,12;31,13;31,14;31,15;31,16;31,17;31,18;31,19;31,20;31,21;31,22;31,23;31,24;31,25;31,26;31,27;31,28;31,29;31,30;32,8;32,9;32,10;32,11;32,12;32,13;32,14;32,15;32,16;32,17;32,18;32,19;32,20;32,21;32,22;32,23;32,24;32,25;32,26;32,27;32,28;32,29;32,30;33,8;33,9;33,10;33,11;33,12;33,13;33,14;33,15;33,16;33,17;33,18;33,19;33,20;33,21;33,22;33,23;33,24;33,25;33,26;33,27;33,28;33,29;33,30;34,8;34,9;34,10;34,11;34,12;34,13;34,14;34,15;34,16;34,21;34,22;34,23;34,24;34,25;34,26;34,27;34,28;34,29;34,30;35,8;35,9;35,10;35,11;35,12;35,13;35,14;35,15;35,16;35,21;35,22;35,23;35,24;35,25;35,26;35,27;35,28;35,29;35,30;36,8;36,9;36,10;36,11;36,12;36,13;36,14;36,15;36,16;36,21;36,22;36,23;36,24;36,25;36,26;36,27;36,28;36,29;36,30;37,8;37,9;37,10;37,11;37,12;37,13;37,14;37,15;37,16;38,8;38,9;38,10;38,11;38,12;38,13;38,14;38,15;38,16|targets:7,19;22,12;30,23",
+          "validationHookUsed": "AInvilProceduralRecoveryJobController.GenerateWithSeed/ValidationCompleteAllTargets/GetValidationStateJson",
+          "failureReason": null,
+          "assertions": [
+            {
+              "id": "generation_succeeded",
+              "result": "Passed",
+              "message": "generation_succeeded passed."
+            },
+            {
+              "id": "room_count",
+              "result": "Passed",
+              "message": "room_count passed."
+            },
+            {
+              "id": "floor_cell_count",
+              "result": "Passed",
+              "message": "floor_cell_count passed."
+            },
+            {
+              "id": "player_start_floor",
+              "result": "Passed",
+              "message": "player_start_floor passed."
+            },
+            {
+              "id": "target_count",
+              "result": "Passed",
+              "message": "target_count passed."
+            },
+            {
+              "id": "reachable_targets",
+              "result": "Passed",
+              "message": "reachable_targets passed."
+            },
+            {
+              "id": "duplicate_targets",
+              "result": "Passed",
+              "message": "duplicate_targets passed."
+            },
+            {
+              "id": "wall_overlap",
+              "result": "Passed",
+              "message": "wall_overlap passed."
+            },
+            {
+              "id": "job_complete",
+              "result": "Passed",
+              "message": "job_complete passed."
+            },
+            {
+              "id": "deterministic",
+              "result": "Passed",
+              "message": "deterministic passed."
+            }
+          ]
+        },
+        "status": "Passed"
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "id": "generation_succeeded",
+      "result": "Passed",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "id": "room_count",
+      "result": "Passed",
+      "message": "room_count passed."
+    },
+    {
+      "id": "floor_cell_count",
+      "result": "Passed",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "id": "player_start_floor",
+      "result": "Passed",
+      "message": "player_start_floor passed."
+    },
+    {
+      "id": "target_count",
+      "result": "Passed",
+      "message": "target_count passed."
+    },
+    {
+      "id": "reachable_targets",
+      "result": "Passed",
+      "message": "reachable_targets passed."
+    },
+    {
+      "id": "duplicate_targets",
+      "result": "Passed",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "id": "wall_overlap",
+      "result": "Passed",
+      "message": "wall_overlap passed."
+    },
+    {
+      "id": "job_complete",
+      "result": "Passed",
+      "message": "job_complete passed."
+    },
+    {
+      "id": "deterministic",
+      "result": "Passed",
+      "message": "deterministic passed."
+    },
+    {
+      "id": "generation_succeeded",
+      "result": "Passed",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "id": "room_count",
+      "result": "Passed",
+      "message": "room_count passed."
+    },
+    {
+      "id": "floor_cell_count",
+      "result": "Passed",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "id": "player_start_floor",
+      "result": "Passed",
+      "message": "player_start_floor passed."
+    },
+    {
+      "id": "target_count",
+      "result": "Passed",
+      "message": "target_count passed."
+    },
+    {
+      "id": "reachable_targets",
+      "result": "Passed",
+      "message": "reachable_targets passed."
+    },
+    {
+      "id": "duplicate_targets",
+      "result": "Passed",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "id": "wall_overlap",
+      "result": "Passed",
+      "message": "wall_overlap passed."
+    },
+    {
+      "id": "job_complete",
+      "result": "Passed",
+      "message": "job_complete passed."
+    },
+    {
+      "id": "deterministic",
+      "result": "Passed",
+      "message": "deterministic passed."
+    },
+    {
+      "id": "generation_succeeded",
+      "result": "Passed",
+      "message": "generation_succeeded passed."
+    },
+    {
+      "id": "room_count",
+      "result": "Passed",
+      "message": "room_count passed."
+    },
+    {
+      "id": "floor_cell_count",
+      "result": "Passed",
+      "message": "floor_cell_count passed."
+    },
+    {
+      "id": "player_start_floor",
+      "result": "Passed",
+      "message": "player_start_floor passed."
+    },
+    {
+      "id": "target_count",
+      "result": "Passed",
+      "message": "target_count passed."
+    },
+    {
+      "id": "reachable_targets",
+      "result": "Passed",
+      "message": "reachable_targets passed."
+    },
+    {
+      "id": "duplicate_targets",
+      "result": "Passed",
+      "message": "duplicate_targets passed."
+    },
+    {
+      "id": "wall_overlap",
+      "result": "Passed",
+      "message": "wall_overlap passed."
+    },
+    {
+      "id": "job_complete",
+      "result": "Passed",
+      "message": "job_complete passed."
+    },
+    {
+      "id": "deterministic",
+      "result": "Passed",
+      "message": "deterministic passed."
+    },
+    {
+      "id": "all_seeds_tested",
+      "result": "Passed",
+      "message": "all_seeds_tested passed."
+    },
+    {
+      "id": "deterministic_generation",
+      "result": "Passed",
+      "message": "deterministic_generation passed."
+    },
+    {
+      "id": "different_seeds",
+      "result": "Passed",
+      "message": "different_seeds passed."
+    },
+    {
+      "id": "random_start_seed",
+      "result": "Passed",
+      "message": "random_start_seed passed."
+    },
+    {
+      "id": "stale_evidence",
+      "result": "Passed",
+      "message": "stale_evidence passed."
+    }
+  ],
+  "sourceValidationDesign": null,
+  "startedAt": "2026-07-06T06:14:54.243Z",
+  "finishedAt": "2026-07-06T06:15:36.355Z",
+  "completedAt": "2026-07-06T06:15:36.355Z",
+  "timestamp": "2026-07-06T06:15:36.355Z",
+  "remainingGaps": [],
+  "nextActions": [
+    "Procedural recovery job evidence is Passed. Keep Public Release Ready as No."
+  ],
+  "lastKnownPassedEvidence": null,
+  "lastKnownPassedAt": null,
+  "lastKnownPassedEvidencePath": null,
+  "productValidationStatus": "Passed",
+  "revalidationStatus": "Current",
+  "latestRunStatus": "Passed",
+  "unityProjectPath": null,
+  "generatedAssets": [
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryPlayerController.cs",
+    "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobBuilder.cs"
+  ],
+  "dryRunReport": "reports/dungeon_recovery_procedural_recovery_job_dry_run.json",
+  "compileStatus": {
+    "status": "Passed",
+    "message": "Unity compile status is stable and has no compile errors.",
+    "isCompiling": false,
+    "hasErrors": false,
+    "raw": {
+      "isCompiling": false,
+      "isUpdating": false,
+      "hasCompileErrors": false,
+      "compileErrorCount": 0,
+      "errorCount": 0,
+      "errors": [],
+      "recentErrors": [],
+      "lastCompileFinishedAt": "2026-07-06T15:14:46.6862709+09:00",
+      "editorCanEnterPlayMode": true,
+      "isPlaying": false,
+      "isPlayingOrWillChangePlaymode": false
+    }
+  },
+  "compileGate": {
+    "schemaVersion": "1.0.0",
+    "gateId": "UNITY-COMPILE-GATE",
+    "scenarioId": "dungeon_recovery_procedural_recovery_job_e2e",
+    "classification": "Operational",
+    "category": "ProductMvp",
+    "validationType": "ProceduralGenerationE2E",
+    "startedAt": "2026-07-06T06:14:57.373Z",
+    "finishedAt": "2026-07-06T06:14:58.988Z",
+    "status": "Passed",
+    "canEnterPlayMode": true,
+    "compileStatus": "Passed",
+    "compileErrorCount": 0,
+    "compileErrors": [],
+    "consoleErrorSummary": {
+      "status": "Passed",
+      "errorCount": 0,
+      "message": "unity_get_console_logs succeeded."
+    },
+    "unityProjectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany",
+    "unityUrl": "http://127.0.0.1:17777/rpc",
+    "healthUrl": "http://127.0.0.1:17777/health",
+    "checks": [
+      {
+        "id": "compile_gate.bridge_health",
+        "type": "Static",
+        "target": "http://127.0.0.1:17777/health",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "Unity Bridge health endpoint is reachable.",
+        "data": {
+          "ok": true,
+          "bridgeRunning": true,
+          "bridgeStatus": "running",
+          "capabilityVersion": "0.6.0-validation-probes",
+          "unityVersion": "6000.5.0f1",
+          "isPlaying": false,
+          "isPlayingOrWillChangePlaymode": false,
+          "playModeTransitionCount": 3
+        }
+      },
+      {
+        "id": "compile_gate.unity_get_status",
+        "type": "Static",
+        "target": "unity_get_status",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "unity_get_status succeeded.",
+        "data": {
+          "ok": true,
+          "bridgeRunning": true,
+          "bridgeStatus": "running",
+          "capabilityVersion": "0.6.0-validation-probes",
+          "unityVersion": "6000.5.0f1",
+          "projectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets",
+          "isPlaying": false,
+          "isPaused": false,
+          "isPlayingOrWillChangePlaymode": false,
+          "isCompiling": false,
+          "isUpdating": false,
+          "playModeTransitionCount": 3,
+          "inputTestBridgeAvailable": false,
+          "activeScene": {
+            "name": "DRC_FirstRecoveryJob",
+            "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_FirstRecoveryJob.unity",
+            "isDirty": false,
+            "isLoaded": true,
+            "rootCount": 1
+          },
+          "selection": {
+            "activeObject": null,
+            "objects": []
+          }
+        }
+      },
+      {
+        "id": "compile_gate.unity_refresh_assets",
+        "type": "Asset",
+        "target": "unity_refresh_assets",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "unity_refresh_assets succeeded.",
+        "data": {
+          "ok": true,
+          "isCompiling": false,
+          "isUpdating": false
+        }
+      },
+      {
+        "id": "compile_gate.unity_compile_status",
+        "type": "Compile",
+        "target": "unity_compile_status",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "Unity compile status is stable and has no compile errors.",
+        "data": {
+          "isCompiling": false,
+          "isUpdating": false,
+          "hasCompileErrors": false,
+          "compileErrorCount": 0,
+          "errorCount": 0,
+          "errors": [],
+          "recentErrors": [],
+          "lastCompileFinishedAt": "2026-07-06T15:14:46.6862709+09:00",
+          "editorCanEnterPlayMode": true,
+          "isPlaying": false,
+          "isPlayingOrWillChangePlaymode": false
+        }
+      },
+      {
+        "id": "compile_gate.unity_get_console_logs",
+        "type": "Console",
+        "target": "unity_get_console_logs",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "unity_get_console_logs succeeded.",
+        "data": {
+          "logs": []
+        }
+      },
+      {
+        "id": "compile_gate.local_csharp_build",
+        "type": "Compile",
+        "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "Local C# compile check passed.",
+        "data": {
+          "exitCode": 0,
+          "timedOut": false,
+          "errors": [],
+          "outputTail": "10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.ShaderGraph.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor.Shared\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\n  Assembly-CSharp -> E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Temp\\bin\\Debug\\Assembly-CSharp.dll\r\n\r\n빌드했습니다.\r\n\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3274: 기본 참조 \"nunit.framework\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성되었기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Universal.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.Rider.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.VisualStudio.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.ShaderGraph.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor.Shared\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\n    경고 7개\r\n    오류 0개\r\n\r\n경과 시간: 00:00:01.12\r\n"
+        }
+      }
+    ],
+    "compileStatusResult": {
+      "id": "compile_gate.unity_compile_status",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "status": "Passed",
+      "ok": true,
+      "failureClass": "Unknown",
+      "message": "Unity compile status is stable and has no compile errors.",
+      "data": {
+        "isCompiling": false,
+        "isUpdating": false,
+        "hasCompileErrors": false,
+        "compileErrorCount": 0,
+        "errorCount": 0,
+        "errors": [],
+        "recentErrors": [],
+        "lastCompileFinishedAt": "2026-07-06T15:14:46.6862709+09:00",
+        "editorCanEnterPlayMode": true,
+        "isPlaying": false,
+        "isPlayingOrWillChangePlaymode": false
+      }
+    },
+    "blockerType": null,
+    "playModeAttempted": false,
+    "runtimeAssemblyFreshness": {
+      "status": "Fresh",
+      "reason": "Compile gate passed immediately before Play Mode validation.",
+      "compileCheckedBeforePlayMode": true,
+      "lastCompileStatus": "Passed",
+      "recommendation": "Proceed to Play Mode validation."
+    },
+    "failureReason": null,
+    "nextAction": "Compile gate passed. Runtime validation may enter Play Mode."
+  },
+  "consoleErrorCount": 0,
+  "validationHookUsed": "AInvilProceduralRecoveryJobController.GenerateWithSeed/ValidationCompleteAllTargets",
+  "staleEvidenceReused": false,
+  "modifiedAssets": [],
+  "seedsTested": [
+    1001,
+    2026,
+    7777
+  ],
+  "perSeedResults": [
+    {
+      "seed": 1001,
+      "generationSucceeded": true,
+      "roomCount": 5,
+      "floorCellCount": 493,
+      "playerStartIsValidFloor": true,
+      "recoveryTargetCount": 3,
+      "reachableTargetCount": 3,
+      "duplicateTargetCells": 0,
+      "targetWallOverlapCount": 0,
+      "jobComplete": true,
+      "deterministicMatch": true,
+      "layoutSignature": "5,18;5,19;5,20;5,21;5,22;5,23;5,24;5,25;5,26;5,27;6,18;6,19;6,20;6,21;6,22;6,23;6,24;6,25;6,26;6,27;7,18;7,19;7,20;7,21;7,22;7,23;7,24;7,25;7,26;7,27;8,5;8,6;8,7;8,8;8,9;8,10;8,11;8,12;8,13;8,14;8,15;8,16;8,17;8,18;8,19;8,20;8,21;8,22;8,23;8,24;8,25;8,26;8,27;9,5;9,6;9,7;9,8;9,9;9,10;9,11;9,12;9,13;9,14;9,15;9,16;9,17;9,18;9,19;9,20;9,21;9,22;9,23;9,24;9,25;9,26;9,27;10,5;10,6;10,7;10,8;10,9;10,10;10,11;10,12;10,13;10,14;10,15;10,16;10,17;10,18;10,19;10,20;10,21;10,22;10,23;10,24;10,25;10,26;10,27;11,5;11,6;11,7;11,8;11,9;11,10;11,11;11,12;11,13;11,18;11,19;11,20;11,21;11,22;11,23;11,24;11,25;11,26;11,27;12,5;12,6;12,7;12,8;12,9;12,10;12,11;12,12;12,13;12,18;12,19;12,20;12,21;12,22;12,23;12,24;12,25;12,26;12,27;13,5;13,6;13,7;13,8;13,9;13,10;13,11;13,12;13,13;13,22;13,23;13,24;14,5;14,6;14,7;14,8;14,9;14,10;14,11;14,12;14,13;14,22;14,23;14,24;15,5;15,6;15,7;15,8;15,9;15,10;15,11;15,12;15,13;15,22;15,23;15,24;16,5;16,6;16,7;16,8;16,9;16,10;16,11;16,12;16,13;16,22;16,23;16,24;17,22;17,23;17,24;18,22;18,23;18,24;19,22;19,23;19,24;20,19;20,20;20,21;20,22;20,23;20,24;20,25;20,26;20,27;21,19;21,20;21,21;21,22;21,23;21,24;21,25;21,26;21,27;22,19;22,20;22,21;22,22;22,23;22,24;22,25;22,26;22,27;23,5;23,6;23,7;23,8;23,9;23,10;23,11;23,12;23,13;23,14;23,15;23,16;23,17;23,18;23,19;23,20;23,21;23,22;23,23;23,24;23,25;23,26;23,27;24,5;24,6;24,7;24,8;24,9;24,10;24,11;24,12;24,13;24,14;24,15;24,16;24,17;24,18;24,19;24,20;24,21;24,22;24,23;24,24;24,25;24,26;24,27;25,5;25,6;25,7;25,8;25,9;25,10;25,11;25,12;25,13;25,14;25,15;25,16;25,17;25,18;25,19;25,20;25,21;25,22;25,23;25,24;25,25;25,26;25,27;26,5;26,6;26,7;26,19;26,20;26,21;26,22;26,23;26,24;26,25;26,26;26,27;27,5;27,6;27,7;27,19;27,20;27,21;27,22;27,23;27,24;27,25;27,26;27,27;28,5;28,6;28,7;28,22;28,23;28,24;29,2;29,3;29,4;29,5;29,6;29,7;29,8;29,9;29,10;29,22;29,23;29,24;30,2;30,3;30,4;30,5;30,6;30,7;30,8;30,9;30,10;30,17;30,18;30,19;30,20;30,21;30,22;30,23;30,24;30,25;30,26;31,2;31,3;31,4;31,5;31,6;31,7;31,8;31,9;31,10;31,17;31,18;31,19;31,20;31,21;31,22;31,23;31,24;31,25;31,26;32,2;32,3;32,4;32,5;32,6;32,7;32,8;32,9;32,10;32,11;32,12;32,13;32,14;32,15;32,16;32,17;32,18;32,19;32,20;32,21;32,22;32,23;32,24;32,25;32,26;33,2;33,3;33,4;33,5;33,6;33,7;33,8;33,9;33,10;33,11;33,12;33,13;33,14;33,15;33,16;33,17;33,18;33,19;33,20;33,21;33,22;33,23;33,24;33,25;33,26;34,2;34,3;34,4;34,5;34,6;34,7;34,8;34,9;34,10;34,11;34,12;34,13;34,14;34,15;34,16;34,17;34,18;34,19;34,20;34,21;34,22;34,23;34,24;34,25;34,26;35,2;35,3;35,4;35,5;35,6;35,7;35,8;35,9;35,10;35,17;35,18;35,19;35,20;35,21;35,22;35,23;35,24;35,25;35,26;36,2;36,3;36,4;36,5;36,6;36,7;36,8;36,9;36,10;36,17;36,18;36,19;36,20;36,21;36,22;36,23;36,24;36,25;36,26;37,17;37,18;37,19;37,20;37,21;37,22;37,23;37,24;37,25;37,26|targets:8,22;25,26;34,25",
+      "validationHookUsed": "AInvilProceduralRecoveryJobController.GenerateWithSeed/ValidationCompleteAllTargets/GetValidationStateJson",
+      "failureReason": null,
+      "assertions": [
+        {
+          "id": "generation_succeeded",
+          "result": "Passed",
+          "message": "generation_succeeded passed."
+        },
+        {
+          "id": "room_count",
+          "result": "Passed",
+          "message": "room_count passed."
+        },
+        {
+          "id": "floor_cell_count",
+          "result": "Passed",
+          "message": "floor_cell_count passed."
+        },
+        {
+          "id": "player_start_floor",
+          "result": "Passed",
+          "message": "player_start_floor passed."
+        },
+        {
+          "id": "target_count",
+          "result": "Passed",
+          "message": "target_count passed."
+        },
+        {
+          "id": "reachable_targets",
+          "result": "Passed",
+          "message": "reachable_targets passed."
+        },
+        {
+          "id": "duplicate_targets",
+          "result": "Passed",
+          "message": "duplicate_targets passed."
+        },
+        {
+          "id": "wall_overlap",
+          "result": "Passed",
+          "message": "wall_overlap passed."
+        },
+        {
+          "id": "job_complete",
+          "result": "Passed",
+          "message": "job_complete passed."
+        },
+        {
+          "id": "deterministic",
+          "result": "Passed",
+          "message": "deterministic passed."
+        }
+      ]
+    },
+    {
+      "seed": 2026,
+      "generationSucceeded": true,
+      "roomCount": 4,
+      "floorCellCount": 463,
+      "playerStartIsValidFloor": true,
+      "recoveryTargetCount": 3,
+      "reachableTargetCount": 3,
+      "duplicateTargetCells": 0,
+      "targetWallOverlapCount": 0,
+      "jobComplete": true,
+      "deterministicMatch": true,
+      "layoutSignature": "7,9;7,10;7,11;7,12;7,13;7,14;7,15;7,16;7,17;7,18;7,19;7,22;7,23;7,24;7,25;7,26;7,27;7,28;8,9;8,10;8,11;8,12;8,13;8,14;8,15;8,16;8,17;8,18;8,19;8,22;8,23;8,24;8,25;8,26;8,27;8,28;9,9;9,10;9,11;9,12;9,13;9,14;9,15;9,16;9,17;9,18;9,19;9,22;9,23;9,24;9,25;9,26;9,27;9,28;10,9;10,10;10,11;10,12;10,13;10,14;10,15;10,16;10,17;10,18;10,19;10,22;10,23;10,24;10,25;10,26;10,27;10,28;11,5;11,6;11,7;11,8;11,9;11,10;11,11;11,12;11,13;11,14;11,15;11,16;11,17;11,18;11,19;11,20;11,21;11,22;11,23;11,24;11,25;11,26;11,27;11,28;12,5;12,6;12,7;12,8;12,9;12,10;12,11;12,12;12,13;12,14;12,15;12,16;12,17;12,18;12,19;12,20;12,21;12,22;12,23;12,24;12,25;12,26;12,27;12,28;13,5;13,6;13,7;13,8;13,9;13,10;13,11;13,12;13,13;13,14;13,15;13,16;13,17;13,18;13,19;13,20;13,21;13,22;13,23;13,24;13,25;13,26;13,27;13,28;14,5;14,6;14,7;14,9;14,10;14,11;14,12;14,13;14,14;14,15;14,16;14,17;14,18;14,19;14,22;14,23;14,24;14,25;14,26;14,27;14,28;15,5;15,6;15,7;15,13;15,14;15,15;15,22;15,23;15,24;15,25;15,26;15,27;15,28;16,5;16,6;16,7;16,13;16,14;16,15;16,22;16,23;16,24;16,25;16,26;16,27;16,28;17,5;17,6;17,7;17,13;17,14;17,15;17,22;17,23;17,24;17,25;17,26;17,27;17,28;18,5;18,6;18,7;18,13;18,14;18,15;18,24;18,25;18,26;19,5;19,6;19,7;19,13;19,14;19,15;19,24;19,25;19,26;20,5;20,6;20,7;20,13;20,14;20,15;20,24;20,25;20,26;21,5;21,6;21,7;21,13;21,14;21,15;21,24;21,25;21,26;22,5;22,6;22,7;22,13;22,14;22,15;22,24;22,25;22,26;23,5;23,6;23,7;23,13;23,14;23,15;23,24;23,25;23,26;24,5;24,6;24,7;24,13;24,14;24,15;24,24;24,25;24,26;25,5;25,6;25,7;25,13;25,14;25,15;25,24;25,25;25,26;26,2;26,3;26,4;26,5;26,6;26,7;26,8;26,9;26,10;26,13;26,14;26,15;26,24;26,25;26,26;27,2;27,3;27,4;27,5;27,6;27,7;27,8;27,9;27,10;27,13;27,14;27,15;27,24;27,25;27,26;28,2;28,3;28,4;28,5;28,6;28,7;28,8;28,9;28,10;28,11;28,12;28,13;28,14;28,15;28,24;28,25;28,26;29,2;29,3;29,4;29,5;29,6;29,7;29,8;29,9;29,10;29,11;29,12;29,13;29,14;29,15;29,24;29,25;29,26;30,2;30,3;30,4;30,5;30,6;30,7;30,8;30,9;30,10;30,11;30,12;30,13;30,14;30,15;30,24;30,25;30,26;31,2;31,3;31,4;31,5;31,6;31,7;31,8;31,9;31,10;31,19;31,20;31,21;31,22;31,23;31,24;31,25;31,26;31,27;31,28;31,29;32,2;32,3;32,4;32,5;32,6;32,7;32,8;32,9;32,10;32,19;32,20;32,21;32,22;32,23;32,24;32,25;32,26;32,27;32,28;32,29;33,19;33,20;33,21;33,22;33,23;33,24;33,25;33,26;33,27;33,28;33,29;34,19;34,20;34,21;34,22;34,23;34,24;34,25;34,26;34,27;34,28;34,29;35,19;35,20;35,21;35,22;35,23;35,24;35,25;35,26;35,27;35,28;35,29;36,19;36,20;36,21;36,22;36,23;36,24;36,25;36,26;36,27;36,28;36,29;37,19;37,20;37,21;37,22;37,23;37,24;37,25;37,26;37,27;37,28;37,29;38,19;38,20;38,21;38,22;38,23;38,24;38,25;38,26;38,27;38,28;38,29|targets:12,18;31,8;36,24",
+      "validationHookUsed": "AInvilProceduralRecoveryJobController.GenerateWithSeed/ValidationCompleteAllTargets/GetValidationStateJson",
+      "failureReason": null,
+      "assertions": [
+        {
+          "id": "generation_succeeded",
+          "result": "Passed",
+          "message": "generation_succeeded passed."
+        },
+        {
+          "id": "room_count",
+          "result": "Passed",
+          "message": "room_count passed."
+        },
+        {
+          "id": "floor_cell_count",
+          "result": "Passed",
+          "message": "floor_cell_count passed."
+        },
+        {
+          "id": "player_start_floor",
+          "result": "Passed",
+          "message": "player_start_floor passed."
+        },
+        {
+          "id": "target_count",
+          "result": "Passed",
+          "message": "target_count passed."
+        },
+        {
+          "id": "reachable_targets",
+          "result": "Passed",
+          "message": "reachable_targets passed."
+        },
+        {
+          "id": "duplicate_targets",
+          "result": "Passed",
+          "message": "duplicate_targets passed."
+        },
+        {
+          "id": "wall_overlap",
+          "result": "Passed",
+          "message": "wall_overlap passed."
+        },
+        {
+          "id": "job_complete",
+          "result": "Passed",
+          "message": "job_complete passed."
+        },
+        {
+          "id": "deterministic",
+          "result": "Passed",
+          "message": "deterministic passed."
+        }
+      ]
+    },
+    {
+      "seed": 7777,
+      "generationSucceeded": true,
+      "roomCount": 5,
+      "floorCellCount": 546,
+      "playerStartIsValidFloor": true,
+      "recoveryTargetCount": 3,
+      "reachableTargetCount": 3,
+      "duplicateTargetCells": 0,
+      "targetWallOverlapCount": 0,
+      "jobComplete": true,
+      "deterministicMatch": true,
+      "layoutSignature": "3,4;3,5;3,6;3,7;3,8;3,9;3,10;3,11;3,12;4,4;4,5;4,6;4,7;4,8;4,9;4,10;4,11;4,12;4,19;4,20;4,21;4,22;4,23;4,24;4,25;4,26;4,27;4,28;4,29;5,4;5,5;5,6;5,7;5,8;5,9;5,10;5,11;5,12;5,19;5,20;5,21;5,22;5,23;5,24;5,25;5,26;5,27;5,28;5,29;6,4;6,5;6,6;6,7;6,8;6,9;6,10;6,11;6,12;6,13;6,14;6,15;6,16;6,17;6,18;6,19;6,20;6,21;6,22;6,23;6,24;6,25;6,26;6,27;6,28;6,29;7,4;7,5;7,6;7,7;7,8;7,9;7,10;7,11;7,12;7,13;7,14;7,15;7,16;7,17;7,18;7,19;7,20;7,21;7,22;7,23;7,24;7,25;7,26;7,27;7,28;7,29;8,4;8,5;8,6;8,7;8,8;8,9;8,10;8,11;8,12;8,13;8,14;8,15;8,16;8,17;8,18;8,19;8,20;8,21;8,22;8,23;8,24;8,25;8,26;8,27;8,28;8,29;9,4;9,5;9,6;9,7;9,8;9,9;9,10;9,11;9,12;9,19;9,20;9,21;9,22;9,23;9,24;9,25;9,26;9,27;9,28;9,29;10,4;10,5;10,6;10,7;10,8;10,9;10,10;10,11;10,12;10,19;10,20;10,21;10,22;10,23;10,24;10,25;10,26;10,27;10,28;10,29;11,4;11,5;11,6;11,7;11,8;11,9;11,10;11,11;11,12;11,23;11,24;11,25;12,4;12,5;12,6;12,7;12,8;12,9;12,10;12,11;12,12;12,23;12,24;12,25;13,4;13,5;13,6;13,7;13,8;13,9;13,10;13,11;13,12;13,23;13,24;13,25;14,23;14,24;14,25;15,23;15,24;15,25;16,10;16,11;16,12;16,13;16,14;16,15;16,16;16,17;16,18;16,19;16,23;16,24;16,25;17,10;17,11;17,12;17,13;17,14;17,15;17,16;17,17;17,18;17,19;17,23;17,24;17,25;18,10;18,11;18,12;18,13;18,14;18,15;18,16;18,17;18,18;18,19;18,23;18,24;18,25;19,10;19,11;19,12;19,13;19,14;19,15;19,16;19,17;19,18;19,19;19,23;19,24;19,25;20,10;20,11;20,12;20,13;20,14;20,15;20,16;20,17;20,18;20,19;20,20;20,21;20,22;20,23;20,24;20,25;21,10;21,11;21,12;21,13;21,14;21,15;21,16;21,17;21,18;21,19;21,20;21,21;21,22;21,23;21,24;21,25;22,10;22,11;22,12;22,13;22,14;22,15;22,16;22,17;22,18;22,19;22,20;22,21;22,22;22,23;22,24;22,25;23,10;23,11;23,12;23,13;23,14;23,15;23,16;23,17;23,18;23,19;24,10;24,11;24,12;24,13;24,14;24,15;24,16;24,17;24,18;24,19;25,10;25,11;25,12;25,13;25,14;25,15;25,16;25,17;25,18;25,19;26,14;26,15;26,16;27,14;27,15;27,16;28,8;28,9;28,10;28,11;28,12;28,13;28,14;28,15;28,16;28,21;28,22;28,23;28,24;28,25;28,26;28,27;28,28;28,29;28,30;29,8;29,9;29,10;29,11;29,12;29,13;29,14;29,15;29,16;29,21;29,22;29,23;29,24;29,25;29,26;29,27;29,28;29,29;29,30;30,8;30,9;30,10;30,11;30,12;30,13;30,14;30,15;30,16;30,21;30,22;30,23;30,24;30,25;30,26;30,27;30,28;30,29;30,30;31,8;31,9;31,10;31,11;31,12;31,13;31,14;31,15;31,16;31,17;31,18;31,19;31,20;31,21;31,22;31,23;31,24;31,25;31,26;31,27;31,28;31,29;31,30;32,8;32,9;32,10;32,11;32,12;32,13;32,14;32,15;32,16;32,17;32,18;32,19;32,20;32,21;32,22;32,23;32,24;32,25;32,26;32,27;32,28;32,29;32,30;33,8;33,9;33,10;33,11;33,12;33,13;33,14;33,15;33,16;33,17;33,18;33,19;33,20;33,21;33,22;33,23;33,24;33,25;33,26;33,27;33,28;33,29;33,30;34,8;34,9;34,10;34,11;34,12;34,13;34,14;34,15;34,16;34,21;34,22;34,23;34,24;34,25;34,26;34,27;34,28;34,29;34,30;35,8;35,9;35,10;35,11;35,12;35,13;35,14;35,15;35,16;35,21;35,22;35,23;35,24;35,25;35,26;35,27;35,28;35,29;35,30;36,8;36,9;36,10;36,11;36,12;36,13;36,14;36,15;36,16;36,21;36,22;36,23;36,24;36,25;36,26;36,27;36,28;36,29;36,30;37,8;37,9;37,10;37,11;37,12;37,13;37,14;37,15;37,16;38,8;38,9;38,10;38,11;38,12;38,13;38,14;38,15;38,16|targets:7,19;22,12;30,23",
+      "validationHookUsed": "AInvilProceduralRecoveryJobController.GenerateWithSeed/ValidationCompleteAllTargets/GetValidationStateJson",
+      "failureReason": null,
+      "assertions": [
+        {
+          "id": "generation_succeeded",
+          "result": "Passed",
+          "message": "generation_succeeded passed."
+        },
+        {
+          "id": "room_count",
+          "result": "Passed",
+          "message": "room_count passed."
+        },
+        {
+          "id": "floor_cell_count",
+          "result": "Passed",
+          "message": "floor_cell_count passed."
+        },
+        {
+          "id": "player_start_floor",
+          "result": "Passed",
+          "message": "player_start_floor passed."
+        },
+        {
+          "id": "target_count",
+          "result": "Passed",
+          "message": "target_count passed."
+        },
+        {
+          "id": "reachable_targets",
+          "result": "Passed",
+          "message": "reachable_targets passed."
+        },
+        {
+          "id": "duplicate_targets",
+          "result": "Passed",
+          "message": "duplicate_targets passed."
+        },
+        {
+          "id": "wall_overlap",
+          "result": "Passed",
+          "message": "wall_overlap passed."
+        },
+        {
+          "id": "job_complete",
+          "result": "Passed",
+          "message": "job_complete passed."
+        },
+        {
+          "id": "deterministic",
+          "result": "Passed",
+          "message": "deterministic passed."
+        }
+      ]
+    }
+  ],
+  "randomSeedSamples": [
+    320100795,
+    1714198222
+  ],
+  "randomStartupSeedVerified": true,
+  "deterministicGenerationVerified": true,
+  "differentSeedsProduceDifferentLayouts": true,
+  "publicReleaseReady": false
+}

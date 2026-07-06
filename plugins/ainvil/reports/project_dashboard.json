@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "dashboardId": "DASH-GRAPH-AInvil-Productization-2026-07-04",
-  "generatedAt": "2026-07-04T14:50:46.835Z",
+  "dashboardId": "DASH-GRAPH-AInvil-Productization-2026-07-06",
+  "generatedAt": "2026-07-06T06:16:49.414Z",
   "projectName": "AInvil Productization",
   "currentVision": {
     "nodeId": "VISION-AInvil-Productization",
@@ -16,8 +16,8 @@
     "owner": "Orchestrator"
   },
   "activeFeature": {
-    "nodeId": "FEAT-DRC-MVP-FirstRecoveryJob",
-    "title": "First Recovery Job",
+    "nodeId": "FEAT-DRC-PROC-RecoveryJob",
+    "title": "Procedural Recovery Job",
     "status": "Implemented",
     "owner": "GDD Agent"
   },
@@ -40,10 +40,14 @@
     "Runtime Tested": 0,
     "User Confirmed": 0
   },
-  "implementedFeatures": [],
+  "implementedFeatures": [
+    "FEAT-DRC-SPACE-001"
+  ],
   "validatedFeatures": [
     "FEAT-E2E-HappyPath-001",
-    "FEAT-DRC-MVP-FirstRecoveryJob"
+    "FEAT-DRC-MVP-FirstRecoveryJob",
+    "FEAT-DRC-PROC-RecoveryJob",
+    "FEAT-DRC-SPACE-001"
   ],
   "blockedTasks": [
     "TASK-E2E-004",
@@ -54,10 +58,10 @@
   "latestLiveHarnessReport": "harness/reports/latest-live-harness-report.json",
   "latestExecutionRecord": "workflow/runs/latest.json",
   "productizationStatus": {
-    "reportId": "PRODSTAT-2026-07-04T14-50-38-837Z",
-    "decision": "Not Release Ready",
+    "reportId": "PRODSTAT-2026-07-06T06-16-49-297Z",
+    "decision": "Release Candidate",
     "graphClassification": "Operational",
-    "releaseBlockerCount": 1,
+    "releaseBlockerCount": 0,
     "featureCounts": {
       "Verified": 1,
       "Spec-only": 2,
@@ -70,7 +74,7 @@
       "Verified": 4
     },
     "operationalValidation": {
-      "scenarioCount": 2,
+      "scenarioCount": 6,
       "scenarios": [
         {
           "id": "ainvil_bridge_smoke_operational",
@@ -78,19 +82,39 @@
           "evidenceOutputPath": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
         },
         {
+          "id": "ainvil_compile_gate_blocks_playmode_on_compile_error",
+          "title": "AInvil compile gate blocks Play Mode on compile error",
+          "evidenceOutputPath": "validation/evidence/EVID-ainvil-compile-gate-blocks-playmode-latest.json"
+        },
+        {
           "id": "dungeon_recovery_first_playable_e2e",
           "title": "Dungeon Recovery Company first playable recovery job E2E",
           "evidenceOutputPath": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json"
+        },
+        {
+          "id": "dungeon_recovery_procedural_recovery_job_e2e",
+          "title": "Dungeon Recovery Company procedural recovery job E2E",
+          "evidenceOutputPath": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest.json"
+        },
+        {
+          "id": "dungeon_recovery_procedural_space_quality_validation",
+          "title": "Dungeon Recovery Company procedural space quality validation",
+          "evidenceOutputPath": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest.json"
+        },
+        {
+          "id": "dungeon_recovery_procedural_visual_validation",
+          "title": "Dungeon Recovery Company procedural visual validation",
+          "evidenceOutputPath": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest.json"
         }
       ],
       "latestEvidence": {
-        "evidenceId": "EVID-dungeon-recovery-first-playable-build-latest",
-        "scenarioId": "dungeon_recovery_first_playable_e2e",
+        "evidenceId": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+        "scenarioId": "dungeon_recovery_procedural_space_quality_validation",
         "classification": "Operational",
         "status": "Passed",
-        "validationLevel": "Compile Verified",
+        "validationLevel": "Play Mode Verified",
         "failureClass": "None",
-        "path": "validation/evidence/EVID-dungeon-recovery-first-playable-build-latest.json"
+        "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-passed.json"
       }
     },
     "productMvpWorkflow": {
@@ -100,13 +124,13 @@
       "validationType": "UnityFeatureE2E",
       "status": "Passed",
       "humanPlayabilityReview": {
-        "status": "Needs Improvement",
+        "status": "Passed",
         "reportPath": "reports/dungeon_recovery_first_playable_playability_review.json",
         "remainingIssues": [
-          "Retest required after camera, material, player marker, target marker, and objective banner fixes.",
-          "The current experience still relies on prototype UI/text and does not yet provide a full game-like tutorial flow.",
-          "E-key recovery feedback is still minimal and should eventually receive animation/audio/VFX beyond this generated primitive slice.",
-          "User requested broader design improvement; this pass only applies minimal generated-folder UX fixes."
+          "This is not a finished game.",
+          "Art, sound, and recovery presentation remain placeholder-level.",
+          "Tutorial flow is still simple instructional UI rather than a full game-like onboarding sequence.",
+          "Next-job, reward, and company management loops are not implemented yet."
         ]
       },
       "buildVerification": {
@@ -116,8 +140,10 @@
         "failureReason": null
       },
       "readyCandidate": true,
+      "humanPlayableFirstBuildCandidate": true,
+      "productMvpFirstPlayableVerified": true,
       "latestEvidence": {
-        "evidenceId": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T14-47-56-627Z",
+        "evidenceId": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T19-50-44-904Z",
         "status": "Passed",
         "validationLevel": "Play Mode Verified",
         "totalRecoveryTargetCount": 3,
@@ -126,10 +152,7 @@
         "progressText": "Recovered: 3 / 3\nJob Complete",
         "path": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json"
       },
-      "latestHarness": {
-        "status": "Passed",
-        "reportPath": "harness/reports/latest-live-harness-report.json"
-      },
+      "latestHarness": null,
       "nextAction": "Treat as Product MVP Ready Candidate evidence; continue manual playability and public install gates separately."
     },
     "releaseLevel": {
@@ -137,20 +160,52 @@
       "coreRcReproducibilityVerified": true,
       "canonicalUnityBridgePackageVerified": true,
       "productMvpWorkflow": "Passed",
-      "humanPlayabilityReview": "Needs Improvement",
+      "humanPlayabilityReview": "Passed",
       "buildVerification": "Passed",
       "productMvpReadyCandidate": true,
+      "humanPlayableFirstBuildCandidate": true,
+      "productMvpFirstPlayableVerified": true,
+      "firstGameplayLoop": "Verified",
+      "proceduralRecoveryJob": "Passed",
+      "proceduralGenerationVerified": true,
+      "visualValidation": "Passed",
+      "proceduralSpaceQuality": "Passed",
+      "compileGate": "Passed",
+      "compileGateSafety": "Passed",
+      "playModeBlockedOnCompileError": true,
+      "screenshotEvidenceAvailable": true,
+      "missingShaderSuspected": false,
+      "cameraFramingCheck": "Passed",
       "publicReleaseReady": false
     }
   },
   "productionCoreReview": {
-    "evaluationId": "PCORE-EVAL-2026-07-04T14-50-38-635Z",
+    "evaluationId": "PCORE-EVAL-2026-07-06T06-16-48-895Z",
     "reviewedGateId": "GATE-REVIEW-001",
-    "previousStatus": "Changes Requested",
-    "newStatus": "Approved",
-    "resolvedChangeCount": 9,
-    "remainingChangeCount": 0,
-    "remainingChanges": [],
+    "previousStatus": "Revalidation Required",
+    "newStatus": "Revalidation Required",
+    "resolvedChangeCount": 7,
+    "remainingChangeCount": 2,
+    "remainingChanges": [
+      {
+        "id": "PCORE-APPROVAL-PRODUCTIZATION",
+        "status": "Revalidation Required",
+        "summary": "Productization has only environment revalidation blockers, not product requested changes.",
+        "connectedArtifacts": [
+          "reports/productization_status_report.json"
+        ],
+        "nextAction": "Resolve non-review productization blockers and regenerate the productization report."
+      },
+      {
+        "id": "PCORE-APPROVAL-RELEASE",
+        "status": "Revalidation Required",
+        "summary": "Release readiness has only environment revalidation blockers, not product requested changes.",
+        "connectedArtifacts": [
+          "reports/release_readiness_report.json"
+        ],
+        "nextAction": "Resolve non-review release blockers and regenerate release readiness."
+      }
+    ],
     "evidenceUsed": [
       {
         "kind": "Review Record",
@@ -185,12 +240,12 @@
     ]
   },
   "nextRecommendedAction": {
-    "actionId": "NEXT-DRC-MVP-Manual-Playtest",
-    "title": "Run manual playability review for the Dungeon Recovery first playable.",
+    "actionId": "NEXT-DRC-PROC-Validate",
+    "title": "Run procedural recovery job E2E validation for seeds 1001, 2026, and 7777.",
     "owner": "Input Agent",
     "status": "Planned",
-    "reason": "Automated Product MVP E2E passed through deterministic hooks; manual player-input feel and UX review are still separate from Public Release readiness.",
-    "referencesNodeId": "FEAT-DRC-MVP-FirstRecoveryJob",
-    "requiredValidationLevel": "User Confirmed"
+    "reason": "Procedural generation must prove deterministic layouts, reachable targets, recovery completion, and zero console errors before further gameplay expansion.",
+    "referencesNodeId": "FEAT-DRC-PROC-RecoveryJob",
+    "requiredValidationLevel": "Play Mode Verified"
   }
 }

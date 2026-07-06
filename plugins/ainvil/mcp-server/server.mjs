@@ -350,6 +350,15 @@ const tools = [
     }
   },
   {
+    name: "unity_refresh_assets",
+    description: "Refresh Unity AssetDatabase and report whether compilation/updating is active.",
+    inputSchema: {
+      type: "object",
+      additionalProperties: false,
+      properties: {}
+    }
+  },
+  {
     name: "unity_find_animation_assets",
     description: "Find AnimationClip, AnimatorController, RuntimeAnimatorController, and Avatar assets in the Unity project.",
     inputSchema: {

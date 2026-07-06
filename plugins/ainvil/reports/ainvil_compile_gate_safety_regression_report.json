@@ -1,0 +1,678 @@
+{
+  "schemaVersion": "1.0.0",
+  "reportId": "CGSAFE-2026-07-06T04-48-45-776Z",
+  "generatedAt": "2026-07-06T04:48:45.776Z",
+  "scenarioId": "ainvil_compile_gate_blocks_playmode_on_compile_error",
+  "status": "Passed",
+  "publicReleaseReady": false,
+  "evidencePath": "validation/evidence/EVID-ainvil-compile-gate-blocks-playmode-latest.json",
+  "evidence": {
+    "schemaVersion": "1.0.0",
+    "evidenceId": "EVID-ainvil-compile-gate-blocks-playmode-latest",
+    "source": "CompileGateSafetyRegression",
+    "scenarioId": "ainvil_compile_gate_blocks_playmode_on_compile_error",
+    "classification": "Operational",
+    "category": "ValidationSafety",
+    "validationType": "CompileGateRegression",
+    "validationLevel": "Compile Verified",
+    "status": "Passed",
+    "result": "Passed",
+    "validationIds": [
+      "VAL-AINVIL-COMPILE-GATE-SAFETY-001"
+    ],
+    "validationId": "VAL-AINVIL-COMPILE-GATE-SAFETY-001",
+    "failureClass": "None",
+    "acceptanceIds": [
+      "AC-AINVIL-COMPILE-GATE-SAFETY-001"
+    ],
+    "requirementIds": [
+      "REQ-AINVIL-COMPILE-GATE-SAFETY-001"
+    ],
+    "unityTargets": [
+      "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs"
+    ],
+    "checks": [
+      {
+        "checkId": "intentional_compile_error.created",
+        "type": "Compile",
+        "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs",
+        "status": "Passed",
+        "failureClass": "Unknown",
+        "message": "Temporary compile error file was created."
+      },
+      {
+        "checkId": "compile_gate.blocks_play_mode",
+        "type": "PlayMode",
+        "target": "UNITY-COMPILE-GATE",
+        "status": "Passed",
+        "failureClass": "Unknown",
+        "message": "Compile gate status with error: CompileBlocked."
+      },
+      {
+        "checkId": "play_mode.not_attempted",
+        "type": "PlayMode",
+        "target": "unity_enter_play_mode",
+        "status": "Passed",
+        "failureClass": "Unknown",
+        "message": "Play Mode was not attempted while compile gate was blocked."
+      },
+      {
+        "checkId": "downstream_validation.skipped",
+        "type": "Compile",
+        "target": "runtime validation",
+        "status": "Passed",
+        "failureClass": "Unknown",
+        "message": "Downstream runtime validation was intentionally skipped."
+      },
+      {
+        "checkId": "temporary_error_file.deleted",
+        "type": "Compile",
+        "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs",
+        "status": "Passed",
+        "failureClass": "Unknown",
+        "message": "Temporary compile error file was deleted."
+      },
+      {
+        "checkId": "compile_gate.cleanup_passed",
+        "type": "Compile",
+        "target": "compile-check",
+        "status": "Passed",
+        "failureClass": "Unknown",
+        "message": "Compile gate status after cleanup: Passed after 6 attempt(s)."
+      }
+    ],
+    "checkedSteps": [
+      {
+        "checkId": "intentional_compile_error.created",
+        "type": "Compile",
+        "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs",
+        "status": "Passed",
+        "failureClass": "Unknown",
+        "message": "Temporary compile error file was created."
+      },
+      {
+        "checkId": "compile_gate.blocks_play_mode",
+        "type": "PlayMode",
+        "target": "UNITY-COMPILE-GATE",
+        "status": "Passed",
+        "failureClass": "Unknown",
+        "message": "Compile gate status with error: CompileBlocked."
+      },
+      {
+        "checkId": "play_mode.not_attempted",
+        "type": "PlayMode",
+        "target": "unity_enter_play_mode",
+        "status": "Passed",
+        "failureClass": "Unknown",
+        "message": "Play Mode was not attempted while compile gate was blocked."
+      },
+      {
+        "checkId": "downstream_validation.skipped",
+        "type": "Compile",
+        "target": "runtime validation",
+        "status": "Passed",
+        "failureClass": "Unknown",
+        "message": "Downstream runtime validation was intentionally skipped."
+      },
+      {
+        "checkId": "temporary_error_file.deleted",
+        "type": "Compile",
+        "target": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs",
+        "status": "Passed",
+        "failureClass": "Unknown",
+        "message": "Temporary compile error file was deleted."
+      },
+      {
+        "checkId": "compile_gate.cleanup_passed",
+        "type": "Compile",
+        "target": "compile-check",
+        "status": "Passed",
+        "failureClass": "Unknown",
+        "message": "Compile gate status after cleanup: Passed after 6 attempt(s)."
+      }
+    ],
+    "intentionalCompileErrorCreated": true,
+    "compileGateStatusWithError": "Failed",
+    "blockerType": "CompileBlocked",
+    "playModeAttempted": false,
+    "downstreamValidationSkipped": true,
+    "compileErrorsDetected": 2,
+    "compileErrors": [
+      {
+        "file": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs",
+        "line": 7,
+        "column": 9,
+        "code": "CS0103",
+        "message": "The name 'ThisSymbolDoesNotExist' does not exist in the current context",
+        "rawMessage": "The name 'ThisSymbolDoesNotExist' does not exist in the current context",
+        "stackTrace": null
+      },
+      {
+        "file": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs",
+        "line": 7,
+        "column": 9,
+        "code": "CS0103",
+        "message": "'ThisSymbolDoesNotExist' 이름이 현재 컨텍스트에 없습니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]",
+        "rawMessage": "'ThisSymbolDoesNotExist' 이름이 현재 컨텍스트에 없습니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]",
+        "stackTrace": null
+      }
+    ],
+    "errorFile": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs",
+    "errorCode": "CS0103",
+    "errorMessage": "The name 'ThisSymbolDoesNotExist' does not exist in the current context",
+    "temporaryErrorFileDeleted": true,
+    "csprojTemporaryIncludeRestored": true,
+    "compileGateStatusAfterCleanup": "Passed",
+    "cleanupAttempts": 6,
+    "cleanupWaitMs": 73459,
+    "staleEvidenceReused": false,
+    "publicReleaseReady": false,
+    "bridgeHealthResult": {
+      "checkId": "compile_gate.bridge_health",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "Unity Bridge health endpoint is reachable."
+    },
+    "compileStatusResult": {
+      "checkId": "compile_gate.unity_compile_status",
+      "status": "Passed",
+      "failureClass": "Unknown",
+      "message": "unity_compile_status succeeded."
+    },
+    "compileGateWithError": {
+      "schemaVersion": "1.0.0",
+      "gateId": "UNITY-COMPILE-GATE",
+      "scenarioId": "ainvil_compile_gate_blocks_playmode_on_compile_error",
+      "classification": "Operational",
+      "category": "ValidationSafety",
+      "validationType": "CompileGateRegression",
+      "startedAt": "2026-07-06T04:47:23.904Z",
+      "finishedAt": "2026-07-06T04:47:32.312Z",
+      "status": "CompileBlocked",
+      "canEnterPlayMode": false,
+      "compileStatus": "Failed",
+      "compileErrorCount": 2,
+      "compileErrors": [
+        {
+          "file": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs",
+          "line": 7,
+          "column": 9,
+          "code": "CS0103",
+          "message": "The name 'ThisSymbolDoesNotExist' does not exist in the current context",
+          "rawMessage": "The name 'ThisSymbolDoesNotExist' does not exist in the current context",
+          "stackTrace": null
+        },
+        {
+          "file": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs",
+          "line": 7,
+          "column": 9,
+          "code": "CS0103",
+          "message": "'ThisSymbolDoesNotExist' 이름이 현재 컨텍스트에 없습니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]",
+          "rawMessage": "'ThisSymbolDoesNotExist' 이름이 현재 컨텍스트에 없습니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]",
+          "stackTrace": null
+        }
+      ],
+      "consoleErrorSummary": {
+        "status": "Passed",
+        "errorCount": 1,
+        "message": "unity_get_console_logs succeeded."
+      },
+      "unityProjectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany",
+      "unityUrl": "http://127.0.0.1:17777/rpc",
+      "healthUrl": "http://127.0.0.1:17777/health",
+      "checks": [
+        {
+          "id": "compile_gate.bridge_health",
+          "type": "Static",
+          "target": "http://127.0.0.1:17777/health",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "Unity Bridge health endpoint is reachable.",
+          "data": {
+            "ok": true,
+            "bridgeRunning": true,
+            "bridgeStatus": "busy",
+            "capabilityVersion": "0.6.0-validation-probes",
+            "unityVersion": "6000.5.0f1",
+            "isPlaying": false,
+            "isPlayingOrWillChangePlaymode": false,
+            "playModeTransitionCount": 0
+          }
+        },
+        {
+          "id": "compile_gate.unity_get_status",
+          "type": "Static",
+          "target": "unity_get_status",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_get_status succeeded.",
+          "data": {
+            "ok": true,
+            "bridgeRunning": true,
+            "bridgeStatus": "busy",
+            "capabilityVersion": "0.6.0-validation-probes",
+            "unityVersion": "6000.5.0f1",
+            "projectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets",
+            "isPlaying": false,
+            "isPaused": false,
+            "isPlayingOrWillChangePlaymode": false,
+            "isCompiling": true,
+            "isUpdating": false,
+            "playModeTransitionCount": 0,
+            "inputTestBridgeAvailable": false,
+            "activeScene": {
+              "name": "DRC_ProceduralRecoveryJob",
+              "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+              "isDirty": false,
+              "isLoaded": true,
+              "rootCount": 1
+            },
+            "selection": {
+              "activeObject": {
+                "name": "Readme",
+                "type": "Readme",
+                "instanceId": 48222,
+                "kind": "asset",
+                "assetPath": "Assets/Readme.asset"
+              },
+              "objects": [
+                {
+                  "name": "Readme",
+                  "type": "Readme",
+                  "instanceId": 48222,
+                  "kind": "asset",
+                  "assetPath": "Assets/Readme.asset"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "compile_gate.unity_refresh_assets",
+          "type": "Asset",
+          "target": "unity_refresh_assets",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_refresh_assets succeeded.",
+          "data": {
+            "ok": true,
+            "isCompiling": true,
+            "isUpdating": false
+          }
+        },
+        {
+          "id": "compile_gate.unity_compile_status",
+          "type": "Compile",
+          "target": "unity_compile_status",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_compile_status succeeded.",
+          "data": {
+            "isCompiling": true,
+            "isUpdating": false,
+            "hasCompileErrors": false,
+            "compileErrorCount": 0,
+            "errorCount": 0,
+            "errors": [],
+            "recentErrors": [],
+            "lastCompileFinishedAt": null,
+            "editorCanEnterPlayMode": false,
+            "isPlaying": false,
+            "isPlayingOrWillChangePlaymode": false
+          }
+        },
+        {
+          "id": "compile_gate.unity_compile_status",
+          "type": "Compile",
+          "target": "unity_compile_status",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_compile_status succeeded.",
+          "data": {
+            "isCompiling": true,
+            "isUpdating": false,
+            "hasCompileErrors": false,
+            "compileErrorCount": 0,
+            "errorCount": 0,
+            "errors": [],
+            "recentErrors": [],
+            "lastCompileFinishedAt": null,
+            "editorCanEnterPlayMode": false,
+            "isPlaying": false,
+            "isPlayingOrWillChangePlaymode": false
+          }
+        },
+        {
+          "id": "compile_gate.unity_compile_status",
+          "type": "Compile",
+          "target": "unity_compile_status",
+          "status": "Failed",
+          "ok": true,
+          "failureClass": "CompileError",
+          "message": "Unity compile status reports compile errors. Play Mode validation is blocked.",
+          "data": {
+            "isCompiling": false,
+            "isUpdating": false,
+            "hasCompileErrors": true,
+            "compileErrorCount": 1,
+            "errorCount": 1,
+            "errors": [
+              {
+                "time": "2026-07-06T13:47:27.4628408+09:00",
+                "level": "error",
+                "type": "Error",
+                "message": "The name 'ThisSymbolDoesNotExist' does not exist in the current context",
+                "stackTrace": "",
+                "file": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs",
+                "line": 7,
+                "column": 9,
+                "code": "CS0103"
+              }
+            ],
+            "recentErrors": [
+              {
+                "Time": "2026-07-06T13:47:27.4628408+09:00",
+                "Level": "error",
+                "Type": "Error",
+                "Message": "Assets\\AInvilGenerated\\DungeonRecoveryFirstPlayable\\Scripts\\AInvilCompileGateIntentionalError.cs(7,9): error CS0103: The name 'ThisSymbolDoesNotExist' does not exist in the current context",
+                "StackTrace": ""
+              }
+            ],
+            "lastCompileFinishedAt": "2026-07-06T13:47:27.4538324+09:00",
+            "editorCanEnterPlayMode": false,
+            "isPlaying": false,
+            "isPlayingOrWillChangePlaymode": false
+          }
+        },
+        {
+          "id": "compile_gate.unity_get_console_logs",
+          "type": "Console",
+          "target": "unity_get_console_logs",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_get_console_logs succeeded.",
+          "data": {
+            "logs": [
+              {
+                "Time": "2026-07-06T13:47:27.4628408+09:00",
+                "Level": "error",
+                "Type": "Error",
+                "Message": "Assets\\AInvilGenerated\\DungeonRecoveryFirstPlayable\\Scripts\\AInvilCompileGateIntentionalError.cs(7,9): error CS0103: The name 'ThisSymbolDoesNotExist' does not exist in the current context",
+                "StackTrace": ""
+              }
+            ]
+          }
+        },
+        {
+          "id": "compile_gate.local_csharp_build",
+          "type": "Compile",
+          "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj",
+          "status": "Failed",
+          "ok": false,
+          "failureClass": "CompileError",
+          "message": "Local C# compile check failed with 2 compiler error(s).",
+          "data": {
+            "exitCode": 1,
+            "timedOut": false,
+            "errors": [
+              {
+                "file": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs",
+                "line": 7,
+                "column": 9,
+                "code": "CS0103",
+                "message": "'ThisSymbolDoesNotExist' 이름이 현재 컨텍스트에 없습니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]",
+                "rawMessage": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs(7,9): error CS0103: 'ThisSymbolDoesNotExist' 이름이 현재 컨텍스트에 없습니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]"
+              },
+              {
+                "file": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs",
+                "line": 7,
+                "column": 9,
+                "code": "CS0103",
+                "message": "'ThisSymbolDoesNotExist' 이름이 현재 컨텍스트에 없습니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]",
+                "rawMessage": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilCompileGateIntentionalError.cs(7,9): error CS0103: 'ThisSymbolDoesNotExist' 이름이 현재 컨텍스트에 없습니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]"
+              }
+            ],
+            "outputTail": "le\\Scripts\\AInvilProceduralVisualValidationProbe.cs(116,33): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)'은(는) 사용되지 않습니다. 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.' [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nE:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assets\\AInvilGenerated\\DungeonRecoveryFirstPlayable\\Scripts\\AInvilProceduralVisualValidationProbe.cs(248,76): warning CS0618: 'FindObjectsSortMode'은(는) 사용되지 않습니다. 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.' [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nE:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assets\\AInvilGenerated\\DungeonRecoveryFirstPlayable\\Scripts\\AInvilProceduralVisualValidationProbe.cs(248,36): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)'은(는) 사용되지 않습니다. 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.' [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nE:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assets\\AInvilGenerated\\DungeonRecoveryFirstPlayable\\Scripts\\AInvilProceduralVisualValidationProbe.cs(310,73): warning CS0618: 'FindObjectsSortMode'은(는) 사용되지 않습니다. 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.' [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nE:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assets\\AInvilGenerated\\DungeonRecoveryFirstPlayable\\Scripts\\AInvilProceduralVisualValidationProbe.cs(310,34): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)'은(는) 사용되지 않습니다. 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.' [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nE:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assets\\AInvilGenerated\\DungeonRecoveryFirstPlayable\\Scripts\\AInvilProceduralVisualValidationProbe.cs(329,66): warning CS0618: 'FindObjectsSortMode'은(는) 사용되지 않습니다. 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.' [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nE:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assets\\AInvilGenerated\\DungeonRecoveryFirstPlayable\\Scripts\\AInvilProceduralVisualValidationProbe.cs(329,38): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)'은(는) 사용되지 않습니다. 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.' [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nE:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assets\\AInvilGenerated\\DungeonRecoveryFirstPlayable\\Scripts\\AInvilProceduralRecoveryJobController.cs(39,22): warning CS0414: 'AInvilProceduralRecoveryJobController.generated' 필드가 할당되었지만 사용되지 않았습니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nE:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assets\\AInvilGenerated\\DungeonRecoveryFirstPlayable\\Scripts\\AInvilCompileGateIntentionalError.cs(7,9): error CS0103: 'ThisSymbolDoesNotExist' 이름이 현재 컨텍스트에 없습니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\n    경고 33개\r\n    오류 1개\r\n\r\n경과 시간: 00:00:03.58\r\n"
+          }
+        }
+      ],
+      "compileStatusResult": {
+        "id": "compile_gate.unity_compile_status",
+        "type": "Compile",
+        "target": "unity_compile_status",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "unity_compile_status succeeded.",
+        "data": {
+          "isCompiling": true,
+          "isUpdating": false,
+          "hasCompileErrors": false,
+          "compileErrorCount": 0,
+          "errorCount": 0,
+          "errors": [],
+          "recentErrors": [],
+          "lastCompileFinishedAt": null,
+          "editorCanEnterPlayMode": false,
+          "isPlaying": false,
+          "isPlayingOrWillChangePlaymode": false
+        }
+      },
+      "blockerType": "CompileBlocked",
+      "playModeAttempted": false,
+      "runtimeAssemblyFreshness": {
+        "status": "StaleSuspected",
+        "reason": "Compile gate failed; a new runtime assembly may not have been generated.",
+        "compileCheckedBeforePlayMode": true,
+        "lastCompileStatus": "Failed",
+        "recommendation": "Exit Play Mode if active, refresh assets, fix compile errors, wait for compile, rerun validation."
+      },
+      "failureReason": "Unity project has compile errors or compilation did not become ready. Play Mode validation was not attempted.",
+      "nextAction": "Fix compile errors, wait for Unity compilation to finish, then rerun validation."
+    },
+    "compileGateAfterCleanup": {
+      "schemaVersion": "1.0.0",
+      "gateId": "UNITY-COMPILE-GATE",
+      "scenarioId": "compile-check",
+      "classification": "Operational",
+      "category": "ProductMvp",
+      "validationType": "CompileGate",
+      "startedAt": "2026-07-06T04:48:43.453Z",
+      "finishedAt": "2026-07-06T04:48:45.774Z",
+      "status": "Passed",
+      "canEnterPlayMode": true,
+      "compileStatus": "Passed",
+      "compileErrorCount": 0,
+      "compileErrors": [],
+      "consoleErrorSummary": {
+        "status": "Passed",
+        "errorCount": 0,
+        "message": "unity_get_console_logs succeeded."
+      },
+      "unityProjectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany",
+      "unityUrl": "http://127.0.0.1:17777/rpc",
+      "healthUrl": "http://127.0.0.1:17777/health",
+      "checks": [
+        {
+          "id": "compile_gate.bridge_health",
+          "type": "Static",
+          "target": "http://127.0.0.1:17777/health",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "Unity Bridge health endpoint is reachable.",
+          "data": {
+            "ok": true,
+            "bridgeRunning": true,
+            "bridgeStatus": "running",
+            "capabilityVersion": "0.6.0-validation-probes",
+            "unityVersion": "6000.5.0f1",
+            "isPlaying": false,
+            "isPlayingOrWillChangePlaymode": false,
+            "playModeTransitionCount": 0
+          }
+        },
+        {
+          "id": "compile_gate.unity_get_status",
+          "type": "Static",
+          "target": "unity_get_status",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_get_status succeeded.",
+          "data": {
+            "ok": true,
+            "bridgeRunning": true,
+            "bridgeStatus": "running",
+            "capabilityVersion": "0.6.0-validation-probes",
+            "unityVersion": "6000.5.0f1",
+            "projectPath": "E:/wiseongjun/Unity/DungeonRecoveryCompany/Assets",
+            "isPlaying": false,
+            "isPaused": false,
+            "isPlayingOrWillChangePlaymode": false,
+            "isCompiling": false,
+            "isUpdating": false,
+            "playModeTransitionCount": 0,
+            "inputTestBridgeAvailable": false,
+            "activeScene": {
+              "name": "DRC_ProceduralRecoveryJob",
+              "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+              "isDirty": false,
+              "isLoaded": true,
+              "rootCount": 1
+            },
+            "selection": {
+              "activeObject": null,
+              "objects": []
+            }
+          }
+        },
+        {
+          "id": "compile_gate.unity_refresh_assets",
+          "type": "Asset",
+          "target": "unity_refresh_assets",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_refresh_assets succeeded.",
+          "data": {
+            "ok": true,
+            "isCompiling": false,
+            "isUpdating": false
+          }
+        },
+        {
+          "id": "compile_gate.unity_compile_status",
+          "type": "Compile",
+          "target": "unity_compile_status",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "Unity compile status is stable and has no compile errors.",
+          "data": {
+            "isCompiling": false,
+            "isUpdating": false,
+            "hasCompileErrors": false,
+            "compileErrorCount": 0,
+            "errorCount": 0,
+            "errors": [],
+            "recentErrors": [],
+            "lastCompileFinishedAt": null,
+            "editorCanEnterPlayMode": true,
+            "isPlaying": false,
+            "isPlayingOrWillChangePlaymode": false
+          }
+        },
+        {
+          "id": "compile_gate.unity_get_console_logs",
+          "type": "Console",
+          "target": "unity_get_console_logs",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "unity_get_console_logs succeeded.",
+          "data": {
+            "logs": []
+          }
+        },
+        {
+          "id": "compile_gate.local_csharp_build",
+          "type": "Compile",
+          "target": "E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj",
+          "status": "Passed",
+          "ok": true,
+          "failureClass": "Unknown",
+          "message": "Local C# compile check passed.",
+          "data": {
+            "exitCode": 0,
+            "timedOut": false,
+            "errors": [],
+            "outputTail": "10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.ShaderGraph.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor.Shared\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\n  Assembly-CSharp -> E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Temp\\bin\\Debug\\Assembly-CSharp.dll\r\n\r\n빌드했습니다.\r\n\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3274: 기본 참조 \"nunit.framework\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성되었기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Universal.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.Rider.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.VisualStudio.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.ShaderGraph.Editor\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\nC:\\Program Files\\dotnet\\sdk\\10.0.301\\Microsoft.Common.CurrentVersion.targets(2453,5): warning MSB3275: 기본 참조 \"Unity.RenderPipelines.Core.Editor.Shared\"이(가) \".NETFramework,Version=v4.7.2\" 프레임워크에 대해 작성된 \"nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb\" 어셈블리에 간접적으로 종속되어 있기 때문에 확인할 수 없습니다. 이 프레임워크는 현재 대상 프레임워크 \".NETFramework,Version=v4.7.1\" 이후 버전입니다. [E:\\wiseongjun\\Unity\\DungeonRecoveryCompany\\Assembly-CSharp.csproj]\r\n    경고 7개\r\n    오류 0개\r\n\r\n경과 시간: 00:00:01.43\r\n"
+          }
+        }
+      ],
+      "compileStatusResult": {
+        "id": "compile_gate.unity_compile_status",
+        "type": "Compile",
+        "target": "unity_compile_status",
+        "status": "Passed",
+        "ok": true,
+        "failureClass": "Unknown",
+        "message": "Unity compile status is stable and has no compile errors.",
+        "data": {
+          "isCompiling": false,
+          "isUpdating": false,
+          "hasCompileErrors": false,
+          "compileErrorCount": 0,
+          "errorCount": 0,
+          "errors": [],
+          "recentErrors": [],
+          "lastCompileFinishedAt": null,
+          "editorCanEnterPlayMode": true,
+          "isPlaying": false,
+          "isPlayingOrWillChangePlaymode": false
+        }
+      },
+      "blockerType": null,
+      "playModeAttempted": false,
+      "runtimeAssemblyFreshness": {
+        "status": "Fresh",
+        "reason": "Compile gate passed immediately before Play Mode validation.",
+        "compileCheckedBeforePlayMode": true,
+        "lastCompileStatus": "Passed",
+        "recommendation": "Proceed to Play Mode validation."
+      },
+      "failureReason": null,
+      "nextAction": "Compile gate passed. Runtime validation may enter Play Mode."
+    },
+    "consoleErrorSummary": {
+      "status": "Passed",
+      "errorCount": 1,
+      "message": "unity_get_console_logs succeeded."
+    },
+    "consoleErrorCount": 1,
+    "failureReason": null,
+    "blocker": null,
+    "bridgeDiagnostics": [],
+    "validationResults": [],
+    "observations": null,
+    "assertions": [],
+    "sourceValidationDesign": null,
+    "startedAt": "2026-07-06T04:47:22.000Z",
+    "finishedAt": "2026-07-06T04:48:45.776Z",
+    "completedAt": "2026-07-06T04:48:45.776Z",
+    "timestamp": "2026-07-06T04:48:45.776Z",
+    "remainingGaps": [],
+    "nextActions": [
+      "Keep compile gate safety regression available as an explicit opt-in regression."
+    ],
+    "reportPath": "reports/ainvil_compile_gate_safety_regression_report.json"
+  },
+  "nextAction": "Keep compile gate safety regression available as an explicit opt-in regression."
+}

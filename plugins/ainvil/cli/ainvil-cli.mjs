@@ -42,6 +42,7 @@ import { createReleaseReadinessReport } from "../core/release-readiness.mjs";
 import { createInitialProductionGraph, createProductizationStatusReport } from "../core/productization-status.mjs";
 import { evaluateProductionCoreReview } from "../core/production-core-review.mjs";
 import { createRcBaselineManifest } from "../core/rc-baseline.mjs";
+import { runUnityValidationPreflight, writeCompileBlockedEvidence, writeCompileGateReport } from "../core/unity-compile-gate.mjs";
 
 const command = process.argv[2] || "help";
 
@@ -68,6 +69,7 @@ const commands = new Map([
   ["release", showRelease],
   ["rc", showRcBaseline],
   ["regression", runRegression],
+  ["compile-check", runCompileCheck],
   ["execute-transition", runTransitionExecution],
   ["execute", runRuntime],
   ["doctor", runDoctor]
@@ -108,7 +110,8 @@ Commands:
   review        Reevaluate the Production Core review against current evidence.
   release       Generate and show the launch readiness decision.
   rc            Generate and show the Core Release Candidate baseline manifest.
-  regression    Run the offline regression suite. Pass --live-smoke, --product-mvp, --playability, or --build for live/product gates.
+  regression    Run the offline regression suite. Pass --live-smoke, --product-mvp, --procedural, --visual, --space-quality, --compile-gate-safety, --playability, or --build for live/product gates.
+  compile-check Run Unity compile gate and block Play Mode validation when compile errors exist.
   execute-transition  Execute or dry-run a guarded transition. Use --transition <id> and optional --apply.
   execute       Run guarded workflow synchronization and persist runtime artifacts.
   doctor        Run onboarding health checks and write workspace/doctor reports.
@@ -371,6 +374,19 @@ async function showProductization() {
   printField("Human Playability Review", report.productMvpWorkflow?.humanPlayabilityReview?.status || "Unknown");
   printField("Build Verification", report.productMvpWorkflow?.buildVerification?.status || "Unknown");
   printField("Product MVP Ready Candidate", report.productMvpWorkflow?.readyCandidate ? "Yes" : "No");
+  printField("Human Playable First Build Candidate", report.productMvpWorkflow?.humanPlayableFirstBuildCandidate ? "Yes" : "No");
+  printField("Product MVP First Playable Verified", report.productMvpWorkflow?.productMvpFirstPlayableVerified ? "Yes" : "No");
+  printField("First Gameplay Loop", report.releaseLevel?.firstGameplayLoop || "Unknown");
+  printField("Procedural Recovery Job", report.proceduralRecoveryJob?.status || "Unknown");
+  printField("Procedural Generation Verified", report.proceduralRecoveryJob?.proceduralGenerationVerified ? "Yes" : "No");
+  printField("Visual Validation", report.visualValidation?.status || "Unknown");
+  printField("Procedural Space Quality", report.spaceQuality?.status || "Unknown");
+  printField("Compile Gate", report.compileGate?.status || "Not Run");
+  printField("Compile Gate Safety", report.compileGateSafety?.status || "Not Run");
+  printField("Play Mode Blocked On Compile Error", report.compileGateSafety?.playModeBlockedOnCompileError ? "Yes" : "No");
+  printField("Screenshot Evidence Available", report.visualValidation?.screenshotEvidenceAvailable ? "Yes" : "No");
+  printField("Missing Shader Suspected", report.visualValidation?.missingShaderSuspected ? "Yes" : "No");
+  printField("Camera Framing Check", report.visualValidation?.cameraFramingCheck || "Unknown");
   printField("Public Release Ready", report.releaseLevel?.publicReleaseReady ? "Yes" : "No");
   printCounts("Feature status counts", report.summary.featureCounts);
   printCounts("E2E status counts", report.summary.e2eCounts);
@@ -435,6 +451,19 @@ async function showRelease() {
   printField("Human Playability Review", report.releaseLevel?.humanPlayabilityReview || "Unknown");
   printField("Build Verification", report.releaseLevel?.buildVerification || "Unknown");
   printField("Product MVP Ready Candidate", report.releaseLevel?.productMvpReadyCandidate ? "Yes" : "No");
+  printField("Human Playable First Build Candidate", report.releaseLevel?.humanPlayableFirstBuildCandidate ? "Yes" : "No");
+  printField("Product MVP First Playable Verified", report.releaseLevel?.productMvpFirstPlayableVerified ? "Yes" : "No");
+  printField("First Gameplay Loop", report.releaseLevel?.firstGameplayLoop || "Unknown");
+  printField("Procedural Recovery Job", report.releaseLevel?.proceduralRecoveryJob || "Unknown");
+  printField("Procedural Generation Verified", report.releaseLevel?.proceduralGenerationVerified ? "Yes" : "No");
+  printField("Visual Validation", report.releaseLevel?.visualValidation || "Unknown");
+  printField("Procedural Space Quality", report.releaseLevel?.proceduralSpaceQuality || "Unknown");
+  printField("Compile Gate", report.releaseLevel?.compileGate || "Not Run");
+  printField("Compile Gate Safety", report.releaseLevel?.compileGateSafety || "Not Run");
+  printField("Play Mode Blocked On Compile Error", report.releaseLevel?.playModeBlockedOnCompileError ? "Yes" : "No");
+  printField("Screenshot Evidence Available", report.releaseLevel?.screenshotEvidenceAvailable ? "Yes" : "No");
+  printField("Missing Shader Suspected", report.releaseLevel?.missingShaderSuspected ? "Yes" : "No");
+  printField("Camera Framing Check", report.releaseLevel?.cameraFramingCheck || "Unknown");
   printField("Public Release Ready", report.releaseLevel?.publicReleaseReady ? "Yes" : "No");
   printList("Gates", report.gates.map((gate) => `${gate.status}: ${gate.gateId} - ${gate.title} (${gate.evidence})`));
   printList("Next actions", report.nextActions.map((action) => `${action.gateId}: ${action.summary}`));
@@ -453,6 +482,10 @@ async function showRcBaseline() {
   printField("Productization", manifest.decisions.productization);
   printField("Fresh workspace", manifest.freshWorkspaceVerification?.label || "Not Run");
   printField("Canonical Unity Bridge Package Verified", manifest.freshWorkspaceVerification?.canonicalPackageVerified ? "Yes" : "No");
+  printField("Visual Validation", manifest.visualValidation?.status || "Unknown");
+  printField("Procedural Space Quality", manifest.spaceQuality?.status || "Unknown");
+  printField("Screenshot Evidence Available", manifest.visualValidation?.screenshotEvidenceAvailable ? "Yes" : "No");
+  printField("Camera Framing Check", manifest.visualValidation?.cameraFramingCheck || "Unknown");
   printList("Operational scenarios", manifest.operationalScenarios.map((item) => `${item.id}: ${item.path}`));
   printList("Known limitations", manifest.knownLimitations);
 }
@@ -462,6 +495,41 @@ async function runRegression() {
   const result = await runNode("scripts/run-ainvil-regression-suite.mjs", passThrough);
   if (result.output.trim()) console.log(result.output.trim());
   if (result.code !== 0) process.exitCode = result.code;
+}
+
+async function runCompileCheck() {
+  const unityProjectIndex = process.argv.indexOf("--unity-project");
+  const unityProjectPath = unityProjectIndex >= 0 ? process.argv[unityProjectIndex + 1] : undefined;
+  if (unityProjectPath) {
+    await runOnboardingDoctor({ unityProjectPath });
+  }
+  const result = await runUnityValidationPreflight({
+    scenarioId: "compile-check",
+    category: "ProductMvp",
+    validationType: "CompileGate"
+  });
+  const reports = await writeCompileGateReport(result);
+  if (result.status !== "Passed") {
+    await writeCompileBlockedEvidence(result, {
+      evidencePath: "validation/evidence/EVID-compile-check-compile-blocked-latest.json"
+    });
+  }
+
+  printHeader("AInvil Compile Check");
+  printField("Status", result.status);
+  printField("Can enter Play Mode", result.canEnterPlayMode ? "Yes" : "No");
+  printField("Compile status", result.compileStatus);
+  printField("Compile error count", `${result.compileErrorCount}`);
+  printField("Report", relativeAInvilPath(reports.reportPath));
+  printField("Markdown", relativeAInvilPath(reports.markdownPath));
+  if (result.compileErrors.length) {
+    printList("Compile errors", result.compileErrors.map((error) => `${error.file || "Unknown"}:${error.line || 0} ${error.code || "CS????"} ${error.message}`));
+  }
+  if (!result.canEnterPlayMode) {
+    printField("Play Mode Validation", "Blocked");
+    printField("Next action", result.nextAction);
+    process.exitCode = 1;
+  }
 }
 
 async function runTransitionExecution() {

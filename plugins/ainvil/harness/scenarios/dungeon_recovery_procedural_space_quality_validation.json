@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "dungeon_recovery_procedural_space_quality_validation",
+  "title": "Dungeon Recovery Company procedural space quality validation",
+  "classification": "Operational",
+  "category": "ProductMvp",
+  "validationType": "ProceduralSpaceQualityValidation",
+  "operationalUse": "Validate that the procedural recovery dungeon creates broad first-person exploration spaces, passable corridors, sufficient walls, reachable targets, and non-blocking primitive props.",
+  "userGoal": "Prove the procedural dungeon has room-scale exploration quality instead of narrow corridor-only test geometry.",
+  "milestone": "Procedural recovery job space quality gate",
+  "interactive": false,
+  "requirementIds": [
+    "REQ-DRC-SPACE-001",
+    "REQ-DRC-SPACE-002",
+    "REQ-DRC-SPACE-003",
+    "REQ-DRC-SPACE-004",
+    "REQ-DRC-SPACE-005",
+    "REQ-DRC-SPACE-006"
+  ],
+  "acceptanceIds": [
+    "AC-DRC-SPACE-001",
+    "AC-DRC-SPACE-002",
+    "AC-DRC-SPACE-003",
+    "AC-DRC-SPACE-004",
+    "AC-DRC-SPACE-005",
+    "AC-DRC-SPACE-006",
+    "AC-DRC-SPACE-007",
+    "AC-DRC-SPACE-008",
+    "AC-DRC-SPACE-009",
+    "AC-DRC-SPACE-010",
+    "AC-DRC-SPACE-011"
+  ],
+  "evidenceOutputPath": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest.json",
+  "riskLevel": "Medium",
+  "expectedDocuments": [
+    {
+      "type": "GDD",
+      "requirementRef": "FEAT-DRC-SPACE-001",
+      "expected": "Dungeon Recovery Company procedural recovery job requires broader first-person dungeon rooms, passable corridors, non-blocking props, and reachable targets."
+    },
+    {
+      "type": "Feature Spec",
+      "requirementRef": "FEAT-DRC-SPACE-001",
+      "expected": "Procedural Dungeon Space Quality expands the procedural recovery job from narrow test corridors into wider first-person exploration rooms."
+    },
+    {
+      "type": "Technical Design",
+      "requirementRef": "TASK-DRC-SPACE-001",
+      "expected": "Generator parameters define larger rooms, 3-cell corridors, tall walls, and primitive prop placement constraints."
+    },
+    {
+      "type": "Playtest Report",
+      "requirementRef": "EVID-DRC-SPACE-001",
+      "expected": "Evidence records seed 1001, 2026, and 7777 room metrics, corridor metrics, wall height, prop validation, target reachability, visual/build status, and Public Release Ready=false."
+    },
+    {
+      "type": "TaskGraph",
+      "requirementRef": "FEAT-DRC-SPACE-001",
+      "expected": "Production State Graph includes Procedural Dungeon Space Quality feature, requirements, tasks, acceptance criteria, and evidence mapping."
+    }
+  ],
+  "expectedUnityCapabilities": [
+    "Project inspection",
+    "Document traceability",
+    "Milestone planning",
+    "Scene construction",
+    "Component and script implementation",
+    "Camera and presentation",
+    "Physics and interaction",
+    "Build and release validation",
+    "Document synchronization"
+  ],
+  "expectedUnityArtifacts": [
+    {
+      "kind": "Scene",
+      "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+      "requirementRef": "SCENE-DRC-PROCEDURAL-RECOVERY-JOB",
+      "status": "Implemented"
+    },
+    {
+      "kind": "Script",
+      "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scripts/AInvilProceduralRecoveryJobController.cs",
+      "requirementRef": "TASK-DRC-SPACE-001",
+      "status": "Implemented"
+    },
+    {
+      "kind": "ValidationReport",
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest.json",
+      "requirementRef": "EVID-DRC-SPACE-001",
+      "status": "Planned"
+    }
+  ],
+  "validationChecks": [
+    {
+      "id": "check.bridge.health",
+      "type": "Static",
+      "target": "http://127.0.0.1:17777/health",
+      "expected": "Unity Bridge health endpoint responds.",
+      "failureClass": "BridgeDisconnected"
+    },
+    {
+      "id": "check.compile",
+      "type": "Compile",
+      "target": "unity_compile_status",
+      "expected": "Generated procedural space quality scripts compile with zero compile errors.",
+      "failureClass": "CompileError"
+    },
+    {
+      "id": "check.space_quality.seed.validation",
+      "type": "PlayMode",
+      "target": "AInvilProceduralRecoveryJobController.GetSpaceQualityStateJson",
+      "expected": "Seeds 1001, 2026, and 7777 pass room, corridor, wall, prop, target clearance, reachability, and job completion assertions.",
+      "failureClass": "GameLogicFailed"
+    },
+    {
+      "id": "check.evidence.sync",
+      "type": "DocumentSync",
+      "target": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest.json",
+      "expected": "Space quality evidence is exported and linked to REQ-DRC-SPACE-* and AC-DRC-SPACE-*.",
+      "failureClass": "ValidationNotRun"
+    }
+  ],
+  "passCriteria": [
+    "Unity Bridge health endpoint is reachable.",
+    "Procedural scene exists and can be opened.",
+    "Compile status passes after generated scripts are imported.",
+    "Seeds 1001, 2026, and 7777 generate room count >= 4.",
+    "Every seed has minRoomWidth >= 7 and minRoomDepth >= 7.",
+    "Every seed has averageRoomArea >= 49.",
+    "Every seed has corridorWidth >= 3 and narrowPassageCount == 0.",
+    "Every seed has wallHeightSufficient == true.",
+    "Every seed has propCount > 0 and at least three prop types.",
+    "Every seed has propOverlapCount == 0, blockedDoorwayCount == 0, and blockedTargetCount == 0.",
+    "Every seed has reachableTargetCount == 3 and targetInteractionClearancePassed == true.",
+    "Every seed reaches Job Complete after deterministic recovery hook.",
+    "Console error count is zero.",
+    "Stale evidence reused is false.",
+    "Public Release Ready remains No."
+  ]
+}

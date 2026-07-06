@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
   "rcName": "AInvil Core RC",
-  "rcVersion": "core-rc-2026-07-04",
-  "generatedAt": "2026-07-04T14:50:51.891Z",
+  "rcVersion": "core-rc-2026-07-06",
+  "generatedAt": "2026-07-06T06:17:16.741Z",
   "releaseLevel": {
     "current": "Core Release Ready / Product MVP Ready Candidate",
     "notClaimed": [
@@ -29,11 +29,39 @@
       "path": "harness/scenarios/ainvil_bridge_smoke_operational.json"
     },
     {
+      "id": "ainvil_compile_gate_blocks_playmode_on_compile_error",
+      "title": "AInvil compile gate blocks Play Mode on compile error",
+      "classification": "Operational",
+      "evidenceOutputPath": "validation/evidence/EVID-ainvil-compile-gate-blocks-playmode-latest.json",
+      "path": "harness/scenarios/ainvil_compile_gate_blocks_playmode_on_compile_error.json"
+    },
+    {
       "id": "dungeon_recovery_first_playable_e2e",
       "title": "Dungeon Recovery Company first playable recovery job E2E",
       "classification": "Operational",
       "evidenceOutputPath": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json",
       "path": "harness/scenarios/dungeon_recovery_first_playable_e2e.json"
+    },
+    {
+      "id": "dungeon_recovery_procedural_recovery_job_e2e",
+      "title": "Dungeon Recovery Company procedural recovery job E2E",
+      "classification": "Operational",
+      "evidenceOutputPath": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest.json",
+      "path": "harness/scenarios/dungeon_recovery_procedural_recovery_job_e2e.json"
+    },
+    {
+      "id": "dungeon_recovery_procedural_space_quality_validation",
+      "title": "Dungeon Recovery Company procedural space quality validation",
+      "classification": "Operational",
+      "evidenceOutputPath": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest.json",
+      "path": "harness/scenarios/dungeon_recovery_procedural_space_quality_validation.json"
+    },
+    {
+      "id": "dungeon_recovery_procedural_visual_validation",
+      "title": "Dungeon Recovery Company procedural visual validation",
+      "classification": "Operational",
+      "evidenceOutputPath": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest.json",
+      "path": "harness/scenarios/dungeon_recovery_procedural_visual_validation.json"
     }
   ],
   "productMvpWorkflow": {
@@ -43,13 +71,13 @@
     "validationType": "UnityFeatureE2E",
     "status": "Passed",
     "humanPlayabilityReview": {
-      "status": "Needs Improvement",
+      "status": "Passed",
       "reportPath": "reports/dungeon_recovery_first_playable_playability_review.json",
       "remainingIssues": [
-        "Retest required after camera, material, player marker, target marker, and objective banner fixes.",
-        "The current experience still relies on prototype UI/text and does not yet provide a full game-like tutorial flow.",
-        "E-key recovery feedback is still minimal and should eventually receive animation/audio/VFX beyond this generated primitive slice.",
-        "User requested broader design improvement; this pass only applies minimal generated-folder UX fixes."
+        "This is not a finished game.",
+        "Art, sound, and recovery presentation remain placeholder-level.",
+        "Tutorial flow is still simple instructional UI rather than a full game-like onboarding sequence.",
+        "Next-job, reward, and company management loops are not implemented yet."
       ]
     },
     "buildVerification": {
@@ -59,8 +87,10 @@
       "failureReason": null
     },
     "readyCandidate": true,
+    "humanPlayableFirstBuildCandidate": true,
+    "productMvpFirstPlayableVerified": true,
     "latestEvidence": {
-      "evidenceId": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T14-47-56-627Z",
+      "evidenceId": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T19-50-44-904Z",
       "status": "Passed",
       "validationLevel": "Play Mode Verified",
       "totalRecoveryTargetCount": 3,
@@ -69,11 +99,129 @@
       "progressText": "Recovered: 3 / 3\nJob Complete",
       "path": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json"
     },
+    "latestHarness": null,
+    "nextAction": "Treat as Product MVP Ready Candidate evidence; continue manual playability and public install gates separately."
+  },
+  "proceduralRecoveryJob": {
+    "scenarioExists": true,
+    "scenarioId": "dungeon_recovery_procedural_recovery_job_e2e",
+    "category": "ProductMvp",
+    "validationType": "ProceduralGenerationE2E",
+    "status": "Passed",
+    "proceduralGenerationVerified": true,
+    "buildVerification": {
+      "status": "Passed",
+      "outputPath": "E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/reports/builds/dungeon_recovery_procedural_recovery_job/DungeonRecoveryProceduralRecoveryJob.exe",
+      "reportPath": "reports/dungeon_recovery_procedural_recovery_job_build_verification.json",
+      "failureReason": null
+    },
+    "latestEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "status": "Passed",
+      "validationLevel": "Play Mode Verified",
+      "seedsTested": [
+        1001,
+        2026,
+        7777
+      ],
+      "deterministicGenerationVerified": true,
+      "randomStartupSeedVerified": true,
+      "randomSeedSamples": [
+        320100795,
+        1714198222
+      ],
+      "differentSeedsProduceDifferentLayouts": true,
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest-passed.json"
+    },
+    "latestHarness": null,
+    "nextAction": "Treat as procedural recovery job v1 evidence; Public Release Ready remains a separate gate."
+  },
+  "visualValidation": {
+    "scenarioExists": true,
+    "scenarioId": "dungeon_recovery_procedural_visual_validation",
+    "category": "ProductMvp",
+    "validationType": "VisualPlayabilityValidation",
+    "status": "Passed",
+    "productValidationStatus": "LastKnownPassed",
+    "revalidationStatus": "Current",
+    "blockerType": null,
+    "screenshotEvidenceAvailable": true,
+    "missingShaderSuspected": false,
+    "cameraFramingCheck": "Passed",
+    "humanReviewRequired": true,
+    "latestEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "status": "Passed",
+      "validationLevel": "Visual Verified",
+      "seed": null,
+      "screenshotCount": 5,
+      "magentaPixelRatio": 0,
+      "missingShaderSuspected": false,
+      "mouseLookVerified": true,
+      "playerMovementVerified": true,
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest-passed.json"
+    },
+    "latestHarness": null,
+    "latestPassedEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "status": "Passed",
+      "validationLevel": "Visual Verified",
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest-passed.json"
+    },
+    "latestBlockedEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T05-51-49-360Z",
+      "status": "Blocked",
+      "blockerType": "UnityBridgeDisconnected",
+      "revalidationStatus": "EnvironmentBlocked",
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest-blocked.json"
+    },
+    "nextAction": "Review screenshots manually; visual automation does not replace Human Playability Review."
+  },
+  "spaceQuality": {
+    "scenarioExists": true,
+    "scenarioId": "dungeon_recovery_procedural_space_quality_validation",
+    "category": "ProductMvp",
+    "validationType": "ProceduralSpaceQualityValidation",
+    "status": "Passed",
+    "productValidationStatus": "LastKnownPassed",
+    "revalidationStatus": "Current",
+    "blockerType": null,
+    "proceduralSpaceQualityVerified": true,
+    "latestEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "status": "Passed",
+      "validationLevel": "Play Mode Verified",
+      "seedsTested": [
+        1001,
+        2026,
+        7777
+      ],
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-passed.json"
+    },
+    "latestPassedEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "status": "Passed",
+      "validationLevel": "Play Mode Verified",
+      "seedsTested": [
+        1001,
+        2026,
+        7777
+      ],
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-passed.json"
+    },
+    "latestBlockedEvidence": {
+      "evidenceId": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T05-48-27-667Z",
+      "status": "Blocked",
+      "blockerType": "UnityBridgeDisconnected",
+      "revalidationStatus": "EnvironmentBlocked",
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-blocked.json"
+    },
     "latestHarness": {
       "status": "Passed",
+      "blockerType": null,
       "reportPath": "harness/reports/latest-live-harness-report.json"
     },
-    "nextAction": "Treat as Product MVP Ready Candidate evidence; continue manual playability and public install gates separately."
+    "nextAction": "Procedural space quality is verified for seeds 1001, 2026, and 7777. Public Release Ready remains a separate gate."
   },
   "coreEvidence": [
     {
@@ -114,18 +262,18 @@
     {
       "kind": "Operational validation evidence",
       "summary": "Latest non-sample Operational Passed evidence.",
-      "path": "validation/evidence/EVID-dungeon-recovery-first-playable-build-latest.json"
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-passed.json"
     }
   ],
   "evidenceSummary": {
-    "evidenceId": "EVID-dungeon-recovery-first-playable-build-latest",
-    "scenarioId": "dungeon_recovery_first_playable_e2e",
+    "evidenceId": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+    "scenarioId": "dungeon_recovery_procedural_space_quality_validation",
     "classification": "Operational",
     "status": "Passed",
-    "validationLevel": "Compile Verified",
-    "consoleErrorCount": null,
-    "assertionCount": 1,
-    "path": "validation/evidence/EVID-dungeon-recovery-first-playable-build-latest.json"
+    "validationLevel": "Play Mode Verified",
+    "consoleErrorCount": 0,
+    "assertionCount": 67,
+    "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-passed.json"
   },
   "liveHarnessSummary": {
     "mode": "probe",
@@ -160,9 +308,9 @@
   "environmentAudit": {
     "path": "reports/environment_dependency_audit.json",
     "findingCounts": {
-      "BridgePort": 33,
+      "BridgePort": 60,
       "SourceHardcoding": 3,
-      "GeneratedLocalState": 25
+      "GeneratedLocalState": 48
     }
   },
   "recommendedVerificationCommands": [

@@ -66,6 +66,7 @@ const allowedValidationLevels = new Set([
   "Unity Inspection",
   "Compile Verified",
   "Play Mode Verified",
+  "Visual Verified",
   "Runtime Tested",
   "User Confirmed"
 ]);
