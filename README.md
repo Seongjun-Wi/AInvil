@@ -1,117 +1,156 @@
 # AInvil
 
-AInvil is a Codex plugin and Unity bridge workspace for AI-assisted game production.
-It combines game design documentation, technical planning, Unity implementation support,
-playability validation, workflow reporting, and release-readiness checks.
+Evidence-grounded AI workflow platform for Unity game production.
 
-This repository contains both the Codex-side plugin and the Unity-side bridge package.
+[Korean](README.ko.md) | [Architecture](docs/ainvil/ARCHITECTURE.md) | [Case Study](docs/ainvil/CASE_STUDY_DUNGEON_RECOVERY.md) | [Validation](docs/ainvil/VALIDATION.md) | [Quickstart](docs/ainvil/QUICKSTART.md) | [Roadmap](docs/ainvil/ROADMAP.md)
 
-## Repository Layout
+---
 
-| Path | Purpose |
+## What It Is
+
+AInvil is a Codex plugin that turns a game development request into a traceable Unity production workflow.
+
+It is not just a Unity bridge, MCP wrapper, or code generator. AInvil keeps the chain intact:
+
+```text
+Creative intent -> Director review -> Agent orchestration -> Unity implementation
+-> Compile gate -> Play Mode validation -> Visual evidence -> Release reports
+```
+
+The user remains the creative owner. AInvil structures the work, challenges weak spots, implements confirmed scope, validates real behavior, and records evidence.
+
+## Why It Matters
+
+Most AI coding flows can generate scripts. AInvil is built around the harder question:
+
+> Did the generated Unity game actually compile, run, show the right thing on screen, and produce evidence that supports a release decision?
+
+AInvil currently demonstrates this with `DungeonRecoveryCompany`, a single-project Product MVP case study.
+
+## Core Architecture
+
+```mermaid
+flowchart TD
+  User["User / Creative Owner"] --> Director["Director Layer"]
+  Director --> Orchestrator["Orchestrator"]
+  Orchestrator --> Agents["Specialist Agents"]
+  Agents --> GDD["GDD Agent"]
+  Agents --> UnityAgent["Unity Agent"]
+  Agents --> InputAgent["Input Agent"]
+  Orchestrator --> Core["Platform Core"]
+  Core --> Graph["Production State Graph"]
+  Core --> Review["Review Governance"]
+  Core --> Release["Productization / Release Readiness"]
+  UnityAgent --> Bridge["Unity Bridge"]
+  InputAgent --> Harness["Live Harness"]
+  Harness --> Compile["Compile Gate"]
+  Compile --> Play["Play Mode Validation"]
+  Play --> Visual["Visual Validation Gate"]
+  Visual --> Evidence["Validation Evidence"]
+  Evidence --> Reports["Dashboard / RC / Release Reports"]
+```
+
+| Layer | Role |
 | --- | --- |
-| `plugins/ainvil/` | Main AInvil Codex plugin bundle |
-| `plugins/ainvil/skills/` | Codex skill instructions for orchestration, GDD, Unity work, and input validation |
-| `plugins/ainvil/mcp-server/` | MCP server that talks to the local Unity Bridge endpoint |
-| `plugins/ainvil/unity-package/Packages/com.codex.unity-bridge/` | Canonical Unity package |
-| `plugins/ainvil/docs/` | Product, architecture, workflow, and validation documentation |
-| `plugins/ainvil/scripts/` | Validation, reporting, benchmark, and workflow scripts |
-| `plugins/ainvil/cli/ainvil-cli.mjs` | Command-line entry point for status and workflow checks |
-| `UnityPackage/` | Deprecated mirror/install artifact for the Unity package |
+| Director Layer | Protects vision, scope, player experience, and release honesty. |
+| Orchestrator | Routes work across planning, implementation, validation, and reports. |
+| GDD Agent | Turns ideas into requirements, tasks, acceptance criteria, and specs. |
+| Unity Agent | Creates Unity scenes, scripts, prefabs, bridge operations, and builds. |
+| Input Agent | Runs Play Mode checks, validation probes, input checks, and evidence capture. |
+| Platform Core | Maintains graph state, reviews, productization, regression, and release reports. |
+| Unity Bridge | Connects Codex/AInvil to the running Unity Editor. |
 
-## Requirements
+Read the full architecture: [docs/ainvil/ARCHITECTURE.md](docs/ainvil/ARCHITECTURE.md)
 
-- Node.js available as `node`
-- Unity 2021.3 or newer for Unity Bridge workflows
-- Codex desktop/app environment for plugin-driven agent workflows
+## Verified Today
 
-Most CLI inspection and report-generation commands can run without Unity. Live validation
-requires Unity to be open and the bridge server to be running.
+| Capability | Current Status |
+| --- | --- |
+| Unity Bridge stability | Passed |
+| Compile check | Passed |
+| Compile Gate safety | Passed |
+| Play Mode validation | Passed |
+| Visual Validation Gate | Passed |
+| Human Playability Review | Passed |
+| Build verification | Passed |
+| Full regression | 21 passed, 0 failed, 0 blocked |
+| Production Core Review | Approved |
+| Productization | Release Candidate |
+| Release Readiness | Release Ready |
+| Public Release Ready | No |
 
-## Unity Package
-
-Use the canonical Unity package from:
-
-```text
-plugins/ainvil/unity-package/Packages/com.codex.unity-bridge
-```
-
-In Unity, install it with Package Manager:
-
-1. Open `Window > Package Manager`.
-2. Select `Add package from disk...`.
-3. Choose:
+Current release level:
 
 ```text
-plugins/ainvil/unity-package/Packages/com.codex.unity-bridge/package.json
+Core Release Ready / Release Candidate
+Product MVP Ready Candidate
+Public Release Ready: No
 ```
 
-Then start the bridge from Unity:
+Read the validation summary: [docs/ainvil/VALIDATION.md](docs/ainvil/VALIDATION.md)
 
-```text
-Tools > Codex Unity Bridge > Start Server
-```
+## Case Study: DungeonRecoveryCompany
 
-The bridge listens on:
+AInvil generated and validated a playable Unity vertical slice for `DungeonRecoveryCompany`.
 
-```text
-http://127.0.0.1:17777/rpc
-```
+Verified in the case study:
 
-## Useful Commands
+- first playable recovery job
+- human-reviewed playable build
+- procedural dungeon recovery job
+- random startup seed and fixed-seed validation
+- first-person control and mouse look
+- target reachability checks
+- procedural space quality checks
+- screenshot-based visual validation
+- Windows development build verification
 
-Run these from the repository root.
+Read the case study: [docs/ainvil/CASE_STUDY_DUNGEON_RECOVERY.md](docs/ainvil/CASE_STUDY_DUNGEON_RECOVERY.md)
+
+## Quickstart
+
+From the repository root:
 
 ```powershell
-node plugins\ainvil\cli\ainvil-cli.mjs status
-node plugins\ainvil\cli\ainvil-cli.mjs doctor
-node plugins\ainvil\cli\ainvil-cli.mjs workflow
+node plugins\ainvil\cli\ainvil-cli.mjs doctor --unity-project <UnityProjectPath>
+node plugins\ainvil\cli\ainvil-cli.mjs compile-check --unity-project <UnityProjectPath>
+node plugins\ainvil\scripts\run-ainvil-live-harness.mjs --mode probe --scenario ainvil_bridge_smoke_operational
 node plugins\ainvil\cli\ainvil-cli.mjs productization
 node plugins\ainvil\cli\ainvil-cli.mjs release
 ```
 
-Validation and report commands:
+More commands: [docs/ainvil/QUICKSTART.md](docs/ainvil/QUICKSTART.md)
 
-```powershell
-node plugins\ainvil\scripts\generate-benchmark-report.mjs
-node plugins\ainvil\scripts\validate-benchmark-report.mjs
-node plugins\ainvil\scripts\validate-ainvil-plugin.mjs
-node plugins\ainvil\scripts\validate-ainvil-cli.mjs
-node plugins\ainvil\scripts\validate-ainvil-harness.mjs
-```
+## What AInvil Is Not
 
-Offline regression:
+AInvil does not currently claim:
 
-```powershell
-node plugins\ainvil\cli\ainvil-cli.mjs regression
-```
+- public release readiness
+- a production-finished commercial game
+- verification across all Unity projects
+- fully automatic game production
+- that human review is unnecessary
 
-Live smoke regression, when Unity Bridge is running:
+See release-level definitions: [docs/ainvil/RELEASE_LEVELS.md](docs/ainvil/RELEASE_LEVELS.md)
 
-```powershell
-node plugins\ainvil\cli\ainvil-cli.mjs regression --live-smoke
-```
-
-## Git Notes
-
-Generated Unity builds are intentionally ignored:
+## Repository Map
 
 ```text
-plugins/ainvil/reports/builds/
+plugins/ainvil/              Codex plugin, skills, CLI, core, harness, evidence
+plugins/ainvil/unity-package Canonical Unity Bridge package
+UnityPackage/                Deprecated mirror / install artifact
+docs/ainvil/                 Main documentation for GitHub readers
 ```
 
-Validation reports, design documents, schemas, skills, and Unity package source files are kept
-in Git because they describe the production state of AInvil.
+## Documentation
 
-## Status
+- [Architecture](docs/ainvil/ARCHITECTURE.md)
+- [DungeonRecoveryCompany Case Study](docs/ainvil/CASE_STUDY_DUNGEON_RECOVERY.md)
+- [Validation Summary](docs/ainvil/VALIDATION.md)
+- [Quickstart](docs/ainvil/QUICKSTART.md)
+- [Release Levels](docs/ainvil/RELEASE_LEVELS.md)
+- [Roadmap](docs/ainvil/ROADMAP.md)
 
-The current AInvil plugin is organized around Core Release Candidate workflows:
+## Summary
 
-- game design and GDD support
-- technical design and implementation planning
-- Unity Bridge integration
-- playability validation evidence
-- benchmark and release-readiness reporting
-- workflow state and synchronization artifacts
-
-See `plugins/ainvil/README.md` for deeper plugin-specific documentation.
+AInvil currently demonstrates an evidence-grounded Unity game development workflow: it can generate a playable vertical slice, validate runtime behavior through Play Mode, capture visual evidence, detect compile and environment blockers, and produce release-readiness reports. It is not yet a public-release product, but it has reached a Product MVP Ready Candidate state through the `DungeonRecoveryCompany` case study.
