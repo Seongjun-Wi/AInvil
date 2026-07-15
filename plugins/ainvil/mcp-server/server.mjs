@@ -1,6 +1,11 @@
+import { appendFileSync } from "node:fs";
+
 const UNITY_URL = process.env.UNITY_BRIDGE_URL || "http://127.0.0.1:17777/rpc";
 const UNITY_HEALTH_URL = new URL("/health", UNITY_URL).toString();
 const PROTOCOL_VERSION = "2025-06-18";
+const TRACE_PATH = process.env.AINVIL_MCP_TRACE || "";
+
+trace("startup", { pid: process.pid, argv: process.argv });
 
 const tools = [
   {
@@ -727,6 +732,53 @@ function vectorDefs() {
   };
 }
 
+const exposedTools = process.env.AINVIL_MCP_SCHEMA_MODE === "claude"
+  ? sanitizeToolsForClaude(tools)
+  : tools;
+
+function sanitizeToolsForClaude(toolList) {
+  return toolList.map((tool) => ({
+    ...tool,
+    inputSchema: sanitizeSchemaForClaude(tool.inputSchema)
+  }));
+}
+
+function sanitizeSchemaForClaude(schema, root = schema) {
+  if (Array.isArray(schema)) {
+    return schema.map((item) => sanitizeSchemaForClaude(item, root));
+  }
+  if (!schema || typeof schema !== "object") {
+    return schema;
+  }
+  if (schema.$ref) {
+    const resolved = resolveLocalSchemaRef(schema.$ref, root);
+    return sanitizeSchemaForClaude(resolved || {}, root);
+  }
+
+  const sanitized = {};
+  for (const [key, value] of Object.entries(schema)) {
+    if (key === "$defs") continue;
+    if (key === "type" && Array.isArray(value)) {
+      sanitized.type = value.find((entry) => entry !== "null") || "string";
+      if (value.includes("null")) {
+        sanitized.description = [schema.description, "May be null."].filter(Boolean).join(" ");
+      }
+      continue;
+    }
+    sanitized[key] = sanitizeSchemaForClaude(value, root);
+  }
+  return sanitized;
+}
+
+function resolveLocalSchemaRef(ref, root) {
+  if (!ref.startsWith("#/")) return null;
+  return ref
+    .slice(2)
+    .split("/")
+    .map((part) => part.replaceAll("~1", "/").replaceAll("~0", "~"))
+    .reduce((current, part) => current?.[part], root);
+}
+
 async function callUnity(method, params) {
   const attempts = method === "unity_enter_play_mode" ? 1 : 6;
   let lastError;
@@ -787,6 +839,7 @@ function sleep(ms) {
 
 async function handleRequest(message) {
   const { id, method, params = {} } = message;
+  trace("request", { id, method });
   if (method === "initialize") {
     return {
       jsonrpc: "2.0",
@@ -800,7 +853,16 @@ async function handleRequest(message) {
     };
   }
   if (method === "tools/list") {
-    return { jsonrpc: "2.0", id, result: { tools } };
+    return { jsonrpc: "2.0", id, result: { tools: exposedTools } };
+  }
+  if (method === "ping") {
+    return { jsonrpc: "2.0", id, result: {} };
+  }
+  if (method === "resources/list") {
+    return { jsonrpc: "2.0", id, result: { resources: [] } };
+  }
+  if (method === "prompts/list") {
+    return { jsonrpc: "2.0", id, result: { prompts: [] } };
   }
   if (method === "tools/call") {
     const toolName = params.name;
@@ -882,18 +944,18 @@ process.stdin.on("data", (chunk) => {
 
 async function drainMessages() {
   while (true) {
-    const headerEnd = buffer.indexOf("\r\n\r\n");
-    if (headerEnd === -1) return;
+    const headerBoundary = findHeaderBoundary(buffer);
+    if (!headerBoundary) return;
 
-    const header = buffer.slice(0, headerEnd).toString("utf8");
+    const header = buffer.slice(0, headerBoundary.index).toString("utf8");
     const match = /content-length:\s*(\d+)/i.exec(header);
     if (!match) {
-      buffer = buffer.slice(headerEnd + 4);
+      buffer = buffer.slice(headerBoundary.index + headerBoundary.length);
       continue;
     }
 
     const length = Number(match[1]);
-    const messageStart = headerEnd + 4;
+    const messageStart = headerBoundary.index + headerBoundary.length;
     const messageEnd = messageStart + length;
     if (buffer.length < messageEnd) return;
 
@@ -917,7 +979,27 @@ async function drainMessages() {
   }
 }
 
+function findHeaderBoundary(bytes) {
+  const crlf = bytes.indexOf("\r\n\r\n");
+  const lf = bytes.indexOf("\n\n");
+  if (crlf === -1 && lf === -1) return null;
+  if (crlf !== -1 && (lf === -1 || crlf < lf)) {
+    return { index: crlf, length: 4 };
+  }
+  return { index: lf, length: 2 };
+}
+
 function writeMessage(message) {
+  trace("response", { id: message.id, method: message.method, error: message.error?.message });
   const json = JSON.stringify(message);
   process.stdout.write(`Content-Length: ${Buffer.byteLength(json, "utf8")}\r\n\r\n${json}`);
+}
+
+function trace(event, payload) {
+  if (!TRACE_PATH) return;
+  try {
+    appendFileSync(TRACE_PATH, `${JSON.stringify({ event, ...payload, at: new Date().toISOString() })}\n`);
+  } catch {
+    // Tracing must never break MCP traffic.
+  }
 }

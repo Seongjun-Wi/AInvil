@@ -1,9 +1,9 @@
 {
   "schemaVersion": "1.0.0",
   "planVersion": "0.1.0",
-  "planId": "WTP-GRAPH-AInvil-Productization-2026-07-03",
-  "generatedAt": "2026-07-03T19:07:18.146Z",
-  "sourceReportId": "WFR-GRAPH-AInvil-Productization-2026-07-03",
+  "planId": "WTP-GRAPH-AInvil-Productization-2026-07-06",
+  "generatedAt": "2026-07-06T11:27:56.651Z",
+  "sourceReportId": "WFR-GRAPH-AInvil-Productization-2026-07-06",
   "sourceFiles": [
     {
       "kind": "Workflow Runtime Report",
@@ -64,7 +64,7 @@
       "transitionId": "TRANS-ResolveValidationGap-1",
       "transitionType": "ResolveValidationGap",
       "sourceState": "Not Checked",
-      "targetState": "Compile Verified",
+      "targetState": "Play Mode Verified",
       "targetArtifactId": "AC-E2E-002",
       "targetArtifactType": "GraphNode",
       "status": "Available",
@@ -86,7 +86,524 @@
       "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
     },
     {
+      "transitionId": "TRANS-ResolveValidationGap-2",
+      "transitionType": "ResolveValidationGap",
+      "sourceState": "Unknown",
+      "targetState": "Play Mode Verified",
+      "targetArtifactId": "AC-DRC-SPACE-001",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P1",
+      "reason": "AC-DRC-SPACE-001 is below the required validation confidence.",
+      "prerequisites": [
+        "Referenced graph node exists.",
+        "Required validation level is known."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-001"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "High",
+      "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-3",
+      "transitionType": "ResolveValidationGap",
+      "sourceState": "Unknown",
+      "targetState": "Play Mode Verified",
+      "targetArtifactId": "AC-DRC-SPACE-002",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P1",
+      "reason": "AC-DRC-SPACE-002 is below the required validation confidence.",
+      "prerequisites": [
+        "Referenced graph node exists.",
+        "Required validation level is known."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-002"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "High",
+      "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-4",
+      "transitionType": "ResolveValidationGap",
+      "sourceState": "Unknown",
+      "targetState": "Play Mode Verified",
+      "targetArtifactId": "AC-DRC-SPACE-003",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P1",
+      "reason": "AC-DRC-SPACE-003 is below the required validation confidence.",
+      "prerequisites": [
+        "Referenced graph node exists.",
+        "Required validation level is known."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-003"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "High",
+      "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-5",
+      "transitionType": "ResolveValidationGap",
+      "sourceState": "Unknown",
+      "targetState": "Play Mode Verified",
+      "targetArtifactId": "AC-DRC-SPACE-004",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P1",
+      "reason": "AC-DRC-SPACE-004 is below the required validation confidence.",
+      "prerequisites": [
+        "Referenced graph node exists.",
+        "Required validation level is known."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-004"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "High",
+      "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-6",
+      "transitionType": "ResolveValidationGap",
+      "sourceState": "Unknown",
+      "targetState": "Play Mode Verified",
+      "targetArtifactId": "AC-DRC-SPACE-005",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P1",
+      "reason": "AC-DRC-SPACE-005 is below the required validation confidence.",
+      "prerequisites": [
+        "Referenced graph node exists.",
+        "Required validation level is known."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-005"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "High",
+      "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-7",
+      "transitionType": "ResolveValidationGap",
+      "sourceState": "Unknown",
+      "targetState": "Play Mode Verified",
+      "targetArtifactId": "AC-DRC-SPACE-006",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P1",
+      "reason": "AC-DRC-SPACE-006 is below the required validation confidence.",
+      "prerequisites": [
+        "Referenced graph node exists.",
+        "Required validation level is known."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-006"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "High",
+      "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-8",
+      "transitionType": "ResolveValidationGap",
+      "sourceState": "Unknown",
+      "targetState": "Play Mode Verified",
+      "targetArtifactId": "AC-DRC-SPACE-007",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P1",
+      "reason": "AC-DRC-SPACE-007 is below the required validation confidence.",
+      "prerequisites": [
+        "Referenced graph node exists.",
+        "Required validation level is known."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-007"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "High",
+      "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-9",
+      "transitionType": "ResolveValidationGap",
+      "sourceState": "Unknown",
+      "targetState": "Play Mode Verified",
+      "targetArtifactId": "AC-DRC-SPACE-008",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P1",
+      "reason": "AC-DRC-SPACE-008 is below the required validation confidence.",
+      "prerequisites": [
+        "Referenced graph node exists.",
+        "Required validation level is known."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-008"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "High",
+      "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-10",
+      "transitionType": "ResolveValidationGap",
+      "sourceState": "Unknown",
+      "targetState": "Play Mode Verified",
+      "targetArtifactId": "AC-DRC-SPACE-009",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P1",
+      "reason": "AC-DRC-SPACE-009 is below the required validation confidence.",
+      "prerequisites": [
+        "Referenced graph node exists.",
+        "Required validation level is known."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-009"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "High",
+      "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-11",
+      "transitionType": "ResolveValidationGap",
+      "sourceState": "Unknown",
+      "targetState": "Play Mode Verified",
+      "targetArtifactId": "AC-DRC-SPACE-010",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P1",
+      "reason": "AC-DRC-SPACE-010 is below the required validation confidence.",
+      "prerequisites": [
+        "Referenced graph node exists.",
+        "Required validation level is known."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-010"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "High",
+      "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-12",
+      "transitionType": "ResolveValidationGap",
+      "sourceState": "Unknown",
+      "targetState": "Play Mode Verified",
+      "targetArtifactId": "AC-DRC-SPACE-011",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P1",
+      "reason": "AC-DRC-SPACE-011 is below the required validation confidence.",
+      "prerequisites": [
+        "Referenced graph node exists.",
+        "Required validation level is known."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-011"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "High",
+      "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-13",
+      "transitionType": "ResolveValidationGap",
+      "sourceState": "Unknown",
+      "targetState": "Play Mode Verified",
+      "targetArtifactId": "EVID-DRC-VIS-001",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P1",
+      "reason": "EVID-DRC-VIS-001 is below the required validation confidence.",
+      "prerequisites": [
+        "Referenced graph node exists.",
+        "Required validation level is known."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "EVID-DRC-VIS-001"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "High",
+      "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-14",
+      "transitionType": "ResolveValidationGap",
+      "sourceState": "Unknown",
+      "targetState": "Play Mode Verified",
+      "targetArtifactId": "EVID-DRC-SPACE-001",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P1",
+      "reason": "EVID-DRC-SPACE-001 is below the required validation confidence.",
+      "prerequisites": [
+        "Referenced graph node exists.",
+        "Required validation level is known."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "EVID-DRC-SPACE-001"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "High",
+      "safetyNotes": "The planner does not run validation. It only recommends that validation evidence be produced."
+    },
+    {
+      "transitionId": "TRANS-RequestReview-1",
+      "transitionType": "RequestReview",
+      "sourceState": "Review Missing",
+      "targetState": "Review Requested",
+      "targetArtifactId": "FEAT-DRC-PROC-RecoveryJob",
+      "targetArtifactType": "GraphNode",
+      "status": "Available",
+      "priority": "P1",
+      "reason": "Active feature has no review record.",
+      "prerequisites": [
+        "Governance-derived missing review exists."
+      ],
+      "missingPrerequisites": [],
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "FEAT-DRC-PROC-RecoveryJob"
+        }
+      ],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Medium",
+      "safetyNotes": "The planner does not create review records. It only recommends requesting the review."
+    },
+    {
       "transitionId": "TRANS-ImproveTraceability-1",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "REQ-DRC-PROC-003: no implementation task implements this requirement",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "REQ-DRC-PROC-003: no implementation task implements this requirement",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-2",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "REQ-DRC-PROC-004: no implementation task implements this requirement",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "REQ-DRC-PROC-004: no implementation task implements this requirement",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-3",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "REQ-DRC-SPACE-001: no implementation task implements this requirement",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "REQ-DRC-SPACE-001: no implementation task implements this requirement",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-4",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "REQ-DRC-SPACE-002: no implementation task implements this requirement",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "REQ-DRC-SPACE-002: no implementation task implements this requirement",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-5",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "REQ-DRC-SPACE-003: no implementation task implements this requirement",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "REQ-DRC-SPACE-003: no implementation task implements this requirement",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-6",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "REQ-DRC-SPACE-004: no implementation task implements this requirement",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "REQ-DRC-SPACE-004: no implementation task implements this requirement",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-7",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "REQ-DRC-SPACE-005: no implementation task implements this requirement",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "REQ-DRC-SPACE-005: no implementation task implements this requirement",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-8",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "REQ-DRC-SPACE-006: no implementation task implements this requirement",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "REQ-DRC-SPACE-006: no implementation task implements this requirement",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-9",
       "transitionType": "ImproveTraceability",
       "sourceState": "Traceability Gap",
       "targetState": "Traceability Improved",
@@ -107,7 +624,7 @@
       "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
     },
     {
-      "transitionId": "TRANS-ImproveTraceability-2",
+      "transitionId": "TRANS-ImproveTraceability-10",
       "transitionType": "ImproveTraceability",
       "sourceState": "Traceability Gap",
       "targetState": "Traceability Improved",
@@ -128,7 +645,7 @@
       "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
     },
     {
-      "transitionId": "TRANS-ImproveTraceability-3",
+      "transitionId": "TRANS-ImproveTraceability-11",
       "transitionType": "ImproveTraceability",
       "sourceState": "Traceability Gap",
       "targetState": "Traceability Improved",
@@ -149,7 +666,343 @@
       "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
     },
     {
-      "transitionId": "TRANS-ImproveTraceability-4",
+      "transitionId": "TRANS-ImproveTraceability-12",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-MVP-002: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-MVP-002: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-13",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-MVP-003: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-MVP-003: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-14",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-PROC-003: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-PROC-003: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-15",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-PROC-004: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-PROC-004: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-16",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-PROC-005: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-PROC-005: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-17",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-PROC-006: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-PROC-006: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-18",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-PROC-007: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-PROC-007: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-19",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-PROC-008: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-PROC-008: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-20",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-VIS-001: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-VIS-001: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-21",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-VIS-002: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-VIS-002: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-22",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-SPACE-001: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-SPACE-001: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-23",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-SPACE-002: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-SPACE-002: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-24",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-SPACE-003: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-SPACE-003: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-25",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-SPACE-004: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-SPACE-004: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-26",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-SPACE-005: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-SPACE-005: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-27",
+      "transitionType": "ImproveTraceability",
+      "sourceState": "Traceability Gap",
+      "targetState": "Traceability Improved",
+      "targetArtifactId": "TASK-DRC-SPACE-006: no Unity target maps to this task",
+      "targetArtifactType": "TraceabilityGap",
+      "status": "Needs Review",
+      "priority": "P2",
+      "reason": "TASK-DRC-SPACE-006: no Unity target maps to this task",
+      "prerequisites": [
+        "Traceability gap is reported."
+      ],
+      "missingPrerequisites": [
+        "Specific graph node evidence is missing."
+      ],
+      "evidenceRefs": [],
+      "recommendedBy": "Workflow Runtime Report",
+      "confidence": "Low",
+      "safetyNotes": "The planner cannot infer missing links beyond the reported traceability gap."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-28",
       "transitionType": "ImproveTraceability",
       "sourceState": "Traceability Gap",
       "targetState": "Traceability Improved",

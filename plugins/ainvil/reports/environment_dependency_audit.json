@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "reportId": "ENV-AUDIT-2026-07-06T06-17-16-741Z",
-  "generatedAt": "2026-07-06T06:17:16.741Z",
+  "reportId": "ENV-AUDIT-2026-07-06T11-28-09-769Z",
+  "generatedAt": "2026-07-06T11:28:09.769Z",
   "product": "AInvil",
   "summary": {
     "BridgePort": 60,
@@ -89,7 +89,15 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-BRIDGE-10",
+      "id": "ENV-LOCAL-10",
+      "category": "SourceHardcoding",
+      "severity": "Needs Review",
+      "path": "docs/AInvil_Validation_Summary.md",
+      "summary": "2 local path marker(s) detected.",
+      "nextAction": "Replace hardcoded local path with a manifest/env/config value."
+    },
+    {
+      "id": "ENV-BRIDGE-11",
       "category": "BridgePort",
       "severity": "Info",
       "path": "docs/Plugin_Integration_Guide.md",
@@ -97,7 +105,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-BRIDGE-11",
+      "id": "ENV-BRIDGE-12",
       "category": "BridgePort",
       "severity": "Info",
       "path": "docs/production-core/PC3_Live_Unity_Proof_Technical_Spec.md",
@@ -105,7 +113,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-12",
+      "id": "ENV-LOCAL-13",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "harness/reports/fresh-workspace-live-harness-report.json",
@@ -113,7 +121,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-13",
+      "id": "ENV-BRIDGE-14",
       "category": "BridgePort",
       "severity": "Info",
       "path": "harness/reports/fresh-workspace-live-harness-report.json",
@@ -121,26 +129,18 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-14",
+      "id": "ENV-LOCAL-15",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "harness/reports/latest-live-harness-report.json",
-      "summary": "46 local path marker(s) detected.",
+      "summary": "6 local path marker(s) detected.",
       "nextAction": "Regenerate this artifact in the target workspace."
-    },
-    {
-      "id": "ENV-BRIDGE-15",
-      "category": "BridgePort",
-      "severity": "Info",
-      "path": "harness/reports/latest-live-harness-report.json",
-      "summary": "Unity Bridge default localhost port 17777 is referenced.",
-      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
       "id": "ENV-BRIDGE-16",
       "category": "BridgePort",
       "severity": "Info",
-      "path": "harness/scenarios/ainvil_bridge_smoke_operational.json",
+      "path": "harness/reports/latest-live-harness-report.json",
       "summary": "Unity Bridge default localhost port 17777 is referenced.",
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
@@ -148,7 +148,7 @@
       "id": "ENV-BRIDGE-17",
       "category": "BridgePort",
       "severity": "Info",
-      "path": "harness/scenarios/dungeon_recovery_first_playable_e2e.json",
+      "path": "harness/scenarios/ainvil_bridge_smoke_operational.json",
       "summary": "Unity Bridge default localhost port 17777 is referenced.",
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
@@ -156,7 +156,7 @@
       "id": "ENV-BRIDGE-18",
       "category": "BridgePort",
       "severity": "Info",
-      "path": "harness/scenarios/dungeon_recovery_procedural_recovery_job_e2e.json",
+      "path": "harness/scenarios/dungeon_recovery_first_playable_e2e.json",
       "summary": "Unity Bridge default localhost port 17777 is referenced.",
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
@@ -164,7 +164,7 @@
       "id": "ENV-BRIDGE-19",
       "category": "BridgePort",
       "severity": "Info",
-      "path": "harness/scenarios/dungeon_recovery_procedural_space_quality_validation.json",
+      "path": "harness/scenarios/dungeon_recovery_procedural_recovery_job_e2e.json",
       "summary": "Unity Bridge default localhost port 17777 is referenced.",
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
@@ -172,7 +172,7 @@
       "id": "ENV-BRIDGE-20",
       "category": "BridgePort",
       "severity": "Info",
-      "path": "harness/scenarios/dungeon_recovery_procedural_visual_validation.json",
+      "path": "harness/scenarios/dungeon_recovery_procedural_space_quality_validation.json",
       "summary": "Unity Bridge default localhost port 17777 is referenced.",
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
@@ -180,28 +180,20 @@
       "id": "ENV-BRIDGE-21",
       "category": "BridgePort",
       "severity": "Info",
+      "path": "harness/scenarios/dungeon_recovery_procedural_visual_validation.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-BRIDGE-22",
+      "category": "BridgePort",
+      "severity": "Info",
       "path": "mcp-server/server.mjs",
       "summary": "Unity Bridge default localhost port 17777 is referenced.",
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-22",
-      "category": "SourceHardcoding",
-      "severity": "Needs Review",
-      "path": "README.md",
-      "summary": "1 local path marker(s) detected.",
-      "nextAction": "Replace hardcoded local path with a manifest/env/config value."
-    },
-    {
-      "id": "ENV-BRIDGE-23",
-      "category": "BridgePort",
-      "severity": "KnownLimitation",
-      "path": "README.md",
-      "summary": "Unity Bridge default localhost port 17777 is referenced.",
-      "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
-    },
-    {
-      "id": "ENV-LOCAL-24",
+      "id": "ENV-LOCAL-23",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/ainvil_compile_gate_safety_regression_report.json",
@@ -209,7 +201,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-25",
+      "id": "ENV-BRIDGE-24",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/ainvil_compile_gate_safety_regression_report.json",
@@ -217,7 +209,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-LOCAL-26",
+      "id": "ENV-LOCAL-25",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/builds/dungeon_recovery_first_playable/DungeonRecoveryCompany_BurstDebugInformation_DoNotShip/Data/Plugins/x86_64/lib_burst_generated.txt",
@@ -225,7 +217,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-27",
+      "id": "ENV-LOCAL-26",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable_Data/Managed/Assembly-CSharp.pdb",
@@ -233,7 +225,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-28",
+      "id": "ENV-LOCAL-27",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable_Data/Managed/Newtonsoft.Json.pdb",
@@ -241,7 +233,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-29",
+      "id": "ENV-LOCAL-28",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/builds/dungeon_recovery_first_playable/DungeonRecoveryFirstPlayable_Data/Plugins/x86_64/lib_burst_generated.pdb",
@@ -249,7 +241,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-30",
+      "id": "ENV-LOCAL-29",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/builds/dungeon_recovery_procedural_recovery_job/DungeonRecoveryCompany_BurstDebugInformation_DoNotShip/Data/Plugins/x86_64/lib_burst_generated.txt",
@@ -257,7 +249,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-31",
+      "id": "ENV-LOCAL-30",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/builds/dungeon_recovery_procedural_recovery_job/DungeonRecoveryProceduralRecoveryJob_Data/Managed/Assembly-CSharp.pdb",
@@ -265,7 +257,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-32",
+      "id": "ENV-LOCAL-31",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/builds/dungeon_recovery_procedural_recovery_job/DungeonRecoveryProceduralRecoveryJob_Data/Managed/Newtonsoft.Json.pdb",
@@ -273,7 +265,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-33",
+      "id": "ENV-LOCAL-32",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/builds/dungeon_recovery_procedural_recovery_job/DungeonRecoveryProceduralRecoveryJob_Data/Plugins/x86_64/lib_burst_generated.pdb",
@@ -281,7 +273,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-34",
+      "id": "ENV-LOCAL-33",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/dungeon_recovery_first_playable_build_verification.json",
@@ -289,7 +281,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-35",
+      "id": "ENV-BRIDGE-34",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/dungeon_recovery_first_playable_build_verification.json",
@@ -297,7 +289,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-LOCAL-36",
+      "id": "ENV-LOCAL-35",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/dungeon_recovery_first_playable_build_verification.md",
@@ -305,7 +297,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-37",
+      "id": "ENV-LOCAL-36",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/dungeon_recovery_first_playable_dry_run.json",
@@ -313,7 +305,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-38",
+      "id": "ENV-LOCAL-37",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/dungeon_recovery_first_playable_dry_run.md",
@@ -321,7 +313,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-39",
+      "id": "ENV-LOCAL-38",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/dungeon_recovery_first_playable_validation_report.json",
@@ -329,7 +321,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-40",
+      "id": "ENV-LOCAL-39",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/dungeon_recovery_first_playable_validation_report.md",
@@ -337,7 +329,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-41",
+      "id": "ENV-LOCAL-40",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/dungeon_recovery_procedural_recovery_job_build_verification.json",
@@ -345,7 +337,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-42",
+      "id": "ENV-BRIDGE-41",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/dungeon_recovery_procedural_recovery_job_build_verification.json",
@@ -353,7 +345,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-LOCAL-43",
+      "id": "ENV-LOCAL-42",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/dungeon_recovery_procedural_recovery_job_build_verification.md",
@@ -361,7 +353,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-44",
+      "id": "ENV-LOCAL-43",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/dungeon_recovery_procedural_recovery_job_dry_run.json",
@@ -369,7 +361,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-45",
+      "id": "ENV-LOCAL-44",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/dungeon_recovery_procedural_recovery_job_dry_run.md",
@@ -377,7 +369,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-46",
+      "id": "ENV-LOCAL-45",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/dungeon_recovery_procedural_space_quality_dry_run.json",
@@ -385,7 +377,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-47",
+      "id": "ENV-LOCAL-46",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/dungeon_recovery_procedural_space_quality_dry_run.md",
@@ -393,7 +385,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-48",
+      "id": "ENV-LOCAL-47",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/dungeon_recovery_procedural_space_quality_review.json",
@@ -401,7 +393,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-49",
+      "id": "ENV-BRIDGE-48",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/dungeon_recovery_procedural_space_quality_review.json",
@@ -409,7 +401,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-LOCAL-50",
+      "id": "ENV-LOCAL-49",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/dungeon_recovery_procedural_visual_review.json",
@@ -417,7 +409,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-51",
+      "id": "ENV-BRIDGE-50",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/dungeon_recovery_procedural_visual_review.json",
@@ -425,7 +417,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-BRIDGE-52",
+      "id": "ENV-BRIDGE-51",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/environment_dependency_audit.json",
@@ -433,7 +425,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-BRIDGE-53",
+      "id": "ENV-BRIDGE-52",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/environment_dependency_audit.md",
@@ -441,7 +433,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-LOCAL-54",
+      "id": "ENV-LOCAL-53",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/fresh_workspace_verification_report.json",
@@ -449,7 +441,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-55",
+      "id": "ENV-BRIDGE-54",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/fresh_workspace_verification_report.json",
@@ -457,7 +449,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-LOCAL-56",
+      "id": "ENV-LOCAL-55",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/fresh_workspace_verification_report.md",
@@ -465,7 +457,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-57",
+      "id": "ENV-BRIDGE-56",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/fresh_workspace_verification_report.md",
@@ -473,7 +465,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-LOCAL-58",
+      "id": "ENV-LOCAL-57",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/onboarding_doctor_report.json",
@@ -481,7 +473,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-59",
+      "id": "ENV-BRIDGE-58",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/onboarding_doctor_report.json",
@@ -489,7 +481,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-LOCAL-60",
+      "id": "ENV-LOCAL-59",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/productization_status_report.json",
@@ -497,7 +489,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-61",
+      "id": "ENV-LOCAL-60",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/project_dashboard.json",
@@ -505,7 +497,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-62",
+      "id": "ENV-LOCAL-61",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/rc_baseline_manifest.json",
@@ -513,7 +505,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-63",
+      "id": "ENV-BRIDGE-62",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/rc_baseline_manifest.json",
@@ -521,7 +513,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-BRIDGE-64",
+      "id": "ENV-BRIDGE-63",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/rc_baseline_manifest.md",
@@ -529,7 +521,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-LOCAL-65",
+      "id": "ENV-LOCAL-64",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/regression_suite_latest.json",
@@ -537,7 +529,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-66",
+      "id": "ENV-BRIDGE-65",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/regression_suite_latest.json",
@@ -545,7 +537,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-LOCAL-67",
+      "id": "ENV-LOCAL-66",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/regression_suite_latest.md",
@@ -553,7 +545,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-LOCAL-68",
+      "id": "ENV-LOCAL-67",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/release_readiness_report.json",
@@ -561,7 +553,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-69",
+      "id": "ENV-BRIDGE-68",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/release_readiness_report.json",
@@ -569,7 +561,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-LOCAL-70",
+      "id": "ENV-LOCAL-69",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "reports/unity_compile_gate_report.json",
@@ -577,7 +569,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-71",
+      "id": "ENV-BRIDGE-70",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "reports/unity_compile_gate_report.json",
@@ -585,7 +577,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-BRIDGE-72",
+      "id": "ENV-BRIDGE-71",
       "category": "BridgePort",
       "severity": "Info",
       "path": "scripts/run-ainvil-compile-gate-regression.mjs",
@@ -593,7 +585,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-BRIDGE-73",
+      "id": "ENV-BRIDGE-72",
       "category": "BridgePort",
       "severity": "Info",
       "path": "scripts/run-ainvil-live-harness.mjs",
@@ -601,7 +593,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-BRIDGE-74",
+      "id": "ENV-BRIDGE-73",
       "category": "BridgePort",
       "severity": "Info",
       "path": "scripts/run-ainvil-regression-suite.mjs",
@@ -609,7 +601,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-BRIDGE-75",
+      "id": "ENV-BRIDGE-74",
       "category": "BridgePort",
       "severity": "Info",
       "path": "scripts/validate-mcp-server.mjs",
@@ -617,7 +609,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-BRIDGE-76",
+      "id": "ENV-BRIDGE-75",
       "category": "BridgePort",
       "severity": "Info",
       "path": "scripts/verify-dungeon-recovery-first-playable-build.mjs",
@@ -625,7 +617,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-BRIDGE-77",
+      "id": "ENV-BRIDGE-76",
       "category": "BridgePort",
       "severity": "Info",
       "path": "scripts/verify-dungeon-recovery-procedural-recovery-job-build.mjs",
@@ -633,7 +625,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-BRIDGE-78",
+      "id": "ENV-BRIDGE-77",
       "category": "BridgePort",
       "severity": "Info",
       "path": "scripts/verify-fresh-workspace.mjs",
@@ -641,7 +633,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-79",
+      "id": "ENV-LOCAL-78",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "state/workspace_manifest.json",
@@ -649,7 +641,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-80",
+      "id": "ENV-BRIDGE-79",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "unity-package/Packages/com.codex.unity-bridge/Editor/CodexUnityBridgeServer.cs",
@@ -657,7 +649,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-BRIDGE-81",
+      "id": "ENV-BRIDGE-80",
       "category": "BridgePort",
       "severity": "KnownLimitation",
       "path": "unity-package/Packages/com.codex.unity-bridge/README.md",
@@ -665,7 +657,7 @@
       "nextAction": "For Unity-side server port changes, update the Unity Bridge package or document the fixed package default."
     },
     {
-      "id": "ENV-LOCAL-82",
+      "id": "ENV-LOCAL-81",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "validation/evidence/EVID-ainvil-bridge-smoke-operational-fresh-workspace-latest.json",
@@ -673,7 +665,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-83",
+      "id": "ENV-BRIDGE-82",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-ainvil-bridge-smoke-operational-fresh-workspace-latest.json",
@@ -681,7 +673,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-BRIDGE-84",
+      "id": "ENV-BRIDGE-83",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest-passed.json",
@@ -689,7 +681,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-BRIDGE-85",
+      "id": "ENV-BRIDGE-84",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json",
@@ -697,7 +689,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-86",
+      "id": "ENV-LOCAL-85",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "validation/evidence/EVID-ainvil-compile-gate-blocks-playmode-latest.json",
@@ -705,7 +697,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-87",
+      "id": "ENV-BRIDGE-86",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-ainvil-compile-gate-blocks-playmode-latest.json",
@@ -713,7 +705,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-BRIDGE-88",
+      "id": "ENV-BRIDGE-87",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-compile-check-compile-blocked-latest.json",
@@ -721,7 +713,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-89",
+      "id": "ENV-LOCAL-88",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-first-playable-build-latest.json",
@@ -729,7 +721,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-90",
+      "id": "ENV-BRIDGE-89",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-first-playable-build-latest.json",
@@ -737,7 +729,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-91",
+      "id": "ENV-LOCAL-90",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json",
@@ -745,7 +737,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-92",
+      "id": "ENV-BRIDGE-91",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-first-playable-e2e-latest.json",
@@ -753,7 +745,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-93",
+      "id": "ENV-LOCAL-92",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-build-latest.json",
@@ -761,7 +753,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-94",
+      "id": "ENV-BRIDGE-93",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-build-latest.json",
@@ -769,7 +761,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-95",
+      "id": "ENV-LOCAL-94",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest-passed.json",
@@ -777,7 +769,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-96",
+      "id": "ENV-BRIDGE-95",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest-passed.json",
@@ -785,7 +777,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-97",
+      "id": "ENV-LOCAL-96",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest.json",
@@ -793,7 +785,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-98",
+      "id": "ENV-BRIDGE-97",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-recovery-job-e2e-latest.json",
@@ -801,7 +793,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-99",
+      "id": "ENV-LOCAL-98",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-blocked.json",
@@ -809,7 +801,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-100",
+      "id": "ENV-BRIDGE-99",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-blocked.json",
@@ -817,7 +809,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-101",
+      "id": "ENV-LOCAL-100",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-passed.json",
@@ -825,7 +817,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-102",
+      "id": "ENV-BRIDGE-101",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-passed.json",
@@ -833,23 +825,23 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-103",
+      "id": "ENV-LOCAL-102",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest.json",
       "summary": "21 local path marker(s) detected.",
       "nextAction": "Regenerate this artifact in the target workspace."
+    },
+    {
+      "id": "ENV-BRIDGE-103",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
       "id": "ENV-BRIDGE-104",
-      "category": "BridgePort",
-      "severity": "Info",
-      "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest.json",
-      "summary": "Unity Bridge default localhost port 17777 is referenced.",
-      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
-    },
-    {
-      "id": "ENV-BRIDGE-105",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest-blocked.json",
@@ -857,7 +849,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-106",
+      "id": "ENV-LOCAL-105",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest-passed.json",
@@ -865,7 +857,7 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-107",
+      "id": "ENV-BRIDGE-106",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest-passed.json",
@@ -873,7 +865,7 @@
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
     {
-      "id": "ENV-LOCAL-108",
+      "id": "ENV-LOCAL-107",
       "category": "GeneratedLocalState",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest.json",
@@ -881,10 +873,18 @@
       "nextAction": "Regenerate this artifact in the target workspace."
     },
     {
-      "id": "ENV-BRIDGE-109",
+      "id": "ENV-BRIDGE-108",
       "category": "BridgePort",
       "severity": "Info",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest.json",
+      "summary": "Unity Bridge default localhost port 17777 is referenced.",
+      "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
+    },
+    {
+      "id": "ENV-BRIDGE-109",
+      "category": "BridgePort",
+      "severity": "Info",
+      "path": "validation/evidence/EVID-regression-compile-blocked-latest.json",
       "summary": "Unity Bridge default localhost port 17777 is referenced.",
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },
@@ -892,7 +892,7 @@
       "id": "ENV-BRIDGE-110",
       "category": "BridgePort",
       "severity": "Info",
-      "path": "validation/evidence/EVID-regression-compile-blocked-latest.json",
+      "path": "validation/evidence/EVID-top-down-collectible-latest-failed.json",
       "summary": "Unity Bridge default localhost port 17777 is referenced.",
       "nextAction": "Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required."
     },

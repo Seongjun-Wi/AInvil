@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "ainvil-unity-bridge": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "E:/wiseongjun/ProgrammingNAssignment/GameDesigner/plugins/ainvil/mcp-server/server.mjs"
+      ],
+      "env": {
+        "AINVIL_MCP_SCHEMA_MODE": "claude",
+        "UNITY_BRIDGE_URL": "http://127.0.0.1:17777/rpc"
+      }
+    }
+  }
+}

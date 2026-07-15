@@ -1,6 +1,6 @@
 {
   "name": "ainvil",
-  "version": "0.6.0+codex.local-20260627-010221",
+  "version": "0.6.0+codex.20260706113846",
   "description": "AInvil is a Unity-based AI game production agent with a Director Layer that preserves game vision from idea and GDD creation to Unity implementation, playability validation, long-term project memory, and documentation synchronization.",
   "author": {
     "name": "Local developer"

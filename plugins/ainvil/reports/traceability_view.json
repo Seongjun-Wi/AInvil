@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "viewId": "TRACE-GRAPH-AInvil-Productization-2026-07-03",
-  "generatedAt": "2026-07-03T19:07:19.243Z",
+  "viewId": "TRACE-GRAPH-AInvil-Productization-2026-07-06",
+  "generatedAt": "2026-07-06T11:28:05.882Z",
   "sourceGraphId": "GRAPH-AInvil-Productization",
   "rows": [
     {
@@ -67,33 +67,1404 @@
       "unityTargetId": "UNITY-Bridge-Package",
       "inputSpecId": "INPUT-Runtime-Test-Bridge",
       "acceptanceId": "AC-E2E-002",
+      "validationEvidenceId": "EVID-ainvil_bridge_smoke_operational-2026-07-06T05-48-18-528Z",
+      "validationLevel": "Compile Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Complete",
+      "missingLinks": [],
+      "nextAction": "Continue validation or milestone review."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-MVP-FirstRecoveryJob-REQ-DRC-MVP-001-TASK-DRC-MVP-001-UNITY-DRC-FirstRecoveryJob-Scene-AC-DRC-MVP-001",
+      "featureId": "FEAT-DRC-MVP-FirstRecoveryJob",
+      "requirementId": "REQ-DRC-MVP-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-MVP-001",
+      "unityTargetId": "UNITY-DRC-FirstRecoveryJob-Scene",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": "AC-DRC-MVP-001",
+      "validationEvidenceId": "EVID-dungeon-recovery-first-playable-build-latest",
+      "validationLevel": "Compile Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Needs Feature Spec",
+      "missingLinks": [
+        "FeatureSpec"
+      ],
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-MVP-FirstRecoveryJob-REQ-DRC-MVP-001-TASK-DRC-MVP-001-UNITY-DRC-FirstRecoveryJob-Scene-AC-DRC-MVP-002",
+      "featureId": "FEAT-DRC-MVP-FirstRecoveryJob",
+      "requirementId": "REQ-DRC-MVP-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-MVP-001",
+      "unityTargetId": "UNITY-DRC-FirstRecoveryJob-Scene",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": "AC-DRC-MVP-002",
+      "validationEvidenceId": "EVID-dungeon-recovery-first-playable-build-latest",
+      "validationLevel": "Compile Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Needs Feature Spec",
+      "missingLinks": [
+        "FeatureSpec"
+      ],
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-MVP-FirstRecoveryJob-REQ-DRC-MVP-001-TASK-DRC-MVP-001-UNITY-DRC-FirstRecoveryJob-Scene-AC-DRC-MVP-003",
+      "featureId": "FEAT-DRC-MVP-FirstRecoveryJob",
+      "requirementId": "REQ-DRC-MVP-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-MVP-001",
+      "unityTargetId": "UNITY-DRC-FirstRecoveryJob-Scene",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": "AC-DRC-MVP-003",
+      "validationEvidenceId": "EVID-dungeon-recovery-first-playable-build-latest",
+      "validationLevel": "Compile Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Needs Feature Spec",
+      "missingLinks": [
+        "FeatureSpec"
+      ],
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-MVP-FirstRecoveryJob-REQ-DRC-MVP-001-TASK-DRC-MVP-001-UNITY-DRC-FirstPlayable-Scripts-AC-DRC-MVP-001",
+      "featureId": "FEAT-DRC-MVP-FirstRecoveryJob",
+      "requirementId": "REQ-DRC-MVP-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-MVP-001",
+      "unityTargetId": "UNITY-DRC-FirstPlayable-Scripts",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": "AC-DRC-MVP-001",
+      "validationEvidenceId": "EVID-dungeon-recovery-first-playable-build-latest",
+      "validationLevel": "Compile Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Needs Feature Spec",
+      "missingLinks": [
+        "FeatureSpec"
+      ],
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-MVP-FirstRecoveryJob-REQ-DRC-MVP-001-TASK-DRC-MVP-001-UNITY-DRC-FirstPlayable-Scripts-AC-DRC-MVP-002",
+      "featureId": "FEAT-DRC-MVP-FirstRecoveryJob",
+      "requirementId": "REQ-DRC-MVP-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-MVP-001",
+      "unityTargetId": "UNITY-DRC-FirstPlayable-Scripts",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": "AC-DRC-MVP-002",
+      "validationEvidenceId": "EVID-dungeon-recovery-first-playable-build-latest",
+      "validationLevel": "Compile Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Needs Feature Spec",
+      "missingLinks": [
+        "FeatureSpec"
+      ],
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-MVP-FirstRecoveryJob-REQ-DRC-MVP-001-TASK-DRC-MVP-001-UNITY-DRC-FirstPlayable-Scripts-AC-DRC-MVP-003",
+      "featureId": "FEAT-DRC-MVP-FirstRecoveryJob",
+      "requirementId": "REQ-DRC-MVP-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-MVP-001",
+      "unityTargetId": "UNITY-DRC-FirstPlayable-Scripts",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": "AC-DRC-MVP-003",
+      "validationEvidenceId": "EVID-dungeon-recovery-first-playable-build-latest",
+      "validationLevel": "Compile Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Needs Feature Spec",
+      "missingLinks": [
+        "FeatureSpec"
+      ],
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-MVP-FirstRecoveryJob-REQ-DRC-MVP-001-TASK-DRC-MVP-002-AC-DRC-MVP-001",
+      "featureId": "FEAT-DRC-MVP-FirstRecoveryJob",
+      "requirementId": "REQ-DRC-MVP-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-MVP-002",
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": "AC-DRC-MVP-001",
       "validationEvidenceId": null,
       "validationLevel": "Not Checked",
       "validationEvidenceStatus": "Not Checked",
-      "status": "Needs Validation",
+      "status": "Needs Technical Mapping",
       "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-MVP-FirstRecoveryJob-REQ-DRC-MVP-001-TASK-DRC-MVP-003-AC-DRC-MVP-001",
+      "featureId": "FEAT-DRC-MVP-FirstRecoveryJob",
+      "requirementId": "REQ-DRC-MVP-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-MVP-003",
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": "AC-DRC-MVP-001",
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-001-TASK-DRC-PROC-001-UNITY-DRC-ProceduralRecoveryJob-Scene-AC-DRC-PROC-001",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-001",
+      "unityTargetId": "UNITY-DRC-ProceduralRecoveryJob-Scene",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": "AC-DRC-PROC-001",
+      "validationEvidenceId": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "validationLevel": "Play Mode Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Needs Feature Spec",
+      "missingLinks": [
+        "FeatureSpec"
+      ],
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-001-TASK-DRC-PROC-001-UNITY-DRC-ProceduralRecoveryJob-Scene-AC-DRC-PROC-002",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-001",
+      "unityTargetId": "UNITY-DRC-ProceduralRecoveryJob-Scene",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": "AC-DRC-PROC-002",
+      "validationEvidenceId": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "validationLevel": "Play Mode Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Needs Feature Spec",
+      "missingLinks": [
+        "FeatureSpec"
+      ],
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-001-TASK-DRC-PROC-001-UNITY-DRC-ProceduralRecoveryJob-Scene-AC-DRC-PROC-003",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-001",
+      "unityTargetId": "UNITY-DRC-ProceduralRecoveryJob-Scene",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": "AC-DRC-PROC-003",
+      "validationEvidenceId": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "validationLevel": "Play Mode Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Needs Feature Spec",
+      "missingLinks": [
+        "FeatureSpec"
+      ],
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-001-TASK-DRC-PROC-001-UNITY-DRC-ProceduralRecoveryJob-Scene-AC-DRC-PROC-004",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-001",
+      "unityTargetId": "UNITY-DRC-ProceduralRecoveryJob-Scene",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": "AC-DRC-PROC-004",
+      "validationEvidenceId": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "validationLevel": "Play Mode Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Needs Feature Spec",
+      "missingLinks": [
+        "FeatureSpec"
+      ],
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-001-TASK-DRC-PROC-001-UNITY-DRC-ProceduralRecoveryJob-Scene-AC-DRC-PROC-005",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-001",
+      "unityTargetId": "UNITY-DRC-ProceduralRecoveryJob-Scene",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": "AC-DRC-PROC-005",
+      "validationEvidenceId": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "validationLevel": "Play Mode Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Needs Feature Spec",
+      "missingLinks": [
+        "FeatureSpec"
+      ],
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-001-TASK-DRC-PROC-001-UNITY-DRC-ProceduralRecoveryJob-Scene-AC-DRC-PROC-006",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-001",
+      "unityTargetId": "UNITY-DRC-ProceduralRecoveryJob-Scene",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": "AC-DRC-PROC-006",
+      "validationEvidenceId": "EVID-dungeon-recovery-procedural-recovery-job-build-latest",
+      "validationLevel": "Compile Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Needs Feature Spec",
+      "missingLinks": [
+        "FeatureSpec"
+      ],
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-001-TASK-DRC-PROC-001-UNITY-DRC-ProceduralRecoveryJob-Scene-AC-DRC-PROC-007",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-001",
+      "unityTargetId": "UNITY-DRC-ProceduralRecoveryJob-Scene",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": "AC-DRC-PROC-007",
+      "validationEvidenceId": "EVID-dungeon-recovery-procedural-recovery-job-build-latest",
+      "validationLevel": "Compile Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Needs Feature Spec",
+      "missingLinks": [
+        "FeatureSpec"
+      ],
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-001-TASK-DRC-PROC-001-UNITY-DRC-ProceduralRecoveryJob-Scene-AC-DRC-PROC-008",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-001",
+      "unityTargetId": "UNITY-DRC-ProceduralRecoveryJob-Scene",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": "AC-DRC-PROC-008",
+      "validationEvidenceId": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "validationLevel": "Play Mode Verified",
+      "validationEvidenceStatus": "Passed",
+      "status": "Needs Feature Spec",
+      "missingLinks": [
+        "FeatureSpec"
+      ],
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-002-TASK-DRC-PROC-002-UNITY-DRC-ProceduralRecoveryJob-Scripts",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-002",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-002",
+      "unityTargetId": "UNITY-DRC-ProceduralRecoveryJob-Scripts",
+      "inputSpecId": "INPUT-Runtime-Test-Bridge",
+      "acceptanceId": null,
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Acceptance Criteria",
+      "missingLinks": [
+        "FeatureSpec",
+        "AcceptanceCriterion",
         "ValidationEvidence"
       ],
-      "nextAction": "Resolve missing ValidationEvidence."
+      "nextAction": "Resolve missing FeatureSpec."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-003",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-003",
+      "featureSpecId": null,
+      "taskId": null,
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": null,
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Implementation Task",
+      "missingLinks": [
+        "ImplementationTask"
+      ],
+      "nextAction": "Resolve missing ImplementationTask."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-004",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-004",
+      "featureSpecId": null,
+      "taskId": null,
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": null,
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Implementation Task",
+      "missingLinks": [
+        "ImplementationTask"
+      ],
+      "nextAction": "Resolve missing ImplementationTask."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-005-TASK-DRC-PROC-005",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-005",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-005",
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": null,
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-006-TASK-DRC-PROC-003",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-006",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-003",
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": null,
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-007-TASK-DRC-PROC-004",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-007",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-004",
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": null,
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-008-TASK-DRC-PROC-006",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-008",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-006",
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": null,
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-009-TASK-DRC-PROC-007-AC-DRC-PROC-009",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-009",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-007",
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": "AC-DRC-PROC-009",
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-PROC-010-TASK-DRC-PROC-008-AC-DRC-PROC-010",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-PROC-010",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-PROC-008",
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": "AC-DRC-PROC-010",
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-VIS-001-TASK-DRC-VIS-001-AC-DRC-VIS-001",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-VIS-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-VIS-001",
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": "AC-DRC-VIS-001",
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-VIS-001-TASK-DRC-VIS-002-AC-DRC-VIS-001",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-VIS-001",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-VIS-002",
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": "AC-DRC-VIS-001",
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-VIS-002-TASK-DRC-VIS-001-AC-DRC-VIS-002",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-VIS-002",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-VIS-001",
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": "AC-DRC-VIS-002",
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-VIS-003-TASK-DRC-VIS-001-AC-DRC-VIS-004",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-VIS-003",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-VIS-001",
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": "AC-DRC-VIS-004",
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-PROC-RecoveryJob-REQ-DRC-VIS-004-TASK-DRC-VIS-001-AC-DRC-VIS-006",
+      "featureId": "FEAT-DRC-PROC-RecoveryJob",
+      "requirementId": "REQ-DRC-VIS-004",
+      "featureSpecId": null,
+      "taskId": "TASK-DRC-VIS-001",
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": "AC-DRC-VIS-006",
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Technical Mapping",
+      "missingLinks": [
+        "UnityTarget"
+      ],
+      "nextAction": "Resolve missing UnityTarget."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-SPACE-001-REQ-DRC-SPACE-001",
+      "featureId": "FEAT-DRC-SPACE-001",
+      "requirementId": "REQ-DRC-SPACE-001",
+      "featureSpecId": null,
+      "taskId": null,
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": null,
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Implementation Task",
+      "missingLinks": [
+        "ImplementationTask"
+      ],
+      "nextAction": "Resolve missing ImplementationTask."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-SPACE-001-REQ-DRC-SPACE-002",
+      "featureId": "FEAT-DRC-SPACE-001",
+      "requirementId": "REQ-DRC-SPACE-002",
+      "featureSpecId": null,
+      "taskId": null,
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": null,
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Implementation Task",
+      "missingLinks": [
+        "ImplementationTask"
+      ],
+      "nextAction": "Resolve missing ImplementationTask."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-SPACE-001-REQ-DRC-SPACE-003",
+      "featureId": "FEAT-DRC-SPACE-001",
+      "requirementId": "REQ-DRC-SPACE-003",
+      "featureSpecId": null,
+      "taskId": null,
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": null,
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Implementation Task",
+      "missingLinks": [
+        "ImplementationTask"
+      ],
+      "nextAction": "Resolve missing ImplementationTask."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-SPACE-001-REQ-DRC-SPACE-004",
+      "featureId": "FEAT-DRC-SPACE-001",
+      "requirementId": "REQ-DRC-SPACE-004",
+      "featureSpecId": null,
+      "taskId": null,
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": null,
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Implementation Task",
+      "missingLinks": [
+        "ImplementationTask"
+      ],
+      "nextAction": "Resolve missing ImplementationTask."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-SPACE-001-REQ-DRC-SPACE-005",
+      "featureId": "FEAT-DRC-SPACE-001",
+      "requirementId": "REQ-DRC-SPACE-005",
+      "featureSpecId": null,
+      "taskId": null,
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": null,
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Implementation Task",
+      "missingLinks": [
+        "ImplementationTask"
+      ],
+      "nextAction": "Resolve missing ImplementationTask."
+    },
+    {
+      "rowId": "TRACE-FEAT-DRC-SPACE-001-REQ-DRC-SPACE-006",
+      "featureId": "FEAT-DRC-SPACE-001",
+      "requirementId": "REQ-DRC-SPACE-006",
+      "featureSpecId": null,
+      "taskId": null,
+      "unityTargetId": null,
+      "inputSpecId": null,
+      "acceptanceId": null,
+      "validationEvidenceId": null,
+      "validationLevel": "Not Checked",
+      "validationEvidenceStatus": "Not Checked",
+      "status": "Needs Implementation Task",
+      "missingLinks": [
+        "ImplementationTask"
+      ],
+      "nextAction": "Resolve missing ImplementationTask."
     }
   ],
   "proposedLinks": [
     {
       "type": "validates",
-      "from": "EVID-scenario_top_down_collectible-2026-07-03T19-07-18-963Z",
-      "to": "AC-CoreLoop-001",
+      "from": "EVID-ainvil_bridge_smoke_operational-2026-07-04T13-36-18-176Z",
+      "to": "AC-E2E-002",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Compile Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-ainvil_bridge_smoke_operational-2026-07-06T05-48-18-528Z",
+      "to": "AC-E2E-002",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Compile Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-ainvil_bridge_smoke_operational-2026-07-06T05-48-18-528Z",
+      "to": "AC-E2E-002",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Compile Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-ainvil-compile-gate-blocks-playmode-latest",
+      "to": "AC-AINVIL-COMPILE-GATE-SAFETY-001",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Compile Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon-recovery-first-playable-build-latest",
+      "to": "AC-DRC-MVP-001",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Compile Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon-recovery-first-playable-build-latest",
+      "to": "AC-DRC-MVP-002",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Compile Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon-recovery-first-playable-build-latest",
+      "to": "AC-DRC-MVP-003",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Compile Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T19-50-44-904Z",
+      "to": "AC-DRC-MVP-001",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T19-50-44-904Z",
+      "to": "AC-DRC-MVP-002",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_first_playable_e2e-2026-07-04T19-50-44-904Z",
+      "to": "AC-DRC-MVP-003",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon-recovery-first-playable-human-playability-latest",
+      "to": "AC-DRC-MVP-001",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Runtime Tested"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon-recovery-first-playable-human-playability-latest",
+      "to": "AC-DRC-MVP-002",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Runtime Tested"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon-recovery-first-playable-human-playability-latest",
+      "to": "AC-DRC-MVP-003",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Runtime Tested"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon-recovery-procedural-recovery-job-build-latest",
+      "to": "AC-DRC-PROC-006",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Compile Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon-recovery-procedural-recovery-job-build-latest",
+      "to": "AC-DRC-PROC-007",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Compile Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-001",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-002",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-003",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-004",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-005",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-006",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-007",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-008",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-009",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-010",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-001",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-002",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-003",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-004",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-005",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-006",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-007",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-008",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-009",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_recovery_job_e2e-2026-07-06T06-14-54-243Z",
+      "to": "AC-DRC-PROC-010",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T05-48-27-667Z",
+      "to": "AC-DRC-SPACE-001",
       "status": "Proposed",
       "evidenceStatus": "Blocked",
-      "validationLevel": "Not Checked"
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T05-48-27-667Z",
+      "to": "AC-DRC-SPACE-002",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T05-48-27-667Z",
+      "to": "AC-DRC-SPACE-003",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T05-48-27-667Z",
+      "to": "AC-DRC-SPACE-004",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T05-48-27-667Z",
+      "to": "AC-DRC-SPACE-005",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T05-48-27-667Z",
+      "to": "AC-DRC-SPACE-006",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T05-48-27-667Z",
+      "to": "AC-DRC-SPACE-007",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T05-48-27-667Z",
+      "to": "AC-DRC-SPACE-008",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T05-48-27-667Z",
+      "to": "AC-DRC-SPACE-009",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T05-48-27-667Z",
+      "to": "AC-DRC-SPACE-010",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T05-48-27-667Z",
+      "to": "AC-DRC-SPACE-011",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-001",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-002",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-003",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-004",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-005",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-006",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-007",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-008",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-009",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-010",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-011",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-001",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-002",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-003",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-004",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-005",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-006",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-007",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-008",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-009",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-010",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_space_quality_validation-2026-07-06T06-16-24-142Z",
+      "to": "AC-DRC-SPACE-011",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Play Mode Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T05-51-49-360Z",
+      "to": "AC-DRC-VIS-001",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T05-51-49-360Z",
+      "to": "AC-DRC-VIS-002",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T05-51-49-360Z",
+      "to": "AC-DRC-VIS-003",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T05-51-49-360Z",
+      "to": "AC-DRC-VIS-004",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T05-51-49-360Z",
+      "to": "AC-DRC-VIS-005",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T05-51-49-360Z",
+      "to": "AC-DRC-VIS-006",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T05-51-49-360Z",
+      "to": "AC-DRC-VIS-007",
+      "status": "Proposed",
+      "evidenceStatus": "Blocked",
+      "validationLevel": "Environment Blocked"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "to": "AC-DRC-VIS-001",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "to": "AC-DRC-VIS-002",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "to": "AC-DRC-VIS-003",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "to": "AC-DRC-VIS-004",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "to": "AC-DRC-VIS-005",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "to": "AC-DRC-VIS-006",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "to": "AC-DRC-VIS-007",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "to": "AC-DRC-VIS-001",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "to": "AC-DRC-VIS-002",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "to": "AC-DRC-VIS-003",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "to": "AC-DRC-VIS-004",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "to": "AC-DRC-VIS-005",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "to": "AC-DRC-VIS-006",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-dungeon_recovery_procedural_visual_validation-2026-07-06T06-16-09-720Z",
+      "to": "AC-DRC-VIS-007",
+      "status": "Proposed",
+      "evidenceStatus": "Passed",
+      "validationLevel": "Visual Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-scenario_top_down_collectible-2026-07-06T11-27-57-517Z",
+      "to": "AC-CoreLoop-001",
+      "status": "Proposed",
+      "evidenceStatus": "Failed",
+      "validationLevel": "Compile Verified"
+    },
+    {
+      "type": "validates",
+      "from": "EVID-scenario_top_down_collectible-2026-07-06T11-27-57-517Z",
+      "to": "AC-CoreLoop-001",
+      "status": "Proposed",
+      "evidenceStatus": "Failed",
+      "validationLevel": "Compile Verified"
     }
   ],
   "summary": {
-    "rowCount": 4,
+    "rowCount": 40,
     "countsByStatus": {
-      "Needs Technical Mapping": 3,
-      "Needs Validation": 1
+      "Needs Technical Mapping": 16,
+      "Complete": 1,
+      "Needs Feature Spec": 14,
+      "Needs Acceptance Criteria": 1,
+      "Needs Implementation Task": 8
     },
-    "missingLinkCount": 4,
-    "proposedLinkCount": 1
+    "missingLinkCount": 41,
+    "proposedLinkCount": 91
   }
 }

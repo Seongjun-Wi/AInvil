@@ -1,9 +1,9 @@
 {
   "schemaVersion": "1.0.0",
   "approvalVersion": "0.1.0",
-  "approvalId": "WTA-WTP-GRAPH-AInvil-Productization-2026-07-03-2026-07-03",
-  "generatedAt": "2026-07-03T19:07:18.384Z",
-  "sourcePlanId": "WTP-GRAPH-AInvil-Productization-2026-07-03",
+  "approvalId": "WTA-WTP-GRAPH-AInvil-Productization-2026-07-06-2026-07-06",
+  "generatedAt": "2026-07-06T11:27:56.865Z",
+  "sourcePlanId": "WTP-GRAPH-AInvil-Productization-2026-07-06",
   "sourceFiles": [
     {
       "kind": "Workflow Transition Plan",
@@ -92,7 +92,586 @@
       "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
     },
     {
+      "transitionId": "TRANS-ResolveValidationGap-2",
+      "transitionType": "ResolveValidationGap",
+      "targetArtifactId": "AC-DRC-SPACE-001",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Actual validation evidence for the target artifact.",
+        "Validation level proof matching the target state."
+      ],
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "HighRisk",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-001"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-3",
+      "transitionType": "ResolveValidationGap",
+      "targetArtifactId": "AC-DRC-SPACE-002",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Actual validation evidence for the target artifact.",
+        "Validation level proof matching the target state."
+      ],
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "HighRisk",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-002"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-4",
+      "transitionType": "ResolveValidationGap",
+      "targetArtifactId": "AC-DRC-SPACE-003",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Actual validation evidence for the target artifact.",
+        "Validation level proof matching the target state."
+      ],
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "HighRisk",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-003"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-5",
+      "transitionType": "ResolveValidationGap",
+      "targetArtifactId": "AC-DRC-SPACE-004",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Actual validation evidence for the target artifact.",
+        "Validation level proof matching the target state."
+      ],
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "HighRisk",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-004"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-6",
+      "transitionType": "ResolveValidationGap",
+      "targetArtifactId": "AC-DRC-SPACE-005",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Actual validation evidence for the target artifact.",
+        "Validation level proof matching the target state."
+      ],
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "HighRisk",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-005"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-7",
+      "transitionType": "ResolveValidationGap",
+      "targetArtifactId": "AC-DRC-SPACE-006",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Actual validation evidence for the target artifact.",
+        "Validation level proof matching the target state."
+      ],
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "HighRisk",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-006"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-8",
+      "transitionType": "ResolveValidationGap",
+      "targetArtifactId": "AC-DRC-SPACE-007",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Actual validation evidence for the target artifact.",
+        "Validation level proof matching the target state."
+      ],
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "HighRisk",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-007"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-9",
+      "transitionType": "ResolveValidationGap",
+      "targetArtifactId": "AC-DRC-SPACE-008",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Actual validation evidence for the target artifact.",
+        "Validation level proof matching the target state."
+      ],
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "HighRisk",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-008"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-10",
+      "transitionType": "ResolveValidationGap",
+      "targetArtifactId": "AC-DRC-SPACE-009",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Actual validation evidence for the target artifact.",
+        "Validation level proof matching the target state."
+      ],
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "HighRisk",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-009"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-11",
+      "transitionType": "ResolveValidationGap",
+      "targetArtifactId": "AC-DRC-SPACE-010",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Actual validation evidence for the target artifact.",
+        "Validation level proof matching the target state."
+      ],
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "HighRisk",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-010"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-12",
+      "transitionType": "ResolveValidationGap",
+      "targetArtifactId": "AC-DRC-SPACE-011",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Actual validation evidence for the target artifact.",
+        "Validation level proof matching the target state."
+      ],
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "HighRisk",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "AC-DRC-SPACE-011"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-13",
+      "transitionType": "ResolveValidationGap",
+      "targetArtifactId": "EVID-DRC-VIS-001",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Actual validation evidence for the target artifact.",
+        "Validation level proof matching the target state."
+      ],
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "HighRisk",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "EVID-DRC-VIS-001"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+    },
+    {
+      "transitionId": "TRANS-ResolveValidationGap-14",
+      "transitionType": "ResolveValidationGap",
+      "targetArtifactId": "EVID-DRC-SPACE-001",
+      "approvalClass": "EvidenceRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Actual validation evidence for the target artifact.",
+        "Validation level proof matching the target state."
+      ],
+      "missingEvidence": [
+        "Validation evidence has not been produced by this planner."
+      ],
+      "requiredReviews": [],
+      "missingReviews": [],
+      "safetyLevel": "HighRisk",
+      "reason": "Validation confidence cannot be promoted without evidence.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "EVID-DRC-SPACE-001"
+        }
+      ],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Validation gap found. Produce real validation evidence before any completion or validation transition."
+    },
+    {
+      "transitionId": "TRANS-RequestReview-1",
+      "transitionType": "RequestReview",
+      "targetArtifactId": "FEAT-DRC-PROC-RecoveryJob",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "GraphNode:FEAT-DRC-PROC-RecoveryJob"
+      ],
+      "missingEvidence": [],
+      "requiredReviews": [
+        "Required governance review"
+      ],
+      "missingReviews": [
+        "Required governance review record"
+      ],
+      "safetyLevel": "MediumRisk",
+      "reason": "Governance requires a review before this transition can proceed.",
+      "evidenceRefs": [
+        {
+          "kind": "GraphNode",
+          "id": "FEAT-DRC-PROC-RecoveryJob"
+        }
+      ],
+      "canBeAutomatedLater": true,
+      "userFacingMessage": "A review must be requested before this transition is eligible."
+    },
+    {
       "transitionId": "TRANS-ImproveTraceability-1",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "REQ-DRC-PROC-003: no implementation task implements this requirement",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "REQ-DRC-PROC-003: no implementation task implements this requirement",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-2",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "REQ-DRC-PROC-004: no implementation task implements this requirement",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "REQ-DRC-PROC-004: no implementation task implements this requirement",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-3",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "REQ-DRC-SPACE-001: no implementation task implements this requirement",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "REQ-DRC-SPACE-001: no implementation task implements this requirement",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-4",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "REQ-DRC-SPACE-002: no implementation task implements this requirement",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "REQ-DRC-SPACE-002: no implementation task implements this requirement",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-5",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "REQ-DRC-SPACE-003: no implementation task implements this requirement",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "REQ-DRC-SPACE-003: no implementation task implements this requirement",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-6",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "REQ-DRC-SPACE-004: no implementation task implements this requirement",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "REQ-DRC-SPACE-004: no implementation task implements this requirement",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-7",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "REQ-DRC-SPACE-005: no implementation task implements this requirement",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "REQ-DRC-SPACE-005: no implementation task implements this requirement",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-8",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "REQ-DRC-SPACE-006: no implementation task implements this requirement",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "REQ-DRC-SPACE-006: no implementation task implements this requirement",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-9",
       "transitionType": "ImproveTraceability",
       "targetArtifactId": "TASK-E2E-001: no Unity target maps to this task",
       "approvalClass": "ReviewRequired",
@@ -117,7 +696,7 @@
       "userFacingMessage": "Traceability improvement needs review."
     },
     {
-      "transitionId": "TRANS-ImproveTraceability-2",
+      "transitionId": "TRANS-ImproveTraceability-10",
       "transitionType": "ImproveTraceability",
       "targetArtifactId": "TASK-E2E-002: no Unity target maps to this task",
       "approvalClass": "ReviewRequired",
@@ -142,7 +721,7 @@
       "userFacingMessage": "Traceability improvement needs review."
     },
     {
-      "transitionId": "TRANS-ImproveTraceability-3",
+      "transitionId": "TRANS-ImproveTraceability-11",
       "transitionType": "ImproveTraceability",
       "targetArtifactId": "TASK-E2E-003: no Unity target maps to this task",
       "approvalClass": "ReviewRequired",
@@ -167,7 +746,407 @@
       "userFacingMessage": "Traceability improvement needs review."
     },
     {
-      "transitionId": "TRANS-ImproveTraceability-4",
+      "transitionId": "TRANS-ImproveTraceability-12",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-MVP-002: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-MVP-002: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-13",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-MVP-003: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-MVP-003: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-14",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-PROC-003: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-PROC-003: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-15",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-PROC-004: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-PROC-004: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-16",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-PROC-005: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-PROC-005: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-17",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-PROC-006: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-PROC-006: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-18",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-PROC-007: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-PROC-007: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-19",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-PROC-008: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-PROC-008: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-20",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-VIS-001: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-VIS-001: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-21",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-VIS-002: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-VIS-002: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-22",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-SPACE-001: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-SPACE-001: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-23",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-SPACE-002: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-SPACE-002: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-24",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-SPACE-003: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-SPACE-003: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-25",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-SPACE-004: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-SPACE-004: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-26",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-SPACE-005: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-SPACE-005: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-27",
+      "transitionType": "ImproveTraceability",
+      "targetArtifactId": "TASK-DRC-SPACE-006: no Unity target maps to this task",
+      "approvalClass": "ReviewRequired",
+      "executionReadiness": "NotReady",
+      "requiredApprovals": [],
+      "requiredEvidence": [
+        "Existing graph references for both sides of the traceability link."
+      ],
+      "missingEvidence": [
+        "Specific graph node evidence is missing."
+      ],
+      "requiredReviews": [
+        "Traceability Review"
+      ],
+      "missingReviews": [
+        "Traceability Review"
+      ],
+      "safetyLevel": "LowRisk",
+      "reason": "TASK-DRC-SPACE-006: no Unity target maps to this task",
+      "evidenceRefs": [],
+      "canBeAutomatedLater": false,
+      "userFacingMessage": "Traceability improvement needs review."
+    },
+    {
+      "transitionId": "TRANS-ImproveTraceability-28",
       "transitionType": "ImproveTraceability",
       "targetArtifactId": "AC-E2E-002: no validation evidence validates this acceptance criterion",
       "approvalClass": "ReviewRequired",
@@ -251,22 +1230,22 @@
     }
   ],
   "summary": {
-    "total": 10,
+    "total": 48,
     "byApprovalClass": {
       "UserApprovalRequired": 2,
-      "EvidenceRequired": 2,
-      "ReviewRequired": 4,
+      "EvidenceRequired": 15,
+      "ReviewRequired": 29,
       "AutoEligible": 2
     },
     "byReadiness": {
-      "NotReady": 8,
+      "NotReady": 46,
       "NotApplicable": 1,
       "Ready": 1
     },
     "bySafetyLevel": {
-      "MediumRisk": 2,
-      "HighRisk": 1,
-      "LowRisk": 7
+      "MediumRisk": 3,
+      "HighRisk": 14,
+      "LowRisk": 31
     },
     "autoEligibleCount": 2,
     "blockedCount": 0,

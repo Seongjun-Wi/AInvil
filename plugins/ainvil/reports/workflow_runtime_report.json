@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
   "reportVersion": "0.1.0",
-  "reportId": "WFR-GRAPH-AInvil-Productization-2026-07-03",
-  "generatedAt": "2026-07-03T19:07:17.881Z",
+  "reportId": "WFR-GRAPH-AInvil-Productization-2026-07-06",
+  "generatedAt": "2026-07-06T11:27:56.420Z",
   "sourceFiles": [
     {
       "kind": "Production State Graph",
@@ -71,26 +71,26 @@
       "owner": "Director Layer"
     },
     "currentMilestone": {
-      "nodeId": "MILESTONE-E2E-Recovery",
-      "title": "Productization cleanup and E2E validation recovery",
+      "nodeId": "MILESTONE-DRC-MVP-FirstPlayable",
+      "title": "Dungeon Recovery Company first playable vertical slice",
       "status": "In Progress",
       "owner": "Orchestrator"
     },
     "activeFeature": {
-      "nodeId": "FEAT-E2E-HappyPath-001",
-      "title": "Minimum AInvil E2E happy path",
-      "status": "In Progress",
-      "owner": "Orchestrator"
+      "nodeId": "FEAT-DRC-PROC-RecoveryJob",
+      "title": "Procedural Recovery Job",
+      "status": "Implemented",
+      "owner": "GDD Agent"
     },
     "currentNextRecommendedAction": {
-      "title": "Restore Unity Bridge connectivity and rerun productization checks.",
-      "reason": "The minimum E2E happy path cannot reach compile or Play Mode validation while Unity Bridge is unreachable.",
-      "owner": "Unity Agent",
+      "title": "Run procedural recovery job E2E validation for seeds 1001, 2026, and 7777.",
+      "reason": "Procedural generation must prove deterministic layouts, reachable targets, recovery completion, and zero console errors before further gameplay expansion.",
+      "owner": "Input Agent",
       "status": "Planned",
       "referencesNodeIds": [
-        "TASK-E2E-004"
+        "FEAT-DRC-PROC-RecoveryJob"
       ],
-      "requiredValidationLevel": "Compile Verified"
+      "requiredValidationLevel": "Play Mode Verified"
     }
   },
   "workflowBlockers": [
@@ -112,6 +112,54 @@
     },
     {
       "kind": "MissingTraceabilityLink",
+      "id": "REQ-DRC-PROC-003: no implementation task implements this requirement",
+      "summary": "REQ-DRC-PROC-003: no implementation task implements this requirement",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "REQ-DRC-PROC-004: no implementation task implements this requirement",
+      "summary": "REQ-DRC-PROC-004: no implementation task implements this requirement",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "REQ-DRC-SPACE-001: no implementation task implements this requirement",
+      "summary": "REQ-DRC-SPACE-001: no implementation task implements this requirement",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "REQ-DRC-SPACE-002: no implementation task implements this requirement",
+      "summary": "REQ-DRC-SPACE-002: no implementation task implements this requirement",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "REQ-DRC-SPACE-003: no implementation task implements this requirement",
+      "summary": "REQ-DRC-SPACE-003: no implementation task implements this requirement",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "REQ-DRC-SPACE-004: no implementation task implements this requirement",
+      "summary": "REQ-DRC-SPACE-004: no implementation task implements this requirement",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "REQ-DRC-SPACE-005: no implementation task implements this requirement",
+      "summary": "REQ-DRC-SPACE-005: no implementation task implements this requirement",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "REQ-DRC-SPACE-006: no implementation task implements this requirement",
+      "summary": "REQ-DRC-SPACE-006: no implementation task implements this requirement",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
       "id": "TASK-E2E-001: no Unity target maps to this task",
       "summary": "TASK-E2E-001: no Unity target maps to this task",
       "evidenceNodeIds": []
@@ -130,9 +178,113 @@
     },
     {
       "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-MVP-002: no Unity target maps to this task",
+      "summary": "TASK-DRC-MVP-002: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-MVP-003: no Unity target maps to this task",
+      "summary": "TASK-DRC-MVP-003: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-PROC-003: no Unity target maps to this task",
+      "summary": "TASK-DRC-PROC-003: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-PROC-004: no Unity target maps to this task",
+      "summary": "TASK-DRC-PROC-004: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-PROC-005: no Unity target maps to this task",
+      "summary": "TASK-DRC-PROC-005: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-PROC-006: no Unity target maps to this task",
+      "summary": "TASK-DRC-PROC-006: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-PROC-007: no Unity target maps to this task",
+      "summary": "TASK-DRC-PROC-007: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-PROC-008: no Unity target maps to this task",
+      "summary": "TASK-DRC-PROC-008: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-VIS-001: no Unity target maps to this task",
+      "summary": "TASK-DRC-VIS-001: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-VIS-002: no Unity target maps to this task",
+      "summary": "TASK-DRC-VIS-002: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-SPACE-001: no Unity target maps to this task",
+      "summary": "TASK-DRC-SPACE-001: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-SPACE-002: no Unity target maps to this task",
+      "summary": "TASK-DRC-SPACE-002: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-SPACE-003: no Unity target maps to this task",
+      "summary": "TASK-DRC-SPACE-003: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-SPACE-004: no Unity target maps to this task",
+      "summary": "TASK-DRC-SPACE-004: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-SPACE-005: no Unity target maps to this task",
+      "summary": "TASK-DRC-SPACE-005: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
+      "id": "TASK-DRC-SPACE-006: no Unity target maps to this task",
+      "summary": "TASK-DRC-SPACE-006: no Unity target maps to this task",
+      "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingTraceabilityLink",
       "id": "AC-E2E-002: no validation evidence validates this acceptance criterion",
       "summary": "AC-E2E-002: no validation evidence validates this acceptance criterion",
       "evidenceNodeIds": []
+    },
+    {
+      "kind": "MissingRequiredReview",
+      "id": "Production Review",
+      "summary": "Active feature has no review record.",
+      "evidenceNodeIds": [
+        "FEAT-DRC-PROC-RecoveryJob"
+      ]
     },
     {
       "kind": "MissingValidationEvidence",
@@ -149,6 +301,110 @@
       "evidenceNodeIds": [
         "AC-E2E-002"
       ]
+    },
+    {
+      "kind": "ValidationLevelGap",
+      "id": "AC-DRC-SPACE-001",
+      "summary": "AC-DRC-SPACE-001 is below the required validation confidence.",
+      "evidenceNodeIds": [
+        "AC-DRC-SPACE-001"
+      ]
+    },
+    {
+      "kind": "ValidationLevelGap",
+      "id": "AC-DRC-SPACE-002",
+      "summary": "AC-DRC-SPACE-002 is below the required validation confidence.",
+      "evidenceNodeIds": [
+        "AC-DRC-SPACE-002"
+      ]
+    },
+    {
+      "kind": "ValidationLevelGap",
+      "id": "AC-DRC-SPACE-003",
+      "summary": "AC-DRC-SPACE-003 is below the required validation confidence.",
+      "evidenceNodeIds": [
+        "AC-DRC-SPACE-003"
+      ]
+    },
+    {
+      "kind": "ValidationLevelGap",
+      "id": "AC-DRC-SPACE-004",
+      "summary": "AC-DRC-SPACE-004 is below the required validation confidence.",
+      "evidenceNodeIds": [
+        "AC-DRC-SPACE-004"
+      ]
+    },
+    {
+      "kind": "ValidationLevelGap",
+      "id": "AC-DRC-SPACE-005",
+      "summary": "AC-DRC-SPACE-005 is below the required validation confidence.",
+      "evidenceNodeIds": [
+        "AC-DRC-SPACE-005"
+      ]
+    },
+    {
+      "kind": "ValidationLevelGap",
+      "id": "AC-DRC-SPACE-006",
+      "summary": "AC-DRC-SPACE-006 is below the required validation confidence.",
+      "evidenceNodeIds": [
+        "AC-DRC-SPACE-006"
+      ]
+    },
+    {
+      "kind": "ValidationLevelGap",
+      "id": "AC-DRC-SPACE-007",
+      "summary": "AC-DRC-SPACE-007 is below the required validation confidence.",
+      "evidenceNodeIds": [
+        "AC-DRC-SPACE-007"
+      ]
+    },
+    {
+      "kind": "ValidationLevelGap",
+      "id": "AC-DRC-SPACE-008",
+      "summary": "AC-DRC-SPACE-008 is below the required validation confidence.",
+      "evidenceNodeIds": [
+        "AC-DRC-SPACE-008"
+      ]
+    },
+    {
+      "kind": "ValidationLevelGap",
+      "id": "AC-DRC-SPACE-009",
+      "summary": "AC-DRC-SPACE-009 is below the required validation confidence.",
+      "evidenceNodeIds": [
+        "AC-DRC-SPACE-009"
+      ]
+    },
+    {
+      "kind": "ValidationLevelGap",
+      "id": "AC-DRC-SPACE-010",
+      "summary": "AC-DRC-SPACE-010 is below the required validation confidence.",
+      "evidenceNodeIds": [
+        "AC-DRC-SPACE-010"
+      ]
+    },
+    {
+      "kind": "ValidationLevelGap",
+      "id": "AC-DRC-SPACE-011",
+      "summary": "AC-DRC-SPACE-011 is below the required validation confidence.",
+      "evidenceNodeIds": [
+        "AC-DRC-SPACE-011"
+      ]
+    },
+    {
+      "kind": "ValidationLevelGap",
+      "id": "EVID-DRC-VIS-001",
+      "summary": "EVID-DRC-VIS-001 is below the required validation confidence.",
+      "evidenceNodeIds": [
+        "EVID-DRC-VIS-001"
+      ]
+    },
+    {
+      "kind": "ValidationLevelGap",
+      "id": "EVID-DRC-SPACE-001",
+      "summary": "EVID-DRC-SPACE-001 is below the required validation confidence.",
+      "evidenceNodeIds": [
+        "EVID-DRC-SPACE-001"
+      ]
     }
   ],
   "reviewStatus": {
@@ -158,24 +414,28 @@
       "Production Review": 1
     },
     "pendingReviewIds": [],
-    "approvedReviewIds": [],
-    "changesRequestedReviewIds": [
-      "REVIEW-E2E-Validation-001",
+    "approvedReviewIds": [
       "REVIEW-ProductionCore-Readiness-001"
+    ],
+    "changesRequestedReviewIds": [
+      "REVIEW-E2E-Validation-001"
     ],
     "majorRisks": [
       {
         "reviewId": "REVIEW-E2E-Validation-001",
         "severity": "High",
         "summary": "Validation gap may cause AInvil productization to appear more complete than it is."
-      },
-      {
-        "reviewId": "REVIEW-ProductionCore-Readiness-001",
-        "severity": "High",
-        "summary": "Production Core could be overstated without a passed operational live Unity scenario."
       }
     ],
-    "missingRequiredReviews": []
+    "missingRequiredReviews": [
+      {
+        "reviewType": "Production Review",
+        "reason": "Active feature has no review record.",
+        "referencesNodeIds": [
+          "FEAT-DRC-PROC-RecoveryJob"
+        ]
+      }
+    ]
   },
   "validationStatus": {
     "validationCoverage": {
@@ -183,8 +443,8 @@
       "Document Review": 0,
       "Static Analysis": 2,
       "Unity Inspection": 0,
-      "Compile Verified": 0,
-      "Play Mode Verified": 0,
+      "Compile Verified": 1,
+      "Play Mode Verified": 18,
       "Runtime Tested": 0,
       "User Confirmed": 0
     },
@@ -199,8 +459,86 @@
       {
         "nodeId": "AC-E2E-002",
         "currentLevel": "Not Checked",
-        "requiredLevel": "Compile Verified",
+        "requiredLevel": "Play Mode Verified",
         "reason": "AC-E2E-002 is below the required validation confidence."
+      },
+      {
+        "nodeId": "AC-DRC-SPACE-001",
+        "currentLevel": "Unknown",
+        "requiredLevel": "Play Mode Verified",
+        "reason": "AC-DRC-SPACE-001 is below the required validation confidence."
+      },
+      {
+        "nodeId": "AC-DRC-SPACE-002",
+        "currentLevel": "Unknown",
+        "requiredLevel": "Play Mode Verified",
+        "reason": "AC-DRC-SPACE-002 is below the required validation confidence."
+      },
+      {
+        "nodeId": "AC-DRC-SPACE-003",
+        "currentLevel": "Unknown",
+        "requiredLevel": "Play Mode Verified",
+        "reason": "AC-DRC-SPACE-003 is below the required validation confidence."
+      },
+      {
+        "nodeId": "AC-DRC-SPACE-004",
+        "currentLevel": "Unknown",
+        "requiredLevel": "Play Mode Verified",
+        "reason": "AC-DRC-SPACE-004 is below the required validation confidence."
+      },
+      {
+        "nodeId": "AC-DRC-SPACE-005",
+        "currentLevel": "Unknown",
+        "requiredLevel": "Play Mode Verified",
+        "reason": "AC-DRC-SPACE-005 is below the required validation confidence."
+      },
+      {
+        "nodeId": "AC-DRC-SPACE-006",
+        "currentLevel": "Unknown",
+        "requiredLevel": "Play Mode Verified",
+        "reason": "AC-DRC-SPACE-006 is below the required validation confidence."
+      },
+      {
+        "nodeId": "AC-DRC-SPACE-007",
+        "currentLevel": "Unknown",
+        "requiredLevel": "Play Mode Verified",
+        "reason": "AC-DRC-SPACE-007 is below the required validation confidence."
+      },
+      {
+        "nodeId": "AC-DRC-SPACE-008",
+        "currentLevel": "Unknown",
+        "requiredLevel": "Play Mode Verified",
+        "reason": "AC-DRC-SPACE-008 is below the required validation confidence."
+      },
+      {
+        "nodeId": "AC-DRC-SPACE-009",
+        "currentLevel": "Unknown",
+        "requiredLevel": "Play Mode Verified",
+        "reason": "AC-DRC-SPACE-009 is below the required validation confidence."
+      },
+      {
+        "nodeId": "AC-DRC-SPACE-010",
+        "currentLevel": "Unknown",
+        "requiredLevel": "Play Mode Verified",
+        "reason": "AC-DRC-SPACE-010 is below the required validation confidence."
+      },
+      {
+        "nodeId": "AC-DRC-SPACE-011",
+        "currentLevel": "Unknown",
+        "requiredLevel": "Play Mode Verified",
+        "reason": "AC-DRC-SPACE-011 is below the required validation confidence."
+      },
+      {
+        "nodeId": "EVID-DRC-VIS-001",
+        "currentLevel": "Unknown",
+        "requiredLevel": "Play Mode Verified",
+        "reason": "EVID-DRC-VIS-001 is below the required validation confidence."
+      },
+      {
+        "nodeId": "EVID-DRC-SPACE-001",
+        "currentLevel": "Unknown",
+        "requiredLevel": "Play Mode Verified",
+        "reason": "EVID-DRC-SPACE-001 is below the required validation confidence."
       }
     ]
   },

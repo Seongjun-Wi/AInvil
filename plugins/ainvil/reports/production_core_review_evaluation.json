@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0.0",
-  "evaluationId": "PCORE-EVAL-2026-07-06T06-17-16-594Z",
-  "generatedAt": "2026-07-06T06:17:16.594Z",
+  "evaluationId": "PCORE-EVAL-2026-07-06T11-28-09-518Z",
+  "generatedAt": "2026-07-06T11:28:09.518Z",
   "reviewedGateId": "GATE-REVIEW-001",
   "reviewId": "REVIEW-ProductionCore-Readiness-001",
   "reviewPath": "reviews/production_core_readiness_review.json",
-  "previousStatus": "Approved",
-  "newStatus": "Approved",
+  "previousStatus": "Changes Requested",
+  "newStatus": "Changes Requested",
   "criteria": [
     {
       "id": "PCORE-APPROVAL-GRAPH",
@@ -86,11 +86,11 @@
     {
       "id": "PCORE-APPROVAL-HARNESS",
       "title": "Live harness latest report has Operational Passed scenario",
-      "status": "Passed",
-      "evidence": "summary passed=1, failed=0, blocked=0",
+      "status": "Needs Evidence",
+      "evidence": "summary passed=0, failed=1, blocked=0",
       "successSummary": "Latest live harness report has a Passed Operational scenario; fixed smoke evidence remains available for the core gate.",
       "failureSummary": "Latest live harness report does not show any Operational scenario as Passed.",
-      "nextAction": null,
+      "nextAction": "Run run-ainvil-live-harness.mjs --mode probe --scenario ainvil_bridge_smoke_operational or another Operational scenario.",
       "connectedArtifacts": [
         "harness/reports/latest-live-harness-report.json"
       ]
@@ -167,13 +167,6 @@
       ]
     },
     {
-      "id": "PCORE-APPROVAL-HARNESS",
-      "summary": "Latest live harness report has a Passed Operational scenario; fixed smoke evidence remains available for the core gate.",
-      "connectedArtifacts": [
-        "harness/reports/latest-live-harness-report.json"
-      ]
-    },
-    {
       "id": "PCORE-APPROVAL-PRODUCTIZATION",
       "summary": "Productization has no remaining core blocker outside the review gate itself.",
       "connectedArtifacts": [
@@ -188,7 +181,17 @@
       ]
     }
   ],
-  "remainingChanges": [],
+  "remainingChanges": [
+    {
+      "id": "PCORE-APPROVAL-HARNESS",
+      "status": "Needs Evidence",
+      "summary": "Latest live harness report does not show any Operational scenario as Passed.",
+      "connectedArtifacts": [
+        "harness/reports/latest-live-harness-report.json"
+      ],
+      "nextAction": "Run run-ainvil-live-harness.mjs --mode probe --scenario ainvil_bridge_smoke_operational or another Operational scenario."
+    }
+  ],
   "evidenceUsed": [
     {
       "kind": "Review Record",
@@ -221,7 +224,15 @@
       "path": "validation/evidence/EVID-ainvil-bridge-smoke-operational-latest.json"
     }
   ],
-  "releaseBlockersBefore": [],
+  "releaseBlockersBefore": [
+    {
+      "gateId": "GATE-REVIEW-001",
+      "title": "Production Core review",
+      "status": "Blocked",
+      "evidence": "Changes Requested",
+      "nextAction": "Resolve changes requested in the Production Core readiness review."
+    }
+  ],
   "releaseBlockersAfter": [],
-  "nextAction": "Regenerate release readiness and productization reports so the approved Production Core review is reflected in release gates."
+  "nextAction": "Run run-ainvil-live-harness.mjs --mode probe --scenario ainvil_bridge_smoke_operational or another Operational scenario."
 }

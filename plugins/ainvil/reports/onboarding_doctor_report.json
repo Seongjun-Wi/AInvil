@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "reportId": "ODR-2026-07-06T06-13-14-603Z",
-  "generatedAt": "2026-07-06T06:13:14.603Z",
+  "reportId": "ODR-2026-07-06T11-28-22-354Z",
+  "generatedAt": "2026-07-06T11:28:22.354Z",
   "product": "AInvil",
   "workspaceManifest": "state/workspace_manifest.json",
   "unityRpcUrl": "http://127.0.0.1:17777/rpc",
@@ -91,7 +91,7 @@
         "unityVersion": "6000.5.0f1",
         "isPlaying": false,
         "isPlayingOrWillChangePlaymode": false,
-        "playModeTransitionCount": 0
+        "playModeTransitionCount": 3
       }
     },
     {
@@ -113,18 +113,32 @@
         "isPlayingOrWillChangePlaymode": false,
         "isCompiling": false,
         "isUpdating": false,
-        "playModeTransitionCount": 0,
+        "playModeTransitionCount": 3,
         "inputTestBridgeAvailable": false,
         "activeScene": {
-          "name": "DRC_ProceduralRecoveryJob",
-          "path": "Assets/AInvilGenerated/DungeonRecoveryFirstPlayable/Scenes/DRC_ProceduralRecoveryJob.unity",
+          "name": "TopDownCollectible",
+          "path": "Assets/Scenes/TopDownCollectible.unity",
           "isDirty": false,
           "isLoaded": true,
-          "rootCount": 1
+          "rootCount": 6
         },
         "selection": {
-          "activeObject": null,
-          "objects": []
+          "activeObject": {
+            "name": "ScoreText",
+            "type": "UnityEngine.GameObject",
+            "instanceId": -331610,
+            "kind": "gameObject",
+            "path": "/UI/HUD/ScoreText"
+          },
+          "objects": [
+            {
+              "name": "ScoreText",
+              "type": "UnityEngine.GameObject",
+              "instanceId": -331610,
+              "kind": "gameObject",
+              "path": "/UI/HUD/ScoreText"
+            }
+          ]
         }
       }
     },

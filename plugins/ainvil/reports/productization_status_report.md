@@ -1,6 +1,6 @@
 # AInvil Productization Status
 
-- Generated at: 2026-07-06T06:17:16.584Z
+- Generated at: 2026-07-06T11:28:06.926Z
 - Decision: Release Candidate
 - Graph classification: Operational
 - Release blockers: 0
@@ -40,7 +40,7 @@
 | Compile check | Onboarding Doctor / unity_compile_status | Verified | unity_compile_status succeeded. | Rerun doctor after Unity Bridge connectivity is restored. |
 | Operational validation scenario registration | Live Harness | Verified | 6 operational scenario(s) detected. | Keep at least one classification=Operational scenario for release gates. |
 | Play Mode or Unity inspection validation | Live Harness / Input Agent | Verified | Latest operational evidence status: Passed | Run the operational bridge smoke scenario after Unity Bridge and compile checks pass. |
-| Evidence export | validation/evidence | Verified | 19 evidence file(s) detected; non-sample Passed evidence=true. | Keep sample evidence separate and link operational evidence to acceptance IDs. |
+| Evidence export | validation/evidence | Verified | 20 evidence file(s) detected; non-sample Passed evidence=true. | Keep sample evidence separate and link operational evidence to acceptance IDs. |
 | Traceability refresh | Traceability View | Partial | Traceability view exists; operational evidence linkage still depends on a Passed run. | Regenerate traceability after operational evidence is captured. |
 | Dashboard refresh | Project Dashboard | Partial | Dashboard exists and can show productization status. | Run generate-project-dashboard after productization report updates. |
 

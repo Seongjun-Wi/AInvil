@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "rcName": "AInvil Core RC",
   "rcVersion": "core-rc-2026-07-06",
-  "generatedAt": "2026-07-06T06:17:16.741Z",
+  "generatedAt": "2026-07-06T11:28:09.769Z",
   "releaseLevel": {
     "current": "Core Release Ready / Product MVP Ready Candidate",
     "notClaimed": [
@@ -11,8 +11,8 @@
     "reason": "Core smoke/evidence pipeline and one DungeonRecoveryCompany Product MVP vertical-slice E2E are verified; public installation and manual playability gates are still separate."
   },
   "decisions": {
-    "productionCoreReview": "Approved",
-    "releaseReadiness": "Release Ready",
+    "productionCoreReview": "Changes Requested",
+    "releaseReadiness": "Not Release Ready",
     "productization": "Release Candidate"
   },
   "canonicalUnityBridgePackage": {
@@ -216,11 +216,7 @@
       "revalidationStatus": "EnvironmentBlocked",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-blocked.json"
     },
-    "latestHarness": {
-      "status": "Passed",
-      "blockerType": null,
-      "reportPath": "harness/reports/latest-live-harness-report.json"
-    },
+    "latestHarness": null,
     "nextAction": "Procedural space quality is verified for seeds 1001, 2026, and 7777. Public Release Ready remains a separate gate."
   },
   "coreEvidence": [
@@ -276,11 +272,11 @@
     "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-passed.json"
   },
   "liveHarnessSummary": {
-    "mode": "probe",
+    "mode": "apply",
     "summary": {
       "total": 1,
-      "passed": 1,
-      "failed": 0,
+      "passed": 0,
+      "failed": 1,
       "blocked": 0,
       "warning": 0
     },

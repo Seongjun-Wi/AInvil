@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "reportId": "BR-AInvil-Baseline-2026-07-03",
-  "generatedAt": "2026-07-03T19:07:17.646Z",
+  "reportId": "BR-AInvil-Baseline-2026-07-06",
+  "generatedAt": "2026-07-06T11:27:56.216Z",
   "runMode": "DatasetBaseline",
   "evaluator": "AInvil static benchmark generator",
   "summary": "5 benchmark case(s) loaded; 3 expected categories are missing.",

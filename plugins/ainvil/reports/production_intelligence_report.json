@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0.0",
-  "reportId": "PI-GRAPH-AInvil-Productization-2026-07-03",
+  "reportId": "PI-GRAPH-AInvil-Productization-2026-07-06",
   "graphId": "GRAPH-AInvil-Productization",
   "graphVersion": "0.2.0",
-  "generatedAt": "2026-07-03T19:07:17.182Z",
-  "currentMilestoneNodeId": "MILESTONE-E2E-Recovery",
-  "activeFeatureNodeId": "FEAT-E2E-HappyPath-001",
-  "overallSummary": "3 production risk(s) detected; 1 coverage finding(s) detected.",
+  "generatedAt": "2026-07-06T11:27:55.829Z",
+  "currentMilestoneNodeId": "MILESTONE-DRC-MVP-FirstPlayable",
+  "activeFeatureNodeId": "FEAT-DRC-PROC-RecoveryJob",
+  "overallSummary": "3 production risk(s) detected; 30 coverage finding(s) detected.",
   "health": [
     {
       "category": "Vision Health",
@@ -18,12 +18,33 @@
     },
     {
       "category": "Design Health",
-      "status": "Green",
+      "status": "Yellow",
       "reason": "Requirements exist; missing design links are reported separately.",
       "evidenceNodeIds": [
         "REQ-E2E-001",
         "REQ-E2E-002",
-        "REQ-E2E-003"
+        "REQ-E2E-003",
+        "REQ-DRC-MVP-001",
+        "REQ-DRC-PROC-001",
+        "REQ-DRC-PROC-002",
+        "REQ-DRC-PROC-003",
+        "REQ-DRC-PROC-004",
+        "REQ-DRC-PROC-005",
+        "REQ-DRC-PROC-006",
+        "REQ-DRC-PROC-007",
+        "REQ-DRC-PROC-008",
+        "REQ-DRC-PROC-009",
+        "REQ-DRC-PROC-010",
+        "REQ-DRC-VIS-001",
+        "REQ-DRC-VIS-002",
+        "REQ-DRC-VIS-003",
+        "REQ-DRC-VIS-004",
+        "REQ-DRC-SPACE-001",
+        "REQ-DRC-SPACE-002",
+        "REQ-DRC-SPACE-003",
+        "REQ-DRC-SPACE-004",
+        "REQ-DRC-SPACE-005",
+        "REQ-DRC-SPACE-006"
       ]
     },
     {
@@ -35,12 +56,31 @@
         "TASK-E2E-002",
         "TASK-E2E-003",
         "TASK-E2E-004",
+        "TASK-DRC-MVP-001",
+        "TASK-DRC-MVP-002",
+        "TASK-DRC-MVP-003",
+        "TASK-DRC-PROC-001",
+        "TASK-DRC-PROC-002",
+        "TASK-DRC-PROC-003",
+        "TASK-DRC-PROC-004",
+        "TASK-DRC-PROC-005",
+        "TASK-DRC-PROC-006",
+        "TASK-DRC-PROC-007",
+        "TASK-DRC-PROC-008",
+        "TASK-DRC-VIS-001",
+        "TASK-DRC-VIS-002",
+        "TASK-DRC-SPACE-001",
+        "TASK-DRC-SPACE-002",
+        "TASK-DRC-SPACE-003",
+        "TASK-DRC-SPACE-004",
+        "TASK-DRC-SPACE-005",
+        "TASK-DRC-SPACE-006",
         "AC-E2E-002"
       ]
     },
     {
       "category": "Documentation Health",
-      "status": "Green",
+      "status": "Yellow",
       "reason": "FeatureSpec nodes exist; missing document links are reported separately.",
       "evidenceNodeIds": [
         "FS-E2E-HappyPath"
@@ -51,7 +91,11 @@
       "status": "Red",
       "reason": "Validation health is based on evidence nodes and validation levels.",
       "evidenceNodeIds": [
-        "EVID-E2E-Static-Report"
+        "EVID-E2E-Static-Report",
+        "EVID-DRC-MVP-001",
+        "EVID-DRC-PROC-001",
+        "EVID-DRC-VIS-001",
+        "EVID-DRC-SPACE-001"
       ]
     },
     {
@@ -61,11 +105,273 @@
       "evidenceNodeIds": [
         "TASK-E2E-004",
         "AC-E2E-002",
-        "MILESTONE-E2E-Recovery"
+        "MILESTONE-DRC-MVP-FirstPlayable",
+        "FEAT-DRC-PROC-RecoveryJob"
       ]
     }
   ],
   "coverage": [
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-MVP-001",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-MVP-001"
+      ],
+      "summary": "REQ-DRC-MVP-001 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-PROC-001",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-PROC-001"
+      ],
+      "summary": "REQ-DRC-PROC-001 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-PROC-002",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-PROC-002"
+      ],
+      "summary": "REQ-DRC-PROC-002 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-PROC-003",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-PROC-003"
+      ],
+      "summary": "REQ-DRC-PROC-003 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutTask-REQ-DRC-PROC-003",
+      "kind": "RequirementWithoutTask",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-PROC-003"
+      ],
+      "summary": "REQ-DRC-PROC-003 has no implementation task."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-PROC-004",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-PROC-004"
+      ],
+      "summary": "REQ-DRC-PROC-004 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutTask-REQ-DRC-PROC-004",
+      "kind": "RequirementWithoutTask",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-PROC-004"
+      ],
+      "summary": "REQ-DRC-PROC-004 has no implementation task."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-PROC-005",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-PROC-005"
+      ],
+      "summary": "REQ-DRC-PROC-005 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-PROC-006",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-PROC-006"
+      ],
+      "summary": "REQ-DRC-PROC-006 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-PROC-007",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-PROC-007"
+      ],
+      "summary": "REQ-DRC-PROC-007 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-PROC-008",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-PROC-008"
+      ],
+      "summary": "REQ-DRC-PROC-008 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-PROC-009",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-PROC-009"
+      ],
+      "summary": "REQ-DRC-PROC-009 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-PROC-010",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-PROC-010"
+      ],
+      "summary": "REQ-DRC-PROC-010 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-VIS-001",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-VIS-001"
+      ],
+      "summary": "REQ-DRC-VIS-001 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-VIS-002",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-VIS-002"
+      ],
+      "summary": "REQ-DRC-VIS-002 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-VIS-003",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-VIS-003"
+      ],
+      "summary": "REQ-DRC-VIS-003 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-VIS-004",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-VIS-004"
+      ],
+      "summary": "REQ-DRC-VIS-004 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-SPACE-001",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-SPACE-001"
+      ],
+      "summary": "REQ-DRC-SPACE-001 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutTask-REQ-DRC-SPACE-001",
+      "kind": "RequirementWithoutTask",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-SPACE-001"
+      ],
+      "summary": "REQ-DRC-SPACE-001 has no implementation task."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-SPACE-002",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-SPACE-002"
+      ],
+      "summary": "REQ-DRC-SPACE-002 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutTask-REQ-DRC-SPACE-002",
+      "kind": "RequirementWithoutTask",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-SPACE-002"
+      ],
+      "summary": "REQ-DRC-SPACE-002 has no implementation task."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-SPACE-003",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-SPACE-003"
+      ],
+      "summary": "REQ-DRC-SPACE-003 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutTask-REQ-DRC-SPACE-003",
+      "kind": "RequirementWithoutTask",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-SPACE-003"
+      ],
+      "summary": "REQ-DRC-SPACE-003 has no implementation task."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-SPACE-004",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-SPACE-004"
+      ],
+      "summary": "REQ-DRC-SPACE-004 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutTask-REQ-DRC-SPACE-004",
+      "kind": "RequirementWithoutTask",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-SPACE-004"
+      ],
+      "summary": "REQ-DRC-SPACE-004 has no implementation task."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-SPACE-005",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-SPACE-005"
+      ],
+      "summary": "REQ-DRC-SPACE-005 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutTask-REQ-DRC-SPACE-005",
+      "kind": "RequirementWithoutTask",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-SPACE-005"
+      ],
+      "summary": "REQ-DRC-SPACE-005 has no implementation task."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutFeatureSpec-REQ-DRC-SPACE-006",
+      "kind": "RequirementWithoutFeatureSpec",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-SPACE-006"
+      ],
+      "summary": "REQ-DRC-SPACE-006 has no linked FeatureSpec node."
+    },
+    {
+      "findingId": "COVERAGE-RequirementWithoutTask-REQ-DRC-SPACE-006",
+      "kind": "RequirementWithoutTask",
+      "status": "Missing",
+      "nodeIds": [
+        "REQ-DRC-SPACE-006"
+      ],
+      "summary": "REQ-DRC-SPACE-006 has no implementation task."
+    },
     {
       "findingId": "COVERAGE-AcceptanceWithoutEvidence-AC-E2E-002",
       "kind": "AcceptanceWithoutEvidence",
@@ -110,14 +416,14 @@
   ],
   "recommendations": [
     {
-      "recommendationId": "REC-AcceptanceWithoutEvidence",
-      "title": "Validate the acceptance criterion.",
-      "reason": "AC-E2E-002 has no validation evidence.",
+      "recommendationId": "REC-RequirementWithoutFeatureSpec",
+      "title": "Create or link the missing Feature Spec.",
+      "reason": "REQ-DRC-MVP-001 has no linked FeatureSpec node.",
       "referencesNodeIds": [
-        "AC-E2E-002"
+        "REQ-DRC-MVP-001"
       ],
-      "suggestedOwner": "Input Agent",
-      "priority": "High",
+      "suggestedOwner": "GDD Agent",
+      "priority": "Medium",
       "requiredValidationLevel": "Document Review"
     },
     {
@@ -142,8 +448,8 @@
     "Document Review": 0,
     "Static Analysis": 2,
     "Unity Inspection": 0,
-    "Compile Verified": 0,
-    "Play Mode Verified": 0,
+    "Compile Verified": 1,
+    "Play Mode Verified": 18,
     "Runtime Tested": 0,
     "User Confirmed": 0
   }

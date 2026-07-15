@@ -1,12 +1,12 @@
-# AInvil Benchmark Report: BR-AInvil-Baseline-2026-07-03
+# AInvil Benchmark Report: BR-AInvil-Baseline-2026-07-06
 
 ## 1. Run Metadata
 
-- Benchmark run id: BR-AInvil-Baseline-2026-07-03
+- Benchmark run id: BR-AInvil-Baseline-2026-07-06
 - AInvil version: current plugin workspace
 - Benchmark dataset: 5 case(s)
 - Dataset version: 0.1.0
-- Date: 2026-07-03T19:07:17.646Z
+- Date: 2026-07-06T11:27:56.216Z
 - Evaluator: AInvil static benchmark generator
 - Run mode: DatasetBaseline
 - Compared version: None
@@ -83,7 +83,7 @@
 
 | area | previous | current | regression/improvement |
 | --- | --- | --- | --- |
-| Benchmark report availability | None | BR-AInvil-Baseline-2026-07-03 | Baseline artifact available |
+| Benchmark report availability | None | BR-AInvil-Baseline-2026-07-06 | Baseline artifact available |
 
 ## 8. Recommendations
 

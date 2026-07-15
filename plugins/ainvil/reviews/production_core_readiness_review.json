@@ -6,21 +6,39 @@
   "reviewType": "Production Review",
   "reviewerRole": "Orchestrator",
   "date": "2026-07-06",
-  "lifecycleState": "Approved",
+  "lifecycleState": "Changes Requested",
   "findings": [
-    "Production Core live Unity proof is now available through the operational smoke scenario.",
-    "Unity Bridge health, compile status, console check, hierarchy inspection, validation probe, and non-sample Operational Passed evidence are connected to productization and release readiness.",
-    "No core blocker remains outside the Production Core review gate itself."
+    "Production Core review was reevaluated against current productization, release, doctor, harness, and validation evidence.",
+    "Remaining requested changes: PCORE-APPROVAL-HARNESS"
   ],
   "strengths": [
-    "Operational graph, live harness, doctor checks, release readiness, dashboard, and validation evidence now agree on the Unity Bridge smoke path.",
-    "Example scenarios and sample evidence remain classified separately and do not satisfy release gates."
+    "Review evaluation now distinguishes resolved Unity proof gaps from remaining evidence gaps."
   ],
-  "weaknesses": [],
-  "risks": [],
-  "recommendations": [],
-  "decision": "Approved",
-  "confidence": "High",
+  "weaknesses": [
+    "Latest live harness report does not show any Operational scenario as Passed."
+  ],
+  "risks": [
+    {
+      "riskId": "RISK-PCORE-APPROVAL-HARNESS",
+      "summary": "Latest live harness report does not show any Operational scenario as Passed.",
+      "severity": "High",
+      "evidenceNodeIds": [
+        "AC-E2E-002"
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "recommendationId": "REC-PCORE-APPROVAL-HARNESS",
+      "summary": "Run run-ainvil-live-harness.mjs --mode probe --scenario ainvil_bridge_smoke_operational or another Operational scenario.",
+      "owner": "Orchestrator",
+      "referencesNodeIds": [
+        "AC-E2E-002"
+      ]
+    }
+  ],
+  "decision": "Changes Requested",
+  "confidence": "Medium",
   "evidence": [
     {
       "kind": "Review Record",

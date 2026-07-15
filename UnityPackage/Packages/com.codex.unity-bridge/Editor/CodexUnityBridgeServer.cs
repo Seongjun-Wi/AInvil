@@ -2086,7 +2086,7 @@ namespace Codex.UnityBridge.Editor
             Object target = null;
             if (parameters["instanceId"] != null)
             {
-                target = ObjectFromId(parameters.Value<int>("instanceId"));
+                target = ObjectFromId(ReadObjectId(parameters["instanceId"]));
             }
             if (target == null && parameters["targetPath"] != null)
             {
@@ -3092,7 +3092,11 @@ namespace Codex.UnityBridge.Editor
                 return null;
             }
 
+#if UNITY_6000_4_OR_NEWER
+            if (ulong.TryParse(path, out var instanceId))
+#else
             if (int.TryParse(path, out var instanceId))
+#endif
             {
                 return ObjectFromId(instanceId) as GameObject;
             }
@@ -3496,23 +3500,37 @@ namespace Codex.UnityBridge.Editor
             UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
         }
 
+#if UNITY_6000_4_OR_NEWER
+        private static ulong ReadObjectId(JToken token)
+        {
+            return token.Value<ulong>();
+        }
+
+        private static ulong GetObjectId(Object unityObject)
+        {
+            return EntityId.ToULong(unityObject.GetEntityId());
+        }
+
+        private static Object ObjectFromId(ulong id)
+        {
+            return EditorUtility.EntityIdToObject(EntityId.FromULong(id));
+        }
+#else
+        private static int ReadObjectId(JToken token)
+        {
+            return token.Value<int>();
+        }
+
         private static int GetObjectId(Object unityObject)
         {
-#if UNITY_6000_0_OR_NEWER
-            return unchecked((int)EntityId.ToULong(unityObject.GetEntityId()));
-#else
             return unityObject.GetInstanceID();
-#endif
         }
 
         private static Object ObjectFromId(int id)
         {
-#if UNITY_6000_0_OR_NEWER
-            return EditorUtility.EntityIdToObject(EntityId.FromULong(unchecked((ulong)(uint)id)));
-#else
             return EditorUtility.InstanceIDToObject(id);
-#endif
         }
+#endif
 
         private class ConsoleEntry
         {

@@ -1,6 +1,6 @@
 # AInvil Environment Dependency Audit
 
-- Generated at: 2026-07-06T06:17:16.741Z
+- Generated at: 2026-07-06T11:28:09.769Z
 
 ## Configuration Surface
 
@@ -29,11 +29,12 @@
 | SourceHardcoding | Needs Review | docs/AInvil_Fresh_Workspace_Verification.md | 3 local path marker(s) detected. | Replace hardcoded local path with a manifest/env/config value. |
 | BridgePort | Info | docs/AInvil_Production_Core_Technical_Spec.md | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |
 | BridgePort | Info | docs/AInvil_Technical_Design.md | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |
+| SourceHardcoding | Needs Review | docs/AInvil_Validation_Summary.md | 2 local path marker(s) detected. | Replace hardcoded local path with a manifest/env/config value. |
 | BridgePort | Info | docs/Plugin_Integration_Guide.md | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |
 | BridgePort | Info | docs/production-core/PC3_Live_Unity_Proof_Technical_Spec.md | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |
 | GeneratedLocalState | Info | harness/reports/fresh-workspace-live-harness-report.json | 2 local path marker(s) detected. | Regenerate this artifact in the target workspace. |
 | BridgePort | Info | harness/reports/fresh-workspace-live-harness-report.json | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |
-| GeneratedLocalState | Info | harness/reports/latest-live-harness-report.json | 46 local path marker(s) detected. | Regenerate this artifact in the target workspace. |
+| GeneratedLocalState | Info | harness/reports/latest-live-harness-report.json | 6 local path marker(s) detected. | Regenerate this artifact in the target workspace. |
 | BridgePort | Info | harness/reports/latest-live-harness-report.json | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |
 | BridgePort | Info | harness/scenarios/ainvil_bridge_smoke_operational.json | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |
 | BridgePort | Info | harness/scenarios/dungeon_recovery_first_playable_e2e.json | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |
@@ -41,8 +42,6 @@
 | BridgePort | Info | harness/scenarios/dungeon_recovery_procedural_space_quality_validation.json | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |
 | BridgePort | Info | harness/scenarios/dungeon_recovery_procedural_visual_validation.json | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |
 | BridgePort | Info | mcp-server/server.mjs | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |
-| SourceHardcoding | Needs Review | README.md | 1 local path marker(s) detected. | Replace hardcoded local path with a manifest/env/config value. |
-| BridgePort | KnownLimitation | README.md | Unity Bridge default localhost port 17777 is referenced. | For Unity-side server port changes, update the Unity Bridge package or document the fixed package default. |
 | GeneratedLocalState | Info | reports/ainvil_compile_gate_safety_regression_report.json | 60 local path marker(s) detected. | Regenerate this artifact in the target workspace. |
 | BridgePort | KnownLimitation | reports/ainvil_compile_gate_safety_regression_report.json | Unity Bridge default localhost port 17777 is referenced. | For Unity-side server port changes, update the Unity Bridge package or document the fixed package default. |
 | GeneratedLocalState | Info | reports/builds/dungeon_recovery_first_playable/DungeonRecoveryCompany_BurstDebugInformation_DoNotShip/Data/Plugins/x86_64/lib_burst_generated.txt | 20 local path marker(s) detected. | Regenerate this artifact in the target workspace. |
@@ -130,4 +129,5 @@
 | GeneratedLocalState | Info | validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest.json | 31 local path marker(s) detected. | Regenerate this artifact in the target workspace. |
 | BridgePort | Info | validation/evidence/EVID-dungeon-recovery-procedural-visual-validation-latest.json | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |
 | BridgePort | Info | validation/evidence/EVID-regression-compile-blocked-latest.json | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |
+| BridgePort | Info | validation/evidence/EVID-top-down-collectible-latest-failed.json | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |
 | BridgePort | Info | validation/evidence/EVID-top-down-collectible-latest.json | Unity Bridge default localhost port 17777 is referenced. | Use UNITY_BRIDGE_URL/UNITY_HEALTH_URL when a non-default client URL is required. |

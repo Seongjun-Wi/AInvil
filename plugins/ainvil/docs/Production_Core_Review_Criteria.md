@@ -1,9 +1,9 @@
 # Production Core Review Criteria
 
-- Generated at: 2026-07-06T06:17:16.594Z
+- Generated at: 2026-07-06T11:28:09.518Z
 - Reviewed gate: GATE-REVIEW-001
-- Previous status: Approved
-- Evaluated status: Approved
+- Previous status: Changes Requested
+- Evaluated status: Changes Requested
 
 ## Approval Criteria
 
@@ -15,7 +15,7 @@
 | Unity compile check Passed | Passed | Passed / Passed |
 | Console error count 0 | Passed | Console errors: 0 |
 | Non-sample Operational Passed evidence exists | Passed | ainvil_bridge_smoke_operational / Operational / Passed |
-| Live harness latest report has Operational Passed scenario | Passed | summary passed=1, failed=0, blocked=0 |
+| Live harness latest report has Operational Passed scenario | Needs Evidence | summary passed=0, failed=1, blocked=0 |
 | No productization core blockers | Passed | 0 non-review productization blocker(s) |
 | No non-review release blockers | Passed | 0 non-review release blocker(s) |
 
@@ -27,13 +27,12 @@
 - PCORE-APPROVAL-COMPILE: Unity compile status is passed in doctor and operational evidence.
 - PCORE-APPROVAL-CONSOLE: Operational evidence reports zero Unity console errors.
 - PCORE-APPROVAL-EVIDENCE: Latest smoke evidence is non-sample Operational Passed evidence.
-- PCORE-APPROVAL-HARNESS: Latest live harness report has a Passed Operational scenario; fixed smoke evidence remains available for the core gate.
 - PCORE-APPROVAL-PRODUCTIZATION: Productization has no remaining core blocker outside the review gate itself.
 - PCORE-APPROVAL-RELEASE: Release readiness has no blocker outside the Production Core review gate.
 
 ## Remaining Changes
 
-- None
+- PCORE-APPROVAL-HARNESS: Latest live harness report does not show any Operational scenario as Passed. Next action: Run run-ainvil-live-harness.mjs --mode probe --scenario ainvil_bridge_smoke_operational or another Operational scenario.
 
 ## Evidence Used
 

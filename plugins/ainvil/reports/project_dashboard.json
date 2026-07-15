@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "dashboardId": "DASH-GRAPH-AInvil-Productization-2026-07-06",
-  "generatedAt": "2026-07-06T06:16:49.414Z",
+  "generatedAt": "2026-07-06T11:28:06.078Z",
   "projectName": "AInvil Productization",
   "currentVision": {
     "nodeId": "VISION-AInvil-Productization",
@@ -35,8 +35,8 @@
     "Document Review": 0,
     "Static Analysis": 2,
     "Unity Inspection": 0,
-    "Compile Verified": 0,
-    "Play Mode Verified": 0,
+    "Compile Verified": 1,
+    "Play Mode Verified": 18,
     "Runtime Tested": 0,
     "User Confirmed": 0
   },
@@ -58,7 +58,7 @@
   "latestLiveHarnessReport": "harness/reports/latest-live-harness-report.json",
   "latestExecutionRecord": "workflow/runs/latest.json",
   "productizationStatus": {
-    "reportId": "PRODSTAT-2026-07-06T06-16-49-297Z",
+    "reportId": "PRODSTAT-2026-07-06T06-17-16-584Z",
     "decision": "Release Candidate",
     "graphClassification": "Operational",
     "releaseBlockerCount": 0,
@@ -156,7 +156,7 @@
       "nextAction": "Treat as Product MVP Ready Candidate evidence; continue manual playability and public install gates separately."
     },
     "releaseLevel": {
-      "coreReleaseReady": false,
+      "coreReleaseReady": true,
       "coreRcReproducibilityVerified": true,
       "canonicalUnityBridgePackageVerified": true,
       "productMvpWorkflow": "Passed",
@@ -180,32 +180,13 @@
     }
   },
   "productionCoreReview": {
-    "evaluationId": "PCORE-EVAL-2026-07-06T06-16-48-895Z",
+    "evaluationId": "PCORE-EVAL-2026-07-06T06-17-16-594Z",
     "reviewedGateId": "GATE-REVIEW-001",
-    "previousStatus": "Revalidation Required",
-    "newStatus": "Revalidation Required",
-    "resolvedChangeCount": 7,
-    "remainingChangeCount": 2,
-    "remainingChanges": [
-      {
-        "id": "PCORE-APPROVAL-PRODUCTIZATION",
-        "status": "Revalidation Required",
-        "summary": "Productization has only environment revalidation blockers, not product requested changes.",
-        "connectedArtifacts": [
-          "reports/productization_status_report.json"
-        ],
-        "nextAction": "Resolve non-review productization blockers and regenerate the productization report."
-      },
-      {
-        "id": "PCORE-APPROVAL-RELEASE",
-        "status": "Revalidation Required",
-        "summary": "Release readiness has only environment revalidation blockers, not product requested changes.",
-        "connectedArtifacts": [
-          "reports/release_readiness_report.json"
-        ],
-        "nextAction": "Resolve non-review release blockers and regenerate release readiness."
-      }
-    ],
+    "previousStatus": "Approved",
+    "newStatus": "Approved",
+    "resolvedChangeCount": 9,
+    "remainingChangeCount": 0,
+    "remainingChanges": [],
     "evidenceUsed": [
       {
         "kind": "Review Record",

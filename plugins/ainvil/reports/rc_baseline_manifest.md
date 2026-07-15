@@ -2,10 +2,10 @@
 
 - RC: AInvil Core RC
 - Version: core-rc-2026-07-06
-- Generated at: 2026-07-06T06:17:16.741Z
+- Generated at: 2026-07-06T11:28:09.769Z
 - Release level: Core Release Ready / Product MVP Ready Candidate
-- Production Core review: Approved
-- Release readiness: Release Ready
+- Production Core review: Changes Requested
+- Release readiness: Not Release Ready
 - Productization: Release Candidate
 - Fresh workspace verification: Core RC Reproducibility Verified
 - Canonical Unity Bridge package verified: Yes

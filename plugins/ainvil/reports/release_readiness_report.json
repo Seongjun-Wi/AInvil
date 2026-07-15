@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0.0",
-  "reportId": "REL-2026-07-06T06-17-16-746Z",
-  "generatedAt": "2026-07-06T06:17:16.747Z",
+  "reportId": "REL-2026-07-06T11-28-09-658Z",
+  "generatedAt": "2026-07-06T11:28:09.661Z",
   "product": "AInvil",
-  "decision": "Release Ready",
-  "confidence": "Medium",
+  "decision": "Not Release Ready",
+  "confidence": "High",
   "releaseLevel": {
-    "coreReleaseReady": true,
+    "coreReleaseReady": false,
     "coreRcReproducibilityVerified": true,
     "canonicalUnityBridgePackageVerified": true,
     "productMvpWorkflow": "Passed",
@@ -182,11 +182,7 @@
       "revalidationStatus": "EnvironmentBlocked",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-blocked.json"
     },
-    "latestHarness": {
-      "status": "Passed",
-      "blockerType": null,
-      "reportPath": "harness/reports/latest-live-harness-report.json"
-    },
+    "latestHarness": null,
     "nextAction": "Procedural space quality is verified for seeds 1001, 2026, and 7777. Public Release Ready remains a separate gate."
   },
   "compileGate": {
@@ -439,9 +435,9 @@
     {
       "gateId": "GATE-REVIEW-001",
       "title": "Production Core review",
-      "status": "Passed",
-      "evidence": "Approved",
-      "nextAction": null
+      "status": "Blocked",
+      "evidence": "Changes Requested",
+      "nextAction": "Resolve changes requested in the Production Core readiness review."
     },
     {
       "gateId": "GATE-CONTAMINATION-001",
@@ -451,8 +447,23 @@
       "nextAction": null
     }
   ],
-  "blockers": [],
-  "blockerDetails": [],
+  "blockers": [
+    {
+      "gateId": "GATE-REVIEW-001",
+      "title": "Production Core review",
+      "status": "Blocked",
+      "evidence": "Changes Requested",
+      "nextAction": "Resolve changes requested in the Production Core readiness review."
+    }
+  ],
+  "blockerDetails": [
+    {
+      "blockerId": "GATE-REVIEW-001",
+      "category": "Production Core review",
+      "evidence": "Changes Requested",
+      "nextAction": "Resolve changes requested in the Production Core readiness review."
+    }
+  ],
   "warnings": [],
   "evidenceRefs": [
     "reports/onboarding_doctor_report.json",
@@ -462,5 +473,10 @@
     "reports/unity_compile_gate_report.json",
     "validation/evidence/EVID-ainvil-compile-gate-blocks-playmode-latest.json"
   ],
-  "nextActions": []
+  "nextActions": [
+    {
+      "gateId": "GATE-REVIEW-001",
+      "summary": "Resolve changes requested in the Production Core readiness review."
+    }
+  ]
 }

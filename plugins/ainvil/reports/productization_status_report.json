@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "reportId": "PRODSTAT-2026-07-06T06-17-16-584Z",
-  "generatedAt": "2026-07-06T06:17:16.584Z",
+  "reportId": "PRODSTAT-2026-07-06T11-28-06-926Z",
+  "generatedAt": "2026-07-06T11:28:06.926Z",
   "product": "AInvil",
   "graphClassification": "Operational",
   "summary": {
@@ -245,11 +245,7 @@
       "revalidationStatus": "EnvironmentBlocked",
       "path": "validation/evidence/EVID-dungeon-recovery-procedural-space-quality-latest-blocked.json"
     },
-    "latestHarness": {
-      "status": "Passed",
-      "blockerType": null,
-      "reportPath": "harness/reports/latest-live-harness-report.json"
-    },
+    "latestHarness": null,
     "nextAction": "Procedural space quality is verified for seeds 1001, 2026, and 7777. Public Release Ready remains a separate gate."
   },
   "compileGate": {
@@ -309,6 +305,11 @@
       "kind": "ExampleScenario",
       "status": "Deprecated/Sample",
       "summary": "harness/scenarios/top_down_collectible.json is an example harness scenario."
+    },
+    {
+      "kind": "SampleEvidence",
+      "status": "Deprecated/Sample",
+      "summary": "validation/evidence/EVID-top-down-collectible-latest-failed.json is sample evidence and must not satisfy operational release gates."
     },
     {
       "kind": "SampleEvidence",
@@ -378,7 +379,7 @@
       "name": "Evidence export",
       "owner": "validation/evidence",
       "status": "Verified",
-      "evidence": "19 evidence file(s) detected; non-sample Passed evidence=true.",
+      "evidence": "20 evidence file(s) detected; non-sample Passed evidence=true.",
       "nextAction": "Keep sample evidence separate and link operational evidence to acceptance IDs."
     },
     {
